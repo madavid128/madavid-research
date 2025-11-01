@@ -1,1 +1,1 @@
-Sitemap: https://madavid128.github.io/madavid-research/sitemap.xml
+Sitemap: http://michaeladavid.com/sitemap.xml
