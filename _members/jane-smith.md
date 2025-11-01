@@ -1,20 +1,14 @@
 ---
-name: Jane Smith
+name: Michael A. David
 image: images/photo.jpg
 role: principal-investigator
 affiliation: University of Colorado
 aliases:
-  - J. Smith
-  - J Smith
+  - MA. David
+  - M David
 links:
-  home-page: https://janesmith.com
-  orcid: 0000-0001-8713-9213
+  home-page: https://www.linkedin.com/in/mdavid3/
+  orcid: 0009-0006-5637-2403
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Faucibus purus in massa tempor nec feugiat nisl pretium fusce.
-Elit at imperdiet dui accumsan.
-Duis tristique sollicitudin nibh sit amet commodo nulla facilisi.
-Vitae elementum curabitur vitae nunc sed velit dignissim sodales.
-Lacinia at quis risus sed vulputate odio ut.
-Magna eget est lorem ipsum.
+Lead Researcher.
