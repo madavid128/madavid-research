@@ -1,11 +1,11 @@
 ---
 ---
 
-# Michael A. David's Professional Research Website
+# Dr. Michael A. David's Research Portfolio
 
-Welcome world! My website officially launched November 1, 2025 and is undergoing active remodeling; stay tuned for updates.
+Welcome world! My website officially launched on November 1st, 2025 and is undergoing active remodeling; stay tuned for updates.
 
-Currently, I hold a position as Instructor in the Department of Orthopedics at University of Colorado Anschutz Medical Campus. My primary appointment is heled within the Colorado Program Research for Musculoskeletal Research.
+Currently, I hold a position as Instructor in the Department of Orthopedics at University of Colorado Anschutz Medical Campus. My primary appointment is held within the Colorado Program Research for Musculoskeletal Research.
 
 {% include section.html %}
 
@@ -30,18 +30,18 @@ My research integrates digital histopathology, MRI/CT radiomics, and multi‑omi
   include feature.html
   image="images/photo.jpg"
   link="research"
-  title="My Research Portolio"
+  title="My Research Publications"
   text=text
 %}
 
 {% capture text %}
 
-My research generates beautiful scientific images that display in merging of science and art.
+My research spanning different domains generates beautiful scientific images that display the merging of science and art. View a curated crossover of scientific outputs and creative renderings. These pieces blur the line between analysis and art while staying grounded in the underlying data.
 
 {%
   include button.html
   link="projects"
-  text="See the beautiful images"
+  text="See the research projects and beautiful images"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -53,7 +53,7 @@ My research generates beautiful scientific images that display in merging of sci
   include feature.html
   image="images/photo.jpg"
   link="projects"
-  title="Collision of Art and Science"
+  title="Collision of My Research Projects and Artistic Imagery"
   flip=true
   style="bare"
   text=text
@@ -61,7 +61,7 @@ My research generates beautiful scientific images that display in merging of sci
 
 {% capture text %}
 
-My research allows me to work with wonderful students and colleagues.
+My research allows me to work with wonderful students, colleagues, mentees, and mentors. Together, we bridge engineering, imaging, and data science to tackle the complexities of musculoskeletal health.
 
 {%
   include button.html
