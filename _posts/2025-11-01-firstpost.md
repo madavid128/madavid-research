@@ -1,6 +1,6 @@
 ---
 title: Welcome world!
-author: Michael David
+author: michael-david
 tags:
   - beginning
   - new horizon
