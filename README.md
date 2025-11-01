@@ -5,6 +5,6 @@
 
   # madavid128's Website
 
-  Visit **[madavid128.github.io/madavid-research.github.io](https://madavid128.github.io/madavid-research.github.io)** 🚀
+  Visit **[madavid128.github.io/madavid-research](https://madavid128.github.io/madavid-research)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
