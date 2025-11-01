@@ -5,6 +5,7 @@ description:
 header: images/background.jpg
 footer: images/background.jpg
 proofer: false
+logo: /images/logo-mad-green-transparent.svg
 
 # site social media and other links
 links:
