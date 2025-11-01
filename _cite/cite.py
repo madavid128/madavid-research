@@ -12,6 +12,10 @@ from util import *
 # load environment variables
 load_dotenv()
 
+# --- add this debug (won't print the key) ---
+import os
+_k = (os.getenv("GOOGLE_SCHOLAR_API_KEY") or os.getenv("SERPAPI_API_KEY") or "")
+print(f"[cite.py] SerpAPI key present: {bool(_k)} length={len(_k)}")
 
 # save errors/warnings for reporting at end
 errors = []
