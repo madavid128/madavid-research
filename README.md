@@ -6,7 +6,7 @@
   # Welcome to Michael A. David's Research Portfolio!
   This website summarizes my research, publications, and avaiable code written for various purposes.
   
-  Visit **[michaeladavid.com](http://michaeladavid.com)**
+  Visit **[michaeladavid.com](https://michaeladavid.com)**
   
   My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning (ML) to study and diagnose post-traumatic joint conditions of contracture and osteoarthritis. I develop ML models end-to-end to identify tissue and cellular subtypes, phenotypes, and predictive relationships. My ML models are built upon preclinical and clinical datasets involving the ankle, elbow, and knee. Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
 
