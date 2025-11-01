@@ -11,13 +11,26 @@ My research integrates spatial histopathology, transcriptomics, and medical imag
 
 Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
 
-{% comment %} === PUBMED & SCHOLAR BUTTONS === {% endcomment %}
+{% comment %}
+=== PUBMED & SCHOLAR BUTTONS ===
+This block shows two solid buttons linking to your personal PubMed bibliography
+and your Google Scholar profile (built from GSID in _config.yaml).
+{% endcomment %}
+
 {% capture scholar_url %}https://scholar.google.com/citations?user={{ site.links.google-scholar }}{% endcapture %}
-{% assign orcid = site.links.orcid %}
-{% capture pubmed_url %}https://pubmed.ncbi.nlm.nih.gov/?term={{ orcid | uri_escape }}%5Bauid%5D{% endcapture %}
+
 <div class="mb-6 flex flex-wrap gap-3">
-  {% include button.html link=pubmed_url text="More on PubMed" icon="fa-solid fa-book" style="solid" %}
-  {% include button.html link=scholar_url text="More on Google Scholar" icon="fa-brands fa-google" style="solid" %}
+  {% include button.html
+     link=site.links.pubmed
+     text="More on PubMed"
+     icon="fa-solid fa-book"
+     style="solid" %}
+
+  {% include button.html
+     link=scholar_url
+     text="More on Google Scholar"
+     icon="fa-brands fa-google"
+     style="solid" %}
 </div>
 
 {% include section.html %}
