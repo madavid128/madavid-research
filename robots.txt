@@ -1,1 +1,1 @@
-Sitemap: http://michaeladavid.com/sitemap.xml
+Sitemap: https://michaeladavid.com/sitemap.xml
