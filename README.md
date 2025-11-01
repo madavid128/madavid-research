@@ -3,8 +3,10 @@
   ![on-pull-request](../../actions/workflows/on-pull-request.yaml/badge.svg)
   ![on-schedule](../../actions/workflows/on-schedule.yaml/badge.svg)
 
-  # Welcome to Michael A. David's Research Website!
+  # Welcome to Michael A. David's Research Portfolio!
   This website summarizes my research, publications, and avaiable code written for various purposes.
+  
+  Visit **[madavid128.github.io/madavid-research](https://madavid128.github.io/madavid-research)**
   
   My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning (ML) to study and diagnose post-traumatic joint conditions of contracture and osteoarthritis. I develop ML models end-to-end to identify tissue and cellular subtypes, phenotypes, and predictive relationships. My ML models are built upon preclinical and clinical datasets involving the ankle, elbow, and knee. Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
 
@@ -12,8 +14,6 @@
 
   Please don't hestitate to contact me for any opportunities or collaborative work
 
-  Visit **[madavid128.github.io/madavid-research](https://madavid128.github.io/madavid-research)**
-  
   Visit my other websites and social media:
   
   Google Scholar: http://scholar.google.com/citations?user=o7mhIiEAAAAJ&hl=en
