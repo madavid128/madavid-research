@@ -1,6 +1,6 @@
 ---
 name: Michael A. David
-image: images/photo.jpg
+image: images/MichaelDavid_headshot.jpeg
 role: principal-investigator
 affiliation: Department of Orthopedics, University of Colorado Anschutz Medical Campus
 aliases:
