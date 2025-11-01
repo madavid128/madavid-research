@@ -14,16 +14,6 @@ links:
   github: madavid128
   url: "https://madavid128.github.io"
   baseurl: "/madavid-research"   # "" if using a custom domain or user site
-  timezone: America/Denver
-  markdown: kramdown
-  favicon: images/favicon.ico
-  theme_color: "#0f172a"   # deep slate; match your brand
-  
-  social:
-    name: "Michael A. David, PhD"
-    links:
-      - https://orcid.org/0000-0001-8713-9213
-      - https://github.com/madavid128
     
 ### jekyll settings
 
