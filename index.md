@@ -1,9 +1,11 @@
 ---
 ---
 
-# madavid128's Website
+# Michael A. David's Professional Research Website
 
-An engaging 1-3 sentence description of your lab.
+Welcome world! My website officially launched November 1, 2025 and is undergoing active remodeling; stay tuned for updates.
+
+Currently, I hold a position as Instructor in the Department of Orthopedics at University of Colorado Anschutz Medical Campus. My primary appointment is heled within the Colorado Program Research for Musculoskeletal Research.
 
 {% include section.html %}
 
@@ -11,12 +13,12 @@ An engaging 1-3 sentence description of your lab.
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+My research integrates digital histopathology, MRI/CT radiomics, and multi‑omics to study musculoskeletal health and disease, with an emphasis on reproducible, open data analytical workflows.
 
 {%
   include button.html
   link="research"
-  text="See our publications"
+  text="See my research and publications"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -28,18 +30,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   include feature.html
   image="images/photo.jpg"
   link="research"
-  title="Our Research"
+  title="My Research Portolio"
   text=text
 %}
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+My research generates beautiful scientific images that display in merging of science and art.
 
 {%
   include button.html
   link="projects"
-  text="Browse our projects"
+  text="See the beautiful images"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -51,7 +53,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   include feature.html
   image="images/photo.jpg"
   link="projects"
-  title="Our Projects"
+  title="Collision of Art and Science"
   flip=true
   style="bare"
   text=text
@@ -59,12 +61,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+My research allows me to work with wonderful students and colleagues.
 
 {%
   include button.html
   link="team"
-  text="Meet our team"
+  text="Meet my research team and collaborations"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -76,6 +78,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   include feature.html
   image="images/photo.jpg"
   link="team"
-  title="Our Team"
+  title="My Research Team and Collaborations"
   text=text
 %}
