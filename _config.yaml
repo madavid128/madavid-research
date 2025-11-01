@@ -1,18 +1,30 @@
 # site properties and page defaults
-title: Research and Analytics Portfolio for Michael A. David 
+title: Research and Analytics Portfolio for Michael A. David, PhD
 subtitle: Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics
-description: Welcome World! This website officialy launched November 1st 2025 and is undergoing active remodeling. Stay tuned for updates.  
+description:   
 header: images/background.jpg
 footer: images/background.jpg
 proofer: false
 
 # site social media and other links
 links:
-  email: contact@madavid128.com
+  email: michael.david@cuanschutz.edu
   orcid: 0000-0001-8713-9213
   google-scholar: o7mhIiEAAAAJ
   github: madavid128
-
+  url: "https://madavid128.github.io"
+  baseurl: "/madavid-research"   # "" if using a custom domain or user site
+  timezone: America/Denver
+  markdown: kramdown
+  favicon: images/favicon.ico
+  theme_color: "#0f172a"   # deep slate; match your brand
+  
+  social:
+    name: "Michael A. David, PhD"
+    links:
+      - https://orcid.org/0000-0001-8713-9213
+      - https://github.com/madavid128
+    
 ### jekyll settings
 
 # front matter defaults
