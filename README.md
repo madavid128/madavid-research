@@ -10,7 +10,7 @@
   
   My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning (ML) to study and diagnose post-traumatic joint conditions of contracture and osteoarthritis. I develop ML models end-to-end to identify tissue and cellular subtypes, phenotypes, and predictive relationships. My ML models are built upon preclinical and clinical datasets involving the ankle, elbow, and knee. Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
 
-  Currently, I hold a position as Instructor in the Department of Orthopedics at University of Colorado Anschutz Medical Campus. My primary appointment is heled within the Colorado Program Research for Musculoskeletal Research
+  Currently, I hold a position as Instructor in the Department of Orthopedics at University of Colorado Anschutz Medical Campus. My primary appointment is held within the Colorado Program for Musculoskeletal Research.
 
   Please don't hestitate to contact me for any opportunities or collaborative work
 
