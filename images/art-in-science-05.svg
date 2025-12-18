@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="g" x1="1" x2="0" y1="1" y2="0">
+      <stop offset="0" stop-color="#0795d9"/>
+      <stop offset="1" stop-color="#065f46"/>
+    </linearGradient>
+    <style>
+      .t { font: 700 64px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: #ffffff; }
+      .s { font: 400 36px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: rgba(255,255,255,0.9); }
+    </style>
+  </defs>
+  <rect width="1200" height="1200" rx="48" fill="url(#g)"/>
+  <g stroke="rgba(255,255,255,0.65)" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M180 560 L360 360 L520 600 L720 320 L980 560"/>
+    <path d="M180 700 L380 520 L520 740 L720 500 L980 720" opacity="0.6"/>
+  </g>
+  <text x="80" y="720" class="t">Art Placeholder 5</text>
+  <text x="80" y="790" class="s">Replace with your image</text>
+</svg>

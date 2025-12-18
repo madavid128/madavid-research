@@ -21,4 +21,12 @@ footer .icon {
   font-size: var(--xl);
 }
 
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 /*# sourceMappingURL=footer.css.map */

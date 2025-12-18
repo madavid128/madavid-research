@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="g" x1="1" x2="0" y1="1" y2="0">
+      <stop offset="0" stop-color="#065f46"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+    <style>
+      .t { font: 700 58px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: #ffffff; }
+      .s { font: 400 32px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: rgba(255,255,255,0.9); }
+    </style>
+  </defs>
+  <rect width="1200" height="1200" rx="48" fill="url(#g)"/>
+  <g fill="rgba(255,255,255,0.16)">
+    <rect x="160" y="240" width="420" height="420" rx="40"/>
+    <rect x="620" y="320" width="420" height="420" rx="40"/>
+  </g>
+  <text x="90" y="820" class="t">Picture 5</text>
+  <text x="90" y="890" class="s">Lab life placeholder</text>
+</svg>
+

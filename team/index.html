@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-dark="false">
+<html lang="en" data-dark="true">
   <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="https://app.rybbit.io/api/script.js" data-site-id="e58c66ffe950" defer></script>
@@ -40,27 +40,33 @@
 
 
 
+
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Team | Research Portfolio for Michael A. David, PhD</title>
+<title>Team | Michael A. David, PhD</title>
 
-<link rel="icon" href="/images/icon.png">
+<link rel="canonical" href="https://michaeladavid.com/team/">
 
 <meta name="title" content="Team">
-<meta name="description" content="Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics • Scientific Art. ">
+<meta name="description" content="Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art. Collaborators, mentees, and research partnerships.">
 
 <meta property="og:title" content="Team">
-<meta property="og:site_title" content="Research Portfolio for Michael A. David, PhD">
-<meta property="og:description" content="Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics • Scientific Art. ">
-<meta property="og:url" content="https://michaeladavid.com">
-<meta property="og:image" content="/images/share.jpg">
+<meta property="og:site_name" content="Michael A. David, PhD">
+<meta property="og:description" content="Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art. Collaborators, mentees, and research partnerships.">
+<meta property="og:url" content="https://michaeladavid.com/team/">
+<meta property="og:image" content="https://michaeladavid.com/images/background.jpg">
 <meta property="og:locale" content="en_US">
 
 <meta property="twitter:title" content="Team">
-<meta property="twitter:description" content="Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics • Scientific Art. ">
-<meta property="twitter:url" content="https://michaeladavid.com">
+<meta property="twitter:description" content="Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art. Collaborators, mentees, and research partnerships.">
+<meta property="twitter:url" content="https://michaeladavid.com/team/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="/images/share.jpg">
+<meta property="twitter:image" content="https://michaeladavid.com/images/background.jpg">
 
 
   <meta property="og:type" content="website">
@@ -73,13 +79,13 @@
       "@type": "WebSite",
     
     "name": "Team",
-    "description": "Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics • Scientific Art. ",
+    "description": "Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art. Collaborators, mentees, and research partnerships.",
     "headline": "Team",
     "publisher": {
       "@type": "Organization",
-      "logo": { "@type": "ImageObject", "url": "/images/icon.png" }
+      "logo": { "@type": "ImageObject", "url": "https://michaeladavid.com/images/icon.png" }
     },
-    "url": "https://michaeladavid.com"
+    "url": "https://michaeladavid.com/team/"
   }
 </script>
 
@@ -116,6 +122,10 @@
 
   
     <link href="/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/a11y.css" rel="stylesheet">
   
 
   
@@ -163,6 +173,10 @@
   
 
   
+    <link href="/_styles/collaborators.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/cols.css" rel="stylesheet">
   
 
@@ -199,6 +213,10 @@
   
 
   
+    <link href="/_styles/gallery.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/grid.css" rel="stylesheet">
   
 
@@ -212,6 +230,10 @@
 
   
     <link href="/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/home.css" rel="stylesheet">
   
 
   
@@ -235,6 +257,10 @@
   
 
   
+    <link href="/_styles/news.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/paragraph.css" rel="stylesheet">
   
 
@@ -252,6 +278,10 @@
 
   
     <link href="/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/publications.css" rel="stylesheet">
   
 
   
@@ -283,6 +313,10 @@
   
 
   
+    <link href="/_styles/team.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/textbox.css" rel="stylesheet">
   
 
@@ -291,7 +325,19 @@
   
 
   
+    <link href="/_styles/updates.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/util.css" rel="stylesheet">
+  
+
+  
+
+  
+
+  
+
   
 
   
@@ -357,15 +403,20 @@
 <script src="https://unpkg.com/@popperjs/core@2" defer></script>
 <script src="https://unpkg.com/tippy.js@6" defer></script>
 <script src="https://unpkg.com/mark.js@8" defer></script>
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js" defer></script>
 
 <!-- include all js in scripts folder -->
 
 
   <script src="/_scripts/anchors.js"></script>
 
+  <script src="/_scripts/collaborators-map.js"></script>
+
   <script src="/_scripts/dark-mode.js"></script>
 
   <script src="/_scripts/fetch-tags.js"></script>
+
+  <script src="/_scripts/gallery.js"></script>
 
   <script src="/_scripts/search.js"></script>
 
@@ -375,10 +426,13 @@
 
   <script src="/_scripts/tooltip.js"></script>
 
+  <script src="/_scripts/trainees-map.js"></script>
+
 
 </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     
 
 
@@ -456,10 +510,10 @@
     
       <span class="title-text" data-tooltip="Home">
         
-          <span class="title">Research Portfolio for Michael A. David, PhD</span>
+          <span class="title">Michael A. David, PhD</span>
         
         
-          <span class="subtitle">Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics • Scientific Art</span>
+          <span class="subtitle">Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art</span>
         
       </span>
     
@@ -471,31 +525,73 @@
     
     
       
-        <a href="/research/" data-tooltip="Published works">
-          Research
+        <a href="/research/" data-tooltip="Publications">
+          
+            <i class="icon fa-solid fa-book-open"></i>
+          
+          Publications
         </a>
       
     
       
-        <a href="/projects/" data-tooltip="Software, datasets, and more">
+        <a href="/projects/" data-tooltip="Project areas and tools">
+          
+            <i class="icon fa-solid fa-wrench"></i>
+          
           Projects
         </a>
       
     
       
         <a href="/team/" data-tooltip="About our team">
+          
+            <i class="icon fa-solid fa-users"></i>
+          
           Team
         </a>
       
     
       
-        <a href="/blog/" data-tooltip="Musings and miscellany">
-          Blog
+        <a href="/art/" data-tooltip="Scientific art">
+          
+            <i class="icon fa-solid fa-palette"></i>
+          
+          Scientific Art
+        </a>
+      
+    
+      
+        <a href="/pictures/" data-tooltip="Photos and galleries">
+          
+            <i class="icon fa-regular fa-images"></i>
+          
+          Pictures
+        </a>
+      
+    
+      
+        <a href="/updates/" data-tooltip="News and blog">
+          
+            <i class="icon fa-regular fa-newspaper"></i>
+          
+          News/Blog
+        </a>
+      
+    
+      
+        <a href="/about/" data-tooltip="About me">
+          
+            <i class="icon fa-regular fa-user"></i>
+          
+          About
         </a>
       
     
       
         <a href="/contact/" data-tooltip="Email, address, and location">
+          
+            <i class="icon fa-regular fa-envelope"></i>
+          
           Contact
         </a>
       
@@ -503,7 +599,7 @@
   </nav>
 </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <!--
   modify main content of page:
   - add section breaks
@@ -524,7 +620,7 @@
     <h1 id="team">
 <i class="icon fa-solid fa-users"></i>Team</h1>
 
-<p>Teamwork makes the dream work!</p>
+<p>I collaborate with clinicians, engineers, and scientists across imaging, computation, and musculoskeletal biology. I’m always excited to work with curious, kind, and rigorous people.</p>
   </section>
 
   
@@ -538,13 +634,15 @@
   <size></size>
 -->
 
+<h2 id="principal-investigator">Principal investigator</h2>
+
 <div class="portrait-wrapper">
   <a href="/members/michael-david.html" class="portrait" data-style="" aria-label="Michael A. David">
     
       <i class="icon fa-solid fa-microscope"></i>
     
 
-    <img src="/images/MichaelDavid_headshot.jpeg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+    <img src="/images/MichaelDavid_headshot.jpeg" class="portrait-image" alt="Michael A. David" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
 
     
       <span class="portrait-name">
@@ -571,14 +669,48 @@
   
   
 
-  <section class="background" data-size="2" data-dark="true" style="--image: url('/images/background.jpg')">
+  <section class="background" data-size="page">
     <!--
-  <background>images/background.jpg</background>
-  <dark>true</dark>
-  <size>2</size>
+  <background></background>
+  <dark></dark>
+  <size></size>
 -->
 
-<p>Thanks to past, current, and future team members! Without you, we wouldn’t be here.</p>
+<h2 id="collaboration--mentorship">Collaboration &amp; mentorship</h2>
+
+<div class="cols" style="--cols: 2">
+  
+    
+    <div>
+<h3 id="collaboration">Collaboration</h3>
+
+<p>I partner on projects involving:</p>
+<ul>
+  <li>spatial histopathology + AI</li>
+  <li>medical imaging (MRI/CT) + radiomics</li>
+  <li>transcriptomics/multi‑omics integration</li>
+  <li>reproducible analysis pipelines</li>
+</ul>
+</div>
+  
+    
+    <div>
+<h3 id="mentorship">Mentorship</h3>
+
+<p>If you’re interested in collaborating or mentoring opportunities, I’m happy to chat and help define a project with clear scope and measurable deliverables.</p>
+
+<div class="button-wrapper">
+    <a class="button" href="/contact" data-style="solid" aria-label="fa-regular fa-envelope">
+      <i class="icon fa-regular fa-envelope"></i>
+      
+        <span>Contact</span>
+      
+    </a>
+  </div>
+
+</div>
+  
+</div>
   </section>
 
   
@@ -592,40 +724,1073 @@
   <size></size>
 -->
 
-<div class="grid" data-style="square">
-  
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/images/photo.jpg" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
-  </a>
-  
-</figure>
+<h2 id="collaborators">Collaborators</h2>
 
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/images/photo.jpg" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
-  </a>
+<div class="collab-map" data-map-kind="collaborators">
+  <div class="collab-map-controls" role="group" aria-label="Map controls">
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">View</span>
+      <button class="button" data-style="bare" type="button" data-collab-view="world" aria-pressed="true">World</button>
+      <button class="button" data-style="bare" type="button" data-collab-view="us" aria-pressed="false">US</button>
+    </div>
+
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">Show</span>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-collab-filter="current">
+        Current
+      </label>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-collab-filter="past">
+        Past
+      </label>
+    </div>
+
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">Type</span>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-collab-type="collaborator">
+        Collaborators
+      </label>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-collab-type="institution">
+        Institutions
+      </label>
+    </div>
+
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">Layout</span>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-collab-cluster="duplicates">
+        Cluster duplicates
+      </label>
+    </div>
+  </div>
+
+  <div data-collab-tags="" class="collab-map-tags"></div>
+
+  <div class="collab-map-summary" data-collab-summary=""></div>
+
+  <div class="collab-map-plot" data-collab-map="" data-site-root="/">
+    <div class="collab-map-loading">Loading map…</div>
+  </div>
+
   
-</figure>
+  <script type="application/json" class="collab-map-data">
+        {      "home": {"label":"CU Anschutz (Aurora, CO, USA)","lat":39.7454581,"lon":-104.8393807},      "people": [{"name":"Michael A David","status":"current","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"7","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Christopher Price","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"19716.","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"3","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Aaron M Chamberlain","status":"current","institution":"Department of Orthopaedic Surgery","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"2","affiliation":"Department of Orthopaedic Surgery, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Melanie K Smith","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"19716.","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"2","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Michael J Zuscik","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"2","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Spencer P Lake","status":"current","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"2","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Alex J Reiter","status":"current","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Avery T White","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"19716.","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Chelsey L Dunham","status":"current","institution":"Department of Biomedical Engineering","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Cheryl L Ackert-Bicknell","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Courtney Miller","status":"current","institution":"Foot and Ankle Orthopedics","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Foot and Ankle Orthopedics, Orthopedic Surgery, University of Colorado, Aurora, Colorado, USA."},{"name":"Daniel K Moon","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Hani A Awad","status":"current","institution":"Department of Biomedical Engineering","city":"New York","region":null,"country":"USA","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Rochester, Rochester, New York, United States of America; Center for Musculoskeletal Research, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Ian M Berke","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"USA","lat":"38.6920451","lon":"-75.4013315","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Ishani D Shah","status":"current","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"James A Abraham","status":"current","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Jason A Inzana","status":"current","institution":"Department of Biomedical Engineering","city":"New York","region":null,"country":"USA","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Rochester, Rochester, New York, United States of America."},{"name":"Joseph P Miola","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"USA","lat":"38.6920451","lon":"-75.4013315","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Joshua A Metzl","status":"current","institution":"Foot and Ankle Orthopedics","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Foot and Ankle Orthopedics, Orthopedic Surgery, University of Colorado, Aurora, Colorado, USA."},{"name":"Julia Matthias","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Kenneth J Hunt","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Khyrie H Jones","status":"current","institution":"Department of Pathology and Laboratory Medicine","city":"New York","region":null,"country":"USA","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Pathology and Laboratory Medicine, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Kristi L Kiick","status":"current","institution":"Delaware Biotechnology Institute","city":"Delaware 19711","region":null,"country":"USA","lat":"39.9194117","lon":"-75.4001639","link":null,"tags":"collaborator","papers":"1","affiliation":"Delaware Biotechnology Institute , Newark, Delaware 19711, United States."},{"name":"Leanne E Iannucci","status":"current","institution":"Department of Biomedical Engineering","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Leo Q Wan","status":"current","institution":"Department of Biomedical Engineering","city":"12180","region":null,"country":"USA","lat":"42.7287842","lon":"-73.6626824","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, Rensselaer Polytechnic Institute, Troy, NY, 12180, USA."},{"name":"Liyun Wang","status":"current","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."},{"name":"Lucas C Dunshee","status":"current","institution":null,"city":null,"region":null,"country":null,"lat":null,"lon":null,"link":null,"tags":"collaborator","papers":"1","affiliation":null},{"name":"Michael David","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Morgan A Urello","status":"current","institution":null,"city":null,"region":null,"country":null,"lat":null,"lon":null,"link":null,"tags":"collaborator","papers":"1","affiliation":null},{"name":"Necat Havlioglu","status":"current","institution":"Department of Pathology","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Pathology, John Cochran VA Medical Center, St. Louis, MO, United States."},{"name":"Rachael N Pilachowski","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"19716.","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Randall L Duncan","status":"current","institution":"Department of Biological Sciences","city":"19716","region":null,"country":"USA","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biological Sciences, University of Delaware, Newark, DE, 19716, USA."},{"name":"Rebecca A Scott","status":"current","institution":"Delaware Biotechnology Institute","city":"Delaware 19711","region":null,"country":"USA","lat":"39.9194117","lon":"-75.4001639","link":null,"tags":"collaborator","papers":"1","affiliation":"Delaware Biotechnology Institute , Newark, Delaware 19711, United States."},{"name":"Robert A Mooney","status":"current","institution":"Department of Pathology and Laboratory Medicine","city":"New York","region":null,"country":"USA","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Pathology and Laboratory Medicine, University of Rochester Medical Center, Rochester, New York, United States of America; Center for Musculoskeletal Research, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Ryan C Locke","status":"current","institution":"Department of Biomedical Engineering","city":"Delaware","region":null,"country":"19716.","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Ryan M Castile","status":"current","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Sara Buckley","status":"current","institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":null,"country":"USA","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Tianzhi Luo","status":"current","institution":null,"city":null,"region":null,"country":null,"lat":null,"lon":null,"link":null,"tags":"collaborator","papers":"1","affiliation":null},{"name":"X Lucas Lu","status":"current","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA. xlu@udel.edu."},{"name":"Xingyu Chen","status":"current","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."},{"name":"Yilu Zhou","status":"current","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."}]    }  
+  </script>
+  <script>
+    (function () {
+      if (window.renderCollaboratorsMaps) window.renderCollaboratorsMaps();
+      var root = document.currentScript && document.currentScript.parentElement;
+      var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
+      window.setTimeout(function () {
+        if (!loading) return;
+        if (!window.renderCollaboratorsMaps) {
+          loading.textContent = "Map script failed to load.";
+          return;
+        }
+        if (!window.Plotly) {
+          loading.textContent = "Loading map library… (Plotly)";
+          return;
+        }
+      }, 1500);
+    })();
+  </script>
 
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/images/photo.jpg" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
-  </a>
-  
-</figure>
-
-
+  <noscript>
+    <p>This map is interactive and requires JavaScript. Use the collaborator directory below.</p>
+  </noscript>
 </div>
+
+<div class="button-wrapper">
+    <a class="button" href="/collaborators" data-style="bare" aria-label="fa-solid fa-globe">
+      <i class="icon fa-solid fa-globe"></i>
+      
+        <span>Full collaborator directory</span>
+      
+    </a>
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+<h2 id="current-collaborations">Current collaborations</h2>
+
+<p>Add and manage your current collaborators in <code class="language-plaintext highlighter-rouge">_data/current_collaborations.yaml</code>.</p>
+
+<div class="grid">
+  
+  
+  
+     
+<div class="card" data-style="small">
+  <a href="/collaborators" aria-label="Add collaborations here" class="card-image">
+    <img src="/images/news-placeholder.svg" alt="Add collaborations here" loading="lazy" onerror="this.src = '/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a href="/collaborators" class="card-title">
+        Add collaborations here
+    </a>
+    
+
+    
+      <span class="card-subtitle">Edit `_data/current_collaborations.yaml`</span>
+    
+
+    
+      <p>
+        Add your current collaborators and partners (names, institutions, and links). These are separate from the global map.
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags">
+    
+      <a href="/team/?search=%22tag:%20collaboration%22" class="tag" data-tooltip='Show items with the tag "collaboration"'>
+        collaboration
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+
+  
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+<h2 id="trainees">Trainees</h2>
+
+<p>Trainee locations are grouped by institution (current vs past).</p>
+
+<div class="collab-map" data-map-kind="trainees">
+  <div class="collab-map-controls" role="group" aria-label="Trainee map controls">
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">View</span>
+      <button class="button" data-style="bare" type="button" data-trainee-view="world" aria-pressed="true">World</button>
+      <button class="button" data-style="bare" type="button" data-trainee-view="us" aria-pressed="false">US</button>
+    </div>
+
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">Show</span>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-trainee-filter="current">
+        Current
+      </label>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-trainee-filter="past">
+        Past
+      </label>
+    </div>
+  </div>
+
+  <div class="collab-map-summary" data-trainee-summary=""></div>
+
+  <div class="collab-map-plot" data-trainee-map="" data-site-root="/">
+    <div class="collab-map-loading">Loading map…</div>
+  </div>
+
+  
+  <script type="application/json" class="trainee-map-data">
+        {      "home": {"label":"CU Anschutz (Aurora, CO, USA)","lat":39.7454581,"lon":-104.8393807},      "trainees": [{"role":"postdoc","institution":"University of Colorado Anschutz","name":"Julia Matthias","focus":"image analysis, machine learning, biostatistics","department":"Orthopedics","start":"June 2023","end":"Present"},{"role":"postdoc","institution":"University of Colorado Anschutz","name":"Sara Buckley","focus":"image analysis, machine learning","department":"Orthopedics","start":"April 2022","end":"Aug 2023"},{"role":"postdoc","institution":"Washington University in St. Louis","name":"Era Jain","focus":"histology","department":"BME","start":"April 2019","end":"Aug 2019"},{"role":"postdoc","institution":"University of Delaware","name":"Chintan Kapadia","focus":"flow cytometry","department":"BME","start":"Aug 2018","end":"Feb 2019"},{"role":"postdoc","institution":"University of Delaware","name":"Robert McKee","focus":"histology","department":"BME","start":"April 2018","end":"Feb 2019"},{"role":"doctoral","institution":"University of Colorado Anschutz","name":"Samantha Landgrave","focus":"histology, image analysis","department":"Orthopedics","start":"July 2022","end":"Feb 2025"},{"role":"doctoral","institution":"University of Colorado Anschutz","name":"David Villani","focus":"histology, image analysis","department":"Orthopedics","start":"July 2022","end":"Aug 2024"},{"role":"doctoral","institution":"University of Colorado Anschutz","name":"Beatriz Bermudez","focus":"immunofluorescent, image analysis","department":"Orthopedics","start":"July 2022","end":"May 2023"},{"role":"doctoral","institution":"Washington University in St. Louis","name":"Rebecca Reals","focus":"cell culture, histology, confocal microscopy, image analysis","department":"BME","start":"July 2021","end":"March 2022"},{"role":"doctoral","institution":"Washington University in St. Louis","name":"André Coello","focus":"histology, confocal microscopy","department":"BME","start":"Sept 2020","end":"Dec 2020"},{"role":"doctoral","institution":"Washington University in St. Louis","name":"Shawn Pavey","focus":"calcium signaling, two-photon microscopy","department":"MEMS","start":"Sept 2020","end":"Dec 2020"},{"role":"doctoral","institution":"Washington University in St. Louis","name":"Ian Berke","focus":"cell culture, histology, image analysis","department":"BME","start":"April 2019","end":"Dec 2020"},{"role":"doctoral","institution":"Washington University in St. Louis","name":"Christie Crandall","focus":"histology, two-photon microscopy","department":"MEMS","start":"Jan 2020","end":"June 2020"},{"role":"doctoral","institution":"University of Delaware","name":"Nick Trompeter","focus":"cell culture, image analysis","department":"BME","start":"April 2018","end":"Feb 2019"},{"role":"doctoral","institution":"University of Delaware","name":"Ryan Locke","focus":"cell culture, histology, image analysis","department":"BME","start":"June 2017","end":"Feb 2019"},{"role":"doctoral","institution":"University of Delaware","name":"Ryan McDonough","focus":"cell culture, animal work, histology","department":"BME","start":"June 2015","end":"Sept 2018"},{"role":"medical","institution":"University of Colorado Anschutz","name":"Charles Notle","focus":"medical student; machine learning","department":"Orthopedics","start":"June 2024","end":"Present"},{"role":"medical","institution":"University of Colorado Anschutz","name":"Christopher Orear","focus":"medical student; machine learning","department":"Orthopedics","start":"June 2024","end":"Present"},{"role":"medical","institution":"University of Colorado Anschutz","name":"Daniel Ross","focus":"resident; image analysis/machine learning","department":"Orthopedics","start":"April 2022","end":"Aug 2023"},{"role":"masters","institution":"Brigham Young University","name":"Bracken Sant","focus":"machine learning","department":"Orthopedics","start":"June 2025","end":"Present"},{"role":"masters","institution":"Washington University in St. Louis","name":"Tillman James","focus":"machine learning","department":"Orthopedics","start":"Aug 2022","end":"May 2023"},{"role":"staff","institution":"University of Colorado Anschutz","name":"Sierra Szeto","focus":"research associate; microCT","department":"Orthopedics","start":"March 2022","end":"June 2024"},{"role":"staff","institution":"University of Colorado Anschutz","name":"Raphael Hatami","focus":"research associate; microCT","department":"Orthopedics","start":"March 2022","end":"Dec 2022"},{"role":"staff","institution":"Washington University in St. Louis","name":"Ryan Castile","focus":"lab manager; histology, image analysis","department":"MEMS","start":"April 2021","end":"February 2022"},{"role":"staff","institution":"University of Delaware","name":"Melanie Smith","focus":"lab manager; animal work, histology, microscopy, image analysis","department":"BME","start":"Oct 2013","end":"April 2017"},{"role":"staff","institution":"University of Rochester","name":"Robert Maynard","focus":"research associate; animal work, histology","department":"BME","start":"May 2011","end":"July 2013"},{"role":"staff","institution":"University of Rochester","name":"Sarah Mack","focus":"lab manager; histology","department":"BME","start":"May 2011","end":"July 2013"},{"role":"senior_design","institution":"University of Colorado Anschutz","name":"Rational Motion (Senior Design Team)","focus":"Range of motion device for the rat ankle","department":"Orthopedics and Bioengineering (with Dr. Daniel Moon)","start":"Sept 2025","end":"Present","people":["Lluvia Mejia Tovar","Anthony Sawaged","Raseel Zmily"]},{"role":"undergrad","institution":"University of Colorado Anschutz","name":"Jimena Arias Escalante","focus":"histology, microscopy, image analysis","department":"Orthopedics","start":"Jan 2025","end":"Present"},{"role":"undergrad","institution":"University of Colorado Anschutz","name":"Loyd Lillyblad","focus":"histology sectioning","department":"Orthopedics","start":"Jan 2025","end":"Present"},{"role":"undergrad","institution":"University of Colorado Anschutz","name":"Jenna Rogers","focus":"histology sectioning","department":"Orthopedics and Bioengineering","start":"Jan 2025","end":"Present"},{"role":"undergrad","institution":"University of Colorado Anschutz","name":"Rony Sawaqed","focus":"microCT analysis","department":"Orthopedics and Bioengineering","start":"Jan 2025","end":"Present"},{"role":"undergrad","institution":"University of Colorado Anschutz","name":"Anthony Sawaged","focus":"histology, microscopy","department":"Orthopedics and Bioengineering","start":"Jan 2025","end":"Present"},{"role":"undergrad","institution":"University of Colorado Anschutz","name":"Lluvia Mejia Tovar","focus":"histology, spatial transcriptomics","department":"Orthopedics and Bioengineering","start":"March 2024","end":"May 2025"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Jason Zhou","focus":"machine learning","department":"Computer Science","start":"Jan 2025","end":"Aug 2025"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Vincent Siu","focus":"machine learning","department":"Computer Science","start":"Aug 2023","end":"Sept 2024"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Michael Cafiero","focus":"machine learning","department":"Computer Science","start":"Jan 2022","end":"Aug 2022"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Bianca Lang","focus":"histology, image analysis, machine learning","department":"MEMS","start":"Aug 2021","end":"Feb 2022"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Arun Movva","focus":"histology, image analysis, machine learning","department":"BME","start":"June 2021","end":"Feb 2022"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Gustavo De Paiva","focus":"histology, image analysis, polarized light","department":"MEMS","start":"June 2021","end":"Feb 2022"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Shikha Shah","focus":"histology, microscopy, machine learning","department":"BME","start":"Aug 2020","end":"Oct 2022"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Alison Bacon","focus":"cell culture, machine learning","department":"BME","start":"Jan 2020","end":"June 2021"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Bryce Maxwell","focus":"histology","department":"BME","start":"Jan 2020","end":"June 2021"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"Ishah Shah","focus":"cell culture","department":"MEMS","start":"Sept 2019","end":"Dec 2019"},{"role":"undergrad","institution":"Washington University in St. Louis","name":"James Abraham","focus":"cell culture","department":"MEMS","start":"May 2019","end":"Aug 2019"},{"role":"undergrad","institution":"University of Delaware","name":"Benedict Maggio","focus":"cell culture, histology, epifluorescence imaging, µCT, image analysis","department":"BME","start":"Jan 2018","end":"Feb 2019"},{"role":"undergrad","institution":"University of Delaware","name":"Mark Ellsworth","focus":"cell culture, histology, epifluorescence imaging, µCT, image analysis","department":"BME","start":"Jan 2018","end":"Feb 2019"},{"role":"undergrad","institution":"University of Delaware","name":"Sejal Shah","focus":"histology, epifluorescence imaging, image analysis","department":"BME","start":"Jan 2017","end":"May 2019"},{"role":"undergrad","institution":"University of Delaware","name":"Brianna Hulbert","focus":"cell culture, histology, epifluorescence imaging, nanoparticle synthesis, µCT, image analysis","department":"BME","start":"Jan 2017","end":"Dec 2018"},{"role":"undergrad","institution":"University of Delaware","name":"Rachael Pilachowski","focus":"histology, epifluorescence","department":"BME","start":"March 2015","end":"Jan 2017"},{"role":"undergrad","institution":"University of Delaware","name":"Caitlin Purcell","focus":"animal injections","department":"BME","start":"July 2017","end":"Dec 2017"},{"role":"undergrad","institution":"University of Delaware","name":"Alexis Merritt","focus":"histology, epifluorescence","department":"BME","start":"April 2016","end":"Feb 2017"},{"role":"undergrad","institution":"University of Delaware","name":"Malhar Sakarwala","focus":"histology","department":"BME","start":"Sept 2015","end":"March 2016"},{"role":"undergrad","institution":"University of Delaware","name":"Srinivasa Gajjala","focus":"histology","department":"BME","start":"Jan 2016","end":"May 2016"},{"role":"undergrad","institution":"University of Delaware","name":"Christopher Hernandez","focus":"histology","department":"BME","start":"Jan 2016","end":"May 2016"},{"role":"undergrad","institution":"University of Delaware","name":"Ian Berke","focus":"histology, nanoparticle synthesis","department":"BME","start":"May 2014","end":"March 2016"},{"role":"undergrad","institution":"University of Delaware","name":"Jon Lowman","focus":"histology","department":"BME","start":"May 2015","end":"April 2016"},{"role":"undergrad","institution":"University of Delaware","name":"Brendan Horne","focus":"µCT","department":"BME","start":"June 2015","end":"Aug 2015"},{"role":"undergrad","institution":"University of Delaware","name":"Brianna Geitter","focus":"µCT","department":"BME","start":"June 2015","end":"Aug 2015"},{"role":"undergrad","institution":"University of Delaware","name":"Avery White","focus":"histology, epifluorescence","department":"BME","start":"Jan 2014","end":"Jan 2015"},{"role":"undergrad","institution":"University of Delaware","name":"Ryan Locke","focus":"histology","department":"BME","start":"Jan 2014","end":"March 2015"},{"role":"highschool","institution":"University of Colorado Anschutz","name":"Aiden Seo","focus":"image analysis, machine learning","department":"Orthopedics","start":"June 2025","end":"Present"},{"role":"highschool","institution":"University of Delaware","name":"Michael Lan","focus":"image analysis","department":"K-12 Engineering","start":"June 2016","end":"Aug 2016"},{"role":"highschool","institution":"University of Delaware","name":"Shu-Jin Kust","focus":"µCT","department":"K-12 Engineering","start":"June 2016","end":"Aug 2016"},{"role":"highschool","institution":"University of Delaware","name":"Olivia Laxton","focus":"histology","department":"K-12 Engineering","start":"June 2015","end":"Aug 2015"},{"role":"highschool","institution":"University of Delaware","name":"Fiona Flowerhill","focus":"histology","department":"K-12 Engineering","start":"June 2014","end":"Aug 2014"}],      "institutions": [{"institution":"University of Colorado Anschutz","city":"Aurora","region":"CO","country":"USA","lat":39.746,"lon":-104.8365,"link":"https://medschool.cuanschutz.edu/"},{"institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","lat":38.6488,"lon":-90.3108,"link":"https://wustl.edu/"},{"institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","lat":39.6837,"lon":-75.753,"link":"https://www.udel.edu/"},{"institution":"University of Rochester","city":"Rochester","region":"NY","country":"USA","lat":43.1293,"lon":-77.629,"link":"https://www.rochester.edu/"},{"institution":"Brigham Young University","city":"Provo","region":"UT","country":"USA","lat":40.2489,"lon":-111.6493,"link":"https://www.byu.edu/"}]    }  
+  </script>
+  <script>
+    (function () {
+      if (window.renderTraineesMaps) window.renderTraineesMaps();
+      var root = document.currentScript && document.currentScript.parentElement;
+      var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
+      window.setTimeout(function () {
+        if (!loading) return;
+        if (!window.renderTraineesMaps) {
+          loading.textContent = "Map script failed to load.";
+          return;
+        }
+        if (!window.Plotly) {
+          loading.textContent = "Loading map library… (Plotly)";
+          return;
+        }
+      }, 1500);
+    })();
+  </script>
+
+  <noscript>
+    <p>This map is interactive and requires JavaScript.</p>
+  </noscript>
+</div>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Note: Biomedical Engineering (BME); Mechanical Engineering and Materials Science (MEMS)</p>
+
+  </div>
+</div>
+
+<details class="trainee-group">
+    <summary>Postdoctoral Researchers (5)</summary>
+
+    
+    
+
+    
+      <h4>Current</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Julia Matthias</strong>
+              
+               (image analysis, machine learning, biostatistics)
+              , Orthopedics
+              — June 2023 – Present
+            </li>
+          
+        </ul>
+      
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Sara Buckley</strong>
+              
+               (image analysis, machine learning)
+              , Orthopedics
+              — April 2022 – Aug 2023
+            </li>
+          
+        </ul>
+      
+        <h5>Washington University in St. Louis</h5>
+        <ul>
+          
+            <li>
+              <strong>Era Jain</strong>
+              
+               (histology)
+              , BME
+              — April 2019 – Aug 2019
+            </li>
+          
+        </ul>
+      
+        <h5>University of Delaware</h5>
+        <ul>
+          
+            <li>
+              <strong>Chintan Kapadia</strong>
+              
+               (flow cytometry)
+              , BME
+              — Aug 2018 – Feb 2019
+            </li>
+          
+            <li>
+              <strong>Robert McKee</strong>
+              
+               (histology)
+              , BME
+              — April 2018 – Feb 2019
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>Doctoral Students (11)</summary>
+
+    
+    
+
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Samantha Landgrave</strong>
+              
+               (histology, image analysis)
+              , Orthopedics
+              — July 2022 – Feb 2025
+            </li>
+          
+            <li>
+              <strong>David Villani</strong>
+              
+               (histology, image analysis)
+              , Orthopedics
+              — July 2022 – Aug 2024
+            </li>
+          
+            <li>
+              <strong>Beatriz Bermudez</strong>
+              
+               (immunofluorescent, image analysis)
+              , Orthopedics
+              — July 2022 – May 2023
+            </li>
+          
+        </ul>
+      
+        <h5>Washington University in St. Louis</h5>
+        <ul>
+          
+            <li>
+              <strong>Rebecca Reals</strong>
+              
+               (cell culture, histology, confocal microscopy, image analysis)
+              , BME
+              — July 2021 – March 2022
+            </li>
+          
+            <li>
+              <strong>André Coello</strong>
+              
+               (histology, confocal microscopy)
+              , BME
+              — Sept 2020 – Dec 2020
+            </li>
+          
+            <li>
+              <strong>Shawn Pavey</strong>
+              
+               (calcium signaling, two-photon microscopy)
+              , MEMS
+              — Sept 2020 – Dec 2020
+            </li>
+          
+            <li>
+              <strong>Ian Berke</strong>
+              
+               (cell culture, histology, image analysis)
+              , BME
+              — April 2019 – Dec 2020
+            </li>
+          
+            <li>
+              <strong>Christie Crandall</strong>
+              
+               (histology, two-photon microscopy)
+              , MEMS
+              — Jan 2020 – June 2020
+            </li>
+          
+        </ul>
+      
+        <h5>University of Delaware</h5>
+        <ul>
+          
+            <li>
+              <strong>Nick Trompeter</strong>
+              
+               (cell culture, image analysis)
+              , BME
+              — April 2018 – Feb 2019
+            </li>
+          
+            <li>
+              <strong>Ryan Locke</strong>
+              
+               (cell culture, histology, image analysis)
+              , BME
+              — June 2017 – Feb 2019
+            </li>
+          
+            <li>
+              <strong>Ryan McDonough</strong>
+              
+               (cell culture, animal work, histology)
+              , BME
+              — June 2015 – Sept 2018
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>Medical Students and Residents (3)</summary>
+
+    
+    
+
+    
+      <h4>Current</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Charles Notle</strong>
+              
+               (medical student; machine learning)
+              , Orthopedics
+              — June 2024 – Present
+            </li>
+          
+            <li>
+              <strong>Christopher Orear</strong>
+              
+               (medical student; machine learning)
+              , Orthopedics
+              — June 2024 – Present
+            </li>
+          
+        </ul>
+      
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Daniel Ross</strong>
+              
+               (resident; image analysis/machine learning)
+              , Orthopedics
+              — April 2022 – Aug 2023
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>Master Students (2)</summary>
+
+    
+    
+
+    
+      <h4>Current</h4>
+      
+      
+        <h5>Brigham Young University</h5>
+        <ul>
+          
+            <li>
+              <strong>Bracken Sant</strong>
+              
+               (machine learning)
+              , Orthopedics
+              — June 2025 – Present
+            </li>
+          
+        </ul>
+      
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>Washington University in St. Louis</h5>
+        <ul>
+          
+            <li>
+              <strong>Tillman James</strong>
+              
+               (machine learning)
+              , Orthopedics
+              — Aug 2022 – May 2023
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>Research Associates / Lab Managers (6)</summary>
+
+    
+    
+
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Sierra Szeto</strong>
+              
+               (research associate; microCT)
+              , Orthopedics
+              — March 2022 – June 2024
+            </li>
+          
+            <li>
+              <strong>Raphael Hatami</strong>
+              
+               (research associate; microCT)
+              , Orthopedics
+              — March 2022 – Dec 2022
+            </li>
+          
+        </ul>
+      
+        <h5>Washington University in St. Louis</h5>
+        <ul>
+          
+            <li>
+              <strong>Ryan Castile</strong>
+              
+               (lab manager; histology, image analysis)
+              , MEMS
+              — April 2021 – February 2022
+            </li>
+          
+        </ul>
+      
+        <h5>University of Delaware</h5>
+        <ul>
+          
+            <li>
+              <strong>Melanie Smith</strong>
+              
+               (lab manager; animal work, histology, microscopy, image analysis)
+              , BME
+              — Oct 2013 – April 2017
+            </li>
+          
+        </ul>
+      
+        <h5>University of Rochester</h5>
+        <ul>
+          
+            <li>
+              <strong>Robert Maynard</strong>
+              
+               (research associate; animal work, histology)
+              , BME
+              — May 2011 – July 2013
+            </li>
+          
+            <li>
+              <strong>Sarah Mack</strong>
+              
+               (lab manager; histology)
+              , BME
+              — May 2011 – July 2013
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>Senior Design Team (1)</summary>
+
+    
+    
+
+    
+      <h4>Current</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Rational Motion (Senior Design Team)</strong>
+              
+                — Lluvia Mejia Tovar, Anthony Sawaged, Raseel Zmily
+              
+               (Range of motion device for the rat ankle)
+              , Orthopedics and Bioengineering (with Dr. Daniel Moon)
+              — Sept 2025 – Present
+            </li>
+          
+        </ul>
+      
+    
+
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>Undergraduate Students (33)</summary>
+
+    
+    
+
+    
+      <h4>Current</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Jimena Arias Escalante</strong>
+              
+               (histology, microscopy, image analysis)
+              , Orthopedics
+              — Jan 2025 – Present
+            </li>
+          
+            <li>
+              <strong>Loyd Lillyblad</strong>
+              
+               (histology sectioning)
+              , Orthopedics
+              — Jan 2025 – Present
+            </li>
+          
+            <li>
+              <strong>Jenna Rogers</strong>
+              
+               (histology sectioning)
+              , Orthopedics and Bioengineering
+              — Jan 2025 – Present
+            </li>
+          
+            <li>
+              <strong>Rony Sawaqed</strong>
+              
+               (microCT analysis)
+              , Orthopedics and Bioengineering
+              — Jan 2025 – Present
+            </li>
+          
+            <li>
+              <strong>Anthony Sawaged</strong>
+              
+               (histology, microscopy)
+              , Orthopedics and Bioengineering
+              — Jan 2025 – Present
+            </li>
+          
+        </ul>
+      
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Lluvia Mejia Tovar</strong>
+              
+               (histology, spatial transcriptomics)
+              , Orthopedics and Bioengineering
+              — March 2024 – May 2025
+            </li>
+          
+        </ul>
+      
+        <h5>Washington University in St. Louis</h5>
+        <ul>
+          
+            <li>
+              <strong>Jason Zhou</strong>
+              
+               (machine learning)
+              , Computer Science
+              — Jan 2025 – Aug 2025
+            </li>
+          
+            <li>
+              <strong>Vincent Siu</strong>
+              
+               (machine learning)
+              , Computer Science
+              — Aug 2023 – Sept 2024
+            </li>
+          
+            <li>
+              <strong>Michael Cafiero</strong>
+              
+               (machine learning)
+              , Computer Science
+              — Jan 2022 – Aug 2022
+            </li>
+          
+            <li>
+              <strong>Bianca Lang</strong>
+              
+               (histology, image analysis, machine learning)
+              , MEMS
+              — Aug 2021 – Feb 2022
+            </li>
+          
+            <li>
+              <strong>Arun Movva</strong>
+              
+               (histology, image analysis, machine learning)
+              , BME
+              — June 2021 – Feb 2022
+            </li>
+          
+            <li>
+              <strong>Gustavo De Paiva</strong>
+              
+               (histology, image analysis, polarized light)
+              , MEMS
+              — June 2021 – Feb 2022
+            </li>
+          
+            <li>
+              <strong>Shikha Shah</strong>
+              
+               (histology, microscopy, machine learning)
+              , BME
+              — Aug 2020 – Oct 2022
+            </li>
+          
+            <li>
+              <strong>Alison Bacon</strong>
+              
+               (cell culture, machine learning)
+              , BME
+              — Jan 2020 – June 2021
+            </li>
+          
+            <li>
+              <strong>Bryce Maxwell</strong>
+              
+               (histology)
+              , BME
+              — Jan 2020 – June 2021
+            </li>
+          
+            <li>
+              <strong>Ishah Shah</strong>
+              
+               (cell culture)
+              , MEMS
+              — Sept 2019 – Dec 2019
+            </li>
+          
+            <li>
+              <strong>James Abraham</strong>
+              
+               (cell culture)
+              , MEMS
+              — May 2019 – Aug 2019
+            </li>
+          
+        </ul>
+      
+        <h5>University of Delaware</h5>
+        <ul>
+          
+            <li>
+              <strong>Benedict Maggio</strong>
+              
+               (cell culture, histology, epifluorescence imaging, µCT, image analysis)
+              , BME
+              — Jan 2018 – Feb 2019
+            </li>
+          
+            <li>
+              <strong>Mark Ellsworth</strong>
+              
+               (cell culture, histology, epifluorescence imaging, µCT, image analysis)
+              , BME
+              — Jan 2018 – Feb 2019
+            </li>
+          
+            <li>
+              <strong>Sejal Shah</strong>
+              
+               (histology, epifluorescence imaging, image analysis)
+              , BME
+              — Jan 2017 – May 2019
+            </li>
+          
+            <li>
+              <strong>Brianna Hulbert</strong>
+              
+               (cell culture, histology, epifluorescence imaging, nanoparticle synthesis, µCT, image analysis)
+              , BME
+              — Jan 2017 – Dec 2018
+            </li>
+          
+            <li>
+              <strong>Rachael Pilachowski</strong>
+              
+               (histology, epifluorescence)
+              , BME
+              — March 2015 – Jan 2017
+            </li>
+          
+            <li>
+              <strong>Caitlin Purcell</strong>
+              
+               (animal injections)
+              , BME
+              — July 2017 – Dec 2017
+            </li>
+          
+            <li>
+              <strong>Alexis Merritt</strong>
+              
+               (histology, epifluorescence)
+              , BME
+              — April 2016 – Feb 2017
+            </li>
+          
+            <li>
+              <strong>Malhar Sakarwala</strong>
+              
+               (histology)
+              , BME
+              — Sept 2015 – March 2016
+            </li>
+          
+            <li>
+              <strong>Srinivasa Gajjala</strong>
+              
+               (histology)
+              , BME
+              — Jan 2016 – May 2016
+            </li>
+          
+            <li>
+              <strong>Christopher Hernandez</strong>
+              
+               (histology)
+              , BME
+              — Jan 2016 – May 2016
+            </li>
+          
+            <li>
+              <strong>Ian Berke</strong>
+              
+               (histology, nanoparticle synthesis)
+              , BME
+              — May 2014 – March 2016
+            </li>
+          
+            <li>
+              <strong>Jon Lowman</strong>
+              
+               (histology)
+              , BME
+              — May 2015 – April 2016
+            </li>
+          
+            <li>
+              <strong>Brendan Horne</strong>
+              
+               (µCT)
+              , BME
+              — June 2015 – Aug 2015
+            </li>
+          
+            <li>
+              <strong>Brianna Geitter</strong>
+              
+               (µCT)
+              , BME
+              — June 2015 – Aug 2015
+            </li>
+          
+            <li>
+              <strong>Avery White</strong>
+              
+               (histology, epifluorescence)
+              , BME
+              — Jan 2014 – Jan 2015
+            </li>
+          
+            <li>
+              <strong>Ryan Locke</strong>
+              
+               (histology)
+              , BME
+              — Jan 2014 – March 2015
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+
+<details class="trainee-group">
+    <summary>High school Students (5)</summary>
+
+    
+    
+
+    
+      <h4>Current</h4>
+      
+      
+        <h5>University of Colorado Anschutz</h5>
+        <ul>
+          
+            <li>
+              <strong>Aiden Seo</strong>
+              
+               (image analysis, machine learning)
+              , Orthopedics
+              — June 2025 – Present
+            </li>
+          
+        </ul>
+      
+    
+
+    
+      <h4>Past</h4>
+      
+      
+        <h5>University of Delaware</h5>
+        <ul>
+          
+            <li>
+              <strong>Michael Lan</strong>
+              
+               (image analysis)
+              , K-12 Engineering
+              — June 2016 – Aug 2016
+            </li>
+          
+            <li>
+              <strong>Shu-Jin Kust</strong>
+              
+               (µCT)
+              , K-12 Engineering
+              — June 2016 – Aug 2016
+            </li>
+          
+            <li>
+              <strong>Olivia Laxton</strong>
+              
+               (histology)
+              , K-12 Engineering
+              — June 2015 – Aug 2015
+            </li>
+          
+            <li>
+              <strong>Fiona Flowerhill</strong>
+              
+               (histology)
+              , K-12 Engineering
+              — June 2014 – Aug 2014
+            </li>
+          
+        </ul>
+      
+    
+  </details>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+<h2 id="mentorship--joining">Mentorship &amp; joining</h2>
+
+<p>I enjoy mentoring trainees and collaborating across disciplines. If you’re interested in working together, please reach out with a short note about your background, your interests, and what you’d like to learn or build.</p>
+
+<p><strong>Good fits</strong></p>
+<ul>
+  <li>Biomedical engineering, orthopedics, biomechanics, imaging, and computational biology</li>
+  <li>Machine learning (especially interpretable ML) applied to real translational questions</li>
+  <li>
+    <p>People who value rigor, reproducibility, and supportive collaboration</p>
+
+    <div class="button-wrapper">
+  <a class="button" href="/about" data-style="solid" aria-label="fa-regular fa-user">
+    <i class="icon fa-regular fa-user"></i>
+      
+      <span>About me</span>
+      
+  </a>
+</div>
+
+    <div class="button-wrapper">
+  <a class="button" href="/contact" data-style="solid" aria-label="fa-regular fa-envelope">
+    <i class="icon fa-regular fa-envelope"></i>
+      
+      <span>Contact</span>
+      
+  </a>
+</div>
+  </li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
   </section>
 
 
@@ -640,11 +1805,12 @@
     </div>
   -->
 
-  <div>
+  
+  <div class="footer-links">
     
       
       
-      
+        
 
 
 
@@ -656,10 +1822,11 @@
   </div>
 
 
+      
     
       
       
-      
+        
 
 
 
@@ -671,10 +1838,11 @@
   </div>
 
 
+      
     
       
       
-      
+        
 
 
 
@@ -686,10 +1854,11 @@
   </div>
 
 
+      
     
       
       
-      
+        
 
 
 
@@ -701,61 +1870,51 @@
   </div>
 
 
+      
     
       
       
-      
+        
 
 
 
   <div class="button-wrapper">
-    <a class="button" href="https://www.ncbi.nlm.nih.gov/myncbi/1Feoil52XxqgFN/bibliography/public/" data-style="bare" aria-label="button">
-      
+    <a class="button" href="https://www.linkedin.com/in/mdavid3" data-tooltip="LinkedIn" data-style="bare" aria-label="LinkedIn">
+      <i class="icon fa-brands fa-linkedin"></i>
       
     </a>
   </div>
 
 
+      
     
       
       
-      
+        
 
 
 
   <div class="button-wrapper">
-    <a class="button" href="https://madavid128.github.io" data-style="bare" aria-label="button">
-      
+    <a class="button" href="https://www.ncbi.nlm.nih.gov/myncbi/1Feoil52XxqgFN/bibliography/public/" data-tooltip="PubMed bibliography" data-style="bare" aria-label="PubMed bibliography">
+      <i class="icon fa-solid fa-book-medical"></i>
       
     </a>
   </div>
 
 
-    
       
-      
-      
-
-
-
-  <div class="button-wrapper">
-    <a class="button" href="/madavid-research" data-style="bare" aria-label="button">
-      
-      
-    </a>
-  </div>
-
-
     
   </div>
 
   <div>
     © 2025
-    Research Portfolio for Michael A. David, PhD
+    Michael A. David, PhD
       |   Built with
     <a href="https://github.com/greenelab/lab-website-template">
       Lab Website Template
     </a>
+      |  
+    <a href="/notices">Notices</a>
   </div>
 
   <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">

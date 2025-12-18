@@ -32,4 +32,20 @@ main > section:nth-of-type(even) {
   background: var(--background-alt);
 }
 
+main > section.background[data-dark=true] {
+  text-align: center;
+}
+
+main > section.background[data-dark=true] :where(h1, h2, h3, h4, h5, h6) {
+  text-align: center;
+}
+
+main > section.background[data-dark=true] p {
+  text-align: center;
+}
+
+main > section.background[data-dark=true] .tags {
+  justify-content: center;
+}
+
 /*# sourceMappingURL=section.css.map */

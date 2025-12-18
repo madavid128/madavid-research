@@ -1,0 +1,4 @@
+PyYAML~=6.0
+# Optional (not required by tools/pubmed_to_collaborators_map.py, but useful if you prefer wrappers):
+# metapub
+# requests

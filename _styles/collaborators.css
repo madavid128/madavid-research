@@ -1,0 +1,106 @@
+.collab-map {
+  margin: 20px 0 40px;
+}
+
+.collab-map-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin: 10px 0 16px;
+  text-align: center;
+}
+
+.collab-map-tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 0 0 14px;
+}
+
+.collab-map-summary {
+  color: var(--dark-gray);
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+.collab-map-tags-label {
+  color: var(--dark-gray);
+}
+
+.collab-map-tags-wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.collab-tag {
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--light-gray);
+  background: var(--background-alt);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.collab-tag:hover {
+  border-color: var(--primary);
+}
+
+.collab-tag[data-active] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--background);
+}
+
+.collab-map-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collab-map-control-label {
+  color: var(--dark-gray);
+}
+
+.collab-map-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collab-map-plot {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--background-alt);
+  min-height: 520px;
+}
+
+.collab-map-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: var(--dark-gray);
+}
+
+.collab-map-plot :where(.main-svg) {
+  border-radius: 18px;
+}
+
+.collab-map-plot :where(.legend text) {
+  fill: var(--text) !important;
+}
+
+/*# sourceMappingURL=collaborators.css.map */
