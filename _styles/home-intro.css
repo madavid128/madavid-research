@@ -1,0 +1,16 @@
+.home-intro-portrait {
+  margin: 0;
+}
+
+.home-intro-portrait img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=home-intro.css.map */

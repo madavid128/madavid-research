@@ -3,6 +3,17 @@
   outline-offset: 3px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   left: 12px;
@@ -22,6 +33,20 @@
   transform: translateY(0);
 }
 
+/*
+  Anchor offsets:
+  Many pages use a sticky header and a floating "What's on this page" bar.
+  `scroll-margin-top` helps anchor jumps land with the heading visible.
+*/
+section[id],
+h2[id],
+h3[id],
+h4[id],
+h5[id],
+h6[id] {
+  scroll-margin-top: calc(var(--header-height, 0px) + 90px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -31,6 +56,14 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+:root[data-motion=reduced] *,
+:root[data-motion=reduced] *::before,
+:root[data-motion=reduced] *::after {
+  scroll-behavior: auto !important;
+  transition-duration: 0.001ms !important;
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
 }
 
 /*# sourceMappingURL=a11y.css.map */

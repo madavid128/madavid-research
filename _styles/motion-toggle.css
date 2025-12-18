@@ -1,0 +1,38 @@
+.motion-toggle {
+  position: relative;
+  width: 40px;
+  height: 25px;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--background-alt);
+  border: 1px solid var(--light-gray);
+  appearance: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.motion-toggle:after {
+  content: "\f0e7";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  color: var(--text);
+  font-size: 14px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  transform: translate(-50%, -50%);
+  transition: left var(--transition), opacity var(--transition);
+  opacity: 0.85;
+}
+
+.motion-toggle:checked {
+  background: var(--primary);
+  border-color: transparent;
+}
+
+.motion-toggle:checked:after {
+  content: "\f6cf";
+  left: calc(100% - 12px);
+  opacity: 1;
+}
+
+/*# sourceMappingURL=motion-toggle.css.map */

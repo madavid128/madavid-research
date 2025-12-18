@@ -1,0 +1,275 @@
+[{
+      "type": "team",
+      "title": "Collaborators Map",
+      "url": "/collaborators/",
+      "description": "A global view of collaborators and trainees."
+    },{
+      "type": "project",
+      "title": "Tendon + Peritendinous Tissue Biology",
+      "url": "/projects/tendon/",
+      "description": "Tendon and peritendinous tissue injury, remodeling, and healing across scales."
+    },{
+      "type": "project",
+      "title": "Cartilage + Synovium Biology",
+      "url": "/projects/cartilage/",
+      "description": "Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post-traumatic disease."
+    },{
+      "type": "project",
+      "title": "Imaging + Machine Learning",
+      "url": "/projects/imaging-ml/",
+      "description": "Multimodal imaging, radiomics, and interpretable ML for translational orthopedics."
+    },{
+      "type": "project",
+      "title": "Other Projects",
+      "url": "/projects/other/",
+      "description": "Cross-cutting translational collaborations and musculoskeletal projects."
+    },{
+      "type": "project",
+      "title": "Projects",
+      "url": "/projects/",
+      "description": "Software, datasets, and research outputs from Michael A. David, PhD."
+    },{
+      "type": "team",
+      "title": "Team",
+      "url": "/team/",
+      "description": "Collaborators, mentees, and research partnerships."
+    },{
+      "type": "page",
+      "title": "FAQ",
+      "url": "/faq/",
+      "description": "Quick answers and a short glossary for new visitors."
+    },{
+      "type": "picture",
+      "title": "Pictures",
+      "url": "/pictures/",
+      "description": "Photos from research, outreach, conferences, and scientific art."
+    },{
+      "type": "page",
+      "title": "News",
+      "url": "/news/",
+      "description": "Updates, announcements, and highlights."
+    },{
+      "type": "art",
+      "title": "Scientific Art",
+      "url": "/art/",
+      "description": "Scientific visualization and data-driven art, including programs I founded and run."
+    },{
+      "type": "page",
+      "title": "Notices",
+      "url": "/notices/",
+      "description": "Third-party notices and acknowledgements."
+    },{
+      "type": "page",
+      "title": "Blog",
+      "url": "/blog/",
+      "description": "Notes on research, methods, tools, and updates."
+    },{
+      "type": "page",
+      "title": "Publications",
+      "url": "/research/",
+      "description": "Peer-reviewed publications and scholarly outputs."
+    },{
+      "type": "update",
+      "title": "News/Blog",
+      "url": "/updates/",
+      "description": "News, announcements, and blog posts."
+    },{
+      "type": "page",
+      "title": "About",
+      "url": "/about/",
+      "description": "Background, values, and personal interests."
+    },{
+      "type": "page",
+      "title": "CV",
+      "url": "/cv/",
+      "description": "Short curriculum vitae for Michael A. David, PhD."
+    },{
+      "type": "page",
+      "title": "Contact",
+      "url": "/contact/",
+      "description": "Email and location for collaborations and opportunities."
+    },{
+      "type": "page",
+      "title": "Home",
+      "url": "/",
+      "description": "Biomedical engineer advancing bioinformatics, machine learning, and multimodal imaging for translational orthopedics."
+    },{
+      "type": "post",
+      "title": "A quick site refresh (and what’s next)",
+      "url": "/2025/12/18/site-refresh-continued.html",
+      "description": "I made a big round of updates to the website this week — mostly focused on making it easier (and more fun) to explore my work, the people I’ve learned from, and the projects I’m excited about.",
+      "date": "2025-12-18T00:00:00+00:00",
+      "tags": ["website","update","publications","collaborators","scientific art"]
+    },{
+      "type": "post",
+      "title": "Welcome world!",
+      "url": "/2025/11/01/firstpost.html",
+      "description": "My website officially launched and is undergoing active remodeling. Stay tuned for updates.",
+      "date": "2025-11-01T00:00:00+00:00",
+      "tags": ["beginning","new horizon","future"]
+    },{
+      "type": "publication",
+      "title": "Synovial Dysregulation in Ankle Osteoarthritis: Molecular Insights and Pathogenetic Pathways",
+      "url": "https://doi.org/g98st6",
+      "description": "Julia Matthias, Sara Buckley, Michael David, Cheryl L. Ackert‐Bicknell, Joshua A. Metzl, Daniel K. Moon, Courtney Miller, Michael J. Zuscik, Kenneth J. Hunt",
+      "year": "2025",
+      "id": "doi:10.1002/jor.70016",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Optical Imaging of Dynamic Collagen Processes in Health and Disease",
+      "url": "https://doi.org/g98st7",
+      "description": "Leanne E. Iannucci, Charles S. Dranoff, Michael A. David, Spencer P. Lake",
+      "year": "2022",
+      "id": "doi:10.3389/fmech.2022.855271",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Pleiotropic Effects of Simvastatin and Losartan in Preclinical Models of Post-Traumatic Elbow Contracture",
+      "url": "https://doi.org/g98st8",
+      "description": "Michael A. David, Alex J. Reiter, Chelsey L. Dunham, Ryan M. Castile, James A. Abraham, Leanne E. Iannucci, Ishani D. Shah, Necat Havlioglu, Aaron M. Chamberlain, Spencer P. Lake",
+      "year": "2022",
+      "id": "doi:10.3389/fbioe.2022.803403",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Preclinical models of elbow injury and pathology",
+      "url": "https://doi.org/gmnwqt",
+      "description": "Michael A. David, Aaron M. Chamberlain, Spencer P. Lake",
+      "year": "2021",
+      "id": "doi:10.21037/aoj.2020.02.09",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Thermoresponsive Elastin-<i>b</i>-Collagen-Like Peptide Bioconjugate Nanovesicles for Targeted Drug Delivery to Collagen-Containing Matrices",
+      "url": "https://doi.org/gbp4q6",
+      "description": "Tianzhi Luo, Michael A. David, Lucas C. Dunshee, Rebecca A. Scott, Morgan A. Urello, Christopher Price, Kristi L. Kiick",
+      "year": "2017",
+      "id": "doi:10.1021/acs.biomac.7b00686",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Early, focal changes in cartilage cellularity and structure following surgically induced meniscal destabilization in the mouse",
+      "url": "https://doi.org/f92sf8",
+      "description": "Michael A. David, Melanie K. Smith, Rachael N. Pilachowski, Avery T. White, Ryan C. Locke, Christopher Price",
+      "year": "2016",
+      "id": "doi:10.1002/jor.23443",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Effects of Osmolarity on the Spontaneous Calcium Signaling of In Situ Juvenile and Adult Articular Chondrocytes",
+      "url": "https://doi.org/f8g9jf",
+      "description": "Yilu Zhou, Michael A. David, Xingyu Chen, Leo Q. Wan, Randall L. Duncan, Liyun Wang, X. Lucas Lu",
+      "year": "2015",
+      "id": "doi:10.1007/s10439-015-1406-4",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Seeing through Musculoskeletal Tissues: Improving In Situ Imaging of Bone and the Lacunar Canalicular System through Optical Clearing",
+      "url": "https://doi.org/f8tnkj",
+      "description": "Ian M. Berke, Joseph P. Miola, Michael A. David, Melanie K. Smith, Christopher Price",
+      "year": "2016",
+      "id": "doi:10.1371/journal.pone.0150268",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Tendon Repair Is Compromised in a High Fat Diet-Induced Mouse Model of Obesity and Type 2 Diabetes",
+      "url": "https://doi.org/gtn7pk",
+      "description": "Michael A. David, Khyrie H. Jones, Jason A. Inzana, Michael J. Zuscik, Hani A. Awad, Robert A. Mooney",
+      "year": "2014",
+      "id": "doi:10.1371/journal.pone.0091234",
+      "tags": ""
+    },{
+      "type": "publication",
+      "title": "Local Intra-Articular Delivery of Zoledronic Acid as a Disease-Modifying Therapeutic for Post-Traumatic Osteoarthritis",
+      "url": "http://udspace.udel.edu/handle/19716/24751",
+      "description": "Michael A. David",
+      "year": "2019",
+      "id": "",
+      "tags": ["dissertation","post-traumatic osteoarthritis","orthopedics","translational"]
+    },{
+      "type": "news",
+      "title": "Website launched",
+      "url": "/",
+      "description": "A home for publications, software/tools, collaborations, and scientific art.",
+      "date": "2025-11-01T00:00:00+00:00",
+      "tags": ["website"]
+    },{
+      "type": "picture",
+      "title": "Lab / group photo (placeholder)",
+      "url": "/pictures?search=Lab%20/%20group%20photo%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["lab","people"]
+    },{
+      "type": "picture",
+      "title": "Conference moment (placeholder)",
+      "url": "/pictures?search=Conference%20moment%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["conference","travel"]
+    },{
+      "type": "picture",
+      "title": "Outreach / public engagement (placeholder)",
+      "url": "/pictures?search=Outreach%20/%20public%20engagement%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["outreach"]
+    },{
+      "type": "picture",
+      "title": "Scientific art (placeholder)",
+      "url": "/pictures?search=Scientific%20art%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["art"]
+    },{
+      "type": "picture",
+      "title": "Lab life (placeholder)",
+      "url": "/pictures?search=Lab%20life%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["lab"]
+    },{
+      "type": "picture",
+      "title": "Award / milestone (placeholder)",
+      "url": "/pictures?search=Award%20/%20milestone%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["award","update"]
+    },{
+      "type": "picture",
+      "title": "Nature (placeholder)",
+      "url": "/pictures?search=Nature%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["nature"]
+    },{
+      "type": "picture",
+      "title": "Sports (placeholder)",
+      "url": "/pictures?search=Sports%20(placeholder)",
+      "description": "Replace with your image",
+      "tags": ["sports"]
+    },{
+      "type": "art",
+      "title": "Art Placeholder 1",
+      "url": "/art?search=Art%20Placeholder%201",
+      "description": "Replace with your piece",
+      "tags": ["art","visualization"]
+    },{
+      "type": "art",
+      "title": "Art Placeholder 2",
+      "url": "/art?search=Art%20Placeholder%202",
+      "description": "Replace with your piece",
+      "tags": ["art","imaging"]
+    },{
+      "type": "art",
+      "title": "Art Placeholder 3",
+      "url": "/art?search=Art%20Placeholder%203",
+      "description": "Replace with your piece",
+      "tags": ["art","multiomics"]
+    },{
+      "type": "art",
+      "title": "Art Placeholder 4",
+      "url": "/art?search=Art%20Placeholder%204",
+      "description": "Replace with your piece",
+      "tags": ["art","outreach"]
+    },{
+      "type": "art",
+      "title": "Art Placeholder 5",
+      "url": "/art?search=Art%20Placeholder%205",
+      "description": "Replace with your piece",
+      "tags": ["art","award"]
+    }]

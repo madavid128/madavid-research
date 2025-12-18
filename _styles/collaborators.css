@@ -65,6 +65,24 @@
   gap: 10px;
 }
 
+.collab-map-control input[type=range] {
+  width: 160px;
+  accent-color: var(--primary);
+}
+
+.collab-map-year {
+  min-width: 44px;
+  text-align: left;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.collab-map-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .collab-map-control-label {
   color: var(--dark-gray);
 }

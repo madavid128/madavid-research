@@ -1,0 +1,57 @@
+.directory-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 10px;
+}
+
+.directory-controls .button[aria-pressed=true] {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.directory-table-wrap {
+  overflow: auto;
+  border-radius: 18px;
+  border: 1px solid var(--light-gray);
+  box-shadow: var(--shadow);
+  background: var(--background);
+}
+
+.directory-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+}
+
+.directory-table th,
+.directory-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--light-gray);
+  vertical-align: top;
+}
+
+.directory-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--background-alt);
+  z-index: 1;
+}
+
+.directory-sort {
+  background: none;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  cursor: pointer;
+}
+
+.directory-sort:hover {
+  color: var(--primary);
+}
+
+/*# sourceMappingURL=directory.css.map */

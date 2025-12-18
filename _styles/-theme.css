@@ -41,4 +41,6 @@
   --transition: 0.2s ease;
 }
 
+/* Reduced-motion tweaks live in component styles (e.g., header.scss). */
+
 /*# sourceMappingURL=-theme.css.map */

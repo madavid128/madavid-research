@@ -1,0 +1,102 @@
+.page-jumps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 10px 0 28px;
+  padding: 10px 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: 999px;
+  background: var(--background-alt);
+  box-shadow: var(--shadow);
+}
+
+/*
+  Desktop behavior:
+  - The jump bar starts directly under the page title (in normal flow).
+  - After you scroll past it, JS adds `.page-jumps--floating` to keep it pinned
+    under the sticky header across section boundaries.
+*/
+@media (min-width: 900px) {
+  .page-jumps.page-jumps--floating {
+    position: fixed;
+    top: var(--page-jumps-top, calc(var(--header-height, 0px) + 12px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1000px, 100% - 32px);
+    margin: 0;
+    z-index: 11;
+  }
+}
+.page-jumps-title {
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  color: var(--dark-gray);
+  white-space: nowrap;
+}
+
+.page-jumps-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-jump {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--primary);
+  text-decoration: none;
+  font: inherit;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+
+.page-jump:hover {
+  color: var(--text);
+  border-color: var(--primary);
+  background: var(--background);
+}
+
+.page-jump.is-active {
+  border-color: var(--primary);
+  background: rgba(41, 223, 176, 0.12);
+  color: var(--text);
+}
+
+.page-jump.is-active:hover {
+  background: rgba(41, 223, 176, 0.18);
+}
+
+@media (max-width: 700px) {
+  .page-jumps {
+    border-radius: 18px;
+  }
+  .page-jumps-links {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+  }
+}
+@media (max-width: 900px) {
+  .page-jumps.page-jumps--floating {
+    position: fixed;
+    top: var(--page-jumps-top, calc(var(--header-height, 0px) + 10px));
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 24px);
+    margin: 0;
+    z-index: 11;
+    border-radius: 18px;
+  }
+}
+
+/*# sourceMappingURL=page-jumps.css.map */
