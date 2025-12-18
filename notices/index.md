@@ -1,9 +1,11 @@
 ---
 title: Notices
 description: Third-party notices and acknowledgements.
+redirect_to: https://github.com/madavid128/madavid-research/blob/main/THIRD_PARTY_NOTICES.md
 ---
 
 # Notices
 
-This site uses third-party libraries and tools. See `THIRD_PARTY_NOTICES.md` in the repository for details.
+Redirecting to the repository notices file:
 
+https://github.com/madavid128/madavid-research/blob/main/THIRD_PARTY_NOTICES.md
