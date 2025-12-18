@@ -48,10 +48,12 @@ Talks, interviews, press, and other public-facing updates.
 {% assign media = site.data.media | sort: "date" | reverse %}
 <div class="grid media-grid">
   {% for item in media %}
+    {% assign year = item.date | date: "%Y" %}
+    {% capture subtitle_with_year %}{{ item.subtitle }} · {{ year }}{% endcapture %}
     {%
       include card.html
       title=item.title
-      subtitle=item.subtitle
+      subtitle=subtitle_with_year
       description=item.description
       link=item.link
       image=item.image

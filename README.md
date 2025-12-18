@@ -124,6 +124,58 @@
   You can also use inline SVG icons by setting an icon value that ends with `.svg` and placing it under `_includes/`
   (for example `nav.icon: icons/my-icon.svg`).
 
+  ### Generate a full icon set (static PNG/ICO/SVG + animated GIFs)
+
+  This repo includes `make_mad_icons.py`, which reads `web-app-manifest-512x512.png` and generates:
+  - PNGs: `apple-touch-icon.png`, `favicon-96x96.png`, `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`
+  - `favicon.ico` (16/32/48/64)
+  - `favicon.svg` (wrapper pointing at `web-app-manifest-512x512.png`)
+  - Animated GIFs (electric-sign effect) at multiple sizes
+  - A zip bundle `MAD_icons.zip` (flat contents)
+
+  1) Create a venv (if you don’t already have one):
+  - `python3 -m venv .venv`
+  - `source .venv/bin/activate`
+
+  2) Install Pillow:
+  - `python -m pip install Pillow`
+
+  3) Run the generator:
+  - `python make_mad_icons.py`
+
+  Outputs:
+  - `dist_icons/` (all generated files)
+  - `MAD_icons.zip` (all files zipped, no subfolders inside)
+
+  To apply the **static** icons to the website, copy these from `dist_icons/` to the repo root (overwrite existing):
+  - `apple-touch-icon.png`
+  - `favicon-96x96.png`
+  - `favicon.ico`
+  - `favicon.svg`
+  - `web-app-manifest-192x192.png`
+  - `web-app-manifest-512x512.png`
+
+  Animated favicon support varies by browser. The GIFs will always work as normal images on pages, but may not animate in the browser tab.
+
+  ## Background image (network style)
+
+  To generate a dark abstract “network” header background (teal/green nodes + lines) run:
+  - `python tools/make_network_background.py`
+
+  Default output:
+  - `images/background.jpg` (2400×1350)
+
+  Useful options:
+  - `python tools/make_network_background.py --width 1920 --height 1080`
+  - `python tools/make_network_background.py --seed 128` (deterministic)
+
+  ## Licensing notes
+
+  This repository includes the Lab Website Template and is licensed under `LICENSE.md` (BSD 3‑Clause).
+
+  Some standalone helper scripts added for this site are licensed under MIT (see `LICENSE-MIT.md`) and are marked per-file via
+  `SPDX-License-Identifier: MIT` at the top of the script.
+
   
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_

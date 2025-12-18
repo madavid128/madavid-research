@@ -77,6 +77,20 @@ Research focus: translational orthopedics using multimodal imaging, bioinformati
 ## Beyond the lab
 Outside of research, I enjoy sports, creative work, and spending time outdoors (including nature photography).
 
+<figure style="margin: 18px 0;">
+  <img
+    src="{{ 'images/mad-animated.gif' | relative_url }}"
+    alt="Animated MAD logo"
+    width="192"
+    height="192"
+    loading="lazy"
+    style="display:block; margin: 0 auto; border-radius: 16px; box-shadow: var(--shadow);"
+  >
+  <figcaption style="text-align:center; color: var(--dark-gray); margin-top: 10px;">
+    A little “electric sign” version of my logo.
+  </figcaption>
+</figure>
+
 {%
   include button.html
   link="pictures?search=&quot;tag: nature&quot;"

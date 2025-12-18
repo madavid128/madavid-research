@@ -1,9 +1,10 @@
 {% assign image = page.footer | default: site.footer %}
 {% assign dark = page.footer-dark | is_nil: site.footer-dark | is_nil: true %}
+{% assign image_path = image | relative_url | uri_escape %}
 
 <footer
   class="background"
-  style="--image: url('{{ image | relative_url | uri_escape }}')"
+  style="--image: url('{{ image_path }}{% if jekyll.environment == "development" %}?v={{ site.time | date: "%s" }}{% endif %}')"
   {% if dark == true or dark == false %}
     data-dark="{{ dark }}"
   {% endif %}
