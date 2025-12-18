@@ -1,7 +1,7 @@
 ---
 title: Website refresh: publications, maps, and new galleries
 author: michael-david
-date: 2025-12-18
+date: 2025-12-17
 image: images/background.jpg
 tags:
   - website
@@ -12,7 +12,9 @@ tags:
   - collaborators
 ---
 
+<!-- excerpt start -->
 Over the past few weeks, I’ve been rebuilding this site into a more useful “research hub” for my work in translational orthopedics—making it easier to browse publications, understand project areas, and explore scientific art and outreach.
+<!-- excerpt end -->
 
 ## What’s new
 
@@ -34,4 +36,3 @@ Over the past few weeks, I’ve been rebuilding this site into a more useful “
 The site runs locally via Docker and deploys via GitHub Pages. Some content is generated with small helper scripts (for example, publication summaries and visualizations). Third‑party notices are available on the Notices page.
 
 If you spot something broken, unclear, or missing, please reach out—I’m actively iterating.
-
