@@ -1,1 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://michaeladavid.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://michaeladavid.com/" rel="alternate" type="text/html" /><updated>2025-12-18T03:06:10+00:00</updated><id>https://michaeladavid.com/feed.xml</id><title type="html">Michael A. David, PhD</title><subtitle>Machine learning for spatial histopathology, multi-omics, and medical imaging in musculoskeletal disease.</subtitle><entry><title type="html">Welcome world!</title><link href="https://michaeladavid.com/2025/11/01/firstpost.html" rel="alternate" type="text/html" title="Welcome world!" /><published>2025-11-01T00:00:00+00:00</published><updated>2025-12-18T03:04:55+00:00</updated><id>https://michaeladavid.com/2025/11/01/firstpost</id><content type="html" xml:base="https://michaeladavid.com/2025/11/01/firstpost.html"><![CDATA[<p>My website officially launched and is undergoing active remodeling. Stay tuned for updates.</p>]]></content><author><name>michael-david</name></author><category term="beginning" /><category term="new horizon" /><category term="future" /><summary type="html"><![CDATA[My website officially launched and is undergoing active remodeling. Stay tuned for updates.]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://michaeladavid.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://michaeladavid.com/" rel="alternate" type="text/html" /><updated>2025-12-18T03:57:35+00:00</updated><id>https://michaeladavid.com/feed.xml</id><title type="html">Michael A. David, PhD</title><subtitle>Machine learning for spatial histopathology, multi-omics, and medical imaging in musculoskeletal disease.</subtitle><entry><title type="html"></title><link href="https://michaeladavid.com/2025/12/18/2025-12-18-site-refresh.html" rel="alternate" type="text/html" title="" /><published>2025-12-18T03:57:35+00:00</published><updated>2025-12-18T03:56:07+00:00</updated><id>https://michaeladavid.com/2025/12/18/2025-12-18-site-refresh</id><content type="html" xml:base="https://michaeladavid.com/2025/12/18/2025-12-18-site-refresh.html"><![CDATA[<p>Over the past few weeks, I’ve been rebuilding this site into a more useful “research hub” for my work in translational orthopedics—making it easier to browse publications, understand project areas, and explore scientific art and outreach.</p>
+
+<h2 id="whats-new">What’s new</h2>
+
+<h3 id="publications-page-upgrades">Publications page upgrades</h3>
+<ul>
+  <li><strong>Auto-updated publications</strong> with cleaner cards and easier navigation.</li>
+  <li>A <strong>research-areas word cloud</strong> and <strong>clickable top terms</strong> to quickly explore themes.</li>
+</ul>
+
+<h3 id="collaborators--trainees">Collaborators + trainees</h3>
+<ul>
+  <li>A <strong>global collaborators map</strong> to visualize research connections.</li>
+  <li>A separate <strong>trainees map</strong> (grouped by institution) plus a compact trainee directory.</li>
+</ul>
+
+<h3 id="projects-scientific-art-and-pictures">Projects, scientific art, and pictures</h3>
+<ul>
+  <li>Clearer <strong>project areas</strong> with dedicated pages (and better structure for tools/software).</li>
+  <li>A refreshed <strong>Scientific Art</strong> page highlighting the Art in Science programs I founded and run.</li>
+  <li>A modern <strong>Pictures</strong> gallery (with tags and search) for lab and personal highlights.</li>
+</ul>
+
+<h2 id="under-the-hood">Under the hood</h2>
+
+<p>The site runs locally via Docker and deploys via GitHub Pages. Some content is generated with small helper scripts (for example, publication summaries and visualizations). Third‑party notices are available on the Notices page.</p>
+
+<p>If you spot something broken, unclear, or missing, please reach out—I’m actively iterating.</p>]]></content><author><name></name></author></entry><entry><title type="html">Welcome world!</title><link href="https://michaeladavid.com/2025/11/01/firstpost.html" rel="alternate" type="text/html" title="Welcome world!" /><published>2025-11-01T00:00:00+00:00</published><updated>2025-12-18T03:56:07+00:00</updated><id>https://michaeladavid.com/2025/11/01/firstpost</id><content type="html" xml:base="https://michaeladavid.com/2025/11/01/firstpost.html"><![CDATA[<p>My website officially launched and is undergoing active remodeling. Stay tuned for updates.</p>]]></content><author><name>michael-david</name></author><category term="beginning" /><category term="new horizon" /><category term="future" /><summary type="html"><![CDATA[My website officially launched and is undergoing active remodeling. Stay tuned for updates.]]></summary></entry></feed>
