@@ -1,0 +1,80 @@
+{% if include.lookup %}
+  {% assign citation = site.data.citations
+    | where_exp: "citation", "citation.id == include.lookup or citation.title contains include.lookup"
+    | first
+  %}
+{% else %}
+  {% assign citation = include %}
+{% endif %}
+
+{% assign thumb = citation.image | default: "images/news-placeholder.svg" %}
+{% assign publisher = citation.publisher | default: "Publication" %}
+{% assign year = citation.date | date: "%Y" %}
+{% capture subtitle %}{{ publisher }}{% if year and year != "" %} · {{ year }}{% endif %}{% endcapture %}
+
+{% assign emptyarray = "" | split: "," %}
+{% assign authors = citation.authors | default: emptyarray %}
+{% capture authors_tooltip %}{{ authors | join: ", " }}{% endcapture %}
+
+<div class="card citation-card" data-style="small">
+  <a
+    {% if citation.link %}
+      href="{{ citation.link | relative_url | uri_escape }}"
+    {% endif %}
+    aria-label="{{ citation.title | default: "citation link" | regex_strip }}"
+    class="card-image"
+  >
+    <img
+      src="{{ thumb | relative_url | uri_escape }}"
+      alt="{{ citation.title | default: "citation image" | regex_strip }}"
+      loading="lazy"
+      {% include fallback.html %}
+    >
+  </a>
+
+  <div class="card-text">
+    {% if citation.title %}
+      <a
+        {% if citation.link %}
+          href="{{ citation.link | relative_url | uri_escape }}"
+        {% endif %}
+        class="card-title"
+      >
+        {{ citation.title }}
+      </a>
+    {% endif %}
+
+    {% if authors.size > 0 %}
+      <div class="card-authors" data-tooltip="{{ authors_tooltip | xml_escape }}" tabindex="0">
+        {% for a in authors limit: 5 %}
+          {% assign a_norm = a | downcase | strip | replace: ".", "" %}
+          {% assign is_self = false %}
+          {% if a_norm == "michael a david" or a_norm == "michael david" or a_norm == "ma david" or a_norm == "ma  david" or a_norm == "m a david" or a_norm == "m david" or a_norm == "madavid" %}
+            {% assign is_self = true %}
+          {% endif %}
+          <span class="card-author{% if is_self %} author-highlight{% endif %}">
+            {% if is_self %}
+              M.A. David
+            {% else %}
+              {{ a | xml_escape }}
+            {% endif %}
+          </span>
+          {% unless forloop.last %}
+            <span class="card-author-sep"> · </span>
+          {% endunless %}
+        {% endfor %}
+        {% if authors.size > 5 %}
+          <span class="card-author-sep"> · </span><span class="card-author">et&nbsp;al.</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if subtitle %}
+      <span class="card-subtitle">{{ subtitle }}</span>
+    {% endif %}
+
+    {% if citation.tags or citation.repo %}
+      {% include tags.html tags=citation.tags repo=citation.repo %}
+    {% endif %}
+  </div>
+</div>

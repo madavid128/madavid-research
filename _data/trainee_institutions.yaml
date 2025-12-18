@@ -1,0 +1,39 @@
+- institution: University of Colorado Anschutz
+  city: Aurora
+  region: CO
+  country: USA
+  lat: 39.7460
+  lon: -104.8365
+  link: https://medschool.cuanschutz.edu/
+
+- institution: Washington University in St. Louis
+  city: St. Louis
+  region: MO
+  country: USA
+  lat: 38.6488
+  lon: -90.3108
+  link: https://wustl.edu/
+
+- institution: University of Delaware
+  city: Newark
+  region: DE
+  country: USA
+  lat: 39.6837
+  lon: -75.7530
+  link: https://www.udel.edu/
+
+- institution: University of Rochester
+  city: Rochester
+  region: NY
+  country: USA
+  lat: 43.1293
+  lon: -77.6290
+  link: https://www.rochester.edu/
+
+- institution: Brigham Young University
+  city: Provo
+  region: UT
+  country: USA
+  lat: 40.2489
+  lon: -111.6493
+  link: https://www.byu.edu/

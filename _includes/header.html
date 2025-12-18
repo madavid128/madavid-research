@@ -51,6 +51,9 @@
           href="{{ page.dir | relative_url | uri_escape }}"
           data-tooltip="{{ page.nav.tooltip | xml_escape }}"
         >
+          {% if page.nav.icon %}
+            {% include icon.html icon=page.nav.icon %}
+          {% endif %}
           {{ page.title }}
         </a>
       {% endif %}

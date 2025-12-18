@@ -20,6 +20,10 @@
   width: 250px;
 }
 
+.card[data-style="square"] .card-image img {
+  aspect-ratio: 1 / 1;
+}
+
 .card-image img {
   aspect-ratio: 3 / 2;
   object-fit: cover;

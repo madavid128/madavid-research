@@ -6,8 +6,13 @@ vendor
 debug.log
 __pycache__
 .DS_STORE
+.DS_Store
+.venv/
 .env*
+_cite/.cache/
+_data/collaborators.generated.yaml
 package.json
 package-lock.json
 yarn.lock
 node_modules
+tools/.cache

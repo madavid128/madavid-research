@@ -1,0 +1,539 @@
+# NOTE: Biomedical Engineering (BME); Mechanical Engineering and Materials Science (MEMS)
+# Dates are kept as readable strings (e.g., "June 2023", "Aug 2023", "Present").
+
+# Postdoctoral Researchers
+- role: postdoc
+  institution: University of Colorado Anschutz
+  name: Julia Matthias
+  focus: image analysis, machine learning, biostatistics
+  department: Orthopedics
+  start: June 2023
+  end: Present
+
+- role: postdoc
+  institution: University of Colorado Anschutz
+  name: Sara Buckley
+  focus: image analysis, machine learning
+  department: Orthopedics
+  start: April 2022
+  end: Aug 2023
+
+- role: postdoc
+  institution: Washington University in St. Louis
+  name: Era Jain
+  focus: histology
+  department: BME
+  start: April 2019
+  end: Aug 2019
+
+- role: postdoc
+  institution: University of Delaware
+  name: Chintan Kapadia
+  focus: flow cytometry
+  department: BME
+  start: Aug 2018
+  end: Feb 2019
+
+- role: postdoc
+  institution: University of Delaware
+  name: Robert McKee
+  focus: histology
+  department: BME
+  start: April 2018
+  end: Feb 2019
+
+# Doctoral Students
+- role: doctoral
+  institution: University of Colorado Anschutz
+  name: Samantha Landgrave
+  focus: histology, image analysis
+  department: Orthopedics
+  start: July 2022
+  end: Feb 2025
+
+- role: doctoral
+  institution: University of Colorado Anschutz
+  name: David Villani
+  focus: histology, image analysis
+  department: Orthopedics
+  start: July 2022
+  end: Aug 2024
+
+- role: doctoral
+  institution: University of Colorado Anschutz
+  name: Beatriz Bermudez
+  focus: immunofluorescent, image analysis
+  department: Orthopedics
+  start: July 2022
+  end: May 2023
+
+- role: doctoral
+  institution: Washington University in St. Louis
+  name: Rebecca Reals
+  focus: cell culture, histology, confocal microscopy, image analysis
+  department: BME
+  start: July 2021
+  end: March 2022
+
+- role: doctoral
+  institution: Washington University in St. Louis
+  name: André Coello
+  focus: histology, confocal microscopy
+  department: BME
+  start: Sept 2020
+  end: Dec 2020
+
+- role: doctoral
+  institution: Washington University in St. Louis
+  name: Shawn Pavey
+  focus: calcium signaling, two-photon microscopy
+  department: MEMS
+  start: Sept 2020
+  end: Dec 2020
+
+- role: doctoral
+  institution: Washington University in St. Louis
+  name: Ian Berke
+  focus: cell culture, histology, image analysis
+  department: BME
+  start: April 2019
+  end: Dec 2020
+
+- role: doctoral
+  institution: Washington University in St. Louis
+  name: Christie Crandall
+  focus: histology, two-photon microscopy
+  department: MEMS
+  start: Jan 2020
+  end: June 2020
+
+- role: doctoral
+  institution: University of Delaware
+  name: Nick Trompeter
+  focus: cell culture, image analysis
+  department: BME
+  start: April 2018
+  end: Feb 2019
+
+- role: doctoral
+  institution: University of Delaware
+  name: Ryan Locke
+  focus: cell culture, histology, image analysis
+  department: BME
+  start: June 2017
+  end: Feb 2019
+
+- role: doctoral
+  institution: University of Delaware
+  name: Ryan McDonough
+  focus: cell culture, animal work, histology
+  department: BME
+  start: June 2015
+  end: Sept 2018
+
+# Medical Students and Residents
+- role: medical
+  institution: University of Colorado Anschutz
+  name: Charles Notle
+  focus: medical student; machine learning
+  department: Orthopedics
+  start: June 2024
+  end: Present
+
+- role: medical
+  institution: University of Colorado Anschutz
+  name: Christopher Orear
+  focus: medical student; machine learning
+  department: Orthopedics
+  start: June 2024
+  end: Present
+
+- role: medical
+  institution: University of Colorado Anschutz
+  name: Daniel Ross
+  focus: resident; image analysis/machine learning
+  department: Orthopedics
+  start: April 2022
+  end: Aug 2023
+
+# Master Students
+- role: masters
+  institution: Brigham Young University
+  name: Bracken Sant
+  focus: machine learning
+  department: Orthopedics
+  start: June 2025
+  end: Present
+
+- role: masters
+  institution: Washington University in St. Louis
+  name: Tillman James
+  focus: machine learning
+  department: Orthopedics
+  start: Aug 2022
+  end: May 2023
+
+# Research Associates / Lab Managers
+- role: staff
+  institution: University of Colorado Anschutz
+  name: Sierra Szeto
+  focus: research associate; microCT
+  department: Orthopedics
+  start: March 2022
+  end: June 2024
+
+- role: staff
+  institution: University of Colorado Anschutz
+  name: Raphael Hatami
+  focus: research associate; microCT
+  department: Orthopedics
+  start: March 2022
+  end: Dec 2022
+
+- role: staff
+  institution: Washington University in St. Louis
+  name: Ryan Castile
+  focus: lab manager; histology, image analysis
+  department: MEMS
+  start: April 2021
+  end: February 2022
+
+- role: staff
+  institution: University of Delaware
+  name: Melanie Smith
+  focus: lab manager; animal work, histology, microscopy, image analysis
+  department: BME
+  start: Oct 2013
+  end: April 2017
+
+- role: staff
+  institution: University of Rochester
+  name: Robert Maynard
+  focus: research associate; animal work, histology
+  department: BME
+  start: May 2011
+  end: July 2013
+
+- role: staff
+  institution: University of Rochester
+  name: Sarah Mack
+  focus: lab manager; histology
+  department: BME
+  start: May 2011
+  end: July 2013
+
+# Senior Design Team
+- role: senior_design
+  institution: University of Colorado Anschutz
+  name: Rational Motion (Senior Design Team)
+  focus: Range of motion device for the rat ankle
+  department: Orthopedics and Bioengineering (with Dr. Daniel Moon)
+  start: Sept 2025
+  end: Present
+  people: [Lluvia Mejia Tovar, Anthony Sawaged, Raseel Zmily]
+
+# Undergraduate Students
+- role: undergrad
+  institution: University of Colorado Anschutz
+  name: Jimena Arias Escalante
+  focus: histology, microscopy, image analysis
+  department: Orthopedics
+  start: Jan 2025
+  end: Present
+
+- role: undergrad
+  institution: University of Colorado Anschutz
+  name: Loyd Lillyblad
+  focus: histology sectioning
+  department: Orthopedics
+  start: Jan 2025
+  end: Present
+
+- role: undergrad
+  institution: University of Colorado Anschutz
+  name: Jenna Rogers
+  focus: histology sectioning
+  department: Orthopedics and Bioengineering
+  start: Jan 2025
+  end: Present
+
+- role: undergrad
+  institution: University of Colorado Anschutz
+  name: Rony Sawaqed
+  focus: microCT analysis
+  department: Orthopedics and Bioengineering
+  start: Jan 2025
+  end: Present
+
+- role: undergrad
+  institution: University of Colorado Anschutz
+  name: Anthony Sawaged
+  focus: histology, microscopy
+  department: Orthopedics and Bioengineering
+  start: Jan 2025
+  end: Present
+
+- role: undergrad
+  institution: University of Colorado Anschutz
+  name: Lluvia Mejia Tovar
+  focus: histology, spatial transcriptomics
+  department: Orthopedics and Bioengineering
+  start: March 2024
+  end: May 2025
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Jason Zhou
+  focus: machine learning
+  department: Computer Science
+  start: Jan 2025
+  end: Aug 2025
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Vincent Siu
+  focus: machine learning
+  department: Computer Science
+  start: Aug 2023
+  end: Sept 2024
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Michael Cafiero
+  focus: machine learning
+  department: Computer Science
+  start: Jan 2022
+  end: Aug 2022
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Bianca Lang
+  focus: histology, image analysis, machine learning
+  department: MEMS
+  start: Aug 2021
+  end: Feb 2022
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Arun Movva
+  focus: histology, image analysis, machine learning
+  department: BME
+  start: June 2021
+  end: Feb 2022
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Gustavo De Paiva
+  focus: histology, image analysis, polarized light
+  department: MEMS
+  start: June 2021
+  end: Feb 2022
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Shikha Shah
+  focus: histology, microscopy, machine learning
+  department: BME
+  start: Aug 2020
+  end: Oct 2022
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Alison Bacon
+  focus: cell culture, machine learning
+  department: BME
+  start: Jan 2020
+  end: June 2021
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Bryce Maxwell
+  focus: histology
+  department: BME
+  start: Jan 2020
+  end: June 2021
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: Ishah Shah
+  focus: cell culture
+  department: MEMS
+  start: Sept 2019
+  end: Dec 2019
+
+- role: undergrad
+  institution: Washington University in St. Louis
+  name: James Abraham
+  focus: cell culture
+  department: MEMS
+  start: May 2019
+  end: Aug 2019
+
+- role: undergrad
+  institution: University of Delaware
+  name: Benedict Maggio
+  focus: cell culture, histology, epifluorescence imaging, µCT, image analysis
+  department: BME
+  start: Jan 2018
+  end: Feb 2019
+
+- role: undergrad
+  institution: University of Delaware
+  name: Mark Ellsworth
+  focus: cell culture, histology, epifluorescence imaging, µCT, image analysis
+  department: BME
+  start: Jan 2018
+  end: Feb 2019
+
+- role: undergrad
+  institution: University of Delaware
+  name: Sejal Shah
+  focus: histology, epifluorescence imaging, image analysis
+  department: BME
+  start: Jan 2017
+  end: May 2019
+
+- role: undergrad
+  institution: University of Delaware
+  name: Brianna Hulbert
+  focus: cell culture, histology, epifluorescence imaging, nanoparticle synthesis, µCT, image analysis
+  department: BME
+  start: Jan 2017
+  end: Dec 2018
+
+- role: undergrad
+  institution: University of Delaware
+  name: Rachael Pilachowski
+  focus: histology, epifluorescence
+  department: BME
+  start: March 2015
+  end: Jan 2017
+
+- role: undergrad
+  institution: University of Delaware
+  name: Caitlin Purcell
+  focus: animal injections
+  department: BME
+  start: July 2017
+  end: Dec 2017
+
+- role: undergrad
+  institution: University of Delaware
+  name: Alexis Merritt
+  focus: histology, epifluorescence
+  department: BME
+  start: April 2016
+  end: Feb 2017
+
+- role: undergrad
+  institution: University of Delaware
+  name: Malhar Sakarwala
+  focus: histology
+  department: BME
+  start: Sept 2015
+  end: March 2016
+
+- role: undergrad
+  institution: University of Delaware
+  name: Srinivasa Gajjala
+  focus: histology
+  department: BME
+  start: Jan 2016
+  end: May 2016
+
+- role: undergrad
+  institution: University of Delaware
+  name: Christopher Hernandez
+  focus: histology
+  department: BME
+  start: Jan 2016
+  end: May 2016
+
+- role: undergrad
+  institution: University of Delaware
+  name: Ian Berke
+  focus: histology, nanoparticle synthesis
+  department: BME
+  start: May 2014
+  end: March 2016
+
+- role: undergrad
+  institution: University of Delaware
+  name: Jon Lowman
+  focus: histology
+  department: BME
+  start: May 2015
+  end: April 2016
+
+- role: undergrad
+  institution: University of Delaware
+  name: Brendan Horne
+  focus: µCT
+  department: BME
+  start: June 2015
+  end: Aug 2015
+
+- role: undergrad
+  institution: University of Delaware
+  name: Brianna Geitter
+  focus: µCT
+  department: BME
+  start: June 2015
+  end: Aug 2015
+
+- role: undergrad
+  institution: University of Delaware
+  name: Avery White
+  focus: histology, epifluorescence
+  department: BME
+  start: Jan 2014
+  end: Jan 2015
+
+- role: undergrad
+  institution: University of Delaware
+  name: Ryan Locke
+  focus: histology
+  department: BME
+  start: Jan 2014
+  end: March 2015
+
+# Highschool Students
+- role: highschool
+  institution: University of Colorado Anschutz
+  name: Aiden Seo
+  focus: image analysis, machine learning
+  department: Orthopedics
+  start: June 2025
+  end: Present
+
+- role: highschool
+  institution: University of Delaware
+  name: Michael Lan
+  focus: image analysis
+  department: K-12 Engineering
+  start: June 2016
+  end: Aug 2016
+
+- role: highschool
+  institution: University of Delaware
+  name: Shu-Jin Kust
+  focus: µCT
+  department: K-12 Engineering
+  start: June 2016
+  end: Aug 2016
+
+- role: highschool
+  institution: University of Delaware
+  name: Olivia Laxton
+  focus: histology
+  department: K-12 Engineering
+  start: June 2015
+  end: Aug 2015
+
+- role: highschool
+  institution: University of Delaware
+  name: Fiona Flowerhill
+  focus: histology
+  department: K-12 Engineering
+  start: June 2014
+  end: Aug 2014

@@ -1,0 +1,85 @@
+{% assign emptyarray = "" | split: "," %}
+{% assign trainees = site.data.trainees | default: emptyarray %}
+
+{% assign role_order = "postdoc,doctoral,medical,masters,staff,senior_design,undergrad,highschool" | split: "," %}
+
+{% assign role_titles = "" | split: "," %}
+{% assign role_titles = role_titles | push: "postdoc:Postdoctoral Researchers" %}
+{% assign role_titles = role_titles | push: "doctoral:Doctoral Students" %}
+{% assign role_titles = role_titles | push: "medical:Medical Students and Residents" %}
+{% assign role_titles = role_titles | push: "masters:Master Students" %}
+{% assign role_titles = role_titles | push: "staff:Research Associates / Lab Managers" %}
+{% assign role_titles = role_titles | push: "senior_design:Senior Design Team" %}
+{% assign role_titles = role_titles | push: "undergrad:Undergraduate Students" %}
+{% assign role_titles = role_titles | push: "highschool:High school Students" %}
+
+{% assign title_map = role_titles | map: "split" %}
+
+{% capture note %}
+Note: Biomedical Engineering (BME); Mechanical Engineering and Materials Science (MEMS)
+{% endcapture %}
+{% include alert.html type="info" content=note %}
+
+{% for role in role_order %}
+  {% assign items = trainees | where: "role", role %}
+  {% if items.size == 0 %}
+    {% continue %}
+  {% endif %}
+
+  {% assign title = role %}
+  {% for pair in role_titles %}
+    {% assign parts = pair | split: ":" %}
+    {% if parts[0] == role %}
+      {% assign title = parts[1] %}
+    {% endif %}
+  {% endfor %}
+
+  <details class="trainee-group">
+    <summary>{{ title }} ({{ items.size }})</summary>
+
+    {% assign current = items | where: "end", "Present" %}
+    {% assign past = items | where_exp: "t", "t.end != 'Present'" %}
+
+    {% if current.size > 0 %}
+      <h4>Current</h4>
+      {% assign by_inst = current | group_by: "institution" %}
+      {% for group in by_inst %}
+        <h5>{{ group.name }}</h5>
+        <ul>
+          {% for t in group.items %}
+            <li>
+              <strong>{{ t.name }}</strong>
+              {% if t.people and t.people.size > 0 %}
+                — {{ t.people | join: ", " }}
+              {% endif %}
+              {% if t.focus %} ({{ t.focus }}){% endif %}
+              {% if t.department %}, {{ t.department }}{% endif %}
+              — {{ t.start }} – {{ t.end }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    {% endif %}
+
+    {% if past.size > 0 %}
+      <h4>Past</h4>
+      {% assign by_inst = past | group_by: "institution" %}
+      {% for group in by_inst %}
+        <h5>{{ group.name }}</h5>
+        <ul>
+          {% for t in group.items %}
+            <li>
+              <strong>{{ t.name }}</strong>
+              {% if t.people and t.people.size > 0 %}
+                — {{ t.people | join: ", " }}
+              {% endif %}
+              {% if t.focus %} ({{ t.focus }}){% endif %}
+              {% if t.department %}, {{ t.department }}{% endif %}
+              — {{ t.start }} – {{ t.end }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    {% endif %}
+  </details>
+{% endfor %}

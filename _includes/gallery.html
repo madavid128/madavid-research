@@ -1,0 +1,54 @@
+{% assign emptyarray = "" | split: "," %}
+{% assign items = site.data[include.data] | default: emptyarray %}
+{% assign items = items | data_filter: include.filter %}
+{% assign items = items | sort: "date" | reverse %}
+
+<div class="gallery" data-gallery>
+  {% for item in items %}
+    {% assign title = item.title | default: "" %}
+    {% assign subtitle = item.subtitle | default: "" %}
+    {% assign image = item.image | default: "" %}
+    {% assign link = item.link | default: image %}
+    {% assign tags = item.tags | default: emptyarray %}
+    {% capture search %}{{ title }} {{ subtitle }} {{ tags | join: " " }}{% endcapture %}
+
+    <figure class="gallery-item" data-search="{{ search | strip_newlines | xml_escape }}">
+      <a
+        href="{{ link | relative_url | uri_escape }}"
+        class="gallery-link"
+        data-gallery-open
+        data-gallery-src="{{ image | relative_url | uri_escape }}"
+        data-gallery-title="{{ title | xml_escape }}"
+        data-gallery-subtitle="{{ subtitle | xml_escape }}"
+      >
+        <img
+          src="{{ image | relative_url | uri_escape }}"
+          alt="{{ title | default: "gallery image" | regex_strip }}"
+          loading="lazy"
+          {% include fallback.html %}
+        >
+      </a>
+
+      {% if title and title != "" %}
+        <figcaption class="gallery-caption">
+          <div class="gallery-caption-title">{{ title }}</div>
+          {% if subtitle and subtitle != "" %}
+            <div class="gallery-caption-subtitle">{{ subtitle }}</div>
+          {% endif %}
+          {% if tags.size > 0 %}
+            {% include tags.html tags=tags %}
+          {% endif %}
+        </figcaption>
+      {% endif %}
+    </figure>
+  {% endfor %}
+</div>
+
+<dialog class="gallery-lightbox" data-gallery-lightbox aria-label="Image viewer">
+  <button type="button" class="gallery-lightbox-close button" data-style="bare" data-gallery-close aria-label="Close">
+    {% include icon.html icon="fa-solid fa-xmark" %}
+  </button>
+  <img class="gallery-lightbox-img" data-gallery-img alt="">
+  <div class="gallery-lightbox-meta" data-gallery-meta></div>
+</dialog>
+

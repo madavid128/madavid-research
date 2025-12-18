@@ -1,0 +1,63 @@
+- date: 2025-10-01
+  title: Lab / group photo (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-01.svg
+  link: images/pictures-01.svg
+  tags: [lab, people]
+  style: square
+
+- date: 2025-09-15
+  title: Conference moment (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-02.svg
+  link: images/pictures-02.svg
+  tags: [conference, travel]
+  style: square
+
+- date: 2025-08-20
+  title: Outreach / public engagement (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-03.svg
+  link: images/pictures-03.svg
+  tags: [outreach]
+  style: square
+
+- date: 2025-08-01
+  title: Scientific art (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-04.svg
+  link: art
+  tags: [art]
+  style: square
+
+- date: 2025-07-01
+  title: Lab life (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-05.svg
+  link: images/pictures-05.svg
+  tags: [lab]
+  style: square
+
+- date: 2025-06-01
+  title: Award / milestone (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-06.svg
+  link: news
+  tags: [award, update]
+  style: square
+
+- date: 2025-05-01
+  title: Nature (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-nature.svg
+  link: images/pictures-nature.svg
+  tags: [nature]
+  style: square
+
+- date: 2025-04-01
+  title: Sports (placeholder)
+  subtitle: Replace with your image
+  image: images/pictures-sports.svg
+  link: images/pictures-sports.svg
+  tags: [sports]
+  style: square

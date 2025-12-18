@@ -32,6 +32,34 @@ $wrap: 800px;
   object-fit: contain;
 }
 
+.citation-image-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--background);
+}
+
+.citation-image-fallback-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.citation-image-fallback-title {
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+}
+
+.citation-image-fallback-subtitle {
+  opacity: 0.9;
+}
+
 .citation-text {
   position: relative;
   display: inline-flex;
@@ -89,6 +117,11 @@ $wrap: 800px;
   display: inline-flex;
   justify-content: flex-start;
   margin: 0;
+}
+
+.citation-author.author-highlight {
+  color: var(--primary);
+  font-weight: var(--semi-bold);
 }
 
 @container (max-width: #{$wrap}) {

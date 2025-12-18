@@ -1,0 +1,25 @@
+- title: Software & Tools
+  subtitle: GitHub
+  description: Code, tools, and research software I’ve built or contributed to.
+  link: https://github.com/madavid128
+  image: images/icon.png
+  tags: [software, tools]
+  group: featured
+  date: 2025-01-01
+
+- title: Publications (Auto-updated)
+  subtitle: PubMed / Google Scholar
+  description: Automated publication list powered by scheduled citation updates and rich citation cards.
+  link: research
+  image: images/icon.png
+  tags: [publication]
+  group: featured
+  date: 2025-01-01
+
+- title: Collaboration and Contact
+  subtitle: Opportunities and partnerships
+  description: Ways to connect for research, mentorship, and collaborative projects.
+  link: contact
+  image: images/background.jpg
+  tags: [resource]
+  date: 2025-01-01

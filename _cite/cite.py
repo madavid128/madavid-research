@@ -18,6 +18,7 @@ warnings = []
 
 # output citations file
 output_file = "_data/citations.yaml"
+wordcloud_errors = []
 
 
 log()
@@ -182,6 +183,21 @@ except Exception as e:
     log(e, level="ERROR")
     errors.append(e)
 
+log()
+log("Generating publication word cloud")
+try:
+    from wordclouds import generate_all
+
+    generated = generate_all(citations)
+    if len(generated) == 0:
+        log("No word cloud generated (missing dependency or no text)", level="WARNING")
+    else:
+        for path in generated:
+            log(f"Wrote {path}", indent=1, level="INFO")
+except Exception as e:
+    # word cloud is best-effort; never fail the cite pipeline for it
+    log(e, level="WARNING")
+    wordcloud_errors.append(str(e))
 
 log()
 

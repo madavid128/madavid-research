@@ -1,0 +1,37 @@
+{% assign title = include.title | default: "News item" %}
+{% assign link = include.link | default: nil %}
+{% assign source = include.source | default: nil %}
+{% assign description = include.description | default: nil %}
+
+{% assign date_iso = include.date | date_to_xmlschema %}
+{% assign date_human = include.date | date: "%b %Y" %}
+
+<li class="news-item" data-search="{{ title | append: ' ' | append: source | append: ' ' | append: description | strip_html | strip_newlines | regex_strip }}">
+  <div class="news-item-row">
+    <span class="news-item-date">{{ date_human }}</span>
+    <div class="news-item-body">
+      {% if link %}
+        <a class="news-item-title" href="{{ link | relative_url | uri_escape }}">
+          {{ title }}
+        </a>
+      {% else %}
+        <span class="news-item-title">{{ title }}</span>
+      {% endif %}
+
+      {% if source %}
+        <span class="news-item-source">{{ source }}</span>
+      {% endif %}
+
+      {% if description %}
+        <div class="news-item-description">
+          {{ description | markdownify | remove: "<p>" | remove: "</p>" }}
+        </div>
+      {% endif %}
+
+      {% if include.tags %}
+        {% include tags.html tags=include.tags %}
+      {% endif %}
+    </div>
+  </div>
+</li>
+

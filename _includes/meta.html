@@ -26,19 +26,32 @@
     {{ site.subtitle }}. {{ description }}
   {%- endcapture %}
 {% endif %}
-{% capture url -%}
-  {{ site.url }}{{ site.baseurl }}
-{%- endcapture %}
+{% assign canonical = page.url | absolute_url %}
 
 {% assign description = description | xml_escape %}
 
-{% assign png = "images/icon.png" | file_exists %}
-{% assign jpg = "images/icon.jpg" | file_exists %}
-{% assign icon = png | default: jpg | relative_url %}
+{% assign icon_png = "images/icon.png" | file_exists %}
+{% assign icon_jpg = "images/icon.jpg" | file_exists %}
+{% assign icon_file = icon_png | default: icon_jpg %}
+{% assign icon_path = icon_file | prepend: "/" %}
+{% assign icon = icon_path | absolute_url %}
 
-{% assign jpg = "images/share.jpg" | file_exists %}
-{% assign png = "images/share.png" | file_exists %}
-{% assign share = jpg | default: png | relative_url %}
+{% assign share_jpg = "images/share.jpg" | file_exists %}
+{% assign share_png = "images/share.png" | file_exists %}
+{% assign share_file = share_jpg | default: share_png | default: icon_file %}
+
+{% assign share_value = page.share | default: site.share | default: share_file %}
+{% assign share_url = share_value %}
+{% if share_value contains "://" %}
+  {% assign share_url = share_value %}
+{% else %}
+  {% assign share_path = share_value %}
+  {% assign share_path_first = share_path | slice: 0, 1 %}
+  {% if share_path_first != "/" %}
+    {% assign share_path = share_path | prepend: "/" %}
+  {% endif %}
+  {% assign share_url = share_path | absolute_url %}
+{% endif %}
 
 {% assign published = page.date | date_to_xmlschema %}
 {% assign updated = page.last_modified_at | date_to_xmlschema %}
@@ -49,23 +62,23 @@
 
 <title>{{ fulltitle }}</title>
 
-<link rel="icon" href="{{ icon }}">
+<link rel="canonical" href="{{ canonical }}">
 
 <meta name="title" content="{{ title }}">
 <meta name="description" content="{{ description }}">
 
 <meta property="og:title" content="{{ title }}">
-<meta property="og:site_title" content="{{ site.title | xml_escape }}">
+<meta property="og:site_name" content="{{ site.title | xml_escape }}">
 <meta property="og:description" content="{{ description }}">
-<meta property="og:url" content="{{ url }}">
-<meta property="og:image" content="{{ share }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ share_url }}">
 <meta property="og:locale" content="en_US">
 
 <meta property="twitter:title" content="{{ title }}">
 <meta property="twitter:description" content="{{ description }}">
-<meta property="twitter:url" content="{{ url }}">
+<meta property="twitter:url" content="{{ canonical }}">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="{{ share }}">
+<meta property="twitter:image" content="{{ share_url }}">
 
 {% if page.author %}
   <meta name="author" content="{{ page.author | xml_escape }}">
@@ -96,7 +109,7 @@
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "{{ icon }}" }
     },
-    "url": "{{ url }}"
+    "url": "{{ canonical }}"
   }
 </script>
 

@@ -15,11 +15,13 @@
     </div>
   -->
 
-  <div>
-    {% for link in site.links %}
-      {% assign key = link[0] %}
-      {% assign value = link[1] %}
-      {% include button.html type=key text="" link=value style="bare" %}
+  {% assign footer_keys = "email,orcid,google-scholar,github,linkedin,pubmed" | split: "," %}
+  <div class="footer-links">
+    {% for key in footer_keys %}
+      {% assign value = site.links[key] %}
+      {% if value and value != "" %}
+        {% include button.html type=key text="" link=value style="bare" %}
+      {% endif %}
     {% endfor %}
   </div>
 
@@ -30,6 +32,8 @@
     <a href="https://github.com/greenelab/lab-website-template">
       Lab Website Template
     </a>
+    &nbsp; | &nbsp;
+    <a href="{{ "notices" | relative_url }}">Notices</a>
   </div>
 
   <input

@@ -75,6 +75,8 @@ jobs:
         with:
           files: |
             _data/citations.yaml
+            _data/publications_terms.yaml
+            images/publications-wordcloud.png
 
       - name: Commit updated citations to branch
         if: |

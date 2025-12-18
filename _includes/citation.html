@@ -11,6 +11,7 @@
 <div class="citation-container">
   <div class="citation">
     {% if include.style == "rich" %}
+      {% assign thumb = citation.image | default: nil %}
       <a
         {% if citation.link %}
           href="{{ citation.link | relative_url | uri_escape }}"
@@ -18,12 +19,28 @@
         class="citation-image"
         aria-label="{{ citation.title | default: "citation link" | regex_strip }}"
       >
-        <img
-          src="{{ citation.image | relative_url | uri_escape }}"
-          alt="{{ citation.title | default: "citation image" | regex_strip }}"
-          loading="lazy"
-          {% include fallback.html %}
-        >
+        {% if thumb and thumb != "" %}
+          <img
+            src="{{ thumb | relative_url | uri_escape }}"
+            alt="{{ citation.title | default: "citation image" | regex_strip }}"
+            loading="lazy"
+            {% include fallback.html %}
+          >
+        {% else %}
+          {% assign publisher = citation.publisher | default: "Publication" %}
+          <div class="citation-image-fallback" aria-hidden="true">
+            <div class="citation-image-fallback-inner">
+              <span class="citation-image-fallback-title">
+                {{ publisher | truncate: 28 }}
+              </span>
+              {% if citation.date %}
+                <span class="citation-image-fallback-subtitle">
+                  {{ citation.date | date: "%Y" }}
+                </span>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
       </a>
     {% endif %}
 
@@ -47,16 +64,28 @@
         {% endif %}
         tabindex="0"
       >
-        {{
-          citation.authors
-          | join: ","
-          | split: ","
-          | array_carve: 5
-          | join: ", "
-          | markdownify
-          | remove: "<p>" | remove: "</p>"
-          | default: "[no author info]"
-        }}
+        {% assign emptyarray = "" | split: "," %}
+        {% assign authors = citation.authors | default: emptyarray %}
+        {% if authors.size > 0 %}
+          {% for a in authors limit: 5 %}
+            {% assign a_norm = a | downcase | strip | replace: ".", "" | replace: " ", "" %}
+            {% assign is_self = false %}
+            {% if a_norm == "michaeladavid" or a_norm == "michaeldavid" or a_norm == "madavid" %}
+              {% assign is_self = true %}
+            {% endif %}
+            <span class="citation-author{% if is_self %} author-highlight{% endif %}">
+              {{ a | xml_escape }}
+            </span>
+            {% unless forloop.last %}
+              <span class="citation-author-sep">, </span>
+            {% endunless %}
+          {% endfor %}
+          {% if authors.size > 5 %}
+            <span class="citation-author-sep">, </span><span class="citation-author">et&nbsp;al.</span>
+          {% endif %}
+        {% else %}
+          [no author info]
+        {% endif %}
       </div>
 
       <div class="citation-details">

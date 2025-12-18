@@ -1,0 +1,19 @@
+- name: Example Collaborator (replace)
+  status: current
+  institution: Example Institution
+  city: City
+  country: Country
+  lat: 51.5072
+  lon: -0.1276
+  link: https://example.com
+  tags: [collaboration]
+
+- name: Example Trainee (replace)
+  status: past
+  institution: University / Program
+  city: City
+  country: Country
+  lat: 39.9526
+  lon: -75.1652
+  link: contact
+  tags: [trainee]

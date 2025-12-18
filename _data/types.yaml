@@ -126,6 +126,11 @@ linkedin:
   tooltip: LinkedIn
   link: https://www.linkedin.com/in/$VALUE
 
+pubmed:
+  icon: fa-solid fa-book-medical
+  text: PubMed
+  tooltip: PubMed bibliography
+
 # alerts
 
 tip:
@@ -183,6 +188,11 @@ unpublished:
   icon: fa-regular fa-eye
   text: Unpublished
   tooltip: Unpublished
+
+dissertation:
+  icon: fa-solid fa-graduation-cap
+  text: Dissertation
+  tooltip: Dissertation
 
 manubot:
   icon: manubot.svg

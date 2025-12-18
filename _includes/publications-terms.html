@@ -1,0 +1,21 @@
+{% assign terms = site.data.publications_terms %}
+{% if terms and terms.size > 0 %}
+  <div class="publication-terms" aria-label="Top publication terms">
+    {% for item in terms %}
+      {% assign term = item.term | default: item %}
+      {% assign count = item.count | default: nil %}
+      {% if term and term != "" %}
+        {% capture search %}{{ term }}{% endcapture %}
+        <a
+          class="publication-term"
+          href="{{ page.dir | relative_url }}?search={{ search | uri_escape }}"
+          {% if count %}
+            data-tooltip="{{ count }} occurrences (weighted)"
+          {% endif %}
+        >
+          {{ term }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

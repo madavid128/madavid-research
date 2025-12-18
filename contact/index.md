@@ -1,25 +1,32 @@
 ---
 title: Contact
+description: Email and location for collaborations and opportunities.
 nav:
-  order: 5
+  order: 8
+  icon: fa-regular fa-envelope
   tooltip: Email, address, and location
+share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-I welcome collaborations, questions, and opportunities to discuss research, analytics, or data-driven art!
+I welcome collaborations, questions, and opportunities related to research, analytics, or data‑driven art.
+
+## Collaboration & mentorship
+
+**Collaboration** — I partner on projects involving:
+- Spatial histopathology + AI
+- Medical imaging (MRI/CT) + radiomics
+- Transcriptomics/multi‑omics integration
+- Reproducible analysis pipelines
+
+**Mentorship** — If you’re interested in collaborating or mentoring opportunities, I’m happy to chat and help define a project with clear scope and measurable deliverables.
 
 {%
   include button.html
   type="email"
   text="michael.david@cuanschutz.edu"
   link="michael.david@cuanschutz.edu"
-%}
-{%
-  include button.html
-  type="phone"
-  text="N/A"
-  link="+1-111-111-1111"
 %}
 {%
   include button.html
@@ -34,8 +41,8 @@ I welcome collaborations, questions, and opportunities to discuss research, anal
 
 {%
   include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
+  image="images/MichaelDavid_headshot.jpeg"
+  caption="Email is the best way to reach me."
 %}
 
 {% endcapture %}
@@ -44,29 +51,10 @@ I welcome collaborations, questions, and opportunities to discuss research, anal
 
 {%
   include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
+  image="images/background.jpg"
+  caption="Based at the University of Colorado Anschutz Medical Campus."
 %}
 
 {% endcapture %}
 
 {% include cols.html col1=col1 col2=col2 %}
-
-{% include section.html dark=true %}
-
-{% capture col1 %}
-Collaboration
-
-{% endcapture %}
-
-{% capture col2 %}
-Curosity
-
-{% endcapture %}
-
-{% capture col3 %}
-Courage
-
-{% endcapture %}
-
-{% include cols.html col1=col1 col2=col2 col3=col3 %}

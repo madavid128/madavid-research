@@ -1,9 +1,10 @@
 # site properties and page defaults
-title: Research Portfolio for Michael A. David, PhD
-subtitle: Orthopedics • Machine Learning • Biomedical Imaging • Multimodal Analytics • Scientific Art
-description:   
+title: Michael A. David, PhD
+subtitle: Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art
+description: Machine learning for spatial histopathology, multi-omics, and medical imaging in musculoskeletal disease.
 header: images/background.jpg
 footer: images/background.jpg
+share: images/background.jpg
 proofer: false
 logo: /images/logo-mad-green-transparent.svg
 
@@ -13,7 +14,10 @@ links:
   orcid: 0009-0006-5637-2403
   google-scholar: o7mhIiEAAAAJ
   github: madavid128
+  linkedin: mdavid3
   pubmed: "https://www.ncbi.nlm.nih.gov/myncbi/1Feoil52XxqgFN/bibliography/public/"
+  cv: "" # optional: link to full CV PDF
+  calendar: "" # optional: scheduling link (Calendly, etc.)
   url: "https://madavid128.github.io"
   baseurl: "/madavid-research"   # "" if using a custom domain or user site
     

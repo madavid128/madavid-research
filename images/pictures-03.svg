@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#075985"/>
+    </linearGradient>
+    <style>
+      .t { font: 700 58px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: #ffffff; }
+      .s { font: 400 32px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: rgba(255,255,255,0.9); }
+    </style>
+  </defs>
+  <rect width="1200" height="1200" rx="48" fill="url(#g)"/>
+  <g fill="rgba(255,255,255,0.18)">
+    <rect x="220" y="260" width="760" height="520" rx="40"/>
+    <rect x="260" y="320" width="300" height="26" rx="13"/>
+    <rect x="260" y="370" width="520" height="22" rx="11"/>
+    <rect x="260" y="410" width="460" height="22" rx="11"/>
+  </g>
+  <text x="90" y="820" class="t">Picture 3</text>
+  <text x="90" y="890" class="s">Outreach / engagement placeholder</text>
+</svg>
+

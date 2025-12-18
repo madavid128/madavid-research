@@ -1,0 +1,6 @@
+- name: Add collaborations here
+  subtitle: Edit `_data/current_collaborations.yaml`
+  description: Add your current collaborators and partners (names, institutions, and links). These are separate from the global map.
+  link: collaborators
+  image: images/news-placeholder.svg
+  tags: [collaboration]

@@ -1,0 +1,65 @@
+{% assign home = site.data.map_home %}
+{% assign emptyarray = "" | split: "," %}
+{% assign trainees = site.data.trainees | default: emptyarray %}
+{% assign institutions = site.data.trainee_institutions | default: emptyarray %}
+
+<div class="collab-map" data-map-kind="trainees">
+  <div class="collab-map-controls" role="group" aria-label="Trainee map controls">
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">View</span>
+      <button class="button" data-style="bare" type="button" data-trainee-view="world" aria-pressed="true">World</button>
+      <button class="button" data-style="bare" type="button" data-trainee-view="us" aria-pressed="false">US</button>
+    </div>
+
+    <div class="collab-map-control">
+      <span class="collab-map-control-label">Show</span>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-trainee-filter="current">
+        Current
+      </label>
+      <label class="collab-map-toggle">
+        <input type="checkbox" checked data-trainee-filter="past">
+        Past
+      </label>
+    </div>
+  </div>
+
+  <div class="collab-map-summary" data-trainee-summary></div>
+
+  <div class="collab-map-plot" data-trainee-map data-site-root="{{ "/" | relative_url }}">
+    <div class="collab-map-loading">Loading map…</div>
+  </div>
+
+  {% capture payload %}
+    {
+      "home": {{ home | jsonify }},
+      "trainees": {{ trainees | jsonify }},
+      "institutions": {{ institutions | jsonify }}
+    }
+  {% endcapture %}
+  <script type="application/json" class="trainee-map-data">
+    {{ payload | strip_newlines }}
+  </script>
+  <script>
+    (function () {
+      if (window.renderTraineesMaps) window.renderTraineesMaps();
+      var root = document.currentScript && document.currentScript.parentElement;
+      var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
+      window.setTimeout(function () {
+        if (!loading) return;
+        if (!window.renderTraineesMaps) {
+          loading.textContent = "Map script failed to load.";
+          return;
+        }
+        if (!window.Plotly) {
+          loading.textContent = "Loading map library… (Plotly)";
+          return;
+        }
+      }, 1500);
+    })();
+  </script>
+
+  <noscript>
+    <p>This map is interactive and requires JavaScript.</p>
+  </noscript>
+</div>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="g" x1="1" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#075985"/>
+      <stop offset="1" stop-color="#00a878"/>
+    </linearGradient>
+    <style>
+      .t { font: 700 58px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: #ffffff; }
+      .s { font: 400 32px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: rgba(255,255,255,0.9); }
+    </style>
+  </defs>
+  <rect width="1200" height="1200" rx="48" fill="url(#g)"/>
+  <g stroke="rgba(255,255,255,0.55)" stroke-width="10" fill="none" stroke-linecap="round">
+    <path d="M220 640 C360 420, 520 820, 660 560 C800 300, 920 640, 1020 480"/>
+  </g>
+  <text x="90" y="820" class="t">Picture 2</text>
+  <text x="90" y="890" class="s">Conference / travel placeholder</text>
+</svg>
+

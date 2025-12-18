@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="g" x1="1" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#065f46"/>
+    </linearGradient>
+    <style>
+      .t { font: 700 64px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: #ffffff; }
+      .s { font: 400 36px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: rgba(255,255,255,0.9); }
+    </style>
+  </defs>
+  <rect width="1200" height="1200" rx="48" fill="url(#g)"/>
+  <rect x="120" y="180" width="960" height="420" rx="28" fill="rgba(255,255,255,0.10)"/>
+  <path d="M160 560 C280 360, 420 640, 560 440 C700 240, 860 560, 1040 360" stroke="rgba(255,255,255,0.65)" stroke-width="8" fill="none"/>
+  <text x="80" y="720" class="t">Art Placeholder 2</text>
+  <text x="80" y="790" class="s">Replace with your image</text>
+</svg>

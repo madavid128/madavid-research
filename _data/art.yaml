@@ -1,0 +1,40 @@
+- date: 2025-10-01
+  title: Art Placeholder 1
+  subtitle: Replace with your piece
+  image: images/art-in-science-01.svg
+  link: images/art-in-science-01.svg
+  tags: [art, visualization]
+  style: square
+
+- date: 2025-10-01
+  title: Art Placeholder 2
+  subtitle: Replace with your piece
+  image: images/art-in-science-02.svg
+  link: images/art-in-science-02.svg
+  tags: [art, imaging]
+  style: square
+
+- date: 2025-10-01
+  title: Art Placeholder 3
+  subtitle: Replace with your piece
+  image: images/art-in-science-03.svg
+  link: images/art-in-science-03.svg
+  tags: [art, multiomics]
+  style: square
+
+- date: 2025-10-01
+  title: Art Placeholder 4
+  subtitle: Replace with your piece
+  image: images/art-in-science-04.svg
+  link: images/art-in-science-04.svg
+  tags: [art, outreach]
+  style: square
+
+- date: 2025-10-01
+  title: Art Placeholder 5
+  subtitle: Replace with your piece
+  image: images/art-in-science-05.svg
+  link: images/art-in-science-05.svg
+  tags: [art, award]
+  style: square
+

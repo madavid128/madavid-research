@@ -1,0 +1,84 @@
+---
+---
+
+.publication-wordcloud {
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.publication-wordcloud img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  background: var(--background-alt);
+  box-shadow: var(--shadow);
+}
+
+.publication-wordcloud figcaption {
+  margin-top: 10px;
+  color: var(--dark-gray);
+}
+
+.publication-terms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 18px 0 0;
+}
+
+.publication-term {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--light-gray);
+  background: var(--background-alt);
+  color: var(--text);
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.publication-term:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.featured-pubs {
+  --repeat: 4;
+  gap: 22px;
+  margin: 22px 0;
+}
+
+.featured-pubs .card {
+  width: 100%;
+  margin: 0;
+}
+
+.featured-pubs .card-text {
+  gap: 12px;
+  padding: 16px;
+}
+
+.featured-pubs .card-title {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.featured-pubs .card-authors {
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  text-align: center;
+}
+
+.featured-pubs .author-highlight {
+  color: var(--primary);
+  font-weight: var(--semi-bold);
+}
+
+.featured-pubs .card-subtitle {
+  font-style: normal;
+  margin-top: 0 !important;
+}
