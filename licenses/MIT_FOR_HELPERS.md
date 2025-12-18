@@ -1,3 +1,13 @@
+MIT License (helper scripts only)
+
+This MIT license applies only to files in this repository that are explicitly marked with:
+
+`SPDX-License-Identifier: MIT`
+
+The repository’s default license is `LICENSE.md` (BSD 3‑Clause).
+
+---
+
 MIT License
 
 Copyright (c) 2025 Michael A. David

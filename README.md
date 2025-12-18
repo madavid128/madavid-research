@@ -173,7 +173,7 @@
 
   The repository’s default license is `LICENSE.md` (BSD 3‑Clause).
 
-  Some standalone helper scripts added for this site are licensed under MIT (see `LICENSE-MIT.md`) and are marked per-file via
+  Some standalone helper scripts added for this site are licensed under MIT (see `licenses/MIT_FOR_HELPERS.md`) and are marked per-file via
   `SPDX-License-Identifier: MIT` at the top of the script. See `LICENSES.md` for the current list of MIT‑licensed helper files.
 
   
