@@ -5,12 +5,25 @@ nav:
   order: 2
   icon: fa-solid fa-wrench
   tooltip: Project areas and tools
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-solid fa-wrench" %}Projects
 
 This page summarizes four major project areas, plus selected software and tools.
+
+{%
+  include alert.html
+  type="info"
+  content="New to the site? The FAQ has a short glossary (radiomics, multi-omics, etc.)."
+%}
+
+{%
+  include button.html
+  link="faq"
+  text="FAQ / glossary"
+  icon="fa-regular fa-circle-question"
+  style="bare"
+%}
 
 {% include section.html %}
 
@@ -134,30 +147,3 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
 ### Featured
 
 {% include list.html component="card" data="projects" filter="group == 'featured'" %}
-
-{% include section.html %}
-
-### More
-
-{% include list.html component="card" data="projects" filter="!group" style="small" %}
-
-{% include section.html %}
-
-{%
-  include button.html
-  link="art"
-  text="Explore Scientific Art"
-  icon="fa-solid fa-palette"
-  style="solid"
-%}
-
-{% include section.html %}
-
-{% capture gh_url %}https://github.com/{{ site.links.github }}{% endcapture %}
-{%
-  include button.html
-  link=gh_url
-  text="More on GitHub"
-  icon="fa-brands fa-github"
-  style="bare"
-%}

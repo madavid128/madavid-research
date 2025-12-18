@@ -1,0 +1,72 @@
+---
+---
+
+.contact-mailto {
+  margin: 18px auto 22px;
+  max-width: 900px;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--light-gray);
+  border-radius: 18px;
+  background: var(--background-alt);
+  box-shadow: var(--shadow);
+}
+
+.contact-mailto-title {
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  margin-bottom: 10px;
+}
+
+.contact-mailto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.contact-mailto-field {
+  display: grid;
+  gap: 6px;
+}
+
+.contact-mailto-field--full {
+  grid-column: 1 / -1;
+}
+
+.contact-mailto-field span {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
+.contact-mailto input,
+.contact-mailto select,
+.contact-mailto textarea {
+  width: 100%;
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--background);
+  color: var(--text);
+  font: inherit;
+}
+
+.contact-mailto textarea {
+  resize: vertical;
+}
+
+.contact-mailto .button {
+  margin: 0;
+}
+
+.contact-mailto-note {
+  margin-top: 10px;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+  .contact-mailto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

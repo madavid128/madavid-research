@@ -1,0 +1,70 @@
+{% comment %}
+  Global search overlay.
+  - Trigger: header search button, or press "/" anywhere.
+  - Index source: /search.json (generated at build time).
+  - JS: _scripts/global-search.js
+  - CSS: _styles/global-search.scss
+{% endcomment %}
+
+<dialog
+  class="global-search"
+  data-global-search
+  data-search-url="{{ "/search.json" | relative_url }}{% if jekyll.environment == "development" %}?v={{ site.time | date: "%s" }}{% endif %}"
+  aria-label="Site search"
+>
+  <form method="dialog" class="global-search-shell">
+    <div class="global-search-bar">
+      <label class="sr-only" for="global-search-input">Search</label>
+      <input
+        id="global-search-input"
+        class="global-search-input"
+        type="text"
+        placeholder="Search publications, pages, and updates…"
+        autocomplete="off"
+      >
+      <button type="button" class="button" data-style="bare" data-global-search-close aria-label="Close search">
+        {% include icon.html icon="fa-solid fa-xmark" %}
+      </button>
+    </div>
+
+    <div class="global-search-meta">
+      <div class="global-search-hints">
+        <span class="global-search-hint">Tip: press <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> to search · <kbd>Esc</kbd> to close</span>
+        <button
+          type="button"
+          class="global-search-help-button"
+          data-style="bare"
+          data-global-search-help
+          aria-expanded="false"
+          aria-controls="global-search-help"
+          data-tooltip="How search works"
+        >
+          {% include icon.html icon="fa-regular fa-circle-question" %}
+          <span class="sr-only">Search help</span>
+        </button>
+      </div>
+      <div class="global-search-filters" role="group" aria-label="Search filters">
+        <button type="button" class="global-search-filter" data-global-search-type="all" aria-pressed="true">All</button>
+        <button type="button" class="global-search-filter" data-global-search-type="publication" aria-pressed="false">Publications</button>
+        <button type="button" class="global-search-filter" data-global-search-type="project" aria-pressed="false">Projects</button>
+        <button type="button" class="global-search-filter" data-global-search-type="team" aria-pressed="false">People</button>
+        <button type="button" class="global-search-filter" data-global-search-type="update" aria-pressed="false">Updates</button>
+        <button type="button" class="global-search-filter" data-global-search-type="page" aria-pressed="false">Pages</button>
+        <button type="button" class="global-search-filter" data-global-search-type="post" aria-pressed="false">Blog</button>
+        <button type="button" class="global-search-filter" data-global-search-type="news" aria-pressed="false">News</button>
+        <button type="button" class="global-search-filter" data-global-search-type="picture" aria-pressed="false">Pictures</button>
+        <button type="button" class="global-search-filter" data-global-search-type="art" aria-pressed="false">Art</button>
+      </div>
+    </div>
+
+    <div class="global-search-help" id="global-search-help" hidden>
+      <div class="global-search-help-title">How search works</div>
+      <div class="global-search-help-body">
+        <div><span class="global-search-example">cartilage</span> <span class="global-search-example">tendon</span> <span class="global-search-example">machine learning</span></div>
+        <div>Try tokens: <span class="global-search-example">year:2021</span> <span class="global-search-example">year:2020-2022</span> <span class="global-search-example">tag:machine learning</span> <span class="global-search-example">type:publication</span></div>
+      </div>
+    </div>
+
+    <div class="global-search-results" data-global-search-results aria-live="polite"></div>
+  </form>
+</dialog>

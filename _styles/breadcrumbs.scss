@@ -1,0 +1,33 @@
+---
+---
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 18px;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
+.breadcrumb {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.breadcrumb:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.breadcrumb-sep {
+  opacity: 0.6;
+}
+
+.breadcrumb-current {
+  color: var(--text);
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+}
+

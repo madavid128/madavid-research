@@ -5,7 +5,6 @@ nav:
   order: 5
   icon: fa-regular fa-images
   tooltip: Photos and galleries
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-regular fa-images" %}Pictures

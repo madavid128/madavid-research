@@ -5,14 +5,51 @@ nav:
   order: 8
   icon: fa-regular fa-envelope
   tooltip: Email, address, and location
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
 I welcome collaborations, questions, and opportunities related to research, analytics, or data‑driven art.
 
+<div class="contact-mailto" data-contact-mailto data-email="michael.david@cuanschutz.edu">
+  <div class="contact-mailto-title">Contact me about…</div>
+  <div class="contact-mailto-grid">
+    <label class="contact-mailto-field">
+      <span>Topic</span>
+      <select data-contact-topic>
+        <option value="Collaboration">Collaboration</option>
+        <option value="Mentoring">Mentoring</option>
+        <option value="Speaking invitation">Speaking invitation</option>
+        <option value="Scientific art / outreach">Scientific art / outreach</option>
+        <option value="Other">Other</option>
+      </select>
+    </label>
+
+    <label class="contact-mailto-field">
+      <span>Your name (optional)</span>
+      <input type="text" inputmode="text" autocomplete="name" data-contact-name placeholder="Name">
+    </label>
+
+    <label class="contact-mailto-field contact-mailto-field--full">
+      <span>Message (optional)</span>
+      <textarea rows="4" data-contact-message placeholder="A few details to help me respond quickly…"></textarea>
+    </label>
+  </div>
+
+  <button type="button" class="button" data-style="solid" data-contact-send>
+    {% include icon.html icon="fa-regular fa-envelope" %}
+    <span>Open email draft</span>
+  </button>
+  <div class="contact-mailto-note">Opens your email client; nothing is submitted.</div>
+</div>
+
 ## Collaboration & mentorship
+
+**Best topics to email about**
+- Research collaborations (especially imaging + machine learning + spatial biology)
+- Speaking invitations and seminars
+- Mentorship opportunities (students/trainees)
+- Scientific art / outreach partnerships
 
 **Collaboration** — I partner on projects involving:
 - Spatial histopathology + AI
@@ -22,11 +59,27 @@ I welcome collaborations, questions, and opportunities related to research, anal
 
 **Mentorship** — If you’re interested in collaborating or mentoring opportunities, I’m happy to chat and help define a project with clear scope and measurable deliverables.
 
+**Response** — I do my best to reply within a few business days.
+
 {%
   include button.html
   type="email"
   text="michael.david@cuanschutz.edu"
   link="michael.david@cuanschutz.edu"
+%}
+{%
+  include button.html
+  type="linkedin"
+  text="LinkedIn"
+  link=site.links.linkedin
+  style="bare"
+%}
+{%
+  include button.html
+  type="github"
+  text="GitHub"
+  link=site.links.github
+  style="bare"
 %}
 {%
   include button.html
@@ -36,6 +89,30 @@ I welcome collaborations, questions, and opportunities related to research, anal
 %}
 
 {% include section.html %}
+
+## Quick links
+
+{%
+  include button.html
+  type="google-scholar"
+  text="Google Scholar"
+  link=site.links.google-scholar
+  style="solid"
+%}
+{%
+  include button.html
+  type="orcid"
+  text="ORCID"
+  link=site.links.orcid
+  style="solid"
+%}
+{%
+  include button.html
+  type="pubmed"
+  text="PubMed"
+  link=site.links.pubmed
+  style="solid"
+%}
 
 {% capture col1 %}
 

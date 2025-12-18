@@ -5,17 +5,127 @@ nav:
   order: 7
   icon: fa-regular fa-user
   tooltip: About me
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-regular fa-user" %}About
 
-## Work
-I’m a biomedical engineer focused on translational orthopedics, combining bioinformatics, machine learning, and multimodal imaging to understand and predict musculoskeletal disease.
+{% assign jumps = "" | split: "," %}
+{% assign jumps = jumps | push: "education|Education" | push: "appointments|Academic appointments" | push: "skills|Research skills" | push: "mentorship|Mentorship and collaboration" | push: "cv|CV" | push: "beyond|Beyond the lab" %}
+{% include page-jumps.html items=jumps %}
+
+A quick overview of my research focus, how I like to collaborate and mentor, and a few things I enjoy outside the lab.
+
+## Education {#education}
+
+**Doctor of Philosophy (PhD) in Biomedical Engineering**  
+*University of Delaware* — Newark, DE (August 2013 – May 2019)
+- Dissertation: *Local, Intra-Articular Delivery of Zoledronic Acid as a Disease-Modifying Therapeutic for Post-Traumatic Osteoarthritis*
+- Advisor: Christopher Price, PhD
+- Committee: Dawn M. Elliott, PhD; Randall L. Duncan, PhD; Jason P. Gleghorn, PhD
+
+**Bachelor of Science (BS) in Biomedical Engineering**  
+*University of Rochester* — Rochester, NY (August 2009 – June 2013)
+- Concentration: Cell and Tissue Engineering
+- Minor: Chemical Engineering
 
 {% include section.html %}
 
-## Mentorship and collaboration
+## Academic appointments {#appointments}
+
+<div class="directory-table-wrap" aria-label="Academic appointments">
+  <table class="directory-table" style="min-width: 0;">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Institution</th>
+        <th>Dates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Instructor</strong><br>Colorado Program for Musculoskeletal Research, Department of Orthopedics</td>
+        <td>University of Colorado Anschutz Medical Campus<br>Aurora, CO</td>
+        <td>May 2025 – Present</td>
+      </tr>
+      <tr>
+        <td><strong>Research Instructor</strong><br>Colorado Program for Musculoskeletal Research, Department of Orthopedics</td>
+        <td>University of Colorado Anschutz Medical Campus<br>Aurora, CO</td>
+        <td>March 2022 – April 2025</td>
+      </tr>
+      <tr>
+        <td><strong>Postdoctoral Research Associate</strong><br>Musculoskeletal Soft Tissue Laboratory, Department of Mechanical Engineering &amp; Materials Science</td>
+        <td>Washington University in St. Louis<br>St. Louis, MO</td>
+        <td>May 2019 – February 2022</td>
+      </tr>
+      <tr>
+        <td><strong>Graduate Research Assistant</strong><br>Mechanotransduction and Mechanobiology Laboratory, Department of Biomedical Engineering</td>
+        <td>University of Delaware<br>Newark, DE</td>
+        <td>October 2013 – April 2019</td>
+      </tr>
+      <tr>
+        <td><strong>Research Assistant</strong><br>Cartilage Bioengineering Laboratory, Department of Mechanical Engineering</td>
+        <td>University of Delaware<br>Newark, DE</td>
+        <td>July 2013 – September 2013</td>
+      </tr>
+      <tr>
+        <td><strong>Undergraduate Research Assistant</strong><br>Center for Musculoskeletal Research</td>
+        <td>University of Rochester<br>Rochester, NY</td>
+        <td>May 2011 – June 2013</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% include section.html %}
+
+## Research skills {#skills}
+I’m a biomedical engineer focused on translational orthopedics, combining bioinformatics, machine learning, and multimodal imaging to understand and predict musculoskeletal disease.
+
+Comprehensive training in imaging, computational analysis, histology, and preclinical musculoskeletal models.
+
+<div class="directory-table-wrap" aria-label="Research skills">
+  <table class="directory-table" style="min-width: 0;">
+    <thead>
+      <tr>
+        <th>Area</th>
+        <th>Highlights</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Laboratory instruments</strong></td>
+        <td>
+          MRI (11.74T Agilent; 9.4T Bruker BioSpec 94/20); microscopy (epifluorescence, confocal, multiphoton, polarized light, spectrophotometer);
+          biomechanical testing (Instron) and microCT (Scanco); live animal imaging (IVIS/UVP);
+          histology processing (processor, embedder, microtome; manual/auto staining + imaging);
+          nanoparticle characterization (Litesizer/Zetasizer); flow cytometry (Novocyte).
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Laboratory techniques</strong></td>
+        <td>
+          2D/3D cell culture (agarose/collagen hydrogels); primary cell isolation (chondrocyte, synoviocyte, tenocyte across multiple species);
+          tissue explant/co-culture (cartilage + synovium); preclinical joint injury models (mouse knee DMM; rat elbow trauma);
+          nanoparticle/liposome drug delivery; histology + IHC, semi-quantitative scoring, digital histopathology;
+          spatial transcriptomics; machine learning + bioinformatics.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Computing &amp; analysis</strong></td>
+        <td>
+          Python, R, MATLAB, Java/Groovy; Docker, CLI, cloud computing.
+          Histology/IHC: CT-Fire, NDPI-Nanozoomer, OsteoMeasure, QuPath.
+          CT/MRI: CTan, BoneJ, Dragonfly, ITK-SNAP, Seg3D2.4, 3D Slicer.
+          Flow/cell cycle: CellProfiler, FCSExpress, NovoExpress.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% include section.html %}
+
+## Mentorship and collaboration {#mentorship}
 I enjoy collaborating across disciplines and mentoring trainees with diverse backgrounds and interests.
 
 {%
@@ -35,10 +145,8 @@ I enjoy collaborating across disciplines and mentoring trainees with diverse bac
 
 {% include section.html %}
 
-## CV
-Instructor, Department of Orthopedics, University of Colorado Anschutz Medical Campus (Colorado Program for Musculoskeletal Research).
-
-Research focus: translational orthopedics using multimodal imaging, bioinformatics, and machine learning to study post‑traumatic joint conditions (contracture and osteoarthritis).
+## CV {#cv}
+Download my CV and find my publications/profiles below.
 
 {%
   include button.html
@@ -74,7 +182,7 @@ Research focus: translational orthopedics using multimodal imaging, bioinformati
 
 {% include section.html %}
 
-## Beyond the lab
+## Beyond the lab {#beyond}
 Outside of research, I enjoy sports, creative work, and spending time outdoors (including nature photography).
 
 <figure style="margin: 18px 0;">

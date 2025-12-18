@@ -1,0 +1,33 @@
+{% comment %}
+  Manual "What's on this page" jump bar.
+  - Use when you want explicit labels/ordering (otherwise page-jumps.js auto-generates one).
+  - Format: "id|Label" or just "id".
+  - CSS: _styles/page-jumps.scss
+{% endcomment %}
+
+{% assign items = include.items %}
+{% if items and items.size > 0 %}
+  <nav class="page-jumps" aria-label="What's on this page">
+    <span class="page-jumps-title">What's on this page</span>
+    <div class="page-jumps-links">
+      {% for item in items %}
+        {% assign raw = item | append: "" | strip %}
+        {% if raw == "" %}
+          {% continue %}
+        {% endif %}
+
+        {% assign id = raw %}
+        {% assign label = raw %}
+        {% if raw contains "|" %}
+          {% assign parts = raw | split: "|" %}
+          {% assign id = parts[0] | strip %}
+          {% assign label = parts[1] | strip %}
+        {% endif %}
+
+        {% if id and id != "" %}
+          <a class="page-jump" href="#{{ id | uri_escape }}">{{ label }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </nav>
+{% endif %}

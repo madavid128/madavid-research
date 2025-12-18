@@ -8,7 +8,13 @@
   {% assign post = include %}
 {% endif %}
 
-<div class="post-excerpt-container">
+<div
+  class="post-excerpt-container"
+  {% if post.date %}
+    data-year="{{ post.date | date: "%Y" }}"
+  {% endif %}
+  data-type="post"
+>
   <div class="post-excerpt">
     {% assign url = post.url | relative_url | uri_escape %}
     {% assign title = post.title %}

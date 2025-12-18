@@ -16,10 +16,53 @@
 {% assign authors = citation.authors | default: emptyarray %}
 {% capture authors_tooltip %}{{ authors | join: ", " }}{% endcapture %}
 
-<div class="card citation-card" data-style="small">
+{% assign year = citation.date | date: "%Y" %}
+{% assign doi = "" %}
+{% if citation.id and citation.id contains "doi:" %}
+  {% assign doi = citation.id | remove_first: "doi:" %}
+{% endif %}
+{% assign first_author = authors[0] | default: "" %}
+{% assign first_author_last = first_author | split: " " | last | regex_replace: "[^A-Za-z0-9]+", "" %}
+{% assign bib_key = first_author_last | append: year | default: "citation" %}
+
+{% capture citation_text %}
+  {% if authors.size > 0 %}{{ authors | join: ", " }}.{% endif %}
+  {% if year and year != "" %} ({{ year }}).{% endif %}
+  {{ citation.title | default: "[no title]" }}.
+  {% if citation.publisher %} {{ citation.publisher }}.{% endif %}
+  {% if doi and doi != "" %} https://doi.org/{{ doi }}{% elsif citation.link %} {{ citation.link }}{% endif %}
+{% endcapture %}
+
+{% capture bib_text %}
+@article{ {{- bib_key -}} ,
+  title = { {{- citation.title | default: "" -}} },
+  author = { {{- authors | join: " and " -}} },
+  journal = { {{- citation.publisher | default: "" -}} },
+  year = { {{- year | default: "" -}} }{% if doi and doi != "" %},
+  doi = { {{- doi -}} }{% endif %}{% if citation.link and citation.link != "" %},
+  url = { {{- citation.link -}} }{% endif %}
+}
+{% endcapture %}
+
+<div class="card citation-card" data-style="small" data-has-citation-actions="true">
+  <script type="application/json" class="citation-actions-data">
+    {
+      "text": {{ citation_text | strip | regex_replace: "\\s+", " " | jsonify }},
+      "bib": {{ bib_text | strip | jsonify }},
+      "filename": {{ bib_key | append: ".bib" | jsonify }}
+    }
+  </script>
+  {% assign is_external = false %}
+  {% if citation.link and citation.link contains "://" %}
+    {% assign is_external = true %}
+  {% endif %}
   <a
     {% if citation.link %}
       href="{{ citation.link | relative_url | uri_escape }}"
+    {% endif %}
+    {% if is_external %}
+      target="_blank"
+      rel="noopener noreferrer"
     {% endif %}
     aria-label="{{ citation.title | default: "citation link" | regex_strip }}"
     class="card-image"
@@ -37,6 +80,10 @@
       <a
         {% if citation.link %}
           href="{{ citation.link | relative_url | uri_escape }}"
+        {% endif %}
+        {% if is_external %}
+          target="_blank"
+          rel="noopener noreferrer"
         {% endif %}
         class="card-title"
       >
@@ -72,6 +119,15 @@
     {% if subtitle %}
       <span class="card-subtitle">{{ subtitle }}</span>
     {% endif %}
+
+    <div class="citation-actions" role="group" aria-label="Citation actions">
+      <button type="button" class="button" data-style="bare" data-citation-action="copy" aria-label="Copy citation" data-tooltip="Copy citation">
+        {% include icon.html icon="fa-regular fa-copy" %}
+      </button>
+      <button type="button" class="button" data-style="bare" data-citation-action="bib" aria-label="Download BibTeX" data-tooltip="Download BibTeX">
+        {% include icon.html icon="fa-solid fa-download" %}
+      </button>
+    </div>
 
     {% if citation.tags or citation.repo %}
       {% include tags.html tags=citation.tags repo=citation.repo %}

@@ -10,5 +10,5 @@
   | where_exp: "file", "file.path contains '.js'"
 %}
 {% for script in scripts %}
-  <script src="{{ script.path | relative_url }}"></script>
+  <script src="{{ script.path | relative_url }}{% if jekyll.environment == "development" %}?v={{ site.time | date: "%s" }}{% endif %}" defer></script>
 {% endfor %}

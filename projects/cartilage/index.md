@@ -1,7 +1,6 @@
 ---
 title: Cartilage + Synovium Biology
 description: Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post-traumatic disease.
-share: images/background.jpg
 ---
 
 # Cartilage + Synovium Biology

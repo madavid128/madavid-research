@@ -1,0 +1,34 @@
+---
+---
+
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--light-gray);
+  border-radius: 999px;
+  background: var(--background-alt);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  opacity: 0.92;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.back-to-top:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.back-to-top[hidden] {
+  display: none !important;
+}
+
+.back-to-top .icon {
+  color: var(--primary);
+}

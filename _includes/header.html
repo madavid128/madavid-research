@@ -25,13 +25,20 @@
     data-big
   {% endif %}
 >
+  {% assign current_dir = page.dir %}
   <a href="{{ "/" | relative_url }}" class="home">
     {% if logo %}
       <span class="logo">
         {% if logo_is_svg %}
           {{ logo | file_read }}
         {% else %}
-          <img src="{{ logo | relative_url | uri_escape }}" alt="MAD logo">
+          {% assign logo_str = logo | downcase %}
+          {% if logo_str contains ".gif" %}
+            <img class="logo-animated" src="{{ logo | relative_url | uri_escape }}" alt="MAD logo">
+            <img class="logo-static" src="{{ "web-app-manifest-192x192.png" | relative_url | uri_escape }}" alt="MAD logo">
+          {% else %}
+            <img src="{{ logo | relative_url | uri_escape }}" alt="MAD logo">
+          {% endif %}
         {% endif %}
       </span>
     {% endif %}
@@ -47,6 +54,17 @@
     {% endif %}
   </a>
 
+  <button
+    type="button"
+    class="button header-search"
+    data-style="bare"
+    data-global-search-open
+    aria-label="Search"
+    data-tooltip="Search"
+  >
+    {% include icon.html icon="fa-solid fa-magnifying-glass" %}
+  </button>
+
   <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
 
   <nav>
@@ -54,16 +72,24 @@
       | where_exp: "page", "page.nav"
       | sort: "nav.order"
     %}
-    {% for page in pages %}
-      {% if page.nav %}
+    {% for navpage in pages %}
+      {% if navpage.nav %}
+        {% assign is_active = false %}
+        {% if current_dir == navpage.dir %}
+          {% assign is_active = true %}
+        {% endif %}
         <a
-          href="{{ page.dir | relative_url | uri_escape }}"
-          data-tooltip="{{ page.nav.tooltip | xml_escape }}"
-        >
-          {% if page.nav.icon %}
-            {% include icon.html icon=page.nav.icon %}
+          href="{{ navpage.dir | relative_url | uri_escape }}"
+          data-tooltip="{{ navpage.nav.tooltip | xml_escape }}"
+          {% if is_active %}
+            aria-current="page"
+            data-active
           {% endif %}
-          {{ page.title }}
+        >
+          {% if navpage.nav.icon %}
+            {% include icon.html icon=navpage.nav.icon %}
+          {% endif %}
+          {{ navpage.title }}
         </a>
       {% endif %}
     {% endfor %}

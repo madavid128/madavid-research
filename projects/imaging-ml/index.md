@@ -1,7 +1,6 @@
 ---
 title: Imaging + Machine Learning
 description: Multimodal imaging, radiomics, and interpretable ML for translational orthopedics.
-share: images/background.jpg
 ---
 
 # Imaging + Machine Learning
@@ -32,4 +31,3 @@ Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging 
   icon="fa-solid fa-book-open"
   style="bare"
 %}
-

@@ -58,6 +58,7 @@ def load_yaml_from_string(text: str) -> Any:
 
 
 def normalize_name(name: str) -> str:
+    name = re.sub(r"[^\w\s\-]", "", name, flags=re.UNICODE)
     return re.sub(r"\s+", " ", name.strip().lower())
 
 
@@ -123,7 +124,7 @@ def pubmed_fetch_xml(pmid: str, *, email: str, tool: str) -> str:
 @dataclass
 class Author:
     name: str
-    affiliation: str = ""
+    affiliations: List[str]
 
 
 def parse_pubmed_authors(xml_text: str) -> List[Author]:
@@ -145,16 +146,71 @@ def parse_pubmed_authors(xml_text: str) -> List[Author]:
         if not name:
             continue
 
-        # Prefer the first affiliation string if present
-        aff = ""
+        affiliations: List[str] = []
         for aff_el in author.findall(".//AffiliationInfo/Affiliation"):
             aff = (aff_el.text or "").strip()
             if aff:
-                break
+                affiliations.append(aff)
+        # de-dupe preserving order
+        seen = set()
+        uniq: List[str] = []
+        for a in affiliations:
+            key = a.strip().lower()
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            uniq.append(a)
 
-        authors.append(Author(name=name, affiliation=aff))
+        authors.append(Author(name=name, affiliations=uniq))
 
     return authors
+
+
+YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
+
+
+def parse_pubmed_year(xml_text: str) -> Optional[int]:
+    """
+    Best-effort publication year extractor from PubMed XML.
+
+    Prefers explicit <Year> nodes and falls back to parsing <MedlineDate>.
+    """
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError:
+        return None
+
+    year_paths = [
+        ".//JournalIssue/PubDate/Year",
+        ".//ArticleDate/Year",
+        ".//PubmedData/History/PubMedPubDate[@PubStatus='pubmed']/Year",
+        ".//PubmedData/History/PubMedPubDate[@PubStatus='entrez']/Year",
+        ".//PubmedData/History/PubMedPubDate/Year",
+    ]
+    for path in year_paths:
+        val = (root.findtext(path) or "").strip()
+        if not val:
+            continue
+        try:
+            y = int(val)
+        except Exception:
+            continue
+        if 1900 <= y <= 2100:
+            return y
+
+    # MedlineDate can look like "2021 Jan-Feb" or "2019"
+    medline = (root.findtext(".//JournalIssue/PubDate/MedlineDate") or "").strip()
+    if medline:
+        m = YEAR_RE.search(medline)
+        if m:
+            try:
+                y = int(m.group(0))
+            except Exception:
+                y = None
+            if y and 1900 <= y <= 2100:
+                return y
+
+    return None
 
 
 US_STATES = {
@@ -465,9 +521,12 @@ def write_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
         "status",
         "department",
         "institution",
+        "institutions",
         "city",
         "region",
         "country",
+        "first_year",
+        "last_year",
         "lat",
         "lon",
         "link",
@@ -481,6 +540,23 @@ def write_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
         for row in rows:
             out = {k: row.get(k, "") for k in fieldnames}
             writer.writerow(out)
+
+
+def read_existing_csv(path: Path) -> Dict[str, Dict[str, str]]:
+    if not path.exists():
+        return {}
+    try:
+        with path.open("r", encoding="utf-8", newline="") as f:
+            reader = csv.DictReader(f)
+            out: Dict[str, Dict[str, str]] = {}
+            for row in reader:
+                name = (row.get("name") or "").strip()
+                if not name:
+                    continue
+                out[normalize_name(name)] = {k: (v or "").strip() for k, v in row.items()}
+            return out
+    except Exception:
+        return {}
 
 
 def main() -> int:
@@ -499,11 +575,17 @@ def main() -> int:
     parser.add_argument("--cache", default=str(ROOT / "tools" / ".cache" / "geocode.json"))
     parser.add_argument("--geocode-retries", type=int, default=6, help="Retries per geocode query.")
     parser.add_argument("--limit", type=int, default=0, help="Limit number of DOIs processed (0 = all).")
+    parser.add_argument(
+        "--no-merge-existing",
+        action="store_true",
+        help="Do not merge with an existing output CSV (otherwise preserves curated fields like status/tags/link/lat/lon).",
+    )
     args = parser.parse_args()
 
     citations_path = Path(args.input_citations)
     member_path = Path(args.self_member)
     out_path = Path(args.output)
+    existing = {} if args.no_merge_existing else read_existing_csv(out_path)
 
     citations = load_yaml(citations_path) or []
     dois = extract_dois(citations)
@@ -522,6 +604,8 @@ def main() -> int:
 
     counts: Dict[str, int] = {}
     aff_counts: Dict[str, Dict[str, int]] = {}
+    inst_counts: Dict[str, Dict[str, int]] = {}
+    year_ranges: Dict[str, Tuple[int, int]] = {}
 
     for i, doi in enumerate(dois, start=1):
         pmid = pubmed_doi_to_pmid(doi, email=args.email, tool=args.tool)
@@ -529,17 +613,33 @@ def main() -> int:
             continue
         xml_text = pubmed_fetch_xml(pmid, email=args.email, tool=args.tool)
         authors = parse_pubmed_authors(xml_text)
+        year = parse_pubmed_year(xml_text)
 
         for author in authors:
             norm = normalize_name(author.name)
             if not norm or norm in self_names_norm:
                 continue
             counts[author.name] = counts.get(author.name, 0) + 1
-            aff = clean_affiliation(author.affiliation)
-            if aff:
+            for raw_aff in author.affiliations or []:
+                aff = clean_affiliation(raw_aff)
+                if not aff:
+                    continue
                 if author.name not in aff_counts:
                     aff_counts[author.name] = {}
                 aff_counts[author.name][aff] = aff_counts[author.name].get(aff, 0) + 1
+
+                _dept, inst, _city, _region, _country = guess_place_from_affiliation(aff)
+                inst = (inst or "").strip()
+                if inst:
+                    if author.name not in inst_counts:
+                        inst_counts[author.name] = {}
+                    inst_counts[author.name][inst] = inst_counts[author.name].get(inst, 0) + 1
+            if year:
+                cur = year_ranges.get(author.name)
+                if not cur:
+                    year_ranges[author.name] = (year, year)
+                else:
+                    year_ranges[author.name] = (min(cur[0], year), max(cur[1], year))
 
         time.sleep(max(0.0, args.sleep))
 
@@ -550,6 +650,15 @@ def main() -> int:
         # prefer the most frequent affiliation; break ties by longest string
         items = sorted(counts_map.items(), key=lambda kv: (-kv[1], -len(kv[0]), kv[0].lower()))
         return items[0][0]
+
+    def pick_institutions(name: str, limit: int = 6) -> str:
+        counts_map = inst_counts.get(name) or {}
+        if not counts_map:
+            return ""
+        items = sorted(counts_map.items(), key=lambda kv: (-kv[1], kv[0].lower()))
+        top = [k for (k, _v) in items[:limit] if k.strip()]
+        # store as semicolon-separated for CSV readability
+        return ";".join(top)
 
     # optional geocode cache
     cache_path = Path(args.cache)
@@ -568,6 +677,11 @@ def main() -> int:
     for name, paper_count in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0].lower())):
         aff = pick_best_aff(name)
         department, institution, city, region, country = guess_place_from_affiliation(aff)
+        institutions = pick_institutions(name)
+        y0, y1 = ("", "")
+        yr = year_ranges.get(name)
+        if yr:
+            y0, y1 = yr[0], yr[1]
         lat: Optional[float] = None
         lon: Optional[float] = None
         if args.geocode:
@@ -592,9 +706,12 @@ def main() -> int:
                 "status": args.default_status,
                 "department": department,
                 "institution": institution,
+                "institutions": institutions,
                 "city": city,
                 "region": region,
                 "country": country,
+                "first_year": y0,
+                "last_year": y1,
                 "lat": "" if lat is None else lat,
                 "lon": "" if lon is None else lon,
                 "link": "",
@@ -603,6 +720,34 @@ def main() -> int:
                 "affiliation": aff,
             }
         )
+
+    # Merge with existing CSV to preserve manual curation.
+    if existing:
+        preserve_fields = [
+            "status",
+            "active",
+            "tags",
+            "link",
+            "lat",
+            "lon",
+            "department",
+            "institution",
+            "institutions",
+            "city",
+            "region",
+            "country",
+        ]
+        merged: List[Dict[str, Any]] = []
+        for row in rows:
+            key = normalize_name(str(row.get("name") or ""))
+            prev = existing.get(key)
+            if prev:
+                for field in preserve_fields:
+                    prev_val = (prev.get(field) or "").strip()
+                    if prev_val != "":
+                        row[field] = prev_val
+            merged.append(row)
+        rows = merged
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     write_csv(out_path, rows)

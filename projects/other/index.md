@@ -1,7 +1,6 @@
 ---
 title: Other Projects
 description: Cross-cutting translational collaborations and musculoskeletal projects.
-share: images/background.jpg
 ---
 
 # Other Projects
@@ -25,4 +24,3 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
   icon="fa-solid fa-book-open"
   style="solid"
 %}
-

@@ -47,6 +47,33 @@ header a {
   height: 100%;
 }
 
+/* Default: show only one logo image (use animated GIF if present). */
+.logo-animated {
+  display: block;
+}
+.logo-static {
+  display: none;
+}
+
+/* Respect reduced motion: prefer static logo when available. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-animated {
+    display: none;
+  }
+  .logo-static {
+    display: block;
+  }
+}
+
+:root[data-motion="reduced"] {
+  .logo-animated {
+    display: none;
+  }
+  .logo-static {
+    display: block;
+  }
+}
+
 .title-text {
   display: flex;
   justify-content: flex-start;
@@ -76,6 +103,18 @@ header a {
   color: var(--text);
   appearance: none;
   transition: background var(--transition);
+}
+
+.header-search {
+  margin: 0;
+}
+
+.header-search .icon {
+  color: var(--text);
+}
+
+.header-search:hover .icon {
+  color: var(--primary);
 }
 
 .nav-toggle:after {
@@ -112,6 +151,16 @@ nav > a {
 }
 
 nav > a:hover {
+  color: var(--primary);
+}
+
+nav > a[data-active] {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+nav > a[data-active] .icon {
   color: var(--primary);
 }
 
@@ -159,6 +208,10 @@ header[data-big] {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .header-search {
+    align-self: flex-end;
   }
 
   .title {

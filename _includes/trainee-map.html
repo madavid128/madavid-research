@@ -3,63 +3,119 @@
 {% assign trainees = site.data.trainees | default: emptyarray %}
 {% assign institutions = site.data.trainee_institutions | default: emptyarray %}
 
-<div class="collab-map" data-map-kind="trainees">
-  <div class="collab-map-controls" role="group" aria-label="Trainee map controls">
-    <div class="collab-map-control">
-      <span class="collab-map-control-label">View</span>
-      <button class="button" data-style="bare" type="button" data-trainee-view="world" aria-pressed="true">World</button>
-      <button class="button" data-style="bare" type="button" data-trainee-view="us" aria-pressed="false">US</button>
-    </div>
+{% assign default_view = include.default_view | default: "map" %}
+{% assign default_is_table = false %}
+{% if default_view == "table" %}
+  {% assign default_is_table = true %}
+{% endif %}
 
-    <div class="collab-map-control">
-      <span class="collab-map-control-label">Show</span>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-trainee-filter="current">
-        Current
-      </label>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-trainee-filter="past">
-        Past
-      </label>
+<div data-directory data-directory-key="trainee-map-view" data-directory-default="{{ default_view }}">
+  <div class="directory-controls" role="group" aria-label="Trainees view">
+    <button
+      type="button"
+      class="button"
+      data-style="bare"
+      data-directory-view="map"
+      aria-pressed="{% if default_is_table %}false{% else %}true{% endif %}"
+    >Map</button>
+    <button
+      type="button"
+      class="button"
+      data-style="bare"
+      data-directory-view="table"
+      aria-pressed="{% if default_is_table %}true{% else %}false{% endif %}"
+    >Institutions table</button>
+  </div>
+
+  <div data-directory-pane="map" {% if default_is_table %}hidden{% endif %}>
+    <div class="collab-map" data-map-kind="trainees">
+      <div class="collab-map-controls" role="group" aria-label="Trainee map controls">
+        <div class="collab-map-control">
+          <span class="collab-map-control-label">View</span>
+          <button class="button" data-style="bare" type="button" data-trainee-view="world" aria-pressed="true">World</button>
+          <button class="button" data-style="bare" type="button" data-trainee-view="us" aria-pressed="false">US</button>
+        </div>
+
+        <div class="collab-map-control">
+          <span class="collab-map-control-label">Show</span>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-trainee-filter="current">
+            Current
+          </label>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-trainee-filter="past">
+            Past
+          </label>
+        </div>
+
+        <div class="collab-map-control" data-trainee-time>
+          <span class="collab-map-control-label">Time</span>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-trainee-year-all>
+            All
+          </label>
+          <input type="range" data-trainee-year aria-label="Year">
+          <button class="button" data-style="bare" type="button" data-trainee-play aria-label="Play timeline" aria-pressed="false">Play</button>
+          <span class="collab-map-year" data-trainee-year-label>All</span>
+          <div class="collab-map-mode" role="group" aria-label="Time mode">
+            <button class="button" data-style="bare" type="button" data-trainee-mode="active" aria-pressed="true">Active</button>
+            <button class="button" data-style="bare" type="button" data-trainee-mode="cumulative" aria-pressed="false">To date</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="collab-map-summary" data-trainee-summary aria-live="polite"></div>
+
+      <div class="collab-map-plot" data-trainee-map data-site-root="{{ "/" | relative_url }}">
+        <div class="collab-map-loading">Loading map…</div>
+      </div>
+
+      {% capture payload %}
+        {
+          "home": {{ home | jsonify }},
+          "trainees": {{ trainees | jsonify }},
+          "institutions": {{ institutions | jsonify }}
+        }
+      {% endcapture %}
+      <script type="application/json" class="trainee-map-data">
+        {{ payload | strip_newlines }}
+      </script>
+      <script>
+        (function () {
+          var root = document.currentScript && document.currentScript.parentElement;
+          var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
+
+          var tries = 0;
+          function tick() {
+            tries += 1;
+            if (window.renderTraineesMaps) {
+              window.renderTraineesMaps();
+              return;
+            }
+            if (tries < 50) {
+              window.setTimeout(tick, 200);
+              return;
+            }
+            if (loading) loading.textContent = "Map script failed to load.";
+          }
+          tick();
+
+          window.setTimeout(function () {
+            if (!loading) return;
+            if (!window.Plotly) loading.textContent = "Loading map library… (Plotly)";
+          }, 2000);
+        })();
+      </script>
+
+      <noscript>
+        <p>This map is interactive and requires JavaScript.</p>
+      </noscript>
     </div>
   </div>
 
-  <div class="collab-map-summary" data-trainee-summary></div>
-
-  <div class="collab-map-plot" data-trainee-map data-site-root="{{ "/" | relative_url }}">
-    <div class="collab-map-loading">Loading map…</div>
+  <div data-directory-pane="table" {% unless default_is_table %}hidden{% endunless %}>
+    {% include search-box.html %}
+    {% include search-info.html %}
+    {% include trainee-institutions-table.html %}
   </div>
-
-  {% capture payload %}
-    {
-      "home": {{ home | jsonify }},
-      "trainees": {{ trainees | jsonify }},
-      "institutions": {{ institutions | jsonify }}
-    }
-  {% endcapture %}
-  <script type="application/json" class="trainee-map-data">
-    {{ payload | strip_newlines }}
-  </script>
-  <script>
-    (function () {
-      if (window.renderTraineesMaps) window.renderTraineesMaps();
-      var root = document.currentScript && document.currentScript.parentElement;
-      var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
-      window.setTimeout(function () {
-        if (!loading) return;
-        if (!window.renderTraineesMaps) {
-          loading.textContent = "Map script failed to load.";
-          return;
-        }
-        if (!window.Plotly) {
-          loading.textContent = "Loading map library… (Plotly)";
-          return;
-        }
-      }, 1500);
-    })();
-  </script>
-
-  <noscript>
-    <p>This map is interactive and requires JavaScript.</p>
-  </noscript>
 </div>

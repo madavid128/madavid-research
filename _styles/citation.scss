@@ -113,6 +113,17 @@ $wrap: 800px;
   margin: 0;
 }
 
+.citation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.citation-actions .button {
+  margin: 0;
+}
+
 .citation-text > .tags {
   display: inline-flex;
   justify-content: flex-start;

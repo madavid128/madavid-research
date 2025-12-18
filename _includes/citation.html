@@ -8,24 +8,97 @@
   {% assign citation = include %}
 {% endif %}
 
-<div class="citation-container">
+{% assign emptyarray = "" | split: "," %}
+{% assign authors_list = citation.authors | default: emptyarray %}
+{% assign year = citation.date | date: "%Y" %}
+{% assign doi = "" %}
+{% if citation.id and citation.id contains "doi:" %}
+  {% assign doi = citation.id | remove_first: "doi:" %}
+{% endif %}
+
+{% assign first_author = authors_list[0] | default: "" %}
+{% assign first_author_last = first_author | split: " " | last | regex_replace: "[^A-Za-z0-9]+", "" %}
+{% assign bib_key = first_author_last | append: year | default: "citation" %}
+
+{% capture citation_text %}
+  {% if authors_list.size > 0 %}{{ authors_list | join: ", " }}.{% endif %}
+  {% if year and year != "" %} ({{ year }}).{% endif %}
+  {{ citation.title | default: "[no title]" }}.
+  {% if citation.publisher %} {{ citation.publisher }}.{% endif %}
+  {% if doi and doi != "" %} https://doi.org/{{ doi }}{% elsif citation.link %} {{ citation.link }}{% endif %}
+{% endcapture %}
+
+{% capture bib_text %}
+@article{ {{- bib_key -}} ,
+  title = { {{- citation.title | default: "" -}} },
+  author = { {{- authors_list | join: " and " -}} },
+  journal = { {{- citation.publisher | default: "" -}} },
+  year = { {{- year | default: "" -}} }{% if doi and doi != "" %},
+  doi = { {{- doi -}} }{% endif %}{% if citation.link and citation.link != "" %},
+  url = { {{- citation.link -}} }{% endif %}
+}
+{% endcapture %}
+
+<div
+  class="citation-container"
+  data-has-citation-actions="true"
+  {% if citation.date %}
+    data-year="{{ citation.date | date: "%Y" }}"
+  {% endif %}
+  {% if citation.type %}
+    data-type="{{ citation.type }}"
+  {% endif %}
+>
+  <script type="application/json" class="citation-actions-data">
+    {
+      "text": {{ citation_text | strip | regex_replace: "\\s+", " " | jsonify }},
+      "bib": {{ bib_text | strip | jsonify }},
+      "filename": {{ bib_key | append: ".bib" | jsonify }}
+    }
+  </script>
   <div class="citation">
     {% if include.style == "rich" %}
       {% assign thumb = citation.image | default: nil %}
+      {% assign thumb_webp = nil %}
+      {% if thumb and (thumb contains ".jpg" or thumb contains ".jpeg" or thumb contains ".png") %}
+        {% assign webp_candidate = thumb
+          | replace: ".jpeg", ".webp"
+          | replace: ".jpg", ".webp"
+          | replace: ".png", ".webp"
+        %}
+        {% assign webp_rel = webp_candidate | remove_first: "/" %}
+        {% assign thumb_webp = webp_rel | file_exists %}
+      {% endif %}
       <a
         {% if citation.link %}
           href="{{ citation.link | relative_url | uri_escape }}"
+        {% endif %}
+        {% if citation.link and citation.link contains "://" %}
+          target="_blank"
+          rel="noopener noreferrer"
         {% endif %}
         class="citation-image"
         aria-label="{{ citation.title | default: "citation link" | regex_strip }}"
       >
         {% if thumb and thumb != "" %}
-          <img
-            src="{{ thumb | relative_url | uri_escape }}"
-            alt="{{ citation.title | default: "citation image" | regex_strip }}"
-            loading="lazy"
-            {% include fallback.html %}
-          >
+          {% if thumb_webp %}
+            <picture>
+              <source srcset="{{ thumb_webp | relative_url | uri_escape }}" type="image/webp">
+              <img
+                src="{{ thumb | relative_url | uri_escape }}"
+                alt="{{ citation.title | default: "citation image" | regex_strip }}"
+                loading="lazy"
+                {% include fallback.html %}
+              >
+            </picture>
+          {% else %}
+            <img
+              src="{{ thumb | relative_url | uri_escape }}"
+              alt="{{ citation.title | default: "citation image" | regex_strip }}"
+              loading="lazy"
+              {% include fallback.html %}
+            >
+          {% endif %}
         {% else %}
           {% assign publisher = citation.publisher | default: "Publication" %}
           <div class="citation-image-fallback" aria-hidden="true">
@@ -51,6 +124,10 @@
       <a
         {% if citation.link %}
           href="{{ citation.link | relative_url | xml_escape }}"
+        {% endif %}
+        {% if citation.link and citation.link contains "://" %}
+          target="_blank"
+          rel="noopener noreferrer"
         {% endif %}
         class="citation-title"
       >
@@ -113,6 +190,17 @@
             }}
           </div>
         {% endif %}
+
+        <div class="citation-actions" role="group" aria-label="Citation actions">
+          <button type="button" class="button" data-style="bare" data-citation-action="copy" aria-label="Copy citation">
+            {% include icon.html icon="fa-regular fa-copy" %}
+            <span>Copy citation</span>
+          </button>
+          <button type="button" class="button" data-style="bare" data-citation-action="bib" aria-label="Download BibTeX">
+            {% include icon.html icon="fa-solid fa-download" %}
+            <span>BibTeX</span>
+          </button>
+        </div>
 
         {% if citation.buttons.size > 0 %}
           <div class="citation-buttons">

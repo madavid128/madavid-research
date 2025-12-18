@@ -4,9 +4,18 @@
     data-flip
   {% endif %}
 >
+  {% assign href = include.link | default: "" %}
+  {% assign is_external = false %}
+  {% if href contains "://" %}
+    {% assign is_external = true %}
+  {% endif %}
   <a
     {% if include.link %}
       href="{{ include.link | relative_url | uri_escape }}"
+    {% endif %}
+    {% if is_external %}
+      target="_blank"
+      rel="noopener noreferrer"
     {% endif %}
     class="feature-image"
     aria-label="{{ include.title | default: "feature link" | regex_strip }}"

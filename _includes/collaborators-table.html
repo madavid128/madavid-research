@@ -1,0 +1,55 @@
+{% comment %}
+  Collaborators directory table.
+  - Sortable columns via _scripts/table-sort.js (data-sort-key).
+  - Rows are searchable via _scripts/search.js (data-search).
+{% endcomment %}
+
+{% assign emptyarray = "" | split: "," %}
+{% assign people = site.data.collaborators | default: emptyarray | sort: "name" %}
+{% if site.data.collaborators_map and site.data.collaborators_map.size > 0 %}
+  {% assign people = site.data.collaborators_map | sort: "name" %}
+{% endif %}
+
+<div class="directory-table-wrap">
+  <table class="directory-table" data-sort-table>
+    <thead>
+      <tr>
+        <th><button type="button" class="directory-sort" data-sort-key="name">Name</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="status">Status</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="institution">Institution</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="location">Location</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="years">Years</button></th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in people %}
+        {% capture location %}{{ p.city }}{% if p.region and p.region != "" %}, {{ p.region }}{% endif %}{% if p.country and p.country != "" %}, {{ p.country }}{% endif %}{% endcapture %}
+        {% capture years %}{% if p.first_year and p.last_year %}{{ p.first_year }}–{{ p.last_year }}{% elsif p.first_year %}{{ p.first_year }}{% endif %}{% endcapture %}
+        {% capture search %}{{ p.name }} {{ p.institution }} {{ location }} {{ p.department }} {{ p.tags }}{% endcapture %}
+        <tr
+          class="directory-row"
+          data-search="{{ search | strip_newlines | xml_escape }}"
+          data-name="{{ p.name | xml_escape }}"
+          data-status="{{ p.status | default: "" | xml_escape }}"
+          data-institution="{{ p.institution | default: "" | xml_escape }}"
+          data-location="{{ location | strip_newlines | xml_escape }}"
+          data-years="{{ years | strip_newlines | xml_escape }}"
+        >
+          <td>
+            {% if p.link and p.link != "" %}
+              <a href="{{ p.link | relative_url | uri_escape }}">{{ p.name }}</a>
+            {% else %}
+              {{ p.name }}
+            {% endif %}
+          </td>
+          <td>{{ p.status | default: "current" | capitalize }}</td>
+          <td>{{ p.institution }}</td>
+          <td>{{ location }}</td>
+          <td>{{ years }}</td>
+          <td>{% include tags.html tags=p.tags %}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

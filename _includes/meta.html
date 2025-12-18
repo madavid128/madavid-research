@@ -58,6 +58,22 @@
 
 {% assign feed = "feed.xml" | absolute_url %}
 
+{% assign author_name = nil %}
+{% assign author_url = nil %}
+{% if page.author %}
+  {% assign author_slug = page.author | downcase | strip %}
+  {% assign author_member = site.members
+    | where_exp: "member", "member.slug == author_slug"
+    | first
+  %}
+  {% if author_member %}
+    {% assign author_name = author_member.name %}
+    {% assign author_url = author_member.url | absolute_url %}
+  {% else %}
+    {% assign author_name = page.author %}
+  {% endif %}
+{% endif %}
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>{{ fulltitle }}</title>
@@ -92,25 +108,31 @@
 {% endif %}
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    {% if page.author %}
-      "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "{{ title }}" },
-      "datePublished": "{{ published }}",
-      "dateModified": "{{ updated }}",
-    {% else %}
-      "@type": "WebSite",
-    {% endif %}
-    "name": "{{ title }}",
-    "description": "{{ description }}",
-    "headline": "{{ title }}",
-    "publisher": {
-      "@type": "Organization",
-      "logo": { "@type": "ImageObject", "url": "{{ icon }}" }
-    },
-    "url": "{{ canonical }}"
+{
+  "@context": "https://schema.org",
+  "@type": {% if page.author %}"BlogPosting"{% else %}"WebSite"{% endif %},
+  "name": {{ title | jsonify }},
+  "headline": {{ title | jsonify }},
+  "description": {{ description | jsonify }},
+  "url": {{ canonical | jsonify }},
+  "publisher": {
+    "@type": "Organization",
+    "logo": { "@type": "ImageObject", "url": {{ icon | jsonify }} }
   }
+  {% if page.author %}
+  , "author": {
+    "@type": "Person",
+    "name": {{ author_name | default: page.author | jsonify }}
+    {% if author_url %}
+    , "url": {{ author_url | jsonify }}
+    {% endif %}
+  }
+  , "datePublished": {{ published | jsonify }}
+  {% if updated and updated != "" %}
+  , "dateModified": {{ updated | jsonify }}
+  {% endif %}
+  {% endif %}
+}
 </script>
 
 <link rel="alternate" type="application/rss+xml" href="{{ feed }}">

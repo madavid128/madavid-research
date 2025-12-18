@@ -4,9 +4,18 @@
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     {% include header.html %}
-    <main id="main-content" tabindex="-1">
+    <main
+      id="main-content"
+      tabindex="-1"
+      data-page-jumps="{% if page.page_jumps == nil %}on{% else %}{{ page.page_jumps }}{% endif %}"
+    >
       {% include content.html content=content %}
     </main>
     {% include footer.html %}
+    {% include global-search.html %}
+    <button class="back-to-top" type="button" aria-label="Back to top" hidden>
+      {% include icon.html icon="fa-solid fa-arrow-up" %}
+      <span class="sr-only">Back to top</span>
+    </button>
   </body>
 </html>

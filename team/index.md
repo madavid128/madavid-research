@@ -5,21 +5,30 @@ nav:
   order: 3
   icon: fa-solid fa-users
   tooltip: About our team
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-solid fa-users" %}Team
 
+{% assign jumps = "" | split: "," %}
+{% assign jumps = jumps | push: "principal-investigator|Principal investigator" | push: "collaboration-mentorship|Collaboration & mentorship" | push: "collaborators|Collaborators" | push: "trainees|Trainees" | push: "joining|Get involved" %}
+{% include page-jumps.html items=jumps %}
+
 I collaborate with clinicians, engineers, and scientists across imaging, computation, and musculoskeletal biology. I’m always excited to work with curious, kind, and rigorous people.
+
+{%
+  include alert.html
+  type="info"
+  content="Want to connect? I’m happy to chat about collaboration ideas, mentoring opportunities, or project scoping — the fastest way is via email on the Contact page."
+%}
 
 {% include section.html %}
 
-## Principal investigator
+## Principal investigator {#principal-investigator}
 {% include list.html data="members" component="portrait" filter="role == 'principal-investigator'" %}
 
 {% include section.html %}
 
-## Collaboration & mentorship
+## Collaboration & mentorship {#collaboration-mentorship}
 
 {% capture col1 %}
 ### Collaboration
@@ -49,7 +58,7 @@ If you’re interested in collaborating or mentoring opportunities, I’m happy 
 
 {% include section.html %}
 
-## Collaborators
+## Collaborators {#collaborators}
 
 {% include collaborator-map.html %}
 
@@ -63,7 +72,7 @@ If you’re interested in collaborating or mentoring opportunities, I’m happy 
 
 {% include section.html %}
 
-## Current collaborations
+<h2 id="current-collaborations" data-jump-ignore>Current collaborations</h2>
 
 Add and manage your current collaborators in `_data/current_collaborations.yaml`.
 
@@ -86,17 +95,36 @@ Add and manage your current collaborators in `_data/current_collaborations.yaml`
 
 {% include section.html %}
 
-## Trainees
+## Trainees {#trainees}
 
 Trainee locations are grouped by institution (current vs past).
 
 {% include trainee-map.html %}
 
-{% include trainees.html %}
+<div data-directory data-directory-key="trainees-directory" data-directory-default="details">
+  <div class="directory-controls" role="group" aria-label="Trainee directory view">
+    <button type="button" class="button" data-style="bare" data-directory-view="details" aria-pressed="true">Details</button>
+    <button type="button" class="button" data-style="bare" data-directory-view="table" aria-pressed="false">Table</button>
+  </div>
+
+  <div data-directory-pane="details">
+    <div class="directory-controls" data-details-controls role="group" aria-label="Trainee list controls">
+      <button type="button" class="button" data-style="bare" data-details-action="expand">Expand all</button>
+      <button type="button" class="button" data-style="bare" data-details-action="collapse">Collapse all</button>
+    </div>
+    {% include trainees.html %}
+  </div>
+
+  <div data-directory-pane="table" hidden>
+    {% include search-box.html %}
+    {% include search-info.html %}
+    {% include trainees-table.html %}
+  </div>
+</div>
 
 {% include section.html %}
 
-## Mentorship & joining
+## Get involved {#joining}
 
 I enjoy mentoring trainees and collaborating across disciplines. If you’re interested in working together, please reach out with a short note about your background, your interests, and what you’d like to learn or build.
 

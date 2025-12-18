@@ -1,7 +1,6 @@
 ---
 title: Tendon + Peritendinous Tissue Biology
 description: Tendon and peritendinous tissue injury, remodeling, and healing across scales.
-share: images/background.jpg
 ---
 
 # Tendon + Peritendinous Tissue Biology

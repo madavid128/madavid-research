@@ -1,38 +1,30 @@
 ---
 title: Home
 description: Biomedical engineer advancing bioinformatics, machine learning, and multimodal imaging for translational orthopedics.
-share: images/background.jpg
+page_jumps: "off"
 ---
 
 # Michael A. David, PhD
 
-Biomedical engineer advancing bioinformatics, machine learning, and multimodal imaging for translational orthopedics, while collaborating with and mentoring diverse colleagues and trainees.
-
-<div class="home-cta">
-  {%
-    include button.html
-    link="research"
-    text="Publications"
-    icon="fa-solid fa-book-open"
-    style="solid"
-  %}
-  {%
-    include button.html
-    link="projects"
-    text="Projects"
-    icon="fa-solid fa-wrench"
-    style="solid"
-  %}
-  {%
-    include button.html
-    link="contact"
-    text="Contact"
-    icon="fa-regular fa-envelope"
-    style="bare"
-  %}
-</div>
+{% capture intro_left %}
+I’m a biomedical engineer advancing bioinformatics, machine learning, and multimodal imaging for translational orthopedics, while collaborating with and mentoring diverse colleagues and trainees.
 
 I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medical Campus. I build end‑to‑end machine learning workflows for spatial histopathology, transcriptomics/multi‑omics, and medical imaging to study post‑traumatic joint conditions (contracture and osteoarthritis).
+
+On this site, I highlight my [Publications](research), [Projects](projects), and ways to [get involved](team#joining).
+{% endcapture %}
+
+{% capture intro_right %}
+<figure class="home-intro-portrait">
+  <img
+    src="{{ 'images/MichaelDavid_headshot.jpeg' | relative_url }}"
+    alt="Michael A. David headshot"
+    loading="eager"
+  >
+</figure>
+{% endcapture %}
+
+{% include cols.html col1=intro_left col2=intro_right %}
 
 {% include section.html %}
 
@@ -55,7 +47,7 @@ My research integrates digital histopathology, MRI/CT radiomics, and multi‑omi
 
 {%
   include feature.html
-  image="images/MichaelDavid_headshot.jpeg"
+  image="images/publications-wordcloud.png"
   link="research"
   title="Publications"
   text=text
@@ -141,18 +133,4 @@ Scientific visualization and data‑driven art — including Art in Science prog
   text="Get in touch"
   icon="fa-regular fa-envelope"
   style="solid"
-%}
-
-{% include section.html %}
-
-## News
-
-{% include news-list.html data="news" limit=3 %}
-
-{%
-  include button.html
-  link="updates"
-  text="See News/Blog"
-  icon="fa-regular fa-newspaper"
-  style="bare"
 %}

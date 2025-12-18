@@ -1,0 +1,24 @@
+{% comment %}
+  Publications filter controls (dropdowns).
+  - JS: _scripts/publications-filters.js
+  - Search tokens: `year:YYYY` and `type:<type>`
+  - Requires citations to render `data-year` and `data-type` attributes (see _includes/citation.html).
+{% endcomment %}
+
+<div class="pub-filters" data-publications-filters>
+  <label class="pub-filter">
+    <span class="pub-filter-label">Year</span>
+    <select class="pub-filter-select" data-publications-year aria-label="Publication year filter">
+      <option value="">All</option>
+    </select>
+  </label>
+  <label class="pub-filter">
+    <span class="pub-filter-label">Type</span>
+    <select class="pub-filter-select" data-publications-type aria-label="Publication type filter">
+      <option value="">All</option>
+    </select>
+  </label>
+  <button type="button" class="button" data-style="bare" data-publications-clear aria-label="Clear publication filters">
+    Clear
+  </button>
+</div>

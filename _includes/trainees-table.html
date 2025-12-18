@@ -1,0 +1,47 @@
+{% comment %}
+  Trainees directory table.
+  - Sortable columns via _scripts/table-sort.js (data-sort-key).
+  - Rows are searchable via _scripts/search.js (data-search).
+{% endcomment %}
+
+{% assign emptyarray = "" | split: "," %}
+{% assign trainees = site.data.trainees | default: emptyarray %}
+
+<div class="directory-table-wrap">
+  <table class="directory-table" data-sort-table>
+    <thead>
+      <tr>
+        <th><button type="button" class="directory-sort" data-sort-key="name">Name</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="role">Role</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="institution">Institution</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="department">Dept</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="start">Start</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="end">End</button></th>
+        <th>Focus</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in trainees %}
+        {% capture search %}{{ t.name }} {{ t.role }} {{ t.institution }} {{ t.department }} {{ t.focus }} {{ t.start }} {{ t.end }}{% endcapture %}
+        <tr
+          class="directory-row"
+          data-search="{{ search | strip_newlines | xml_escape }}"
+          data-name="{{ t.name | xml_escape }}"
+          data-role="{{ t.role | xml_escape }}"
+          data-institution="{{ t.institution | xml_escape }}"
+          data-department="{{ t.department | default: "" | xml_escape }}"
+          data-start="{{ t.start | default: "" | xml_escape }}"
+          data-end="{{ t.end | default: "" | xml_escape }}"
+        >
+          <td><strong>{{ t.name }}</strong></td>
+          <td>{{ t.role }}</td>
+          <td>{{ t.institution }}</td>
+          <td>{{ t.department }}</td>
+          <td>{{ t.start }}</td>
+          <td>{{ t.end }}</td>
+          <td>{{ t.focus }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

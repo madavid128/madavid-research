@@ -6,7 +6,14 @@
 {% assign date_iso = include.date | date_to_xmlschema %}
 {% assign date_human = include.date | date: "%b %Y" %}
 
-<li class="news-item" data-search="{{ title | append: ' ' | append: source | append: ' ' | append: description | strip_html | strip_newlines | regex_strip }}">
+<li
+  class="news-item"
+  data-search="{{ title | append: ' ' | append: source | append: ' ' | append: description | strip_html | strip_newlines | regex_strip }}"
+  {% if include.date %}
+    data-year="{{ include.date | date: "%Y" }}"
+  {% endif %}
+  data-type="news"
+>
   <div class="news-item-row">
     <span class="news-item-date">{{ date_human }}</span>
     <div class="news-item-body">
@@ -34,4 +41,3 @@
     </div>
   </div>
 </li>
-

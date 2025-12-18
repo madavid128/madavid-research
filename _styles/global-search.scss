@@ -1,0 +1,227 @@
+---
+---
+
+.global-search {
+  width: min(900px, calc(100% - 32px));
+  border: 1px solid var(--light-gray);
+  border-radius: 18px;
+  padding: 0;
+  background: var(--background);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.global-search::backdrop {
+  background: #00000088;
+}
+
+.global-search-shell {
+  margin: 0;
+  padding: 14px;
+}
+
+.global-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.global-search-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  background: var(--background-alt);
+  color: var(--text);
+  font: inherit;
+}
+
+.global-search-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--dark-gray);
+}
+
+.global-search-hints {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.global-search-help-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+
+.global-search-help-button:hover {
+  color: var(--primary);
+}
+
+.global-search-help {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: 14px;
+  background: var(--background-alt);
+  color: var(--dark-gray);
+}
+
+.global-search-help-title {
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.global-search-help-body {
+  display: grid;
+  gap: 8px;
+}
+
+.global-search-hint kbd {
+  border: 1px solid var(--light-gray);
+  border-bottom-width: 2px;
+  border-radius: 8px;
+  padding: 1px 6px;
+  background: var(--background-alt);
+  color: var(--text);
+  font-family: var(--code);
+  font-size: 0.9em;
+}
+
+.global-search-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.global-search-filter {
+  border: 1px solid var(--light-gray);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: var(--background-alt);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.global-search-filter[aria-pressed="true"] {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.global-search-results {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+  max-height: min(60vh, 540px);
+  overflow: auto;
+  padding: 4px;
+}
+
+.global-search-count {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+  padding: 0 4px;
+}
+
+.global-search-list {
+  display: grid;
+  gap: 10px;
+}
+
+.global-search-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "badge title meta"
+    "badge desc  desc";
+  gap: 2px 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--light-gray);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--background-alt);
+}
+
+.global-search-item:hover {
+  border-color: var(--primary);
+}
+
+.global-search-item.is-active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(41, 223, 176, 0.16);
+}
+
+.global-search-badge {
+  grid-area: badge;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--background);
+  border: 1px solid var(--light-gray);
+  color: var(--primary);
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.global-search-title {
+  grid-area: title;
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+}
+
+.global-search-item-meta {
+  grid-area: meta;
+  color: var(--dark-gray);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.global-search-desc {
+  grid-area: desc;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
+.global-search-mark {
+  background: rgba(41, 223, 176, 0.18);
+  color: inherit;
+  border-radius: 6px;
+  padding: 0 3px;
+}
+
+.global-search-example {
+  display: inline-block;
+  border: 1px solid var(--light-gray);
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: var(--background-alt);
+  color: var(--text);
+  font-family: var(--code);
+  font-size: 0.95em;
+}
+
+.global-search-empty {
+  padding: 10px 6px;
+  color: var(--dark-gray);
+}

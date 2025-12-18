@@ -5,87 +5,153 @@
   {% assign points = site.data.collaborators_map %}
 {% endif %}
 
-{% assign current_points = points | data_filter: "status != 'past'" %}
-{% assign past_points = points | data_filter: "status == 'past'" %}
+{% comment %}
+  Collaborators map + directory toggle.
+  - Default view: Map
+  - Optional view: Table (sortable + searchable)
+{% endcomment %}
 
-<div class="collab-map" data-map-kind="collaborators">
-  <div class="collab-map-controls" role="group" aria-label="Map controls">
-    <div class="collab-map-control">
-      <span class="collab-map-control-label">View</span>
-      <button class="button" data-style="bare" type="button" data-collab-view="world" aria-pressed="true">World</button>
-      <button class="button" data-style="bare" type="button" data-collab-view="us" aria-pressed="false">US</button>
-    </div>
+{% assign default_view = include.default_view | default: "map" %}
+{% assign directory_key = include.directory_key | default: "collaborators-map-view" %}
+{% assign default_is_table = false %}
+{% if default_view == "table" %}
+  {% assign default_is_table = true %}
+{% endif %}
 
-    <div class="collab-map-control">
-      <span class="collab-map-control-label">Show</span>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-collab-filter="current">
-        Current
-      </label>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-collab-filter="past">
-        Past
-      </label>
-    </div>
+{%
+  include alert.html
+  type="info"
+  content="Tip: the map is interactive (hover + click). Switch to **Table** to quickly sort/search by name, institution, location, or tags."
+%}
 
-    <div class="collab-map-control">
-      <span class="collab-map-control-label">Type</span>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-collab-type="collaborator">
-        Collaborators
-      </label>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-collab-type="institution">
-        Institutions
-      </label>
-    </div>
+<div data-directory data-directory-key="{{ directory_key }}" data-directory-default="{{ default_view }}">
+  <div class="directory-controls" role="group" aria-label="Collaborators view">
+    <button
+      type="button"
+      class="button"
+      data-style="bare"
+      data-directory-view="map"
+      aria-pressed="{% if default_is_table %}false{% else %}true{% endif %}"
+    >Map</button>
+    <button
+      type="button"
+      class="button"
+      data-style="bare"
+      data-directory-view="table"
+      aria-pressed="{% if default_is_table %}true{% else %}false{% endif %}"
+    >Table</button>
+  </div>
 
-    <div class="collab-map-control">
-      <span class="collab-map-control-label">Layout</span>
-      <label class="collab-map-toggle">
-        <input type="checkbox" checked data-collab-cluster="duplicates">
-        Cluster duplicates
-      </label>
+  <div data-directory-pane="map" {% if default_is_table %}hidden{% endif %}>
+    <div class="collab-map" data-map-kind="collaborators">
+      <div class="collab-map-controls" role="group" aria-label="Map controls">
+        <div class="collab-map-control">
+          <span class="collab-map-control-label">View</span>
+          <button class="button" data-style="bare" type="button" data-collab-view="world" aria-pressed="true">World</button>
+          <button class="button" data-style="bare" type="button" data-collab-view="us" aria-pressed="false">US</button>
+        </div>
+
+        <div class="collab-map-control">
+          <span class="collab-map-control-label">Show</span>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-filter="current">
+            Current
+          </label>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-filter="past">
+            Past
+          </label>
+        </div>
+
+        <div class="collab-map-control" data-collab-time>
+          <span class="collab-map-control-label">Time</span>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-year-all>
+            All
+          </label>
+          <input type="range" data-collab-year aria-label="Year">
+          <button class="button" data-style="bare" type="button" data-collab-play aria-label="Play timeline" aria-pressed="false">Play</button>
+          <span class="collab-map-year" data-collab-year-label>All</span>
+          <div class="collab-map-mode" role="group" aria-label="Time mode">
+            <button class="button" data-style="bare" type="button" data-collab-mode="cumulative" aria-pressed="true">To date</button>
+            <button class="button" data-style="bare" type="button" data-collab-mode="active" aria-pressed="false">Active</button>
+          </div>
+        </div>
+
+        <div class="collab-map-control">
+          <span class="collab-map-control-label">Type</span>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-type="collaborator">
+            Collaborators
+          </label>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-type="institution">
+            Institutions
+          </label>
+        </div>
+
+        <div class="collab-map-control">
+          <span class="collab-map-control-label">Layout</span>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-cluster="duplicates">
+            Cluster duplicates
+          </label>
+        </div>
+      </div>
+
+      <div data-collab-tags class="collab-map-tags"></div>
+
+      <div class="collab-map-summary" data-collab-summary aria-live="polite"></div>
+
+      <div class="collab-map-plot" data-collab-map data-site-root="{{ "/" | relative_url }}">
+        <div class="collab-map-loading">Loading map…</div>
+      </div>
+
+      {% capture payload %}
+        {
+          "home": {{ home | jsonify }},
+          "people": {{ points | jsonify }}
+        }
+      {% endcapture %}
+      <script type="application/json" class="collab-map-data">
+        {{ payload | strip_newlines }}
+      </script>
+      <script>
+        (function () {
+          var root = document.currentScript && document.currentScript.parentElement;
+          var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
+
+          var tries = 0;
+          function tick() {
+            tries += 1;
+            if (window.renderCollaboratorsMaps) {
+              window.renderCollaboratorsMaps();
+              return;
+            }
+            if (tries < 50) {
+              window.setTimeout(tick, 200);
+              return;
+            }
+            if (loading) loading.textContent = "Map script failed to load.";
+          }
+          tick();
+
+          window.setTimeout(function () {
+            if (!loading) return;
+            if (!window.Plotly) loading.textContent = "Loading map library… (Plotly)";
+          }, 2000);
+        })();
+      </script>
+
+      <noscript>
+        <p>This map is interactive and requires JavaScript. Use the collaborator directory below.</p>
+      </noscript>
     </div>
   </div>
 
-  <div data-collab-tags class="collab-map-tags"></div>
-
-  <div class="collab-map-summary" data-collab-summary></div>
-
-  <div class="collab-map-plot" data-collab-map data-site-root="{{ "/" | relative_url }}">
-    <div class="collab-map-loading">Loading map…</div>
+  <div data-directory-pane="table" {% unless default_is_table %}hidden{% endunless %}>
+    {% include search-box.html %}
+    {% include search-info.html %}
+    {% include collaborators-table.html %}
   </div>
-
-  {% capture payload %}
-    {
-      "home": {{ home | jsonify }},
-      "people": {{ points | jsonify }}
-    }
-  {% endcapture %}
-  <script type="application/json" class="collab-map-data">
-    {{ payload | strip_newlines }}
-  </script>
-  <script>
-    (function () {
-      if (window.renderCollaboratorsMaps) window.renderCollaboratorsMaps();
-      var root = document.currentScript && document.currentScript.parentElement;
-      var loading = root && root.querySelector && root.querySelector(".collab-map-loading");
-      window.setTimeout(function () {
-        if (!loading) return;
-        if (!window.renderCollaboratorsMaps) {
-          loading.textContent = "Map script failed to load.";
-          return;
-        }
-        if (!window.Plotly) {
-          loading.textContent = "Loading map library… (Plotly)";
-          return;
-        }
-      }, 1500);
-    })();
-  </script>
-
-  <noscript>
-    <p>This map is interactive and requires JavaScript. Use the collaborator directory below.</p>
-  </noscript>
 </div>

@@ -1,0 +1,60 @@
+{% comment %}
+  Trainee institutions table.
+  - Shows where trainees have been hosted, grouped by institution.
+  - Sortable columns via _scripts/table-sort.js (data-sort-key).
+  - Rows are searchable via _scripts/search.js (data-search).
+
+  Data sources:
+  - `_data/trainee_institutions.yaml` (institution → location + lat/lon)
+  - `_data/trainees.yaml` (trainee entries with `institution` and `end`)
+{% endcomment %}
+
+{% assign emptyarray = "" | split: "," %}
+{% assign institutions = site.data.trainee_institutions | default: emptyarray | sort: "institution" %}
+{% assign trainees = site.data.trainees | default: emptyarray %}
+
+<div class="directory-table-wrap">
+  <table class="directory-table" data-sort-table>
+    <thead>
+      <tr>
+        <th><button type="button" class="directory-sort" data-sort-key="institution">Institution</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="location">Location</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="current">Current</button></th>
+        <th><button type="button" class="directory-sort" data-sort-key="past">Past</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for inst in institutions %}
+        {% assign inst_name = inst.institution | default: "" %}
+        {% assign inst_trainees = trainees | where: "institution", inst_name %}
+        {% assign current = inst_trainees | where: "end", "Present" %}
+        {% assign current_count = current | size %}
+        {% assign total_count = inst_trainees | size %}
+        {% assign past_count = total_count | minus: current_count %}
+        {% capture location %}{{ inst.city }}{% if inst.region and inst.region != "" %}, {{ inst.region }}{% endif %}{% if inst.country and inst.country != "" %}, {{ inst.country }}{% endif %}{% endcapture %}
+        {% capture trainee_names %}{{ inst_trainees | map: "name" | join: ", " }}{% endcapture %}
+        {% capture search %}{{ inst_name }} {{ location }} {{ trainee_names }}{% endcapture %}
+        <tr
+          class="directory-row"
+          data-search="{{ search | strip_newlines | xml_escape }}"
+          data-institution="{{ inst_name | xml_escape }}"
+          data-location="{{ location | strip_newlines | xml_escape }}"
+          data-current="{{ current_count }}"
+          data-past="{{ past_count }}"
+        >
+          <td>
+            {% if inst.link and inst.link != "" %}
+              <a href="{{ inst.link | relative_url | uri_escape }}">{{ inst_name }}</a>
+            {% else %}
+              {{ inst_name }}
+            {% endif %}
+          </td>
+          <td>{{ location }}</td>
+          <td>{{ current_count }}</td>
+          <td>{{ past_count }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+

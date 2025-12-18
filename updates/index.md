@@ -5,15 +5,15 @@ nav:
   order: 6
   icon: fa-regular fa-newspaper
   tooltip: News and blog
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-regular fa-newspaper" %}News/Blog
 
+Short updates, announcements, and occasional longer-form posts — plus a running list of talks, interviews, and press.
+
 {% include section.html %}
 
-<a id="news"></a>
-## News
+## News {#news}
 
 {% include search-box.html %}
 {% include search-info.html %}
@@ -24,8 +24,7 @@ share: images/background.jpg
 
 {% include section.html %}
 
-<a id="blog"></a>
-## Blog
+## Blog {#blog}
 
 {% include search-box.html %}
 {% include tags.html tags=site.tags %}
@@ -35,8 +34,7 @@ share: images/background.jpg
 
 {% include section.html %}
 
-<a id="media"></a>
-## Media
+## Media {#media}
 
 Talks, interviews, press, and other public-facing updates.
 

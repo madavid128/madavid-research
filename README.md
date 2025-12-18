@@ -1,181 +1,203 @@
+![on-push](../../actions/workflows/on-push.yaml/badge.svg)
+![on-pull-request](../../actions/workflows/on-pull-request.yaml/badge.svg)
+![on-schedule](../../actions/workflows/on-schedule.yaml/badge.svg)
 
-  ![on-push](../../actions/workflows/on-push.yaml/badge.svg)
-  ![on-pull-request](../../actions/workflows/on-pull-request.yaml/badge.svg)
-  ![on-schedule](../../actions/workflows/on-schedule.yaml/badge.svg)
+# Michael A. David — Research Portfolio
 
-  # Welcome to Michael A. David's Research Portfolio!
-  This website summarizes my research, publications, and avaiable code written for various purposes.
-  
-  Visit **[michaeladavid.com](https://michaeladavid.com)**
-  
-  My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning (ML) to study and diagnose post-traumatic joint conditions of contracture and osteoarthritis. I develop ML models end-to-end to identify tissue and cellular subtypes, phenotypes, and predictive relationships. My ML models are built upon preclinical and clinical datasets involving the ankle, elbow, and knee. Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
+This repository powers my personal research website (Jekyll + Lab Website Template).
 
-  Currently, I hold a position as Instructor in the Department of Orthopedics at University of Colorado Anschutz Medical Campus. My primary appointment is held within the Colorado Program for Musculoskeletal Research.
+- Live site: https://michaeladavid.com
+- Repo: `madavid128/madavid-research`
 
-  Please don't hestitate to contact me for any opportunities or collaborative work
+My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning to study post‑traumatic musculoskeletal conditions (contracture and osteoarthritis).
 
-  Visit my other websites and social media:
-  
-  Google Scholar: http://scholar.google.com/citations?user=o7mhIiEAAAAJ&hl=en
-  
-  Academic Appointment: https://som.cuanschutz.edu/Profiles/Faculty/Profile/36910
-  
-  Linkedin: https://www.linkedin.com/in/mdavid3/
-  
-  Pubmed: https://www.ncbi.nlm.nih.gov/myncbi/1Feoil52XxqgFN/bibliography/public/
+## Local preview (Docker)
 
-  ## Local preview (Docker)
+1) Start the local site:
+- `bash .docker/run.sh`
 
-  This repo uses a small Docker image to run `jekyll serve` locally.
+2) View it:
+- Open `http://localhost:4000`
 
-  1) Start the local site:
-  - `bash .docker/run.sh`
+3) Stop it:
+- Press `Ctrl+C` in the terminal running Docker.
 
-  2) View it:
-  - Open `http://localhost:4000`
+4) If it gets stuck, force restart:
+- `docker rm -f lab-website-renderer`
+- `bash .docker/run.sh`
 
-  3) Stop it:
-  - Press `Ctrl+C` in the terminal running Docker.
+Notes:
+- Most edits (pages, `_data/*`, styles, scripts) are picked up automatically via hot reload.
+- You only need to re-run Docker if the container is stopped or becomes unresponsive.
+- Tip: on mobile, the nav closes automatically after you tap a link, and there’s a “back to top” button after scrolling.
+- Tip: press `/` (or `Ctrl+K` / `⌘K`) on any page to open the global search overlay.
+- Tip: if search results seem outdated, hard refresh (⌘⇧R / Ctrl+Shift+R) or restart Docker to rebuild `search.json`.
 
-  4) If it gets stuck, force restart:
-  - `docker rm -f lab-website-renderer`
-  - `bash .docker/run.sh`
+## Global search (header magnifying glass)
 
-  Notes:
-  - Most edits (pages, `_data/*`, styles, scripts) are picked up automatically via hot reload.
-  - You only need to re-run Docker if the container is stopped or becomes unresponsive.
+This site has a built-in search overlay (no Google dependency):
+- Open it: click the magnifying glass, press `/`, or press `Ctrl+K` / `⌘K`
+- It searches across: nav pages + subpages, projects, publications, news/blog items, pictures, and scientific art
+- It’s powered by a build-time JSON index at `search.json` → served at `/search.json`
 
-  ## Collaborator map data
+If you update `_data/citations.yaml`, `_data/news.yaml`, `_data/projects.yaml`, or add new pages, and search results don’t change:
+- Restart the local Docker site (it rebuilds the Jekyll output)
+- Or hard refresh your browser to bypass cached `/search.json`
 
-  The interactive collaborator map (on `team/` and `collaborators/`) is driven by `_data/collaborators_map.csv`.
-  Add one row per person/institution and include `lat`/`lon` (decimal degrees) for the marker to appear.
+## Blog posts
 
-  Recommended columns:
-  - `name` (required)
-  - `status` (`current` or `past`)
-  - `department` (optional; shown in map hover)
-  - `institution`, `city`, `region`, `country`
-  - `lat`, `lon`
-  - `link` (absolute URL or site-relative path like `contact`)
-  - `tags` (separate tags with `;`, e.g. `trainee;collaborator;institution`)
-  - optional: `papers`, `affiliation`
+Blog posts live in `_posts/` and render under the **News/Blog** tab.
 
-  There is also a helper script `_scripts/generate-collaborators.rb` that can extract co-author names from `_data/citations.yaml`,
-  but it does not (and cannot reliably) infer locations.
+- Create a new post: `_posts/YYYY-MM-DD-title.md`
+- Recommended front matter:
+  - `title: ...`
+  - `author: michael-david` (matches `_members/michael-david.md`)
+  - `tags: [tag1, tag2]`
+  - optional: `image: images/background.jpg`
 
-  ### Update collaborators (manual CSV)
+## Publications + word cloud
 
-  1) Edit `_data/collaborators_map.csv`
-  2) Make sure each row you want on the map has `lat` and `lon`
-  3) Refresh your local site (hot reload should pick it up; otherwise restart Docker)
+The Publications page displays:
+- the full publications list (`_data/citations.yaml`)
+- a word cloud (`images/publications-wordcloud.png`)
+- clickable “top terms” (`_data/publications_terms.yaml`)
 
-  ### Bootstrap collaborators from PubMed (optional)
+These are generated by the citation pipeline (`python _cite/cite.py`) and by the GitHub Actions workflow `.github/workflows/update-citations.yaml`.
 
-  This does **not** affect the Jekyll build directly; it just writes `_data/collaborators_map.csv`.
-  The site then reads that CSV at build time.
+If you run the pipeline locally, set an email for NCBI requests:
+- `export NCBI_EMAIL="you@domain.edu"`
 
-  The bootstrap script uses the DOIs already in `_data/citations.yaml` and queries PubMed (NCBI E-utilities).
-  Optionally, it can geocode to fill in `lat/lon` via OpenStreetMap Nominatim (rate-limited / sometimes unavailable).
+## Collaborator map
 
-  1) Create a venv:
-  - `python3 -m venv .venv`
-  - `source .venv/bin/activate`
+The interactive collaborator map (on `team/` and `collaborators/`) is driven by `_data/collaborators_map.csv`.
+Add one row per person/institution and include `lat`/`lon` (decimal degrees) for the marker to appear.
 
-  2) Install deps:
-  - `python -m pip install -r tools/requirements-collaborators.txt`
+Recommended columns:
+- `name` (required)
+- `status` (`current` or `past`)
+- `department`, `institution`, `city`, `region`, `country`
+- `first_year`, `last_year` (enables the time slider)
+- `lat`, `lon`
+- `link` (absolute URL or site‑relative path like `contact`)
+- `tags` (separate with `;`, e.g. `collaborator;institution`)
+- optional: `papers`, `affiliation`, `institutions` (semicolon list)
 
-  3) Build collaborator CSV from PubMed:
-  - `python tools/pubmed_to_collaborators_map.py --email you@domain.edu`
+### Update collaborators (manual CSV)
 
-  4) Optional: geocode to fill `lat/lon` (network + rate limits):
-  - `python tools/pubmed_to_collaborators_map.py --email you@domain.edu --geocode`
+1) Edit `_data/collaborators_map.csv`
+2) Ensure each row you want on the map has `lat` and `lon`
+3) Refresh your local site (hot reload should pick it up; otherwise restart Docker)
 
-  - If geocoding errors with `HTTP Error 503`, rerun later (the service can be temporarily overloaded) or increase retries:
-    `python tools/pubmed_to_collaborators_map.py --email you@domain.edu --geocode --geocode-retries 10`
+### Bootstrap collaborators from PubMed (optional)
 
-  ## Publications word cloud
+This writes `_data/collaborators_map.csv` (it does not change the Jekyll build logic).
 
-  The Publications page displays a word cloud and clickable “top terms” chips above the list.
-  These are generated by the citation pipeline (`python _cite/cite.py`) and saved to:
-  - `images/publications-wordcloud.png`
-  - `_data/publications_terms.yaml`
+1) Create a venv:
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
 
-  The generator prefers PubMed MeSH/Keyword terms (via NCBI E-utilities) when IDs can be resolved; otherwise it falls back to titles.
-  You can optionally set `NCBI_EMAIL` in your environment to include a contact email in NCBI requests.
+2) Install deps:
+- `python -m pip install -r tools/requirements-collaborators.txt`
 
-  ## Galleries (Pictures / Scientific Art)
+3) Build collaborator CSV from PubMed:
+- `python tools/pubmed_to_collaborators_map.py --email you@domain.edu`
 
-  `pictures/` and `art/` use a lightweight masonry gallery with a click-to-open lightbox:
-  - Data: `_data/pictures.yaml`, `_data/art.yaml`
-  - Rendering: `_includes/gallery.html`
-  - JS: `_scripts/gallery.js`
-  - Styles: `_styles/gallery.scss`
+Notes:
+- Rerunning preserves curated fields (status/tags/links/lat/lon) by default.
+- To disable merging, pass `--no-merge-existing`.
 
-  Replace placeholder SVGs under `images/` with real images (JPG/PNG/WebP) and update the corresponding `_data/*.yaml` entries.
+4) Optional: geocode to fill `lat/lon` (rate limited / sometimes unavailable):
+- `python tools/pubmed_to_collaborators_map.py --email you@domain.edu --geocode`
 
-  ## Manual publications (e.g., dissertation)
+If geocoding fails with `HTTP Error 503`, retry later or increase retries:
+- `python tools/pubmed_to_collaborators_map.py --email you@domain.edu --geocode --geocode-retries 10`
 
-  If an item is not on PubMed, add it to `_data/sources.yaml`.
-  The cite pipeline will include it alongside automated sources without affecting PubMed/ORCID ingestion.
+## Trainees map
 
-  ## Icons
+The trainees map uses:
+- `_data/trainees.yaml` (trainee entries with `start`/`end`, e.g. `April 2021`, `Present`)
+- `_data/trainee_institutions.yaml` (institution → location + lat/lon)
 
-  The site uses Font Awesome classes for most icons (see `_data/types.yaml` and per-page `nav.icon` front matter).
-  You can also use inline SVG icons by setting an icon value that ends with `.svg` and placing it under `_includes/`
-  (for example `nav.icon: icons/my-icon.svg`).
+The map UI includes a year slider and play button:
+- **Active**: shows trainees active in that year
+- **To date**: shows trainees who have started by that year (ended trainees display as “Past”)
 
-  ### Generate a full icon set (static PNG/ICO/SVG + animated GIFs)
+On `collaborators/` and `team/`, directories also have a **Table** view (sortable) for fast scanning.
 
-  This repo includes `make_mad_icons.py`, which reads `web-app-manifest-512x512.png` and generates:
-  - PNGs: `apple-touch-icon.png`, `favicon-96x96.png`, `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`
-  - `favicon.ico` (16/32/48/64)
-  - `favicon.svg` (wrapper pointing at `web-app-manifest-512x512.png`)
-  - Animated GIFs (electric-sign effect) at multiple sizes
-  - A zip bundle `MAD_icons.zip` (flat contents)
+## Galleries (Pictures / Scientific Art)
 
-  1) Create a venv (if you don’t already have one):
-  - `python3 -m venv .venv`
-  - `source .venv/bin/activate`
+`pictures/` and `art/` use a lightweight gallery + lightbox:
+- Data: `_data/pictures.yaml`, `_data/art.yaml`
+- Rendering: `_includes/gallery.html`
+- JS: `_scripts/gallery.js`
+- Styles: `_styles/gallery.scss`
 
-  2) Install Pillow:
-  - `python -m pip install Pillow`
+Replace placeholder SVGs under `images/` with real images (JPG/PNG/WebP) and update the corresponding `_data/*.yaml` entries.
 
-  3) Run the generator:
-  - `python make_mad_icons.py`
+### Optional: generate WebP variants
 
-  Outputs:
-  - `dist_icons/` (all generated files)
-  - `MAD_icons.zip` (all files zipped, no subfolders inside)
+If you add JPG/PNG photos, you can optionally generate `.webp` variants (served automatically when present):
 
-  To apply the **static** icons to the website, copy these from `dist_icons/` to the repo root (overwrite existing):
-  - `apple-touch-icon.png`
-  - `favicon-96x96.png`
-  - `favicon.ico`
-  - `favicon.svg`
-  - `web-app-manifest-192x192.png`
-  - `web-app-manifest-512x512.png`
+- Install Pillow: `python -m pip install Pillow`
+- Run: `python tools/make_webp.py images`
 
-  Animated favicon support varies by browser. The GIFs will always work as normal images on pages, but may not animate in the browser tab.
+## Manual publications (e.g., dissertation)
 
-  ## Background image (network style)
+If an item is not on PubMed, add it to `_data/sources.yaml`. The cite pipeline will include it alongside automated sources without affecting PubMed/ORCID ingestion.
 
-  To generate a dark abstract “network” header background (teal/green nodes + lines) run:
-  - `python tools/make_network_background.py`
+## Icons
 
-  Default output:
-  - `images/background.jpg` (2400×1350)
+The site uses Font Awesome classes for most icons (see `_data/types.yaml` and per‑page `nav.icon` front matter).
 
-  Useful options:
-  - `python tools/make_network_background.py --width 1920 --height 1080`
-  - `python tools/make_network_background.py --seed 128` (deterministic)
+### Generate a full icon set (static PNG/ICO/SVG + animated GIFs)
 
-  ## Licensing notes
+`make_mad_icons.py` reads `web-app-manifest-512x512.png` and generates:
+- PNGs: `apple-touch-icon.png`, `favicon-96x96.png`, `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`
+- `favicon.ico` (16/32/48/64)
+- `favicon.svg` (wrapper pointing at `web-app-manifest-512x512.png`)
+- Animated GIFs (electric‑sign effect) at multiple sizes
+- A zip bundle `MAD_icons.zip` (generated; ignored by git)
 
-  The repository’s default license is `LICENSE.md` (BSD 3‑Clause).
+1) Create a venv (if you don’t already have one):
+- `python3 -m venv .venv`
+- `source .venv/bin/activate`
 
-  Some standalone helper scripts added for this site are licensed under MIT (see `licenses/MIT_FOR_HELPERS.md`) and are marked per-file via
-  `SPDX-License-Identifier: MIT` at the top of the script. See `LICENSES.md` for the current list of MIT‑licensed helper files.
+2) Install Pillow:
+- `python -m pip install Pillow`
 
-  
+3) Run:
+- `python make_mad_icons.py`
 
-  _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
+Outputs:
+- `dist_icons/` (generated files; ignored by git)
+- `MAD_icons.zip` (generated; ignored by git)
+
+To apply the **static** icons to the website, copy these from `dist_icons/` to the repo root (overwrite existing):
+- `apple-touch-icon.png`
+- `favicon-96x96.png`
+- `favicon.ico`
+- `favicon.svg`
+- `web-app-manifest-192x192.png`
+- `web-app-manifest-512x512.png`
+
+Animated favicon support varies by browser. The GIFs will always work as normal images on pages, but may not animate in the browser tab.
+
+## Background image (network style)
+
+To generate a dark abstract “network” header background (teal/green nodes + lines):
+- `python tools/make_network_background.py`
+
+Default output:
+- `images/background.jpg` (2400×1350)
+
+Useful options:
+- `python tools/make_network_background.py --width 1920 --height 1080`
+- `python tools/make_network_background.py --seed 128` (deterministic)
+
+## Licensing notes
+
+The repository’s default license is `LICENSE.md` (BSD 3‑Clause).
+
+Some standalone helper scripts are MIT‑licensed (see `licenses/MIT_FOR_HELPERS.md`) and marked per-file with `SPDX-License-Identifier: MIT`. See `LICENSES.md` for the current list.
+
+_Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)._

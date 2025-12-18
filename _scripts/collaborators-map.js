@@ -103,8 +103,51 @@
 
     if (person.papers) lines.push(`Papers: ${escapeHtml(person.papers)}`);
 
+    const y0 = person.first_year ? Number(person.first_year) : null;
+    const y1 = person.last_year ? Number(person.last_year) : null;
+    if (y0 && y1) lines.push(`Years: ${escapeHtml(y0)}–${escapeHtml(y1)}`);
+    else if (y0) lines.push(`Year: ${escapeHtml(y0)}`);
+
+    const institutions = String(person.institutions || "")
+      .split(/[,;]+/g)
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (institutions.length > 1) {
+      const top = institutions.slice(0, 4);
+      const more = institutions.length > 4 ? ` (+${institutions.length - 4} more)` : "";
+      lines.push(`Institutions: ${escapeHtml(top.join("; "))}${escapeHtml(more)}`);
+    }
+
     const tags = unique(person.tags || []);
     if (tags.length) lines.push(`Tags: ${escapeHtml(tags.join(", "))}`);
+
+    return lines.join("<br>");
+  };
+
+  const buildInstitutionHover = (inst, statusLabel) => {
+    const title = inst.institution || "Unknown institution";
+    const whereParts = [];
+    if (inst.city) whereParts.push(inst.city);
+    if (inst.region) whereParts.push(inst.region);
+    if (inst.country) whereParts.push(inst.country);
+    const where = whereParts.filter(Boolean).join(", ");
+
+    const lines = [];
+    lines.push(`<b>${escapeHtml(title)}</b>`);
+    if (where) lines.push(`<span style="color:#b0b0b0">${escapeHtml(where)}</span>`);
+    const meta = [];
+    if (statusLabel) meta.push(statusLabel);
+    meta.push("institution");
+    if (meta.length) lines.push(meta.map(escapeHtml).join(" · "));
+
+    if (inst.count) lines.push(`People: ${escapeHtml(inst.count)}`);
+
+    const names = (inst.people || []).slice(0, 12);
+    if (names.length) {
+      const list = names.map((n) => `• ${escapeHtml(n)}`).join("<br>");
+      const more = inst.people && inst.people.length > names.length ? `<br>…and ${inst.people.length - names.length} more` : "";
+      lines.push(list + more);
+    }
 
     return lines.join("<br>");
   };
@@ -190,6 +233,7 @@
     const rawCurrent = [];
     const rawPast = [];
     const missingCoords = [];
+    const missingYears = [];
     let allWithCoords = 0;
 
     for (const p of people || []) {
@@ -200,7 +244,23 @@
       const tags = parseTags(p.tags);
       if (tags.includes("trainee")) continue;
       const type = pickType(tags);
-      const entry = { ...p, lat, lon, status, tags, type };
+      const firstYear = toNumber(p.first_year);
+      const lastYear = toNumber(p.last_year);
+      const entry = { ...p, lat, lon, status, tags, type, first_year: firstYear, last_year: lastYear };
+
+      if (!options.allYears && options.year !== null) {
+        if (firstYear === null) {
+          missingYears.push(entry);
+          continue;
+        }
+        const end = lastYear === null ? firstYear : lastYear;
+        if (options.yearMode === "active") {
+          if (options.year < firstYear || options.year > end) continue;
+        } else {
+          // cumulative
+          if (options.year < firstYear) continue;
+        }
+      }
       if (options.activeTags && options.activeTags.length) {
         const hasTag = entry.tags.some((t) => options.activeTags.includes(String(t).toLowerCase()));
         if (!hasTag) continue;
@@ -220,6 +280,35 @@
     const current = applyDuplicateLayout(rawCurrent, options);
     const past = applyDuplicateLayout(rawPast, options);
     const markerPoints = current.length + past.length;
+
+    const buildInstitutions = (items) => {
+      const byKey = new Map();
+      const rounded = (n) => Number(n).toFixed(4);
+      for (const p of items) {
+        const inst = String(p.institution || "").trim();
+        if (!inst) continue;
+        const key = `${inst}::${rounded(p.lat)}::${rounded(p.lon)}`;
+        if (!byKey.has(key)) {
+          byKey.set(key, {
+            institution: inst,
+            city: p.city || "",
+            region: p.region || "",
+            country: p.country || "",
+            lat: p.lat,
+            lon: p.lon,
+            count: 0,
+            people: [],
+          });
+        }
+        const agg = byKey.get(key);
+        agg.count += 1;
+        if (p.name) agg.people.push(p.name);
+      }
+      return [...byKey.values()].map((x) => ({ ...x, people: unique(x.people) }));
+    };
+
+    const currentInstitutions = buildInstitutions(rawCurrent);
+    const pastInstitutions = buildInstitutions(rawPast);
 
     const primary = getCssVar("--primary", "#00a878");
     const text = getCssVar("--text", "#ffffff");
@@ -248,7 +337,25 @@
       })),
     });
 
-    const lineTrace = (items, name, dash, opacity) => {
+    const institutionTrace = (items, name, color, statusLabel) => ({
+      type: "scattergeo",
+      mode: "markers",
+      name,
+      lat: items.map((p) => p.lat),
+      lon: items.map((p) => p.lon),
+      text: items.map((p) => buildInstitutionHover(p, statusLabel)),
+      hovertemplate: "%{text}<extra></extra>",
+      marker: {
+        size: items.map((p) => clamp(10 + Math.sqrt(Number(p.count) || 1) * 4, 10, 26)),
+        color,
+        symbol: "square",
+        line: { width: 1, color: text },
+        opacity: 0.9,
+      },
+      customdata: items.map(() => ({ link: "" })),
+    });
+
+    const lineTrace = (items, name, color, dash, opacity) => {
       const lats = [];
       const lons = [];
       for (const p of items) {
@@ -264,11 +371,44 @@
         hoverinfo: "skip",
         line: {
           width: 2,
-          color: primary,
+          color,
           dash,
         },
         opacity,
         showlegend: true,
+      };
+    };
+
+    const highlightTrace = (items, name, color) => {
+      if (!items.length) {
+        return {
+          type: "scattergeo",
+          mode: "lines",
+          name,
+          lat: [],
+          lon: [],
+          hoverinfo: "skip",
+          line: { width: 3, color: color || "#34d399", dash: "solid" },
+          opacity: 0.95,
+          showlegend: false,
+        };
+      }
+      const lats = [];
+      const lons = [];
+      for (const p of items) {
+        lats.push(homeLat, p.lat, null);
+        lons.push(homeLon, p.lon, null);
+      }
+      return {
+        type: "scattergeo",
+        mode: "lines",
+        name,
+        lat: lats,
+        lon: lons,
+        hoverinfo: "skip",
+        line: { width: 3, color: color || "#34d399", dash: "solid" },
+        opacity: 0.95,
+        showlegend: false,
       };
     };
 
@@ -294,13 +434,24 @@
 
     const filterByType = (items, type) => items.filter((p) => p.type === type);
 
+    const highlightCurrent =
+      !options.allYears && options.year !== null
+        ? current.filter((p) => p.first_year !== null && Number(p.first_year) === Number(options.year))
+        : [];
+    const highlightPast =
+      !options.allYears && options.year !== null
+        ? past.filter((p) => p.first_year !== null && Number(p.first_year) === Number(options.year))
+        : [];
+
     const traces = [
-      lineTrace(current, "Current", "solid", 0.8),
-      lineTrace(past, "Past", "dash", 0.5),
-      markerTrace(filterByType(current, "collaborator"), "Current collaborators", text, "circle"),
-      markerTrace(filterByType(current, "institution"), "Current institutions", primary, "square"),
+      lineTrace(current, "Current connections", primary, "solid", 0.8),
+      lineTrace(past, "Past connections", darkGray, "dash", 0.5),
+      highlightTrace(highlightCurrent, "New (current)", "#34d399"),
+      highlightTrace(highlightPast, "New (past)", darkGray),
+      markerTrace(filterByType(current, "collaborator"), "Current collaborators", primary, "circle"),
+      institutionTrace(currentInstitutions, "Current institutions", primary, "Current"),
       markerTrace(filterByType(past, "collaborator"), "Past collaborators", darkGray, "circle"),
-      markerTrace(filterByType(past, "institution"), "Past institutions", darkGray, "square"),
+      institutionTrace(pastInstitutions, "Past institutions", darkGray, "Past"),
       homeTrace,
     ];
 
@@ -310,14 +461,17 @@
     traces[0].visible = showCurrent ? true : "legendonly";
     traces[1].visible = showPast ? true : "legendonly";
     traces[2].visible = showCurrent ? true : "legendonly";
-    traces[3].visible = showCurrent ? true : "legendonly";
-    traces[4].visible = showPast ? true : "legendonly";
-    traces[5].visible = showPast ? true : "legendonly";
+    traces[3].visible = showPast ? true : "legendonly";
+    traces[4].visible = showCurrent && options.showTypes.collaborator ? true : "legendonly";
+    traces[5].visible = showCurrent && options.showTypes.institution ? true : "legendonly";
+    traces[6].visible = showPast && options.showTypes.collaborator ? true : "legendonly";
+    traces[7].visible = showPast && options.showTypes.institution ? true : "legendonly";
 
     return {
       traces,
       stats: {
         missingCoords,
+        missingYears,
         total: (people || []).length,
         withCoordsAll: allWithCoords,
         withCoordsFiltered: rawCurrent.length + rawPast.length,
@@ -476,6 +630,12 @@
     const typeToggles = [...root.querySelectorAll("input[data-collab-type]")];
     const clusterToggle = root.querySelector("input[data-collab-cluster='duplicates']");
     const summaryEl = root.querySelector("[data-collab-summary]");
+    const timeHost = root.querySelector("[data-collab-time]");
+    const yearAllToggle = root.querySelector("input[data-collab-year-all]");
+    const yearSlider = root.querySelector("input[data-collab-year]");
+    const yearLabel = root.querySelector("[data-collab-year-label]");
+    const playButton = root.querySelector("[data-collab-play]");
+    const modeButtons = [...root.querySelectorAll("[data-collab-mode]")];
 
     let state = {
       view: "world",
@@ -484,10 +644,66 @@
       showTypes: { collaborator: true, institution: true },
       activeTags: [],
       clusterDuplicates: clusterToggle ? clusterToggle.checked : true,
+      allYears: true,
+      year: null,
+      yearMode: "cumulative",
+      _timer: null,
     };
 
     buildTagControls(root, payload.people, state);
     root.addEventListener("collabfilterschanged", () => render());
+
+    const computeYearBounds = () => {
+      let minY = null;
+      let maxY = null;
+      for (const p of payload.people || []) {
+        const y0 = toNumber(p.first_year);
+        const y1 = toNumber(p.last_year);
+        if (y0 === null) continue;
+        const end = y1 === null ? y0 : y1;
+        minY = minY === null ? y0 : Math.min(minY, y0);
+        maxY = maxY === null ? end : Math.max(maxY, end);
+      }
+      return { minY, maxY };
+    };
+
+    const setModePressed = () => {
+      modeButtons.forEach((btn) => {
+        const key = String(btn.dataset.collabMode || "");
+        btn.setAttribute("aria-pressed", key === state.yearMode ? "true" : "false");
+      });
+    };
+
+    const stopPlay = () => {
+      if (state._timer) {
+        window.clearInterval(state._timer);
+        state._timer = null;
+      }
+      if (playButton) playButton.setAttribute("aria-pressed", "false");
+      if (playButton) playButton.textContent = "Play";
+    };
+
+    const syncTimeControls = () => {
+      if (!yearAllToggle || !yearSlider || !yearLabel) return;
+      yearAllToggle.checked = Boolean(state.allYears);
+      yearSlider.disabled = Boolean(state.allYears);
+      if (state.allYears) {
+        yearLabel.textContent = "All";
+        stopPlay();
+      } else {
+        yearLabel.textContent = String(state.year ?? "");
+      }
+      setModePressed();
+    };
+
+    // Respect reduced motion: disable autoplay controls.
+    const reduceMotion = document.documentElement.dataset.motion === "reduced";
+    if (reduceMotion && playButton) {
+      playButton.disabled = true;
+      playButton.setAttribute("aria-disabled", "true");
+      playButton.textContent = "Play";
+      playButton.title = "Disabled (reduced motion)";
+    }
 
     const chooseDefaultView = () => {
       const withCoords = [];
@@ -504,6 +720,69 @@
 
     state.view = chooseDefaultView();
     setPressed(root, state.view);
+
+    // Time controls: if we have year ranges, enable slider; otherwise hide.
+    const { minY, maxY } = computeYearBounds();
+    if (!minY || !maxY || !timeHost || !yearAllToggle || !yearSlider || !yearLabel || !playButton) {
+      if (timeHost) timeHost.setAttribute("hidden", "hidden");
+    } else {
+      yearSlider.min = String(minY);
+      yearSlider.max = String(maxY);
+      yearSlider.step = "1";
+      yearSlider.value = String(maxY);
+      state.year = maxY;
+      state.allYears = true;
+      state.yearMode = "cumulative";
+      syncTimeControls();
+
+      yearAllToggle.addEventListener("change", () => {
+        state.allYears = Boolean(yearAllToggle.checked);
+        if (!state.allYears) state.year = Number(yearSlider.value);
+        syncTimeControls();
+        render();
+      });
+
+      yearSlider.addEventListener("input", () => {
+        state.year = Number(yearSlider.value);
+        state.allYears = false;
+        syncTimeControls();
+        render();
+      });
+
+      modeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.yearMode = String(btn.dataset.collabMode || "cumulative");
+          syncTimeControls();
+          render();
+        });
+      });
+
+      playButton.addEventListener("click", () => {
+        if (state.allYears) state.allYears = false;
+        if (state.year === null) state.year = Number(yearSlider.value);
+        const isPlaying = Boolean(state._timer);
+        if (isPlaying) {
+          stopPlay();
+          return;
+        }
+        playButton.setAttribute("aria-pressed", "true");
+        playButton.textContent = "Pause";
+        state._timer = window.setInterval(() => {
+          if (state.allYears) {
+            stopPlay();
+            return;
+          }
+          const y = state.year ?? Number(yearSlider.value);
+          const next = y >= maxY ? minY : y + 1;
+          state.year = next;
+          yearSlider.value = String(next);
+          syncTimeControls();
+          render();
+        }, 700);
+        syncTimeControls();
+        render();
+      });
+    }
 
     const syncTypeState = () => {
       const next = { collaborator: false, institution: false };
@@ -529,6 +808,7 @@
       const shown = (traceStats.shownCurrent || 0) + (traceStats.shownPast || 0);
       const markerPoints = traceStats.markerPoints || 0;
       const missing = Math.max(0, total - withCoordsAll);
+      const missingYears = (traceStats.missingYears || []).length;
       const bits = [];
       bits.push(`Visible: ${shown} entries`);
       if (state.clusterDuplicates && markerPoints && markerPoints !== shown) {
@@ -536,6 +816,7 @@
       }
       bits.push(`coordinates: ${withCoordsAll}/${total}`);
       if (missing > 0) bits.push(`${missing} missing coordinates`);
+      if (!state.allYears && missingYears > 0) bits.push(`${missingYears} missing year range`);
       summaryEl.textContent = bits.join(" · ");
     };
 
@@ -556,10 +837,18 @@
         return;
       }
       const layout = buildLayout(state.view);
+      const reduceMotion = document.documentElement.dataset.motion === "reduced";
       const config = { responsive: true, displayModeBar: false };
 
       if (loading) loading.remove();
       await window.Plotly.react(host, traces, layout, config);
+      if (reduceMotion) {
+        try {
+          window.Plotly.relayout(host, { "geo.projection.rotation": { lon: 0, lat: 0, roll: 0 } });
+        } catch {
+          // ignore
+        }
+      }
 
       if (!host.__collabClickBound) {
         host.on("plotly_click", (event) => {
@@ -613,10 +902,53 @@
   };
 
   window.renderCollaboratorsMaps = () => {
-    document
-      .querySelectorAll(".collab-map[data-map-kind='collaborators']")
-      .forEach((root) => initOne(root));
+    const roots = document.querySelectorAll(".collab-map[data-map-kind='collaborators']");
+    roots.forEach((root) => {
+      if (root.__collabInitDone) return;
+      // If we previously observed this root but it never intersected (e.g. it was in a hidden tab),
+      // allow a direct init so switching views can still bring the map to life.
+      if (root.__collabObserved) {
+        initOne(root);
+        return;
+      }
+      root.__collabObserved = true;
+
+      const target = root.querySelector(".collab-map-plot") || root;
+      if (!("IntersectionObserver" in window)) {
+        initOne(root);
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const anyVisible = entries.some((e) => e.isIntersecting || e.intersectionRatio > 0);
+          if (!anyVisible) return;
+          observer.disconnect();
+          initOne(root);
+        },
+        { rootMargin: "250px 0px", threshold: 0.01 },
+      );
+
+      observer.observe(target);
+    });
   };
+
+  // When a hidden pane becomes visible, Plotly needs a resize/re-render.
+  window.addEventListener("directoryviewchange", () => {
+    document.querySelectorAll(".collab-map[data-map-kind='collaborators']").forEach((root) => {
+      const host = root.querySelector("[data-collab-map]");
+      if (!host) return;
+      if (host.offsetParent === null) return; // still hidden
+      if (root.__collabInitDone && typeof root.__collabRender === "function") {
+        root.__collabRender();
+        if (window.Plotly && window.Plotly.Plots && typeof window.Plotly.Plots.resize === "function") {
+          window.Plotly.Plots.resize(host);
+        }
+      } else if (window.renderCollaboratorsMaps) {
+        window.renderCollaboratorsMaps();
+      }
+    });
+  });
 
   window.addEventListener("DOMContentLoaded", window.renderCollaboratorsMaps);
   window.addEventListener("load", window.renderCollaboratorsMaps);

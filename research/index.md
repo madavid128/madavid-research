@@ -5,14 +5,25 @@ nav:
   order: 1
   icon: fa-solid fa-book-open
   tooltip: Publications
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-solid fa-book-open" %}Publications
 
+{% assign jumps = "" | split: "," %}
+{% assign jumps = jumps | push: "word-cloud|Word cloud" | push: "highlighted|Highlighted" | push: "all-publications|All publications" %}
+{% include page-jumps.html items=jumps %}
+
 My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning (ML) to study and diagnose post-traumatic joint conditions of contracture and osteoarthritis. I develop ML models end-to-end to identify tissue and cellular subtypes, phenotypes, and predictive relationships. My ML models are built upon preclinical and clinical datasets involving the ankle, elbow, and knee. 
 
 Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
+
+{%
+  include button.html
+  link="faq"
+  text="New here? FAQ / glossary"
+  icon="fa-regular fa-circle-question"
+  style="bare"
+%}
 
 {% comment %}
 === PUBMED & SCHOLAR BUTTONS ===
@@ -38,7 +49,7 @@ and your Google Scholar profile (built from GSID in _config.yaml).
 
 {% include section.html %}
 
-## Research areas (word cloud)
+## Research areas (word cloud) {#word-cloud}
 
 {% assign wc = "images/publications-wordcloud.png" | file_exists %}
 {% if wc %}
@@ -64,7 +75,7 @@ and your Google Scholar profile (built from GSID in _config.yaml).
 
 {% include section.html %}
 
-## Highlighted
+## Highlighted {#highlighted}
 
 <div class="grid featured-pubs">
   {% for item in site.data.featured_publications %}
@@ -75,7 +86,15 @@ and your Google Scholar profile (built from GSID in _config.yaml).
 {% include section.html %}
 
 {% assign pub_total = site.data.citations | size %}
-## All ({{ pub_total }})
+## All ({{ pub_total }}) {#all-publications}
+
+{%
+  include alert.html
+  type="info"
+  content="Tip: use the search box to filter by keywords, or try advanced tokens like `year:2023` (or `year:2020-2022`) and `type:journal`."
+%}
+
+{% include publications-filters.html %}
 {% include search-box.html %}
 {% include search-info.html %}
 {% include list.html data="citations" component="citation" style="rich" %}

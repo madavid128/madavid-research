@@ -1,17 +1,49 @@
 /*
   filters elements on page based on url or search box.
   syntax: term1 term2 "full phrase 1" "full phrase 2" "tag: tag 1"
+  extra tokens:
+    - year:YYYY or year:YYYY-YYYY (matches elements with data-year)
+    - type:<type> (matches elements with data-type)
   match if: all terms AND at least one phrase AND at least one tag
 */
 {
   // elements to filter
-  const elementSelector = ".card, .citation, .post-excerpt, .news-item, .gallery-item";
+  const elementSelector = ".card, .citation, .post-excerpt, .news-item, .gallery-item, .directory-row";
   // search box element
   const searchBoxSelector = ".search-box";
   // results info box element
   const infoBoxSelector = ".search-info";
   // tags element
   const tagSelector = ".tag";
+
+  const normalizeType = (type) =>
+    String(type || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+
+  const parseYears = (raw) => {
+    const s = String(raw || "").trim();
+    if (!s) return [];
+    const range = s.split("-").map((x) => x.trim());
+    const toY = (x) => {
+      const y = Number(x);
+      if (!Number.isFinite(y)) return null;
+      if (y < 1900 || y > 2100) return null;
+      return y;
+    };
+    if (range.length === 1) {
+      const y = toY(range[0]);
+      return y ? [y] : [];
+    }
+    const start = toY(range[0]);
+    const end = toY(range[1]);
+    if (!start || !end) return [];
+    const out = [];
+    const step = start <= end ? 1 : -1;
+    for (let y = start; step > 0 ? y <= end : y >= end; y += step) out.push(y);
+    return out;
+  };
 
   // split search query into terms, phrases, and tags
   const splitQuery = (query) => {
@@ -22,9 +54,20 @@
     const terms = [];
     const phrases = [];
     const tags = [];
+    const years = [];
+    const types = [];
 
     // put parts into bins
     for (let part of parts) {
+      if (part.toLowerCase().startsWith("year:")) {
+        years.push(...parseYears(part.replace(/^year:\s*/i, "")));
+        continue;
+      }
+      if (part.toLowerCase().startsWith("type:")) {
+        const t = normalizeType(part.replace(/^type:\s*/i, ""));
+        if (t) types.push(t);
+        continue;
+      }
       if (part.startsWith('"')) {
         part = part.replaceAll('"', "").trim();
         if (part.startsWith("tag:"))
@@ -33,12 +76,25 @@
       } else terms.push(part.toLowerCase());
     }
 
-    return { terms, phrases, tags };
+    return { terms, phrases, tags, years, types };
   };
 
   // normalize tag string for comparison
   window.normalizeTag = (tag) =>
     tag.trim().toLowerCase().replaceAll(/\s+/g, "-");
+
+  // Read a data-* attribute from the element, falling back to the nearest parent with that attribute.
+  // This lets filters work when the data attribute is attached to a wrapper (e.g. .citation-container)
+  // while the filtered element is an inner node (e.g. .citation).
+  const getData = (element, key) => {
+    if (!element) return "";
+    const direct = element.dataset ? element.dataset[key] : "";
+    if (direct !== undefined && direct !== null && String(direct).trim() !== "")
+      return direct;
+    const attr = `data-${key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}`;
+    const parent = element.closest ? element.closest(`[${attr}]`) : null;
+    return parent && parent.dataset ? parent.dataset[key] || "" : "";
+  };
 
   // get data attribute contents of element and children
   const getAttr = (element, attr) =>
@@ -47,7 +103,7 @@
       .join(" ");
 
   // determine if element should show up in results based on query
-  const elementMatches = (element, { terms, phrases, tags }) => {
+  const elementMatches = (element, { terms, phrases, tags, years, types }) => {
     // tag elements within element
     const tagElements = [...element.querySelectorAll(".tag")];
 
@@ -64,8 +120,24 @@
     const hasTag = (string) =>
       tagElements.some((tag) => normalizeTag(tag.innerText) === string);
 
+    const matchesYear = () => {
+      if (!years || !years.length) return true;
+      const y = Number(getData(element, "year") || "");
+      if (!Number.isFinite(y)) return false;
+      return years.includes(y);
+    };
+
+    const matchesType = () => {
+      if (!types || !types.length) return true;
+      const t = normalizeType(getData(element, "type") || "");
+      if (!t) return false;
+      return types.includes(t);
+    };
+
     // match logic
     return (
+      matchesYear() &&
+      matchesType() &&
       (terms.every(hasText) || !terms.length) &&
       (phrases.some(hasText) || !phrases.length) &&
       (tags.some(hasTag) || !tags.length)

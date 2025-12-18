@@ -29,12 +29,15 @@
   <div>
     &copy; {{ site.time | date: "%Y" }}
     {{ site.title }}
+    &nbsp; | &nbsp; Last updated {{ site.time | date: "%B %d, %Y" }}
     &nbsp; | &nbsp; Built with
     <a href="https://github.com/greenelab/lab-website-template">
       Lab Website Template
     </a>
     &nbsp; | &nbsp;
-    <a href="{{ "notices" | relative_url }}">Notices</a>
+    <a href="https://github.com/madavid128/madavid-research/blob/main/THIRD_PARTY_NOTICES.md">
+      Notices
+    </a>
   </div>
 
   <input
@@ -43,5 +46,13 @@
     data-tooltip="Dark mode"
     aria-label="toggle dark mode"
     oninput="onDarkToggleChange(event)"
+  >
+
+  <input
+    type="checkbox"
+    class="motion-toggle"
+    data-tooltip="Reduce motion"
+    aria-label="toggle reduced motion"
+    oninput="onMotionToggleChange(event)"
   >
 </footer>

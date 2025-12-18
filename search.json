@@ -1,0 +1,153 @@
+---
+permalink: /search.json
+layout: null
+---
+{%- comment -%}
+  Build-time search index for the global search overlay.
+  - UI: _includes/global-search.html
+  - JS: _scripts/global-search.js
+  - This file must remain valid JSON (no comments below the front matter).
+{%- endcomment -%}
+[
+  {%- assign first = true -%}
+
+  {%- comment -%}
+    Pages:
+    - Include *all* titled pages (not just nav items) so search can find subpages.
+    - Exclude non-content endpoints like /search.json and /404.html.
+    - Allow opt-out via `search_exclude: true` in front matter.
+  {%- endcomment -%}
+  {%- assign all_pages = site.pages | where_exp: "p", "p.title and p.url" -%}
+  {%- for p in all_pages -%}
+    {%- if p.url == "/search.json" or p.url == "/404.html" -%}{%- continue -%}{%- endif -%}
+    {%- if p.search_exclude == true -%}{%- continue -%}{%- endif -%}
+
+    {%- assign url_parts = p.url | split: "/" -%}
+    {%- assign top = url_parts[1] | default: "" -%}
+    {%- assign p_type = "page" -%}
+    {%- if top == "projects" -%}{%- assign p_type = "project" -%}{%- endif -%}
+    {%- if top == "team" or top == "collaborators" -%}{%- assign p_type = "team" -%}{%- endif -%}
+    {%- if top == "updates" -%}{%- assign p_type = "update" -%}{%- endif -%}
+    {%- if top == "pictures" -%}{%- assign p_type = "picture" -%}{%- endif -%}
+    {%- if top == "art" -%}{%- assign p_type = "art" -%}{%- endif -%}
+
+    {%- assign p_desc = p.description | default: "" -%}
+    {%- if p_desc == "" -%}
+      {%- assign p_desc = p.content
+        | default: ""
+        | strip_html
+        | strip_newlines
+        | replace: "  ", " "
+        | truncate: 200
+      -%}
+    {%- endif -%}
+
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {
+      "type": {{ p_type | jsonify }},
+      "title": {{ p.title | jsonify }},
+      "url": {{ p.url | relative_url | jsonify }},
+      "description": {{ p_desc | jsonify }}
+    }
+  {%- endfor -%}
+
+  {%- comment -%}Posts{%- endcomment -%}
+  {%- for post in site.posts -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign excerpt = post.content
+      | default: ""
+      | regex_scan: "<!-- excerpt start -->(.*)<!-- excerpt end -->", true
+      | default: post.excerpt
+      | default: ""
+      | strip_html
+      | strip_newlines
+    -%}
+    {
+      "type": "post",
+      "title": {{ post.title | jsonify }},
+      "url": {{ post.url | relative_url | jsonify }},
+      "description": {{ excerpt | jsonify }},
+      "date": {{ post.date | date_to_xmlschema | jsonify }},
+      "tags": {{ post.tags | default: "" | jsonify }}
+    }
+  {%- endfor -%}
+
+  {%- comment -%}Publications (citations){%- endcomment -%}
+  {%- for c in site.data.citations -%}
+    {%- unless c.title -%}{%- continue -%}{%- endunless -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign year = c.date | date: "%Y" -%}
+    {%- capture author_str -%}{% if c.authors %}{{ c.authors | join: ", " }}{% endif %}{%- endcapture -%}
+    {%- assign c_url = c.link | default: "research" -%}
+    {%- if c_url contains "://" -%}
+      {%- assign c_url_out = c_url -%}
+    {%- else -%}
+      {%- assign c_url_out = c_url | relative_url -%}
+    {%- endif -%}
+    {
+      "type": "publication",
+      "title": {{ c.title | jsonify }},
+      "url": {{ c_url_out | jsonify }},
+      "description": {{ author_str | strip_newlines | jsonify }},
+      "year": {{ year | jsonify }},
+      "id": {{ c.id | default: "" | jsonify }},
+      "tags": {{ c.tags | default: "" | jsonify }}
+    }
+  {%- endfor -%}
+
+  {%- comment -%}News{%- endcomment -%}
+  {%- for n in site.data.news -%}
+    {%- unless n.title -%}{%- continue -%}{%- endunless -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign n_url = n.link | default: "updates/#news" -%}
+    {%- if n_url contains "://" -%}
+      {%- assign n_url_out = n_url -%}
+    {%- else -%}
+      {%- assign n_url_out = n_url | relative_url -%}
+    {%- endif -%}
+    {
+      "type": "news",
+      "title": {{ n.title | jsonify }},
+      "url": {{ n_url_out | jsonify }},
+      "description": {{ n.description | default: n.source | default: "" | strip_html | strip_newlines | jsonify }},
+      "date": {{ n.date | date_to_xmlschema | jsonify }},
+      "tags": {{ n.tags | default: "" | jsonify }}
+    }
+  {%- endfor -%}
+
+  {%- comment -%}Pictures{%- endcomment -%}
+  {%- for g in site.data.pictures -%}
+    {%- unless g.title -%}{%- continue -%}{%- endunless -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign q = g.title | uri_escape -%}
+    {%- assign g_url_out = "pictures" | relative_url | append: "?search=" | append: q -%}
+    {
+      "type": "picture",
+      "title": {{ g.title | jsonify }},
+      "url": {{ g_url_out | jsonify }},
+      "description": {{ g.subtitle | default: "" | jsonify }},
+      "tags": {{ g.tags | default: "" | jsonify }}
+    }
+  {%- endfor -%}
+
+  {%- comment -%}Scientific art{%- endcomment -%}
+  {%- for g in site.data.art -%}
+    {%- unless g.title -%}{%- continue -%}{%- endunless -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign q = g.title | uri_escape -%}
+    {%- assign g_url_out = "art" | relative_url | append: "?search=" | append: q -%}
+    {
+      "type": "art",
+      "title": {{ g.title | jsonify }},
+      "url": {{ g_url_out | jsonify }},
+      "description": {{ g.subtitle | default: "" | jsonify }},
+      "tags": {{ g.tags | default: "" | jsonify }}
+    }
+  {%- endfor -%}
+]

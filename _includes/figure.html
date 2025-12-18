@@ -1,4 +1,15 @@
 <figure class="figure">
+  {% assign image = include.image | default: "" %}
+  {% assign webp = nil %}
+  {% if image contains ".jpg" or image contains ".jpeg" or image contains ".png" %}
+    {% assign webp_candidate = image
+      | replace: ".jpeg", ".webp"
+      | replace: ".jpg", ".webp"
+      | replace: ".png", ".webp"
+    %}
+    {% assign webp_rel = webp_candidate | remove_first: "/" %}
+    {% assign webp = webp_rel | file_exists %}
+  {% endif %}
   <a
     {% if include.link %}
       href="{{ include.link | relative_url | uri_escape }}"
@@ -6,16 +17,32 @@
     class="figure-image"
     aria-label="{{ include.caption | default: "figure link" | regex_strip }}"
   >
-    <img
-      src="{{ include.image | relative_url | uri_escape }}"
-      style="
-        width: {{ include.width | default: "auto" }};
-        max-height: {{ include.height | default: "unset" }};
-      "
-      alt="{{ include.caption | default: "figure image" | regex_strip }}"
-      loading="lazy"
-      {% include fallback.html %}
-    >
+    {% if webp %}
+      <picture>
+        <source srcset="{{ webp | relative_url | uri_escape }}" type="image/webp">
+        <img
+          src="{{ image | relative_url | uri_escape }}"
+          style="
+            width: {{ include.width | default: "auto" }};
+            max-height: {{ include.height | default: "unset" }};
+          "
+          alt="{{ include.caption | default: "figure image" | regex_strip }}"
+          loading="lazy"
+          {% include fallback.html %}
+        >
+      </picture>
+    {% else %}
+      <img
+        src="{{ image | relative_url | uri_escape }}"
+        style="
+          width: {{ include.width | default: "auto" }};
+          max-height: {{ include.height | default: "unset" }};
+        "
+        alt="{{ include.caption | default: "figure image" | regex_strip }}"
+        loading="lazy"
+        {% include fallback.html %}
+      >
+    {% endif %}
   </a>
   {% if include.caption %}
     <figcaption class="figure-caption">

@@ -2,16 +2,25 @@
 {% assign button = button | hash_default: site.data.types[include.type] %}
 
 {% if button.link or button.icon or button.text %}
+  {% assign href = button.link | replace: "$LINK", button.link %}
+  {% assign is_external = false %}
+  {% if href contains "://" %}
+    {% assign is_external = true %}
+  {% endif %}
   <div class="button-wrapper">
     <a
       class="button"
-      href="{{ button.link | replace: "$LINK", button.link | relative_url }}"
+      href="{{ href | relative_url }}"
       {% if button.tooltip %}
         data-tooltip="{{ button.tooltip | xml_escape }}"
       {% endif %}
       data-style="{{ include.style }}"
       {% if include.flip %}
         data-flip
+      {% endif %}
+      {% if is_external %}
+        target="_blank"
+        rel="noopener noreferrer"
       {% endif %}
       aria-label="{{ button.tooltip | default: button.icon | default: "button" | regex_strip }}"
     >

@@ -8,6 +8,16 @@
     {% assign title = item.title | default: "" %}
     {% assign subtitle = item.subtitle | default: "" %}
     {% assign image = item.image | default: "" %}
+    {% assign webp = nil %}
+    {% if image contains ".jpg" or image contains ".jpeg" or image contains ".png" %}
+      {% assign webp_candidate = image
+        | replace: ".jpeg", ".webp"
+        | replace: ".jpg", ".webp"
+        | replace: ".png", ".webp"
+      %}
+      {% assign webp_rel = webp_candidate | remove_first: "/" %}
+      {% assign webp = webp_rel | file_exists %}
+    {% endif %}
     {% assign link = item.link | default: image %}
     {% assign tags = item.tags | default: emptyarray %}
     {% capture search %}{{ title }} {{ subtitle }} {{ tags | join: " " }}{% endcapture %}
@@ -21,12 +31,24 @@
         data-gallery-title="{{ title | xml_escape }}"
         data-gallery-subtitle="{{ subtitle | xml_escape }}"
       >
-        <img
-          src="{{ image | relative_url | uri_escape }}"
-          alt="{{ title | default: "gallery image" | regex_strip }}"
-          loading="lazy"
-          {% include fallback.html %}
-        >
+        {% if webp %}
+          <picture>
+            <source srcset="{{ webp | relative_url | uri_escape }}" type="image/webp">
+            <img
+              src="{{ image | relative_url | uri_escape }}"
+              alt="{{ title | default: "gallery image" | regex_strip }}"
+              loading="lazy"
+              {% include fallback.html %}
+            >
+          </picture>
+        {% else %}
+          <img
+            src="{{ image | relative_url | uri_escape }}"
+            alt="{{ title | default: "gallery image" | regex_strip }}"
+            loading="lazy"
+            {% include fallback.html %}
+          >
+        {% endif %}
       </a>
 
       {% if title and title != "" %}
@@ -51,4 +73,3 @@
   <img class="gallery-lightbox-img" data-gallery-img alt="">
   <div class="gallery-lightbox-meta" data-gallery-meta></div>
 </dialog>
-

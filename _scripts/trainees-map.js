@@ -9,6 +9,7 @@
   UI:
   - View: World vs US projection
   - Show: Current vs Past
+  - Time: year slider + play (optional)
 */
 {
   const selector = "[data-trainee-map]";
@@ -17,6 +18,7 @@
   const sleep = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const toNumber = (value) => (value === null || value === undefined || value === "" ? null : Number(value));
+  const currentYear = () => new Date().getFullYear();
 
   const getCssVar = (name, fallback) => {
     const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -54,6 +56,22 @@
     return parts.filter(Boolean).join(", ");
   };
 
+  const parseYearFromText = (raw) => {
+    const s = String(raw || "").trim();
+    const m = s.match(/\b(19|20)\d{2}\b/);
+    if (!m) return null;
+    const y = Number(m[0]);
+    if (!Number.isFinite(y)) return null;
+    return y;
+  };
+
+  const traineeYears = (t) => {
+    const start = parseYearFromText(t && t.start);
+    const endRaw = String(t && t.end ? t.end : "").trim();
+    const end = endRaw.toLowerCase() === "present" ? currentYear() : parseYearFromText(endRaw);
+    return { start, end: end ?? start };
+  };
+
   const buildHoverInstitution = (inst, status, trainees) => {
     const where = placeLine(inst);
     const header = `<b>${escapeHtml(inst.institution || "Unknown institution")}</b>`;
@@ -69,7 +87,12 @@
         const meta = [];
         if (t.focus) meta.push(t.focus);
         if (t.department) meta.push(t.department);
-        if (t.start || t.end) meta.push(`${t.start || ""} – ${t.end || ""}`.trim());
+        if (t._startYear || t._endYear) {
+          if (t._startYear && t._endYear && t._startYear !== t._endYear) meta.push(`${t._startYear}–${t._endYear}`);
+          else if (t._startYear) meta.push(String(t._startYear));
+        } else if (t.start || t.end) {
+          meta.push(`${t.start || ""} – ${t.end || ""}`.trim());
+        }
         if (meta.length) bits.push(`<span style="color:#b0b0b0">${escapeHtml(meta.join(" · "))}</span>`);
         return bits.join("<br>");
       })
@@ -159,6 +182,18 @@
 
     (payload.trainees || []).forEach((t) => {
       traineesTotal += 1;
+
+      const { start, end } = traineeYears(t);
+      if (!state.allYears && state.year !== null) {
+        if (start === null) return;
+        if (state.yearMode === "active") {
+          if (state.year < start || state.year > (end ?? start)) return;
+        } else {
+          // cumulative
+          if (state.year < start) return;
+        }
+      }
+
       const instName = String(t.institution || "").trim();
       const inst = instIndex.get(instName);
       if (!inst) {
@@ -176,8 +211,13 @@
       if (!byInst.has(instName)) {
         byInst.set(instName, { inst, current: [], past: [] });
       }
-      const status = String(t.end || "").trim().toLowerCase() === "present" ? "current" : "past";
-      byInst.get(instName)[status].push(t);
+
+      let status = String(t.end || "").trim().toLowerCase() === "present" ? "current" : "past";
+      if (!state.allYears && state.year !== null && start !== null) {
+        const endY = end ?? start;
+        status = endY !== null && endY < state.year ? "past" : "current";
+      }
+      byInst.get(instName)[status].push({ ...t, _startYear: start, _endYear: end ?? start });
     });
 
     const currentPoints = [];
@@ -213,7 +253,7 @@
       visible: status === "past" ? (state.showPast ? true : "legendonly") : state.showCurrent ? true : "legendonly",
     });
 
-    const makeLineTrace = (items, name, dash, opacity) => {
+    const makeLineTrace = (items, name, color, dash, opacity) => {
       const lats = [];
       const lons = [];
       for (const p of items) {
@@ -227,7 +267,7 @@
         lat: lats,
         lon: lons,
         hoverinfo: "skip",
-        line: { width: 2, color: primary, dash },
+        line: { width: 2, color, dash },
         opacity,
         visible: name.toLowerCase().includes("past") ? (state.showPast ? true : "legendonly") : state.showCurrent ? true : "legendonly",
         showlegend: true,
@@ -256,9 +296,9 @@
     };
 
     const traces = [
-      makeLineTrace(currentPoints, "Current", "solid", 0.75),
-      makeLineTrace(pastPoints, "Past", "dash", 0.45),
-      makeMarkerTrace(currentPoints, "Current trainees", text, "circle", "current"),
+      makeLineTrace(currentPoints, "Current connections", primary, "solid", 0.75),
+      makeLineTrace(pastPoints, "Past connections", darkGray, "dash", 0.45),
+      makeMarkerTrace(currentPoints, "Current trainees", primary, "circle", "current"),
       makeMarkerTrace(pastPoints, "Past trainees", darkGray, "circle", "past"),
       homeTrace,
     ];
@@ -308,12 +348,73 @@
     const viewButtons = [...root.querySelectorAll("[data-trainee-view]")];
     const currentToggle = root.querySelector("input[data-trainee-filter='current']");
     const pastToggle = root.querySelector("input[data-trainee-filter='past']");
+    const timeHost = root.querySelector("[data-trainee-time]");
+    const yearAllToggle = root.querySelector("input[data-trainee-year-all]");
+    const yearSlider = root.querySelector("input[data-trainee-year]");
+    const yearLabel = root.querySelector("[data-trainee-year-label]");
+    const playButton = root.querySelector("[data-trainee-play]");
+    const modeButtons = [...root.querySelectorAll("[data-trainee-mode]")];
 
     let state = {
       view: "world",
       showCurrent: currentToggle ? currentToggle.checked : true,
       showPast: pastToggle ? pastToggle.checked : true,
+      allYears: true,
+      year: null,
+      yearMode: "active",
+      _timer: null,
     };
+
+    const computeYearBounds = () => {
+      let minY = null;
+      let maxY = null;
+      for (const t of payload.trainees || []) {
+        const { start, end } = traineeYears(t);
+        if (start === null) continue;
+        const e = end ?? start;
+        minY = minY === null ? start : Math.min(minY, start);
+        maxY = maxY === null ? e : Math.max(maxY, e);
+      }
+      return { minY, maxY };
+    };
+
+    const setModePressed = () => {
+      modeButtons.forEach((btn) => {
+        const key = String(btn.dataset.traineeMode || "");
+        btn.setAttribute("aria-pressed", key === state.yearMode ? "true" : "false");
+      });
+    };
+
+    const stopPlay = () => {
+      if (state._timer) {
+        window.clearInterval(state._timer);
+        state._timer = null;
+      }
+      if (playButton) playButton.setAttribute("aria-pressed", "false");
+      if (playButton) playButton.textContent = "Play";
+    };
+
+    const syncTimeControls = () => {
+      if (!yearAllToggle || !yearSlider || !yearLabel) return;
+      yearAllToggle.checked = Boolean(state.allYears);
+      yearSlider.disabled = Boolean(state.allYears);
+      if (state.allYears) {
+        yearLabel.textContent = "All";
+        stopPlay();
+      } else {
+        yearLabel.textContent = String(state.year ?? "");
+      }
+      setModePressed();
+    };
+
+    // Respect reduced motion: disable autoplay controls.
+    const reduceMotion = document.documentElement.dataset.motion === "reduced";
+    if (reduceMotion && playButton) {
+      playButton.disabled = true;
+      playButton.setAttribute("aria-disabled", "true");
+      playButton.textContent = "Play";
+      playButton.title = "Disabled (reduced motion)";
+    }
 
     const chooseDefaultView = () => {
       const inst = (payload.institutions || []).filter((i) => toNumber(i.lat) !== null && toNumber(i.lon) !== null);
@@ -323,6 +424,68 @@
     };
     state.view = chooseDefaultView();
     setPressed(root, state.view);
+
+    const { minY, maxY } = computeYearBounds();
+    if (!minY || !maxY || !timeHost || !yearAllToggle || !yearSlider || !yearLabel || !playButton) {
+      if (timeHost) timeHost.setAttribute("hidden", "hidden");
+    } else {
+      yearSlider.min = String(minY);
+      yearSlider.max = String(maxY);
+      yearSlider.step = "1";
+      yearSlider.value = String(maxY);
+      state.year = maxY;
+      state.allYears = true;
+      state.yearMode = "active";
+      syncTimeControls();
+
+      yearAllToggle.addEventListener("change", () => {
+        state.allYears = Boolean(yearAllToggle.checked);
+        if (!state.allYears) state.year = Number(yearSlider.value);
+        syncTimeControls();
+        render();
+      });
+
+      yearSlider.addEventListener("input", () => {
+        state.year = Number(yearSlider.value);
+        state.allYears = false;
+        syncTimeControls();
+        render();
+      });
+
+      modeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.yearMode = String(btn.dataset.traineeMode || "active");
+          syncTimeControls();
+          render();
+        });
+      });
+
+      playButton.addEventListener("click", () => {
+        if (state.allYears) state.allYears = false;
+        if (state.year === null) state.year = Number(yearSlider.value);
+        const isPlaying = Boolean(state._timer);
+        if (isPlaying) {
+          stopPlay();
+          return;
+        }
+        playButton.setAttribute("aria-pressed", "true");
+        playButton.textContent = "Pause";
+        state._timer = window.setInterval(() => {
+          if (state.allYears) {
+            stopPlay();
+            return;
+          }
+          const y = state.year ?? Number(yearSlider.value);
+          const next = y >= maxY ? minY : y + 1;
+          state.year = next;
+          yearSlider.value = String(next);
+          syncTimeControls();
+          render();
+        }, 700);
+        syncTimeControls();
+        render();
+      });
+    }
 
     const updateSummary = (stats) => {
       if (!summaryEl) return;
@@ -354,10 +517,18 @@
       }
 
       const layout = buildLayout(state.view);
+      const reduceMotion = document.documentElement.dataset.motion === "reduced";
       const config = { responsive: true, displayModeBar: false };
 
       if (loading) loading.remove();
       await window.Plotly.react(host, traces, layout, config);
+      if (reduceMotion) {
+        try {
+          window.Plotly.relayout(host, { "geo.projection.rotation": { lon: 0, lat: 0, roll: 0 } });
+        } catch {
+          // ignore
+        }
+      }
 
       if (!host.__traineeClickBound) {
         host.on("plotly_click", (event) => {
@@ -399,10 +570,50 @@
   };
 
   window.renderTraineesMaps = () => {
-    document
-      .querySelectorAll(".collab-map[data-map-kind='trainees']")
-      .forEach((root) => initOne(root));
+    const roots = document.querySelectorAll(".collab-map[data-map-kind='trainees']");
+    roots.forEach((root) => {
+      if (root.__traineeInitDone) return;
+      if (root.__traineeObserved) {
+        initOne(root);
+        return;
+      }
+      root.__traineeObserved = true;
+
+      const target = root.querySelector(".collab-map-plot") || root;
+      if (!("IntersectionObserver" in window)) {
+        initOne(root);
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const anyVisible = entries.some((e) => e.isIntersecting || e.intersectionRatio > 0);
+          if (!anyVisible) return;
+          observer.disconnect();
+          initOne(root);
+        },
+        { rootMargin: "250px 0px", threshold: 0.01 },
+      );
+
+      observer.observe(target);
+    });
   };
+
+  window.addEventListener("directoryviewchange", () => {
+    document.querySelectorAll(".collab-map[data-map-kind='trainees']").forEach((root) => {
+      const host = root.querySelector("[data-trainee-map]");
+      if (!host) return;
+      if (host.offsetParent === null) return;
+      if (root.__traineeInitDone && typeof root.__traineeRender === "function") {
+        root.__traineeRender();
+        if (window.Plotly && window.Plotly.Plots && typeof window.Plotly.Plots.resize === "function") {
+          window.Plotly.Plots.resize(host);
+        }
+      } else if (window.renderTraineesMaps) {
+        window.renderTraineesMaps();
+      }
+    });
+  });
 
   window.addEventListener("DOMContentLoaded", window.renderTraineesMaps);
   window.addEventListener("load", window.renderTraineesMaps);

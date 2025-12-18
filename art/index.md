@@ -5,14 +5,19 @@ nav:
   order: 4
   icon: fa-solid fa-palette
   tooltip: Scientific art
-share: images/background.jpg
 ---
 
 # {% include icon.html icon="fa-solid fa-palette" %}Scientific Art
 
+{% assign jumps = "" | split: "," %}
+{% assign jumps = jumps | push: "programs|Programs" | push: "gallery|Gallery" %}
+{% include page-jumps.html items=jumps %}
+
 I create and curate scientific visualization and data‑driven artwork. I also founded and run the following Art in Science programs:
 
 {% include section.html %}
+
+## Programs {#programs}
 
 {%
   include alert.html
@@ -24,7 +29,7 @@ I create and curate scientific visualization and data‑driven artwork. I also f
 
 {% capture col1 %}
 ### Art in Science (University of Delaware)
-I started and run the Art in Science program at UDel.
+I started and ran the Art in Science program at UDel (2014–2018).
 
 {%
   include button.html
@@ -65,7 +70,7 @@ I started and run ORS Art x Science.
 
 {% include section.html %}
 
-## Gallery
+## Gallery {#gallery}
 
 {% include search-box.html %}
 {% include search-info.html %}
