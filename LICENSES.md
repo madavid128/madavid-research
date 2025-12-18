@@ -4,7 +4,7 @@ This repository is based on the Greene Lab **Lab Website Template** and is licen
 
 ## MIT-licensed helper scripts
 
-Some standalone helper scripts added for this website are licensed under **MIT** (see `LICENSE-MIT.md`). These files are explicitly marked at the top with:
+Some standalone helper scripts added for this website are licensed under **MIT** (see `licenses/MIT_FOR_HELPERS.md`). These files are explicitly marked at the top with:
 
 `SPDX-License-Identifier: MIT`
 
@@ -16,4 +16,3 @@ Currently, the MIT‑licensed files are:
 - `tools/pubmed_to_collaborators_map.py`
 
 If a file is not marked with an SPDX header, it is covered by the repository’s default license in `LICENSE.md`.
-
