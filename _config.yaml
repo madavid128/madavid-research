@@ -8,6 +8,12 @@ share: images/share.jpg
 proofer: false
 logo: /images/mad-animated.gif
 
+# IMPORTANT: `absolute_url` (used by OpenGraph/Twitter meta tags) relies on
+# `url` + `baseurl`. Set these to your live domain so social sharing uses the
+# correct absolute URLs.
+url: "https://michaeladavid.com"
+baseurl: ""
+
 # site social media and other links
 links:
   email: michael.david@cuanschutz.edu
@@ -18,9 +24,7 @@ links:
   pubmed: "https://www.ncbi.nlm.nih.gov/myncbi/1Feoil52XxqgFN/bibliography/public/"
   cv: "" # optional: link to full CV PDF
   calendar: "" # optional: scheduling link (Calendly, etc.)
-  url: "https://madavid128.github.io"
-  baseurl: "/madavid-research"   # "" if using a custom domain or user site
-    
+
 ### jekyll settings
 
 # front matter defaults
@@ -75,5 +79,7 @@ include:
 # force jekyll to exclude certain files/folders
 exclude:
   - README.md
+  - README_SITE.md
+  - README_HOME.md
   - LICENSE.md
   - CITATION.cff
