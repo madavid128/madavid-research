@@ -31,27 +31,6 @@ Browse by methods:
 
 {% include section.html %}
 
-## Featured tool
-
-{% assign emptyarray = "" | split: "," %}
-{% assign tool_cards = site.data.projects | default: emptyarray %}
-{% assign featured_tool = tool_cards | where: "title", "Software & Tools" | first %}
-
-{% if featured_tool %}
-  {%
-    include card.html
-    title=featured_tool.title
-    subtitle=featured_tool.subtitle
-    description=featured_tool.description
-    link=featured_tool.link
-    image=featured_tool.image
-    tags=featured_tool.tags
-    style="small"
-  %}
-{% endif %}
-
-{% include section.html %}
-
 ## Project areas {#project-areas}
 
 {% assign project_img_cartilage = site.data.project_area_images.cartilage | default: "images/projects-area-01.svg" %}
@@ -169,11 +148,11 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
 
 ## Software & tools {#software-tools}
 
+Selected repositories and automation scripts (maps, galleries, and publication updates).
+
 {% include search-box.html %}
 {% include search-info.html %}
 
 {% include tags.html tags="software, tools, dataset, resource, website" %}
 
-### Featured
-
-{% include list.html component="card" data="projects" filter="group == 'featured' and title != 'Software & Tools'" %}
+{% include list.html component="card" data="projects" filter="group == 'software-tools'" %}

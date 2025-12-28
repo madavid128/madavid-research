@@ -4,7 +4,7 @@
   link: https://github.com/madavid128
   image: images/icon.png
   tags: [software, tools]
-  group: featured
+  group: software-tools
   date: 2025-01-01
 
 - title: Site tools (maps + galleries)
@@ -13,7 +13,7 @@
   link: https://github.com/madavid128/madavid-research/tree/main/tools
   image: images/icon.png
   tags: [software, tools]
-  group: featured
+  group: software-tools
   date: 2025-01-01
 
 - title: Publications (Auto-updated)
