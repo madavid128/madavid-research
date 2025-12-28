@@ -28,7 +28,7 @@
   ></script>
   <noscript>
     <img
-      src="{{ gc_endpoint }}?p={{ page.url | uri_escape }}&t={{ page.title | uri_escape }}"
+      src="{{ gc_endpoint }}?p={{ page.url | append: '' | uri_escape }}&t={{ page.title | append: '' | uri_escape }}"
       alt=""
       referrerpolicy="no-referrer-when-downgrade"
     >
