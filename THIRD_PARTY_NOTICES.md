@@ -42,9 +42,10 @@ The site build and citation pipeline use Python packages. Versions/licenses belo
 - google-search-results 2.4.2 — MIT: https://github.com/serpapi/google-search-results-python
 - manubot 0.6.1 — BSD 3-Clause License: https://github.com/manubot/manubot
 - Pillow 12.0.0 — (license not reported in package metadata): https://python-pillow.github.io
+- pillow-heif — (not installed in this environment)
 - python-dotenv 0.21.1 — BSD-3-Clause: https://github.com/theskumar/python-dotenv
 - PyYAML 6.0.3 — MIT: https://pyyaml.org/
 - rich 13.9.4 — MIT: https://github.com/Textualize/rich
-- wordcloud 1.9.4 — MIT License: https://github.com/amueller/word_cloud
+- wordcloud 1.9.5 — (license not reported in package metadata): https://github.com/amueller/word_cloud
 
 <!-- END AUTO-GENERATED PYTHON LICENSES -->
