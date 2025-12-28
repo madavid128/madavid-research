@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2025 Michael A. David
 """
 Generate (or refresh) the Python dependencies section in THIRD_PARTY_NOTICES.md.
 
@@ -10,9 +12,6 @@ It uses only the Python standard library.
 Usage:
   python tools/generate_third_party_notices.py
 """
-
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2025 Michael A. David
 
 from __future__ import annotations
 
@@ -35,6 +34,7 @@ REQ_FILES: Sequence[Path] = (
     ROOT / "_cite" / "requirements.txt",
     ROOT / "tools" / "requirements-collaborators.txt",
     ROOT / "tools" / "requirements-icons.txt",
+    ROOT / "tools" / "requirements-watermark.txt",
 )
 
 

@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: BSD-3-Clause
 # Copyright (c) 2025 Michael A. David
+"""
+Build a collaborator directory and map dataset from PubMed.
+
+This script queries NCBI E-utilities for a PubMed author search, extracts
+co-authors + affiliations, and writes `_data/collaborators_map.csv` for the site.
+
+Optional: `--geocode` uses OpenStreetMap Nominatim to turn affiliation strings
+into latitude/longitude (rate-limited and sometimes unavailable).
+"""
 from __future__ import annotations
 
 import argparse

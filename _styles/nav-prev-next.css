@@ -1,0 +1,90 @@
+.nav-prev-next {
+  /* Match the horizontal padding of <section> so the nav aligns with page content. */
+  margin: 26px 0 10px;
+  padding: 0 max(40px, (100% - 1000px) / 2);
+  text-align: left;
+}
+
+.nav-prev-next-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: nowrap;
+}
+
+.nav-prev-next .nav-prev,
+.nav-prev-next .nav-next {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.nav-prev-next .button {
+  margin: 0;
+  gap: 10px;
+  max-width: 100%;
+  /* Allow long titles to wrap while keeping Previous/Next side-by-side. */
+  white-space: normal;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+}
+
+.nav-prev-next .button .nav-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.nav-prev-next .nav-next .button .nav-text {
+  align-items: flex-end;
+}
+
+.nav-prev-next .button .nav-label {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dark-gray);
+}
+
+.nav-prev-next .button .nav-title {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.nav-prev-next .nav-prev,
+.nav-prev-next .nav-next {
+  /* keep */
+}
+
+.nav-prev-next .nav-next {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.nav-prev-next .nav-next .button {
+  justify-content: flex-end;
+}
+
+.nav-prev-next .button > span {
+  min-width: 0;
+  white-space: normal;
+}
+
+@media (max-width: 520px) {
+  .nav-prev-next-inner {
+    flex-direction: column;
+  }
+  .nav-prev-next .nav-next {
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .nav-prev-next .nav-next .button {
+    justify-content: flex-start;
+  }
+}
+
+/*# sourceMappingURL=nav-prev-next.css.map */

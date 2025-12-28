@@ -12,6 +12,15 @@
   text-align: center;
 }
 
+.collab-map-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 0 0 14px;
+}
+
 .collab-map-tags {
   display: flex;
   justify-content: center;
@@ -51,6 +60,11 @@
 
 .collab-tag:hover {
   border-color: var(--primary);
+}
+
+.collab-tag:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 .collab-tag[data-active] {

@@ -76,8 +76,37 @@ header a {
 }
 
 .subtitle {
-  opacity: 0.65;
+  opacity: 0.78;
   font-weight: var(--thin);
+}
+
+/*
+Home-only rotating header background.
+*/
+header[data-header-rotate]::before {
+  z-index: -2;
+}
+
+header[data-header-rotate]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--rotate-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 1.1s ease;
+  pointer-events: none;
+}
+
+header[data-header-rotate][data-rotate-show=true]::after {
+  opacity: 0.25;
+}
+
+:root[data-motion=reduced] header[data-header-rotate]::after {
+  display: none;
 }
 
 .nav-toggle {

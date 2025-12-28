@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2025 Michael A. David
 """
 make_mad_icons.py
 
@@ -10,9 +12,6 @@ Outputs are written to `dist_icons/` and zipped into `MAD_icons.zip`.
 Requirements:
   - Pillow (PIL) only
 """
-
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2025 Michael A. David
 
 from __future__ import annotations
 

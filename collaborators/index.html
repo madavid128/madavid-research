@@ -2,7 +2,16 @@
 <html lang="en" data-dark="true">
   <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="https://app.rybbit.io/api/script.js" data-site-id="e58c66ffe950" defer></script>
+  
+
+<script src="https://app.rybbit.io/api/script.js" data-site-id="e58c66ffe950" defer></script>
+
+
+
+  <script data-goatcounter="https://madavid128.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <noscript>
+    <img src="https://madavid128.goatcounter.com/count?p=/collaborators/&amp;t=Collaborators%20Map" alt="" referrerpolicy="no-referrer-when-downgrade">
+  </noscript>
 
 
   <!--
@@ -10,6 +19,26 @@
 -->
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,6 +117,38 @@
     "@type": "Organization",
     "logo": { "@type": "ImageObject", "url": "https://michaeladavid.com/images/icon.png" }
   }
+  
+}
+</script>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michael A. David, PhD",
+  "url": "https://michaeladavid.com",
+  "image": "https://michaeladavid.com/images/share.jpg",
+  "jobTitle": "Instructor (Orthopedics)",
+  "affiliation": [
+    { "@type": "Organization", "name": "University of Colorado Anschutz Medical Campus" }
+  ],
+  "sameAs": ["https://orcid.org/0009-0006-5637-2403","https://scholar.google.com/citations?user=o7mhIiEAAAAJ","https://github.com/madavid128","https://www.linkedin.com/in/mdavid3","https://www.ncbi.nlm.nih.gov/myncbi/1Feoil52XxqgFN/bibliography/public/"]
+  
+  , "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "ORCID",
+      "value": "0009-0006-5637-2403"
+    }
+  ]
   
 }
 </script>
@@ -284,6 +345,10 @@
   
 
   
+    <link href="/_styles/nav-prev-next.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/news.css" rel="stylesheet">
   
 
@@ -312,6 +377,10 @@
   
 
   
+    <link href="/_styles/projects-nav.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/publications.css" rel="stylesheet">
   
 
@@ -336,7 +405,15 @@
   
 
   
+    <link href="/_styles/start-here.css" rel="stylesheet">
+  
+
+  
     <link href="/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/_styles/tags-index.css" rel="stylesheet">
   
 
   
@@ -473,6 +550,8 @@
 
   <script src="/_scripts/global-search.js" defer></script>
 
+  <script src="/_scripts/header-rotate.js" defer></script>
+
   <script src="/_scripts/layout.js" defer></script>
 
   <script src="/_scripts/nav.js" defer></script>
@@ -488,6 +567,8 @@
   <script src="/_scripts/table-sort.js" defer></script>
 
   <script src="/_scripts/table-wrap.js" defer></script>
+
+  <script src="/_scripts/tags-index.js" defer></script>
 
   <script src="/_scripts/tooltip.js" defer></script>
 
@@ -513,6 +594,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <header class="background" style="--image: url('/images/background.jpg')" data-dark="true">
   
   <a href="/" class="home">
@@ -521,8 +613,9 @@
         
           
           
-            <img class="logo-animated" src="/images/mad-animated.gif" alt="MAD logo">
-            <img class="logo-static" src="/web-app-manifest-192x192.png" alt="MAD logo">
+            
+            <img class="logo-animated" src="/images/mad-animated.gif?v=1766927469" alt="MAD logo">
+            <img class="logo-static" src="/web-app-manifest-192x192.png?v=1766927469" alt="MAD logo">
           
         
       </span>
@@ -647,6 +740,17 @@
         </a>
       
     
+      
+        
+        
+        <a href="/tags/" data-tooltip="Browse by tag">
+          
+            <i class="icon fa-solid fa-tags"></i>
+          
+          Tags
+        </a>
+      
+    
   </nav>
 </header>
 
@@ -719,6 +823,10 @@
             <input type="checkbox" checked data-collab-filter="past">
             Past
           </label>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-labels="">
+            Labels
+          </label>
         </div>
 
         <div class="collab-map-control" data-collab-time="">
@@ -755,6 +863,12 @@
             Cluster duplicates
           </label>
         </div>
+
+      </div>
+
+      <div class="collab-map-actions" role="group" aria-label="Map help and reset">
+        <button class="button" data-style="bare" type="button" data-collab-reset="">Reset</button>
+        <button class="button" data-style="bare" type="button" data-collab-help="" data-tooltip="Markers represent collaborators and/or institutions inferred from affiliations. Lines connect to my home base. Use filters to explore current vs past, types, tags, and time; toggle Labels for readability (labels default off on mobile)." aria-label="What am I seeing?">What am I seeing?</button>
       </div>
 
       <div data-collab-tags="" class="collab-map-tags"></div>
@@ -767,7 +881,7 @@
 
       
       <script type="application/json" class="collab-map-data">
-                {          "home": {"label":"CU Anschutz (Aurora, CO, USA)","lat":39.7454581,"lon":-104.8393807},          "people": [{"name":"Christopher Price","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"19716.","first_year":"2016","last_year":"2017","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"3","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Aaron M Chamberlain","status":"past","active":"0","department":"Department of Orthopaedic Surgery","institution":"Department of Orthopaedic Surgery","city":"St. Louis","region":"MO","country":"USA","first_year":"2021","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"2","affiliation":"Department of Orthopaedic Surgery, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Melanie K Smith","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"19716.","first_year":"2016","last_year":"2017","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"2","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Michael J Zuscik","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2014","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"2","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Spencer P Lake","status":"current","active":"1","department":"Department of Mechanical Engineering and Materials Science","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","first_year":"2021","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"2","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Alex J Reiter","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Avery T White","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"19716.","first_year":"2017","last_year":"2017","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Chelsey L Dunham","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Cheryl L Ackert-Bicknell","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Courtney Miller","status":"current","active":"1","department":null,"institution":"Foot and Ankle Orthopedics","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Foot and Ankle Orthopedics, Orthopedic Surgery, University of Colorado, Aurora, Colorado, USA."},{"name":"Daniel K Moon","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Hani A Awad","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"New York","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Rochester, Rochester, New York, United States of America; Center for Musculoskeletal Research, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Ian M Berke","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"38.6920451","lon":"-75.4013315","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Ishani D Shah","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"James A Abraham","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Jason A Inzana","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"New York","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Rochester, Rochester, New York, United States of America."},{"name":"Joseph P Miola","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"38.6920451","lon":"-75.4013315","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Joshua A Metzl","status":"current","active":"1","department":null,"institution":"Foot and Ankle Orthopedics","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Foot and Ankle Orthopedics, Orthopedic Surgery, University of Colorado, Aurora, Colorado, USA."},{"name":"Julia Matthias","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Kenneth J Hunt","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Khyrie H Jones","status":"past","active":"0","department":"Department of Pathology and Laboratory Medicine","institution":"Department of Pathology and Laboratory Medicine","city":"New York","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Pathology and Laboratory Medicine, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Kristi L Kiick","status":"past","active":"0","department":null,"institution":"Delaware Biotechnology Institute","city":"Delaware 19711","region":null,"country":"USA","first_year":"2017","last_year":"2017","lat":"39.9194117","lon":"-75.4001639","link":null,"tags":"collaborator","papers":"1","affiliation":"Delaware Biotechnology Institute , Newark, Delaware 19711, United States."},{"name":"Leanne E Iannucci","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Leo Q Wan","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"12180","region":null,"country":"USA","first_year":"2016","last_year":"2016","lat":"42.7287842","lon":"-73.6626824","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, Rensselaer Polytechnic Institute, Troy, NY, 12180, USA."},{"name":"Liyun Wang","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","first_year":"2016","last_year":"2016","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."},{"name":"Lucas C Dunshee","status":"past","active":"0","department":null,"institution":null,"city":null,"region":null,"country":null,"first_year":"2017","last_year":"2017","lat":null,"lon":null,"link":null,"tags":"collaborator","papers":"1","affiliation":null},{"name":"Michael David","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Morgan A Urello","status":"past","active":"0","department":null,"institution":null,"city":null,"region":null,"country":null,"first_year":"2017","last_year":"2017","lat":null,"lon":null,"link":null,"tags":"collaborator","papers":"1","affiliation":null},{"name":"Necat Havlioglu","status":"past","active":"0","department":"Department of Pathology","institution":"Department of Pathology","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Pathology, John Cochran VA Medical Center, St. Louis, MO, United States."},{"name":"Rachael N Pilachowski","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"19716.","first_year":"2017","last_year":"2017","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Randall L Duncan","status":"past","active":"0","department":"Department of Biological Sciences","institution":"Department of Biological Sciences","city":"19716","region":null,"country":"USA","first_year":"2016","last_year":"2016","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biological Sciences, University of Delaware, Newark, DE, 19716, USA."},{"name":"Rebecca A Scott","status":"past","active":"0","department":null,"institution":"Delaware Biotechnology Institute","city":"Delaware 19711","region":null,"country":"USA","first_year":"2017","last_year":"2017","lat":"39.9194117","lon":"-75.4001639","link":null,"tags":"collaborator","papers":"1","affiliation":"Delaware Biotechnology Institute , Newark, Delaware 19711, United States."},{"name":"Robert A Mooney","status":"past","active":"0","department":"Department of Pathology and Laboratory Medicine","institution":"Department of Pathology and Laboratory Medicine","city":"New York","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"40.7127281","lon":"-74.0060152","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Pathology and Laboratory Medicine, University of Rochester Medical Center, Rochester, New York, United States of America; Center for Musculoskeletal Research, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Ryan C Locke","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Department of Biomedical Engineering","city":"Delaware","region":"DE","country":"19716.","first_year":"2017","last_year":"2017","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Ryan M Castile","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Department of Mechanical Engineering and Materials Science","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6280278","lon":"-90.1910154","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Sara Buckley","status":"current","active":"1","department":null,"institution":"Colorado Program for Musculoskeletal Research","city":"Colorado","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"38.7251776","lon":"-105.607716","link":null,"tags":"collaborator","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Tianzhi Luo","status":"past","active":"0","department":null,"institution":null,"city":null,"region":null,"country":null,"first_year":"2017","last_year":"2017","lat":null,"lon":null,"link":null,"tags":"collaborator","papers":"1","affiliation":null},{"name":"X Lucas Lu","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","first_year":"2016","last_year":"2016","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA. xlu@udel.edu."},{"name":"Xingyu Chen","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","first_year":"2016","last_year":"2016","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."},{"name":"Yilu Zhou","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"Department of Mechanical Engineering","city":"19716","region":null,"country":"USA","first_year":"2016","last_year":"2016","lat":"39.6753567","lon":"-75.7501904","link":null,"tags":"collaborator","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."}]        }      
+                {          "home": {"label":"CU Anschutz (Aurora, CO, USA)","lat":39.7454581,"lon":-104.8393807},          "people": [{"name":"Christopher Price","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"3","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Aaron M Chamberlain","status":"past","active":"0","department":"Department of Orthopaedic Surgery","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2021","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"2","affiliation":"Department of Orthopaedic Surgery, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Melanie K Smith","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"2","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Michael J Zuscik","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2014","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"2","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Spencer P Lake","status":"current","active":"1","department":"Department of Mechanical Engineering and Materials Science","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2021","last_year":"2025","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"2","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Alex J Reiter","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Avery T White","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2017","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Chelsey L Dunham","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"1","affiliation":"Department of Biomedical Engineering, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Cheryl L Ackert-Bicknell","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Courtney Miller","status":"current","active":"1","department":"Foot and Ankle Orthopedics","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Foot and Ankle Orthopedics, Orthopedic Surgery, University of Colorado, Aurora, Colorado, USA."},{"name":"Daniel K Moon","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Hani A Awad","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Rochester","city":"Rochester","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"43.1293","lon":"-77.6290","link":null,"tags":"collaborator;urochester","papers":"1","affiliation":"Department of Biomedical Engineering, University of Rochester, Rochester, New York, United States of America; Center for Musculoskeletal Research, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Ian M Berke","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Ishani D Shah","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"James A Abraham","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Jason A Inzana","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Rochester","city":"Rochester","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"43.1293","lon":"-77.6290","link":null,"tags":"collaborator;urochester","papers":"1","affiliation":"Department of Biomedical Engineering, University of Rochester, Rochester, New York, United States of America."},{"name":"Joseph P Miola","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, Newark, Delaware, United States of America."},{"name":"Joshua A Metzl","status":"current","active":"1","department":"Foot and Ankle Orthopedics","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Foot and Ankle Orthopedics, Orthopedic Surgery, University of Colorado, Aurora, Colorado, USA."},{"name":"Julia Matthias","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Kenneth J Hunt","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Khyrie H Jones","status":"past","active":"0","department":"Department of Pathology and Laboratory Medicine","institution":"University of Rochester","city":"Rochester","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"43.1293","lon":"-77.6290","link":null,"tags":"collaborator;imaging;urochester","papers":"1","affiliation":"Department of Pathology and Laboratory Medicine, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Kristi L Kiick","status":"past","active":"0","department":null,"institution":"Delaware Biotechnology Institute","city":"Newark","region":"DE","country":"USA","first_year":"2017","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel-dbi","papers":"1","affiliation":"Delaware Biotechnology Institute , Newark, Delaware 19711, United States."},{"name":"Leanne E Iannucci","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"1","affiliation":"Department of Biomedical Engineering, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Leo Q Wan","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"Rensselaer Polytechnic Institute","city":"Troy","region":"NY","country":"USA","first_year":"2016","last_year":"2016","lat":"42.7288","lon":"-73.6918","link":null,"tags":"collaborator;rpi","papers":"1","affiliation":"Department of Biomedical Engineering, Rensselaer Polytechnic Institute, Troy, NY, 12180, USA."},{"name":"Liyun Wang","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."},{"name":"Lucas C Dunshee","status":"past","active":"0","department":null,"institution":"Unknown (needs review)","city":null,"region":null,"country":"USA","first_year":"2017","last_year":"2017","lat":null,"lon":null,"link":null,"tags":"collaborator;needs-review","papers":"1","affiliation":null},{"name":"Michael David","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Morgan A Urello","status":"past","active":"0","department":null,"institution":"Unknown (needs review)","city":null,"region":null,"country":"USA","first_year":"2017","last_year":"2017","lat":null,"lon":null,"link":null,"tags":"collaborator;needs-review","papers":"1","affiliation":null},{"name":"Necat Havlioglu","status":"past","active":"0","department":"Department of Pathology","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;imaging;washu","papers":"1","affiliation":"Department of Pathology, John Cochran VA Medical Center, St. Louis, MO, United States."},{"name":"Rachael N Pilachowski","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2017","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Randall L Duncan","status":"past","active":"0","department":"Department of Biological Sciences","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Biological Sciences, University of Delaware, Newark, DE, 19716, USA."},{"name":"Rebecca A Scott","status":"past","active":"0","department":null,"institution":"Delaware Biotechnology Institute","city":"Newark","region":"DE","country":"USA","first_year":"2017","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel-dbi","papers":"1","affiliation":"Delaware Biotechnology Institute , Newark, Delaware 19711, United States."},{"name":"Robert A Mooney","status":"past","active":"0","department":"Department of Pathology and Laboratory Medicine","institution":"University of Rochester","city":"Rochester","region":"NY","country":"USA","first_year":"2014","last_year":"2014","lat":"43.1293","lon":"-77.6290","link":null,"tags":"collaborator;imaging;urochester","papers":"1","affiliation":"Department of Pathology and Laboratory Medicine, University of Rochester Medical Center, Rochester, New York, United States of America; Center for Musculoskeletal Research, University of Rochester Medical Center, Rochester, New York, United States of America."},{"name":"Ryan C Locke","status":"past","active":"0","department":"Department of Biomedical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2017","last_year":"2017","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Biomedical Engineering, University of Delaware, 161 Colburn Lab, Newark, Delaware, 19716."},{"name":"Ryan M Castile","status":"past","active":"0","department":"Department of Mechanical Engineering and Materials Science","institution":"Washington University in St. Louis","city":"St. Louis","region":"MO","country":"USA","first_year":"2022","last_year":"2022","lat":"38.6488","lon":"-90.3108","link":null,"tags":"collaborator;washu","papers":"1","affiliation":"Department of Mechanical Engineering and Materials Science, Washington University in St. Louis, St. Louis, MO, United States."},{"name":"Sara Buckley","status":"current","active":"1","department":"Colorado Program for Musculoskeletal Research","institution":"University of Colorado Anschutz Medical Campus","city":"Aurora","region":"CO","country":"USA","first_year":"2025","last_year":"2025","lat":"39.7460","lon":"-104.8365","link":null,"tags":"collaborator;cu-anschutz;orthopedics","papers":"1","affiliation":"Colorado Program for Musculoskeletal Research, Department of Orthopedics, Anschutz Medical Campus, University of Colorado, Aurora, Colorado, USA."},{"name":"Tianzhi Luo","status":"past","active":"0","department":null,"institution":"Unknown (needs review)","city":null,"region":null,"country":"USA","first_year":"2017","last_year":"2017","lat":null,"lon":null,"link":null,"tags":"collaborator;needs-review","papers":"1","affiliation":null},{"name":"X Lucas Lu","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA. xlu@udel.edu."},{"name":"Xingyu Chen","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."},{"name":"Yilu Zhou","status":"past","active":"0","department":"Department of Mechanical Engineering","institution":"University of Delaware","city":"Newark","region":"DE","country":"USA","first_year":"2016","last_year":"2016","lat":"39.6837","lon":"-75.7530","link":null,"tags":"collaborator;udel","papers":"1","affiliation":"Department of Mechanical Engineering, University of Delaware, 130 Academy Street SPL126, Newark, DE, 19716, USA."}]        }      
       </script>
       <script>
         (function () {
@@ -835,16 +949,16 @@
         
         
         
-        <tr class="directory-row" data-search="Aaron M Chamberlain Department of Orthopaedic Surgery St. Louis, MO, USA Department of Orthopaedic Surgery collaborator" data-name="Aaron M Chamberlain" data-status="past" data-institution="Department of Orthopaedic Surgery" data-location="St. Louis, MO, USA" data-years="2021–2022">
+        <tr class="directory-row" data-search="Aaron M Chamberlain Washington University in St. Louis St. Louis, MO, USA Department of Orthopaedic Surgery collaborator;washu" data-name="Aaron M Chamberlain" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2021–2022">
           <td>Aaron M Chamberlain</td>
           <td>Past</td>
-          <td>Department of Orthopaedic Surgery</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2021–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -853,16 +967,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Alex J Reiter Department of Mechanical Engineering and Materials Science St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator" data-name="Alex J Reiter" data-status="past" data-institution="Department of Mechanical Engineering and Materials Science" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="Alex J Reiter Washington University in St. Louis St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator;washu" data-name="Alex J Reiter" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>Alex J Reiter</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering and Materials Science</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -871,16 +985,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Avery T White Department of Biomedical Engineering Delaware, DE, 19716. Department of Biomedical Engineering collaborator" data-name="Avery T White" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, 19716." data-years="2017–2017">
+        <tr class="directory-row" data-search="Avery T White University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Avery T White" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2017–2017">
           <td>Avery T White</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, 19716.</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -889,16 +1003,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Chelsey L Dunham Department of Biomedical Engineering St. Louis, MO, USA Department of Biomedical Engineering collaborator" data-name="Chelsey L Dunham" data-status="past" data-institution="Department of Biomedical Engineering" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="Chelsey L Dunham Washington University in St. Louis St. Louis, MO, USA Department of Biomedical Engineering collaborator;washu" data-name="Chelsey L Dunham" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>Chelsey L Dunham</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -907,16 +1021,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Cheryl L Ackert-Bicknell Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Cheryl L Ackert-Bicknell" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Cheryl L Ackert-Bicknell University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Cheryl L Ackert-Bicknell" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Cheryl L Ackert-Bicknell</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -925,16 +1039,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Christopher Price Department of Biomedical Engineering Delaware, DE, 19716. Department of Biomedical Engineering collaborator" data-name="Christopher Price" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, 19716." data-years="2016–2017">
+        <tr class="directory-row" data-search="Christopher Price University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Christopher Price" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2017">
           <td>Christopher Price</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, 19716.</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -943,16 +1057,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Courtney Miller Foot and Ankle Orthopedics Colorado, CO, USA  collaborator" data-name="Courtney Miller" data-status="current" data-institution="Foot and Ankle Orthopedics" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Courtney Miller University of Colorado Anschutz Medical Campus Aurora, CO, USA Foot and Ankle Orthopedics collaborator;cu-anschutz;orthopedics" data-name="Courtney Miller" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Courtney Miller</td>
           <td>Current</td>
-          <td>Foot and Ankle Orthopedics</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -961,16 +1075,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Daniel K Moon Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Daniel K Moon" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Daniel K Moon University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Daniel K Moon" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Daniel K Moon</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -979,16 +1093,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Hani A Awad Department of Biomedical Engineering New York, NY, USA Department of Biomedical Engineering collaborator" data-name="Hani A Awad" data-status="past" data-institution="Department of Biomedical Engineering" data-location="New York, NY, USA" data-years="2014–2014">
+        <tr class="directory-row" data-search="Hani A Awad University of Rochester Rochester, NY, USA Department of Biomedical Engineering collaborator;urochester" data-name="Hani A Awad" data-status="past" data-institution="University of Rochester" data-location="Rochester, NY, USA" data-years="2014–2014">
           <td>Hani A Awad</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>New York, NY, USA</td>
+          <td>University of Rochester</td>
+          <td>Rochester, NY, USA</td>
           <td>2014–2014</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;urochester%22" class="tag" data-tooltip='Show items with the tag "collaborator;urochester"'>
+collaborator;urochester
 </a>
 </div>
 </td>
@@ -997,16 +1111,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Ian M Berke Department of Biomedical Engineering Delaware, DE, USA Department of Biomedical Engineering collaborator" data-name="Ian M Berke" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Ian M Berke University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Ian M Berke" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>Ian M Berke</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1015,16 +1129,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Ishani D Shah Department of Mechanical Engineering and Materials Science St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator" data-name="Ishani D Shah" data-status="past" data-institution="Department of Mechanical Engineering and Materials Science" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="Ishani D Shah Washington University in St. Louis St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator;washu" data-name="Ishani D Shah" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>Ishani D Shah</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering and Materials Science</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -1033,16 +1147,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="James A Abraham Department of Mechanical Engineering and Materials Science St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator" data-name="James A Abraham" data-status="past" data-institution="Department of Mechanical Engineering and Materials Science" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="James A Abraham Washington University in St. Louis St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator;washu" data-name="James A Abraham" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>James A Abraham</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering and Materials Science</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -1051,16 +1165,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Jason A Inzana Department of Biomedical Engineering New York, NY, USA Department of Biomedical Engineering collaborator" data-name="Jason A Inzana" data-status="past" data-institution="Department of Biomedical Engineering" data-location="New York, NY, USA" data-years="2014–2014">
+        <tr class="directory-row" data-search="Jason A Inzana University of Rochester Rochester, NY, USA Department of Biomedical Engineering collaborator;urochester" data-name="Jason A Inzana" data-status="past" data-institution="University of Rochester" data-location="Rochester, NY, USA" data-years="2014–2014">
           <td>Jason A Inzana</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>New York, NY, USA</td>
+          <td>University of Rochester</td>
+          <td>Rochester, NY, USA</td>
           <td>2014–2014</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;urochester%22" class="tag" data-tooltip='Show items with the tag "collaborator;urochester"'>
+collaborator;urochester
 </a>
 </div>
 </td>
@@ -1069,16 +1183,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Joseph P Miola Department of Biomedical Engineering Delaware, DE, USA Department of Biomedical Engineering collaborator" data-name="Joseph P Miola" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Joseph P Miola University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Joseph P Miola" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>Joseph P Miola</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1087,16 +1201,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Joshua A Metzl Foot and Ankle Orthopedics Colorado, CO, USA  collaborator" data-name="Joshua A Metzl" data-status="current" data-institution="Foot and Ankle Orthopedics" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Joshua A Metzl University of Colorado Anschutz Medical Campus Aurora, CO, USA Foot and Ankle Orthopedics collaborator;cu-anschutz;orthopedics" data-name="Joshua A Metzl" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Joshua A Metzl</td>
           <td>Current</td>
-          <td>Foot and Ankle Orthopedics</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -1105,16 +1219,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Julia Matthias Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Julia Matthias" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Julia Matthias University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Julia Matthias" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Julia Matthias</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -1123,16 +1237,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Kenneth J Hunt Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Kenneth J Hunt" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Kenneth J Hunt University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Kenneth J Hunt" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Kenneth J Hunt</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -1141,16 +1255,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Khyrie H Jones Department of Pathology and Laboratory Medicine New York, NY, USA Department of Pathology and Laboratory Medicine collaborator" data-name="Khyrie H Jones" data-status="past" data-institution="Department of Pathology and Laboratory Medicine" data-location="New York, NY, USA" data-years="2014–2014">
+        <tr class="directory-row" data-search="Khyrie H Jones University of Rochester Rochester, NY, USA Department of Pathology and Laboratory Medicine collaborator;imaging;urochester" data-name="Khyrie H Jones" data-status="past" data-institution="University of Rochester" data-location="Rochester, NY, USA" data-years="2014–2014">
           <td>Khyrie H Jones</td>
           <td>Past</td>
-          <td>Department of Pathology and Laboratory Medicine</td>
-          <td>New York, NY, USA</td>
+          <td>University of Rochester</td>
+          <td>Rochester, NY, USA</td>
           <td>2014–2014</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;imaging;urochester%22" class="tag" data-tooltip='Show items with the tag "collaborator;imaging;urochester"'>
+collaborator;imaging;urochester
 </a>
 </div>
 </td>
@@ -1159,16 +1273,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Kristi L Kiick Delaware Biotechnology Institute Delaware 19711, USA  collaborator" data-name="Kristi L Kiick" data-status="past" data-institution="Delaware Biotechnology Institute" data-location="Delaware 19711, USA" data-years="2017–2017">
+        <tr class="directory-row" data-search="Kristi L Kiick Delaware Biotechnology Institute Newark, DE, USA  collaborator;udel-dbi" data-name="Kristi L Kiick" data-status="past" data-institution="Delaware Biotechnology Institute" data-location="Newark, DE, USA" data-years="2017–2017">
           <td>Kristi L Kiick</td>
           <td>Past</td>
           <td>Delaware Biotechnology Institute</td>
-          <td>Delaware 19711, USA</td>
+          <td>Newark, DE, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel-dbi%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel-dbi"'>
+collaborator;udel-dbi
 </a>
 </div>
 </td>
@@ -1177,16 +1291,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Leanne E Iannucci Department of Biomedical Engineering St. Louis, MO, USA Department of Biomedical Engineering collaborator" data-name="Leanne E Iannucci" data-status="past" data-institution="Department of Biomedical Engineering" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="Leanne E Iannucci Washington University in St. Louis St. Louis, MO, USA Department of Biomedical Engineering collaborator;washu" data-name="Leanne E Iannucci" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>Leanne E Iannucci</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -1195,16 +1309,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Leo Q Wan Department of Biomedical Engineering 12180, USA Department of Biomedical Engineering collaborator" data-name="Leo Q Wan" data-status="past" data-institution="Department of Biomedical Engineering" data-location="12180, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Leo Q Wan Rensselaer Polytechnic Institute Troy, NY, USA Department of Biomedical Engineering collaborator;rpi" data-name="Leo Q Wan" data-status="past" data-institution="Rensselaer Polytechnic Institute" data-location="Troy, NY, USA" data-years="2016–2016">
           <td>Leo Q Wan</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>12180, USA</td>
+          <td>Rensselaer Polytechnic Institute</td>
+          <td>Troy, NY, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;rpi%22" class="tag" data-tooltip='Show items with the tag "collaborator;rpi"'>
+collaborator;rpi
 </a>
 </div>
 </td>
@@ -1213,16 +1327,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Liyun Wang Department of Mechanical Engineering 19716, USA Department of Mechanical Engineering collaborator" data-name="Liyun Wang" data-status="past" data-institution="Department of Mechanical Engineering" data-location="19716, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Liyun Wang University of Delaware Newark, DE, USA Department of Mechanical Engineering collaborator;udel" data-name="Liyun Wang" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>Liyun Wang</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering</td>
-          <td>19716, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1231,18 +1345,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Lucas C Dunshee    collaborator" data-name="Lucas C Dunshee" data-status="past" data-institution="" data-location="" data-years="2017–2017">
+        <tr class="directory-row" data-search="Lucas C Dunshee Unknown (needs review) , USA  collaborator;needs-review" data-name="Lucas C Dunshee" data-status="past" data-institution="Unknown (needs review)" data-location=", USA" data-years="2017–2017">
           <td>Lucas C Dunshee</td>
           <td>Past</td>
-          <td>
-</td>
-          <td>
-</td>
+          <td>Unknown (needs review)</td>
+          <td>, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;needs-review%22" class="tag" data-tooltip='Show items with the tag "collaborator;needs-review"'>
+collaborator;needs-review
 </a>
 </div>
 </td>
@@ -1251,16 +1363,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Melanie K Smith Department of Biomedical Engineering Delaware, DE, 19716. Department of Biomedical Engineering collaborator" data-name="Melanie K Smith" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, 19716." data-years="2016–2017">
+        <tr class="directory-row" data-search="Melanie K Smith University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Melanie K Smith" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2017">
           <td>Melanie K Smith</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, 19716.</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1269,16 +1381,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Michael David Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Michael David" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Michael David University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Michael David" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Michael David</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -1287,16 +1399,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Michael J Zuscik Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Michael J Zuscik" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2014–2025">
+        <tr class="directory-row" data-search="Michael J Zuscik University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Michael J Zuscik" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2014–2025">
           <td>Michael J Zuscik</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2014–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -1305,18 +1417,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Morgan A Urello    collaborator" data-name="Morgan A Urello" data-status="past" data-institution="" data-location="" data-years="2017–2017">
+        <tr class="directory-row" data-search="Morgan A Urello Unknown (needs review) , USA  collaborator;needs-review" data-name="Morgan A Urello" data-status="past" data-institution="Unknown (needs review)" data-location=", USA" data-years="2017–2017">
           <td>Morgan A Urello</td>
           <td>Past</td>
-          <td>
-</td>
-          <td>
-</td>
+          <td>Unknown (needs review)</td>
+          <td>, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;needs-review%22" class="tag" data-tooltip='Show items with the tag "collaborator;needs-review"'>
+collaborator;needs-review
 </a>
 </div>
 </td>
@@ -1325,16 +1435,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Necat Havlioglu Department of Pathology St. Louis, MO, USA Department of Pathology collaborator" data-name="Necat Havlioglu" data-status="past" data-institution="Department of Pathology" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="Necat Havlioglu Washington University in St. Louis St. Louis, MO, USA Department of Pathology collaborator;imaging;washu" data-name="Necat Havlioglu" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>Necat Havlioglu</td>
           <td>Past</td>
-          <td>Department of Pathology</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;imaging;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;imaging;washu"'>
+collaborator;imaging;washu
 </a>
 </div>
 </td>
@@ -1343,16 +1453,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Rachael N Pilachowski Department of Biomedical Engineering Delaware, DE, 19716. Department of Biomedical Engineering collaborator" data-name="Rachael N Pilachowski" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, 19716." data-years="2017–2017">
+        <tr class="directory-row" data-search="Rachael N Pilachowski University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Rachael N Pilachowski" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2017–2017">
           <td>Rachael N Pilachowski</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, 19716.</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1361,16 +1471,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Randall L Duncan Department of Biological Sciences 19716, USA Department of Biological Sciences collaborator" data-name="Randall L Duncan" data-status="past" data-institution="Department of Biological Sciences" data-location="19716, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Randall L Duncan University of Delaware Newark, DE, USA Department of Biological Sciences collaborator;udel" data-name="Randall L Duncan" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>Randall L Duncan</td>
           <td>Past</td>
-          <td>Department of Biological Sciences</td>
-          <td>19716, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1379,16 +1489,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Rebecca A Scott Delaware Biotechnology Institute Delaware 19711, USA  collaborator" data-name="Rebecca A Scott" data-status="past" data-institution="Delaware Biotechnology Institute" data-location="Delaware 19711, USA" data-years="2017–2017">
+        <tr class="directory-row" data-search="Rebecca A Scott Delaware Biotechnology Institute Newark, DE, USA  collaborator;udel-dbi" data-name="Rebecca A Scott" data-status="past" data-institution="Delaware Biotechnology Institute" data-location="Newark, DE, USA" data-years="2017–2017">
           <td>Rebecca A Scott</td>
           <td>Past</td>
           <td>Delaware Biotechnology Institute</td>
-          <td>Delaware 19711, USA</td>
+          <td>Newark, DE, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel-dbi%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel-dbi"'>
+collaborator;udel-dbi
 </a>
 </div>
 </td>
@@ -1397,16 +1507,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Robert A Mooney Department of Pathology and Laboratory Medicine New York, NY, USA Department of Pathology and Laboratory Medicine collaborator" data-name="Robert A Mooney" data-status="past" data-institution="Department of Pathology and Laboratory Medicine" data-location="New York, NY, USA" data-years="2014–2014">
+        <tr class="directory-row" data-search="Robert A Mooney University of Rochester Rochester, NY, USA Department of Pathology and Laboratory Medicine collaborator;imaging;urochester" data-name="Robert A Mooney" data-status="past" data-institution="University of Rochester" data-location="Rochester, NY, USA" data-years="2014–2014">
           <td>Robert A Mooney</td>
           <td>Past</td>
-          <td>Department of Pathology and Laboratory Medicine</td>
-          <td>New York, NY, USA</td>
+          <td>University of Rochester</td>
+          <td>Rochester, NY, USA</td>
           <td>2014–2014</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;imaging;urochester%22" class="tag" data-tooltip='Show items with the tag "collaborator;imaging;urochester"'>
+collaborator;imaging;urochester
 </a>
 </div>
 </td>
@@ -1415,16 +1525,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Ryan C Locke Department of Biomedical Engineering Delaware, DE, 19716. Department of Biomedical Engineering collaborator" data-name="Ryan C Locke" data-status="past" data-institution="Department of Biomedical Engineering" data-location="Delaware, DE, 19716." data-years="2017–2017">
+        <tr class="directory-row" data-search="Ryan C Locke University of Delaware Newark, DE, USA Department of Biomedical Engineering collaborator;udel" data-name="Ryan C Locke" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2017–2017">
           <td>Ryan C Locke</td>
           <td>Past</td>
-          <td>Department of Biomedical Engineering</td>
-          <td>Delaware, DE, 19716.</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1433,16 +1543,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Ryan M Castile Department of Mechanical Engineering and Materials Science St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator" data-name="Ryan M Castile" data-status="past" data-institution="Department of Mechanical Engineering and Materials Science" data-location="St. Louis, MO, USA" data-years="2022–2022">
+        <tr class="directory-row" data-search="Ryan M Castile Washington University in St. Louis St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator;washu" data-name="Ryan M Castile" data-status="past" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2022–2022">
           <td>Ryan M Castile</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering and Materials Science</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
           <td>2022–2022</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -1451,16 +1561,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Sara Buckley Colorado Program for Musculoskeletal Research Colorado, CO, USA  collaborator" data-name="Sara Buckley" data-status="current" data-institution="Colorado Program for Musculoskeletal Research" data-location="Colorado, CO, USA" data-years="2025–2025">
+        <tr class="directory-row" data-search="Sara Buckley University of Colorado Anschutz Medical Campus Aurora, CO, USA Colorado Program for Musculoskeletal Research collaborator;cu-anschutz;orthopedics" data-name="Sara Buckley" data-status="current" data-institution="University of Colorado Anschutz Medical Campus" data-location="Aurora, CO, USA" data-years="2025–2025">
           <td>Sara Buckley</td>
           <td>Current</td>
-          <td>Colorado Program for Musculoskeletal Research</td>
-          <td>Colorado, CO, USA</td>
+          <td>University of Colorado Anschutz Medical Campus</td>
+          <td>Aurora, CO, USA</td>
           <td>2025–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;cu-anschutz;orthopedics%22" class="tag" data-tooltip='Show items with the tag "collaborator;cu-anschutz;orthopedics"'>
+collaborator;cu-anschutz;orthopedics
 </a>
 </div>
 </td>
@@ -1469,16 +1579,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Spencer P Lake Department of Mechanical Engineering and Materials Science St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator" data-name="Spencer P Lake" data-status="current" data-institution="Department of Mechanical Engineering and Materials Science" data-location="St. Louis, MO, USA" data-years="2021–2022">
+        <tr class="directory-row" data-search="Spencer P Lake Washington University in St. Louis St. Louis, MO, USA Department of Mechanical Engineering and Materials Science collaborator;washu" data-name="Spencer P Lake" data-status="current" data-institution="Washington University in St. Louis" data-location="St. Louis, MO, USA" data-years="2021–2025">
           <td>Spencer P Lake</td>
           <td>Current</td>
-          <td>Department of Mechanical Engineering and Materials Science</td>
+          <td>Washington University in St. Louis</td>
           <td>St. Louis, MO, USA</td>
-          <td>2021–2022</td>
+          <td>2021–2025</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;washu%22" class="tag" data-tooltip='Show items with the tag "collaborator;washu"'>
+collaborator;washu
 </a>
 </div>
 </td>
@@ -1487,18 +1597,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Tianzhi Luo    collaborator" data-name="Tianzhi Luo" data-status="past" data-institution="" data-location="" data-years="2017–2017">
+        <tr class="directory-row" data-search="Tianzhi Luo Unknown (needs review) , USA  collaborator;needs-review" data-name="Tianzhi Luo" data-status="past" data-institution="Unknown (needs review)" data-location=", USA" data-years="2017–2017">
           <td>Tianzhi Luo</td>
           <td>Past</td>
-          <td>
-</td>
-          <td>
-</td>
+          <td>Unknown (needs review)</td>
+          <td>, USA</td>
           <td>2017–2017</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;needs-review%22" class="tag" data-tooltip='Show items with the tag "collaborator;needs-review"'>
+collaborator;needs-review
 </a>
 </div>
 </td>
@@ -1507,16 +1615,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="X Lucas Lu Department of Mechanical Engineering 19716, USA Department of Mechanical Engineering collaborator" data-name="X Lucas Lu" data-status="past" data-institution="Department of Mechanical Engineering" data-location="19716, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="X Lucas Lu University of Delaware Newark, DE, USA Department of Mechanical Engineering collaborator;udel" data-name="X Lucas Lu" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>X Lucas Lu</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering</td>
-          <td>19716, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1525,16 +1633,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Xingyu Chen Department of Mechanical Engineering 19716, USA Department of Mechanical Engineering collaborator" data-name="Xingyu Chen" data-status="past" data-institution="Department of Mechanical Engineering" data-location="19716, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Xingyu Chen University of Delaware Newark, DE, USA Department of Mechanical Engineering collaborator;udel" data-name="Xingyu Chen" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>Xingyu Chen</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering</td>
-          <td>19716, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1543,16 +1651,16 @@ collaborator
         
         
         
-        <tr class="directory-row" data-search="Yilu Zhou Department of Mechanical Engineering 19716, USA Department of Mechanical Engineering collaborator" data-name="Yilu Zhou" data-status="past" data-institution="Department of Mechanical Engineering" data-location="19716, USA" data-years="2016–2016">
+        <tr class="directory-row" data-search="Yilu Zhou University of Delaware Newark, DE, USA Department of Mechanical Engineering collaborator;udel" data-name="Yilu Zhou" data-status="past" data-institution="University of Delaware" data-location="Newark, DE, USA" data-years="2016–2016">
           <td>Yilu Zhou</td>
           <td>Past</td>
-          <td>Department of Mechanical Engineering</td>
-          <td>19716, USA</td>
+          <td>University of Delaware</td>
+          <td>Newark, DE, USA</td>
           <td>2016–2016</td>
           <td>
 <div class="tags">
-<a href="/collaborators/?search=%22tag:%20collaborator%22" class="tag" data-tooltip='Show items with the tag "collaborator"'>
-collaborator
+<a href="/collaborators/?search=%22tag:%20collaborator;udel%22" class="tag" data-tooltip='Show items with the tag "collaborator;udel"'>
+collaborator;udel
 </a>
 </div>
 </td>
@@ -1567,6 +1675,8 @@ collaborator
   </section>
 
 
+      
+      
     </main>
     
 
@@ -1699,9 +1809,10 @@ collaborator
   </div>
 
   <div>
+    
     © 2025
     Michael A. David, PhD
-      |   Last updated December 19, 2025
+      |   Last updated December 28, 2025
       |   Built with
     <a href="https://github.com/greenelab/lab-website-template">
       Lab Website Template
