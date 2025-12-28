@@ -32,7 +32,8 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
   margin: 16px 0 24px;
-  align-items: start;
+  /* Keep highlight tiles aligned within each row. */
+  align-items: stretch;
 }
 
 @media (max-width: 900px) {
@@ -58,6 +59,21 @@
   background: var(--background);
   box-shadow: var(--shadow);
   align-self: start;
+}
+
+.gallery-highlights .gallery-item {
+  /* Override the default gallery behavior so each row aligns cleanly. */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-highlights .gallery-caption {
+  /* Make captions occupy consistent space when items are stretched. */
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .gallery-item--banner {
