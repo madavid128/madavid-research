@@ -66,7 +66,11 @@
           | replace: ".jpg", ".webp"
           | replace: ".png", ".webp"
         %}
-        {% assign webp_rel = webp_candidate | remove_first: "/" %}
+        {% assign webp_rel = webp_candidate %}
+        {% assign webp_first = webp_rel | slice: 0, 1 %}
+        {% if webp_first == "/" %}
+          {% assign webp_rel = webp_rel | slice: 1, 9999 %}
+        {% endif %}
         {% assign thumb_webp = webp_rel | file_exists %}
       {% endif %}
       <a

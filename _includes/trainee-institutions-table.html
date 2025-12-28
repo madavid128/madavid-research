@@ -43,8 +43,13 @@
           data-past="{{ past_count }}"
         >
           <td>
-            {% if inst.link and inst.link != "" %}
-              <a href="{{ inst.link | relative_url | uri_escape }}">{{ inst_name }}</a>
+            {% assign href = inst.link | default: "" | strip %}
+            {% if href != "" %}
+              {% if href contains "://" %}
+                <a href="{{ href | xml_escape }}" target="_blank" rel="noopener noreferrer">{{ inst_name }}</a>
+              {% else %}
+                <a href="{{ href | relative_url | uri_escape }}">{{ inst_name }}</a>
+              {% endif %}
             {% else %}
               {{ inst_name }}
             {% endif %}
@@ -57,4 +62,3 @@
     </tbody>
   </table>
 </div>
-

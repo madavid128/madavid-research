@@ -40,7 +40,81 @@
 {% assign share_png = "images/share.png" | file_exists %}
 {% assign share_file = share_jpg | default: share_png | default: icon_file %}
 
-{% assign share_value = page.share | default: site.share | default: share_file %}
+{% comment %}
+  Social preview selection priority (no redundancy):
+  1) CSV-driven per-page selection: `_data/page_share_images.yaml` (keyed by section)
+  2) Page front matter `share:` (manual override)
+  3) Conventional per-section share images (if present): `images/share-<section>.jpg`
+  4) Site default: `_config.yaml` `share:` (usually `images/share.jpg`)
+{% endcomment %}
+
+{% assign share_key = "" %}
+{% if page.dir == "/" %}
+  {% assign share_key = "home" %}
+{% elsif page.dir == "/research/" %}
+  {% assign share_key = "publications" %}
+{% elsif page.dir == "/projects/" %}
+  {% assign share_key = "projects" %}
+{% elsif page.dir == "/team/" %}
+  {% assign share_key = "team" %}
+{% elsif page.dir == "/art/" %}
+  {% assign share_key = "art" %}
+{% elsif page.dir == "/pictures/" %}
+  {% assign share_key = "pictures" %}
+{% elsif page.dir == "/updates/" %}
+  {% assign share_key = "updates" %}
+{% endif %}
+
+{% assign share_from_csv = nil %}
+{% if share_key != "" and site.data.page_share_images %}
+  {% assign share_from_csv = site.data.page_share_images[share_key] %}
+{% endif %}
+
+{% assign share_from_section = nil %}
+{% if share_key != "" %}
+  {% assign section_candidate = "images/share-" | append: share_key | append: ".jpg" %}
+  {% assign share_from_section = section_candidate | file_exists %}
+{% endif %}
+
+{% assign share_value = share_file %}
+{% if site.share %}
+  {% assign share_value = site.share %}
+{% endif %}
+{% if share_from_section %}
+  {% assign share_value = share_from_section %}
+{% endif %}
+{% if page.share %}
+  {% assign share_value = page.share %}
+{% endif %}
+{% if share_from_csv %}
+  {% assign share_value = share_from_csv %}
+{% endif %}
+
+{% assign watermark_enabled = site.watermark.enabled | default: false %}
+{% assign watermark_prefix = site.watermark.prefix | default: "images/wm/" %}
+{% if watermark_enabled and share_value and share_value != "" and share_value contains "images/" %}
+  {% assign share_rel = share_value %}
+  {% assign share_first = share_rel | slice: 0, 1 %}
+  {% if share_first == "/" %}
+    {% assign share_rel = share_rel | slice: 1, 9999 %}
+  {% endif %}
+  {% assign wm_candidate = share_rel | replace_first: "images/", watermark_prefix %}
+  {% assign wm_share = wm_candidate | file_exists %}
+  {% if wm_share == nil %}
+    {% assign ext5 = share_rel | slice: -5, 5 | downcase %}
+    {% if ext5 == ".tiff" or share_rel | slice: -4, 4 | downcase == ".tif" %}
+      {% assign wm_candidate = wm_candidate | replace: ".tiff", ".png" | replace: ".tif", ".png" %}
+      {% assign wm_share = wm_candidate | file_exists %}
+    {% elsif ext5 == ".heif" or ext5 == ".heic" %}
+      {% assign wm_candidate = wm_candidate | replace: ".heif", ".jpg" | replace: ".heic", ".jpg" %}
+      {% assign wm_share = wm_candidate | file_exists %}
+    {% endif %}
+  {% endif %}
+  {% if wm_share %}
+    {% assign share_value = wm_share %}
+  {% endif %}
+{% endif %}
+
 {% assign share_url = share_value %}
 {% if share_value contains "://" %}
   {% assign share_url = share_value %}
@@ -131,6 +205,55 @@
   {% if updated and updated != "" %}
   , "dateModified": {{ updated | jsonify }}
   {% endif %}
+  {% endif %}
+}
+</script>
+
+{% comment %}
+  Lightweight Person structured data to improve search result enrichment.
+  Kept separate from the WebSite/BlogPosting block above.
+{% endcomment %}
+{% assign same_as = "" | split: "," %}
+{% if site.links.orcid and site.links.orcid != "" %}
+  {% capture orcid_url %}https://orcid.org/{{ site.links.orcid }}{% endcapture %}
+  {% assign same_as = same_as | push: orcid_url %}
+{% endif %}
+{% if site.links.google-scholar and site.links.google-scholar != "" %}
+  {% capture scholar_url %}https://scholar.google.com/citations?user={{ site.links.google-scholar }}{% endcapture %}
+  {% assign same_as = same_as | push: scholar_url %}
+{% endif %}
+{% if site.links.github and site.links.github != "" %}
+  {% capture github_url %}https://github.com/{{ site.links.github }}{% endcapture %}
+  {% assign same_as = same_as | push: github_url %}
+{% endif %}
+{% if site.links.linkedin and site.links.linkedin != "" %}
+  {% capture linkedin_url %}https://www.linkedin.com/in/{{ site.links.linkedin }}{% endcapture %}
+  {% assign same_as = same_as | push: linkedin_url %}
+{% endif %}
+{% if site.links.pubmed and site.links.pubmed != "" %}
+  {% assign same_as = same_as | push: site.links.pubmed %}
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.title | jsonify }},
+  "url": {{ site.url | append: site.baseurl | jsonify }},
+  "image": {{ share_url | jsonify }},
+  "jobTitle": "Instructor (Orthopedics)",
+  "affiliation": [
+    { "@type": "Organization", "name": "University of Colorado Anschutz Medical Campus" }
+  ],
+  "sameAs": {{ same_as | uniq | jsonify }}
+  {% if site.links.orcid and site.links.orcid != "" %}
+  , "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "ORCID",
+      "value": {{ site.links.orcid | jsonify }}
+    }
+  ]
   {% endif %}
 }
 </script>

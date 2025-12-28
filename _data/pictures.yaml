@@ -1,63 +1,665 @@
-- date: 2025-10-01
-  title: Lab / group photo (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-01.svg
-  link: images/pictures-01.svg
-  tags: [lab, people]
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_cu-csu_ors_2-2025.jpeg
+  tags: [team, group, lab]
   style: square
-
-- date: 2025-09-15
-  title: Conference moment (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-02.svg
-  link: images/pictures-02.svg
-  tags: [conference, travel]
+  year: 2025
+- date: '2025-12-22'
+  title: Anschutz campus (day)
+  image: images/nature_anschutz-day-2025.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2025
+- date: '2025-12-22'
+  title: Anschutz campus (night)
+  image: images/nature_anschutz-night-2025.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2025
+- date: '2025-12-22'
+  title: News 1
+  image: images/news_1-2025.png
+  tags: []
   style: square
-
-- date: 2025-08-20
-  title: Outreach / public engagement (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-03.svg
-  link: images/pictures-03.svg
-  tags: [outreach]
+  year: 2025
+- date: '2025-12-22'
+  title: News 2
+  image: images/news_2-2025.png
+  tags: []
   style: square
-
-- date: 2025-08-01
-  title: Scientific art (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-04.svg
-  link: art
-  tags: [art]
+  year: 2025
+- date: '2025-12-22'
+  title: Team photo
+  image: images/team_1-2025.jpeg
+  tags: [team, group, lab]
   style: square
-
-- date: 2025-07-01
-  title: Lab life (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-05.svg
-  link: images/pictures-05.svg
-  tags: [lab]
+  year: 2025
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_CPMR_HH_12-2024.jpeg
+  tags: [team, group, lab]
   style: square
-
-- date: 2025-06-01
-  title: Award / milestone (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-06.svg
-  link: news
-  tags: [award, update]
+  year: 2024
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_cu-csu_ors_1-2024.jpeg
+  tags: [team, group, lab]
   style: square
-
-- date: 2025-05-01
-  title: Nature (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-nature.svg
-  link: images/pictures-nature.svg
-  tags: [nature]
+  year: 2024
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_lakelab_ors_3-2024.jpeg
+  tags: [team, group, lab]
   style: square
-
-- date: 2025-04-01
-  title: Sports (placeholder)
-  subtitle: Replace with your image
-  image: images/pictures-sports.svg
-  link: images/pictures-sports.svg
-  tags: [sports]
+  year: 2024
+- date: '2025-12-22'
+  title: Mentors
+  image: images/mentors_1-2024.jpeg
+  tags: [mentors]
   style: square
+  year: 2024
+  featured: true
+  featured_rank: 3
+- date: '2025-12-22'
+  title: 'Music: Dave Matthews'
+  image: images/music-dave-matthews-2024.jpeg
+  tags: [music, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: 'Music: Lotus 2'
+  image: images/music-lotus-2-2024.jpeg
+  tags: [music, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: 'Music: Lotus'
+  image: images/music-lotus-2024.jpeg
+  tags: [music, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6033-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6112-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6169-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6192-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6211-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6409-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_6421-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_IMG_7609-2024.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_1-2024.jpeg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_5-2024.jpeg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2024
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_6-2024.jpeg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2024
+  featured: true
+  featured_rank: 2
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-02-10 09.24.50-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-05-05 19.19.47-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-06-01 17.57.08-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-06-02 11.02.55-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-06-02 17.37.38-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-07-08 10.58.26-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-08-05 19.33.57-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2023-08-05 19.35.12-2023.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Conference poster
+  image: images/poster_4-2023.jpeg
+  tags: [poster, conference]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_2022_research_symposium_025.tmb-image350-2023.jpg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_7-2023.jpeg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2023
+- date: '2025-12-22'
+  title: 'Music: String Cheese Billy'
+  image: images/music-string-cheese-billy-2022.jpeg
+  tags: [music, beyond the lab]
+  style: square
+  year: 2022
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2022-01-01 14.23.50-2022.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2022
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2022-01-01 14.50.11-2-2022.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2022
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2022-11-25 11.15.07-2022.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2022
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2022-11-25 11.17.13-2022.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2022
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2022-12-04 14.10.34-2022.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2022
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_Lake Lab-2021.jpeg
+  tags: [team, group, lab]
+  style: square
+  year: 2021
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2021-09-22 17.30.35-2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2021
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2021-09-22 18.02.40-2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2021
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2021-09-22 18.30.50-2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2021
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2021-12-31 13.22.27-2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2021
+- date: '2025-12-22'
+  title: Nature panorama
+  image: images/nature_pano_Photo Sep 22, 4 27 34 PM-2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  year: 2021
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_Photo Aug 30, 6 24 04 PM-2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2021
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2020-09-18 18.09.11-2020.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2020
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2020-09-29 18.03.00-2020.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  year: 2020
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_Image from iOS-2019.jpg
+  tags: [team, group, lab]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_ORS 2018 Meet and Gree Pic-2019.jpg
+  tags: [team, group, lab]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_price-lab_IMG_2531-2019.JPG
+  tags: [team, group, lab]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_price-lab_IMG_2534-2019.JPG
+  tags: [team, group, lab]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_pricelab_14-2019.jpeg
+  tags: [team, group, lab]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_pricelab_HH_13-2019.jpeg
+  tags: [team, group, lab]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: PhD milestone
+  image: images/phd_me-2019.jpeg
+  tags: [milestone, phd, portrait]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: PhD milestone
+  image: images/phd_me_2-2019.png
+  tags: [milestone, phd, portrait]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: PhD milestone
+  image: images/phd_me_3-2019.jpeg
+  tags: [milestone, phd, portrait]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_4-2019.jpeg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_Photo Apr 01, 9 40 22 AM-2018.jpg
+  tags: [team, group, lab]
+  style: square
+  year: 2018
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_udel_ors_5-2017.jpeg
+  tags: [team, group, lab]
+  style: square
+  year: 2017
+- date: '2025-12-22'
+  title: 'Music: Lotus Belly Up Aspen'
+  image: images/music-lotus belly up aspen-2017.jpg
+  tags: [music, beyond the lab]
+  style: square
+  year: 2017
+- date: '2025-12-22'
+  title: Research talk
+  image: images/talk_phd-2017.jpeg
+  tags: [talk, conference, speaking]
+  style: square
+  year: 2017
+- date: '2025-12-22'
+  title: Conference poster
+  image: images/poster_4-2016.jpeg
+  tags: [poster, conference]
+  style: square
+  year: 2016
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_uroc_ors_7-2015.jpeg
+  tags: [team, group, lab]
+  style: square
+  year: 2015
+- date: '2025-12-22'
+  title: Mentors
+  image: images/mentors_2-2015.jpeg
+  tags: [mentors]
+  style: square
+  year: 2015
+- date: '2025-12-22'
+  title: Conference poster
+  image: images/poster_2-2015.jpeg
+  tags: [poster, conference]
+  style: square
+  year: 2015
+- date: '2025-12-22'
+  title: Group photo
+  image: images/group_Udel-ORS-2014.jpeg
+  tags: [team, group, lab]
+  style: square
+  year: 2014
+- date: '2025-12-22'
+  title: Sports
+  image: images/sports_football_me-2021.jpg
+  tags: [sports, beyond the lab]
+  style: square
+  year: 2010
+- date: '2025-12-22'
+  title: Sports
+  image: images/sports_football_me2-2021.jpg
+  tags: [sports, beyond the lab]
+  style: square
+  year: 2010
+- date: '2025-12-22'
+  title: Sports
+  image: images/sports_football_me3-2021.jpg
+  tags: [sports, beyond the lab]
+  style: square
+  year: 2010
+- date: '2025-12-22'
+  title: Sports
+  image: images/sports_football_me4-2021.jpg
+  tags: [sports, beyond the lab]
+  style: square
+  year: 2010
+- date: '2025-12-22'
+  title: Sports
+  image: images/sports_football_me6-2021.jpg
+  tags: [sports, beyond the lab]
+  style: square
+  year: 2010
+- date: '2025-12-22'
+  title: Conference poster
+  image: images/poster_1-2010.jpeg
+  tags: [poster, conference]
+  style: square
+  year: 2010
+- date: '2025-12-22'
+  title: Sports
+  image: images/sports_football-IMG_1423-2009.jpg
+  tags: [sports, beyond the lab]
+  style: square
+  year: 2009
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  featured: true
+  featured_rank: 1
+- date: '2025-12-22'
+  title: Nature panorama
+  image: images/nature_0.png
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_11.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_12.png
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_13.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_15.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_16.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_17.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_18.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_19.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_2.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature panorama
+  image: images/nature_20.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_21.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_22.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature panorama
+  image: images/nature_23.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_24.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_25.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_26.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+  project_page_section: imaging-ml
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_27.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_28.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_29.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_30.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_31.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_32.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_33.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_34.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_35.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_36.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_37.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_38.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_39.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_4.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_40.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_41.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_42.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_43.JPG
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_44.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner
+  featured: true
+  featured_rank: 4
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_45.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature
+  image: images/nature_5.jpeg
+  tags: [nature, outdoors, beyond the lab]
+  style: square
+- date: '2025-12-22'
+  title: Nature panorama
+  image: images/nature_pano_2021.jpg
+  tags: [nature, outdoors, beyond the lab]
+  style: banner

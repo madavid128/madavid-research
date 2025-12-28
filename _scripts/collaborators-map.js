@@ -66,6 +66,17 @@
     return out;
   };
 
+  const formatTagPills = (tags) => {
+    const list = unique(tags || []);
+    if (!list.length) return "";
+    return list
+      .map(
+        (tag) =>
+          `<span style="display:inline-block;margin:2px 6px 0 0;padding:2px 8px;border-radius:999px;border:1px solid #3a3a3a;background:#1f1f1f;color:#e5e7eb;font-size:11px;line-height:1.6;">${escapeHtml(tag)}</span>`,
+      )
+      .join(" ");
+  };
+
   const placeLine = (person) => {
     const parts = [];
     const dept = person.department ? String(person.department).trim() : "";
@@ -119,7 +130,7 @@
     }
 
     const tags = unique(person.tags || []);
-    if (tags.length) lines.push(`Tags: ${escapeHtml(tags.join(", "))}`);
+    if (tags.length) lines.push(formatTagPills(tags));
 
     return lines.join("<br>");
   };
@@ -355,6 +366,37 @@
       customdata: items.map(() => ({ link: "" })),
     });
 
+    const institutionLabelsTrace = (items, name, color) => {
+      const labels = [];
+      for (const p of items || []) {
+        const inst = p && p.institution ? String(p.institution).trim() : "";
+        const lat = toNumber(p.lat);
+        const lon = toNumber(p.lon);
+        if (!inst || lat === null || lon === null) continue;
+        labels.push({ inst, lat, lon });
+      }
+      // De-duplicate (same institution at same coordinate).
+      const seen = new Set();
+      const uniq = labels.filter((x) => {
+        const key = `${x.inst}::${x.lat},${x.lon}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+      return {
+        type: "scattergeo",
+        mode: "text",
+        name,
+        lat: uniq.map((p) => p.lat),
+        lon: uniq.map((p) => p.lon),
+        text: uniq.map((p) => p.inst),
+        textposition: "top center",
+        textfont: { color, size: 13 },
+        hoverinfo: "skip",
+        showlegend: false,
+      };
+    };
+
     const lineTrace = (items, name, color, dash, opacity) => {
       const lats = [];
       const lons = [];
@@ -450,8 +492,10 @@
       highlightTrace(highlightPast, "New (past)", darkGray),
       markerTrace(filterByType(current, "collaborator"), "Current collaborators", primary, "circle"),
       institutionTrace(currentInstitutions, "Current institutions", primary, "Current"),
+      institutionLabelsTrace(currentInstitutions, "Institution labels (current)", "#cbd5e1"),
       markerTrace(filterByType(past, "collaborator"), "Past collaborators", darkGray, "circle"),
       institutionTrace(pastInstitutions, "Past institutions", darkGray, "Past"),
+      institutionLabelsTrace(pastInstitutions, "Institution labels (past)", "#cbd5e1"),
       homeTrace,
     ];
 
@@ -464,8 +508,10 @@
     traces[3].visible = showPast ? true : "legendonly";
     traces[4].visible = showCurrent && options.showTypes.collaborator ? true : "legendonly";
     traces[5].visible = showCurrent && options.showTypes.institution ? true : "legendonly";
-    traces[6].visible = showPast && options.showTypes.collaborator ? true : "legendonly";
-    traces[7].visible = showPast && options.showTypes.institution ? true : "legendonly";
+    traces[6].visible = showCurrent && options.showTypes.institution && options.showLabels ? true : "legendonly";
+    traces[7].visible = showPast && options.showTypes.collaborator ? true : "legendonly";
+    traces[8].visible = showPast && options.showTypes.institution ? true : "legendonly";
+    traces[9].visible = showPast && options.showTypes.institution && options.showLabels ? true : "legendonly";
 
     return {
       traces,
@@ -624,34 +670,46 @@
       return;
     }
 
-    const viewButtons = [...root.querySelectorAll("[data-collab-view]")];
-    const currentToggle = root.querySelector("input[data-collab-filter='current']");
-    const pastToggle = root.querySelector("input[data-collab-filter='past']");
-    const typeToggles = [...root.querySelectorAll("input[data-collab-type]")];
-    const clusterToggle = root.querySelector("input[data-collab-cluster='duplicates']");
-    const summaryEl = root.querySelector("[data-collab-summary]");
-    const timeHost = root.querySelector("[data-collab-time]");
+	    const viewButtons = [...root.querySelectorAll("[data-collab-view]")];
+	    const currentToggle = root.querySelector("input[data-collab-filter='current']");
+	    const pastToggle = root.querySelector("input[data-collab-filter='past']");
+	    const labelsToggle = root.querySelector("input[data-collab-labels]");
+	    const resetButton = root.querySelector("[data-collab-reset]");
+	    const typeToggles = [...root.querySelectorAll("input[data-collab-type]")];
+	    const clusterToggle = root.querySelector("input[data-collab-cluster='duplicates']");
+	    const summaryEl = root.querySelector("[data-collab-summary]");
+	    const timeHost = root.querySelector("[data-collab-time]");
     const yearAllToggle = root.querySelector("input[data-collab-year-all]");
     const yearSlider = root.querySelector("input[data-collab-year]");
     const yearLabel = root.querySelector("[data-collab-year-label]");
     const playButton = root.querySelector("[data-collab-play]");
     const modeButtons = [...root.querySelectorAll("[data-collab-mode]")];
 
-    let state = {
-      view: "world",
-      showCurrent: currentToggle ? currentToggle.checked : true,
-      showPast: pastToggle ? pastToggle.checked : true,
+	    let state = {
+	      view: "world",
+	      showCurrent: currentToggle ? currentToggle.checked : true,
+	      showPast: pastToggle ? pastToggle.checked : true,
+	      showLabels: labelsToggle ? labelsToggle.checked : true,
       showTypes: { collaborator: true, institution: true },
       activeTags: [],
       clusterDuplicates: clusterToggle ? clusterToggle.checked : true,
       allYears: true,
       year: null,
       yearMode: "cumulative",
-      _timer: null,
-    };
+	      _timer: null,
+	    };
 
-    buildTagControls(root, payload.people, state);
-    root.addEventListener("collabfilterschanged", () => render());
+	    const prefersCompactLabels = () =>
+	      Boolean(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
+
+	    // Default labels off on mobile for readability.
+	    if (labelsToggle && prefersCompactLabels()) {
+	      labelsToggle.checked = false;
+	      state.showLabels = false;
+	    }
+
+	    buildTagControls(root, payload.people, state);
+	    root.addEventListener("collabfilterschanged", () => render());
 
     const computeYearBounds = () => {
       let minY = null;
@@ -784,7 +842,7 @@
       });
     }
 
-    const syncTypeState = () => {
+	    const syncTypeState = () => {
       const next = { collaborator: false, institution: false };
       typeToggles.forEach((input) => {
         const key = String(input.dataset.collabType || "");
@@ -798,8 +856,51 @@
         });
       }
       state.showTypes = next;
-    };
-    syncTypeState();
+	    };
+	    syncTypeState();
+
+	    const resetFilters = () => {
+	      stopPlay();
+
+	      state.view = chooseDefaultView();
+	      setPressed(root, state.view);
+
+	      if (currentToggle) currentToggle.checked = true;
+	      if (pastToggle) pastToggle.checked = true;
+	      state.showCurrent = true;
+	      state.showPast = true;
+
+	      const labelsOn = !prefersCompactLabels();
+	      if (labelsToggle) labelsToggle.checked = labelsOn;
+	      state.showLabels = labelsOn;
+
+	      if (clusterToggle) clusterToggle.checked = true;
+	      state.clusterDuplicates = true;
+
+	      typeToggles.forEach((input) => {
+	        input.checked = true;
+	      });
+	      syncTypeState();
+
+	      state.activeTags = [];
+	      buildTagControls(root, payload.people, state);
+
+	      if (yearSlider && yearAllToggle) {
+	        state.allYears = true;
+	        yearAllToggle.checked = true;
+	        const { maxY } = computeYearBounds();
+	        if (maxY !== null) {
+	          state.year = maxY;
+	          yearSlider.value = String(maxY);
+	        }
+	        state.yearMode = "cumulative";
+	        syncTimeControls();
+	      }
+
+	      render();
+	    };
+
+	    if (resetButton) resetButton.addEventListener("click", resetFilters);
 
     const updateSummary = (payloadStats, traceStats) => {
       if (!summaryEl) return;
@@ -880,6 +981,12 @@
     if (pastToggle) {
       pastToggle.addEventListener("change", () => {
         state.showPast = pastToggle.checked;
+        render();
+      });
+    }
+    if (labelsToggle) {
+      labelsToggle.addEventListener("change", () => {
+        state.showLabels = labelsToggle.checked;
         render();
       });
     }

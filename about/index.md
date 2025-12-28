@@ -15,6 +15,42 @@ nav:
 
 A quick overview of my research focus, how I like to collaborate and mentor, and a few things I enjoy outside the lab.
 
+<div class="start-here" aria-label="Start here">
+  <div class="start-here-title">Start here</div>
+  <div class="start-here-items">
+    <div class="start-here-item">
+      {%
+        include button.html
+        link="research"
+        text="Publications"
+        icon="fa-solid fa-book-open"
+        style="solid"
+      %}
+      <div class="start-here-desc">Highlighted papers + a full searchable list.</div>
+    </div>
+    <div class="start-here-item">
+      {%
+        include button.html
+        link="projects"
+        text="Projects"
+        icon="fa-solid fa-wrench"
+        style="solid"
+      %}
+      <div class="start-here-desc">Four project areas, key questions, and methods.</div>
+    </div>
+    <div class="start-here-item">
+      {%
+        include button.html
+        link="team"
+        text="Team"
+        icon="fa-solid fa-users"
+        style="solid"
+      %}
+      <div class="start-here-desc">Collaborators, trainees, and how to get involved.</div>
+    </div>
+  </div>
+</div>
+
 ## Education {#education}
 
 **Doctor of Philosophy (PhD) in Biomedical Engineering**  
@@ -148,6 +184,17 @@ I enjoy collaborating across disciplines and mentoring trainees with diverse bac
 ## CV {#cv}
 Download my CV and find my publications/profiles below.
 
+{% assign cv_pdf = "downloads/cv.pdf" | file_exists %}
+{% if cv_pdf %}
+  {%
+    include button.html
+    link="downloads/cv.pdf"
+    text="Download CV (PDF)"
+    icon="fa-solid fa-download"
+    style="solid"
+  %}
+{% endif %}
+
 {%
   include button.html
   type="google-scholar"
@@ -183,7 +230,7 @@ Download my CV and find my publications/profiles below.
 {% include section.html %}
 
 ## Beyond the lab {#beyond}
-Outside of research, I enjoy sports, creative work, and spending time outdoors (including nature photography).
+Outside of research, I enjoy music, creative work, and spending time outdoors (including nature photography).
 
 <figure style="margin: 18px 0;">
   <img
@@ -208,9 +255,9 @@ Outside of research, I enjoy sports, creative work, and spending time outdoors (
 %}
 {%
   include button.html
-  link="pictures?search=&quot;tag: sports&quot;"
-  text="Sports"
-  icon="fa-solid fa-person-running"
+  link="pictures?search=&quot;tag: music&quot;"
+  text="Music"
+  icon="fa-solid fa-music"
   style="solid"
 %}
 {%
@@ -219,4 +266,6 @@ Outside of research, I enjoy sports, creative work, and spending time outdoors (
   text="Scientific art"
   icon="fa-solid fa-palette"
   style="bare"
-%}
+  %}
+
+{% include section.html %}

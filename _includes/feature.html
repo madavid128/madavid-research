@@ -4,6 +4,20 @@
     data-flip
   {% endif %}
 >
+  {% assign cache_bust = site.data.watermark_build.nonce | default: site.time | date: "%s" %}
+  {% assign watermark_enabled = site.watermark.enabled | default: false %}
+  {% assign watermark_prefix = site.watermark.prefix | default: "images/wm/" %}
+  {% assign image_rel = include.image | default: "" %}
+  {% assign image_first = image_rel | slice: 0, 1 %}
+  {% if image_first == "/" %}
+    {% assign image_rel = image_rel | slice: 1, 9999 %}
+  {% endif %}
+  {% assign wm_candidate = image_rel | replace_first: "images/", watermark_prefix %}
+  {% assign wm_image = wm_candidate | file_exists %}
+  {% assign display_image = image_rel %}
+  {% if watermark_enabled and wm_image %}
+    {% assign display_image = wm_image %}
+  {% endif %}
   {% assign href = include.link | default: "" %}
   {% assign is_external = false %}
   {% if href contains "://" %}
@@ -21,7 +35,7 @@
     aria-label="{{ include.title | default: "feature link" | regex_strip }}"
   >
     <img
-      src="{{ include.image | relative_url | uri_escape }}"
+      src="{{ display_image | relative_url | uri_escape }}?v={{ cache_bust }}"
       loading="lazy"
       alt="{{ include.title | default: "feature image" | regex_strip }}"
       {% include fallback.html %}

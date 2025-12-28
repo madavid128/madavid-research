@@ -1,6 +1,36 @@
-  <script
-    src="https://app.rybbit.io/api/script.js"
-    data-site-id="e58c66ffe950"
-    defer
+{% comment %}
+  Analytics (optional).
+
+  Rybbit (existing):
+    - Injected unconditionally (as before).
+
+  GoatCounter is privacy-friendly and requires no cookies by default.
+  Configure in `_config.yaml`:
+    analytics:
+      goatcounter:
+        endpoint: "https://YOURCODE.goatcounter.com/count"
+
+  We only inject analytics for production builds.
+{% endcomment %}
+
+<script
+  src="https://app.rybbit.io/api/script.js"
+  data-site-id="e58c66ffe950"
+  defer
 ></script>
 
+{% assign gc_endpoint = site.analytics.goatcounter.endpoint | default: "" | strip %}
+{% if gc_endpoint != "" and jekyll.environment != "development" %}
+  <script
+    data-goatcounter="{{ gc_endpoint }}"
+    async
+    src="https://gc.zgo.at/count.js"
+  ></script>
+  <noscript>
+    <img
+      src="{{ gc_endpoint }}?p={{ page.url | uri_escape }}&t={{ page.title | uri_escape }}"
+      alt=""
+      referrerpolicy="no-referrer-when-downgrade"
+    >
+  </noscript>
+{% endif %}

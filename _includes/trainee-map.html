@@ -46,6 +46,10 @@
             <input type="checkbox" checked data-trainee-filter="past">
             Past
           </label>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-trainee-labels>
+            Labels
+          </label>
         </div>
 
         <div class="collab-map-control" data-trainee-time>
@@ -62,7 +66,22 @@
             <button class="button" data-style="bare" type="button" data-trainee-mode="cumulative" aria-pressed="false">To date</button>
           </div>
         </div>
+
       </div>
+
+      <div class="collab-map-actions" role="group" aria-label="Map help and reset">
+        <button class="button" data-style="bare" type="button" data-trainee-reset>Reset</button>
+        <button
+          class="button"
+          data-style="bare"
+          type="button"
+          data-trainee-help
+          data-tooltip="Markers represent trainee institutions; hover to see the trainee list per institution. Lines connect to my home base. Use filters to explore current vs past and time; toggle Labels for readability (labels default off on mobile)."
+          aria-label="What am I seeing?"
+        >What am I seeing?</button>
+      </div>
+
+      <div data-trainee-tags class="collab-map-tags"></div>
 
       <div class="collab-map-summary" data-trainee-summary aria-live="polite"></div>
 

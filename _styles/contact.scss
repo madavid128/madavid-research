@@ -11,6 +11,39 @@
   box-shadow: var(--shadow);
 }
 
+.contact-start {
+  margin: 18px auto 10px;
+  max-width: 900px;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--light-gray);
+  border-radius: 18px;
+  background: var(--background-alt);
+  box-shadow: var(--shadow);
+}
+
+.contact-start-title {
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  margin-bottom: 12px;
+}
+
+.contact-start-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.contact-start-buttons .button {
+  margin: 0;
+  justify-content: center;
+}
+
+.contact-start-note {
+  margin-top: 10px;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
 .contact-mailto-title {
   font-family: var(--heading);
   font-weight: var(--semi-bold);
@@ -64,9 +97,93 @@
   font-size: 0.95rem;
 }
 
+.contact-figures {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  margin: 26px 0 10px;
+}
+
+.contact-figures .figure {
+  margin: 0;
+}
+
+.contact-figures-headshot .figure-image img {
+  max-width: 240px;
+}
+
+.contact-figures-banner .figure-image img {
+  width: 100%;
+}
+
+.contact-figures-banner-stack {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+
+.contact-figures-banner-stack .figure {
+  width: 100%;
+  align-items: stretch;
+}
+
+.contact-figures-banner-stack .figure-image {
+  display: block !important;
+  width: 100% !important;
+}
+
+.contact-figures-banner-stack picture {
+  display: block !important;
+  width: 100% !important;
+}
+
+.contact-figures-banner-stack .figure-caption {
+  display: none;
+}
+
+.contact-figures-banner-stack .figure-image img {
+  display: block;
+  width: 100% !important;
+  height: 160px !important;
+  object-fit: cover;
+  object-position: center;
+}
+
+.contact-figures-banner-caption {
+  margin-top: 10px;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 700px) {
+  .contact-start-buttons {
+    grid-template-columns: 1fr;
+  }
   .contact-mailto-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-figures {
     grid-template-columns: 1fr;
   }
 }
 
+.faq-item {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--light-gray);
+  border-radius: 18px;
+  background: var(--background-alt);
+  box-shadow: var(--shadow);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+}
+
+.faq-body {
+  margin-top: 10px;
+  color: var(--text);
+}

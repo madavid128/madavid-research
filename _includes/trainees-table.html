@@ -18,11 +18,12 @@
         <th><button type="button" class="directory-sort" data-sort-key="start">Start</button></th>
         <th><button type="button" class="directory-sort" data-sort-key="end">End</button></th>
         <th>Focus</th>
+        <th>Tags</th>
       </tr>
     </thead>
     <tbody>
       {% for t in trainees %}
-        {% capture search %}{{ t.name }} {{ t.role }} {{ t.institution }} {{ t.department }} {{ t.focus }} {{ t.start }} {{ t.end }}{% endcapture %}
+        {% capture search %}{{ t.name }} {{ t.role }} {{ t.institution }} {{ t.department }} {{ t.focus }} {{ t.start }} {{ t.end }} {{ t.tags }}{% endcapture %}
         <tr
           class="directory-row"
           data-search="{{ search | strip_newlines | xml_escape }}"
@@ -40,6 +41,7 @@
           <td>{{ t.start }}</td>
           <td>{{ t.end }}</td>
           <td>{{ t.focus }}</td>
+          <td>{% include tags.html tags=t.tags %}</td>
         </tr>
       {% endfor %}
     </tbody>

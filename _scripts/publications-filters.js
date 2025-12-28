@@ -11,6 +11,7 @@
   const yearSelect = root.querySelector("[data-publications-year]");
   const typeSelect = root.querySelector("[data-publications-type]");
   const clearBtn = root.querySelector("[data-publications-clear]");
+  const resetBtn = root.querySelector("[data-publications-reset]");
 
   const findSearchInput = () => {
     // Prefer the closest search box in the same section.
@@ -46,6 +47,20 @@
     const base = stripTypeTokens(input.value);
     input.value = type ? `${base ? `${base} ` : ""}type:${type}` : base;
     if (typeof window.onSearchInput === "function") window.onSearchInput(input);
+  };
+
+  const resetAll = () => {
+    if (yearSelect) yearSelect.value = "";
+    if (typeSelect) typeSelect.value = "";
+
+    const input = findSearchInput();
+    if (input) {
+      input.value = "";
+      if (typeof window.onSearchInput === "function") window.onSearchInput(input);
+    } else {
+      setYear(null);
+      setType(null);
+    }
   };
 
   const parseYear = (s) => {
@@ -123,6 +138,10 @@
         setYear(null);
         setType(null);
       });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", resetAll);
     }
   };
 

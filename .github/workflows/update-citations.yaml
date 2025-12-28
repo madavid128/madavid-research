@@ -80,6 +80,7 @@ jobs:
           files: |
             _data/citations.yaml
             _data/publications_terms.yaml
+            downloads/publications.bib
             images/publications-wordcloud.png
             THIRD_PARTY_NOTICES.md
 

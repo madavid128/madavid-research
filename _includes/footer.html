@@ -27,9 +27,10 @@
   </div>
 
   <div>
+    {% assign updated_at = page.last_modified_at | default: site.time %}
     &copy; {{ site.time | date: "%Y" }}
     {{ site.title }}
-    &nbsp; | &nbsp; Last updated {{ site.time | date: "%B %d, %Y" }}
+    &nbsp; | &nbsp; Last updated {{ updated_at | date: "%B %d, %Y" }}
     &nbsp; | &nbsp; Built with
     <a href="https://github.com/greenelab/lab-website-template">
       Lab Website Template

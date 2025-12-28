@@ -8,6 +8,24 @@ share: images/share.jpg
 proofer: false
 logo: /images/mad-animated.gif
 
+# Privacy-friendly analytics (optional).
+# GoatCounter setup:
+#   1) Create a GoatCounter site (https://www.goatcounter.com/)
+#   2) Set `analytics.goatcounter.endpoint` to:
+#        https://YOURCODE.goatcounter.com/count
+# The script is only injected in production builds (not local dev).
+analytics:
+  goatcounter:
+    endpoint: "https://madavid128.goatcounter.com/count"
+
+# Gallery image watermarking (best-effort):
+# - If `enabled: true` and a matching file exists under `images/wm/`, galleries
+#   will display the watermarked copy instead of the original.
+# - Generate these copies with `python tools/watermark_galleries.py`.
+watermark:
+  enabled: true
+  prefix: images/wm/
+
 # IMPORTANT: `absolute_url` (used by OpenGraph/Twitter meta tags) relies on
 # `url` + `baseurl`. Set these to your live domain so social sharing uses the
 # correct absolute URLs.

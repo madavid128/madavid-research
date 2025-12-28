@@ -67,8 +67,9 @@
     aria-label="{{ citation.title | default: "citation link" | regex_strip }}"
     class="card-image"
   >
+    {% assign cache_bust = site.data.watermark_build.nonce | default: site.time | date: "%s" %}
     <img
-      src="{{ thumb | relative_url | uri_escape }}"
+      src="{{ thumb | relative_url | uri_escape }}?v={{ cache_bust }}"
       alt="{{ citation.title | default: "citation image" | regex_strip }}"
       loading="lazy"
       {% include fallback.html %}

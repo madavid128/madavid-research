@@ -1,13 +1,47 @@
 <figure class="figure">
+  {% assign cache_bust = site.data.watermark_build.nonce | default: site.time | date: "%s" %}
+  {% assign watermark_enabled = site.watermark.enabled | default: false %}
+  {% assign watermark_prefix = site.watermark.prefix | default: "images/wm/" %}
   {% assign image = include.image | default: "" %}
+  {% assign cover = include.cover | default: false %}
+  {% assign height_style = "max-height" %}
+  {% if cover == true or cover == "true" %}
+    {% assign height_style = "height" %}
+  {% endif %}
+  {% assign image_rel = image %}
+  {% assign image_first = image_rel | slice: 0, 1 %}
+  {% if image_first == "/" %}
+    {% assign image_rel = image_rel | slice: 1, 9999 %}
+  {% endif %}
+  {% assign wm_candidate = image_rel | replace_first: "images/", watermark_prefix %}
+  {% assign wm_image = wm_candidate | file_exists %}
+  {% if wm_image == nil %}
+    {% assign ext5 = image_rel | slice: -5, 5 | downcase %}
+    {% assign ext4 = image_rel | slice: -4, 4 | downcase %}
+    {% if ext5 == ".tiff" or ext4 == ".tif" %}
+      {% assign wm_candidate = wm_candidate | replace: ".tiff", ".png" | replace: ".tif", ".png" %}
+      {% assign wm_image = wm_candidate | file_exists %}
+    {% elsif ext5 == ".heif" or ext5 == ".heic" %}
+      {% assign wm_candidate = wm_candidate | replace: ".heif", ".jpg" | replace: ".heic", ".jpg" %}
+      {% assign wm_image = wm_candidate | file_exists %}
+    {% endif %}
+  {% endif %}
+  {% assign display_image = image_rel %}
+  {% if watermark_enabled and wm_image %}
+    {% assign display_image = wm_image %}
+  {% endif %}
   {% assign webp = nil %}
-  {% if image contains ".jpg" or image contains ".jpeg" or image contains ".png" %}
-    {% assign webp_candidate = image
+  {% if display_image contains ".jpg" or display_image contains ".jpeg" or display_image contains ".png" %}
+    {% assign webp_candidate = display_image
       | replace: ".jpeg", ".webp"
       | replace: ".jpg", ".webp"
       | replace: ".png", ".webp"
     %}
-    {% assign webp_rel = webp_candidate | remove_first: "/" %}
+    {% assign webp_rel = webp_candidate %}
+    {% assign webp_first = webp_rel | slice: 0, 1 %}
+    {% if webp_first == "/" %}
+      {% assign webp_rel = webp_rel | slice: 1, 9999 %}
+    {% endif %}
     {% assign webp = webp_rel | file_exists %}
   {% endif %}
   <a
@@ -15,31 +49,41 @@
       href="{{ include.link | relative_url | uri_escape }}"
     {% endif %}
     class="figure-image"
-    aria-label="{{ include.caption | default: "figure link" | regex_strip }}"
+    aria-label="{{ include.alt | default: include.caption | default: "figure link" | regex_strip }}"
   >
     {% if webp %}
       <picture>
-        <source srcset="{{ webp | relative_url | uri_escape }}" type="image/webp">
+        <source srcset="{{ webp | relative_url | uri_escape }}?v={{ cache_bust }}" type="image/webp">
         <img
-          src="{{ image | relative_url | uri_escape }}"
+          src="{{ display_image | relative_url | uri_escape }}?v={{ cache_bust }}"
           style="
             width: {{ include.width | default: "auto" }};
-            max-height: {{ include.height | default: "unset" }};
+            {{ height_style }}: {{ include.height | default: "unset" }};
+            {% if cover == true or cover == "true" %}
+              object-fit: cover;
+              object-position: center;
+            {% endif %}
           "
-          alt="{{ include.caption | default: "figure image" | regex_strip }}"
+          alt="{{ include.alt | default: include.caption | default: "figure image" | regex_strip }}"
           loading="lazy"
+          decoding="async"
           {% include fallback.html %}
         >
       </picture>
     {% else %}
       <img
-        src="{{ image | relative_url | uri_escape }}"
+        src="{{ display_image | relative_url | uri_escape }}?v={{ cache_bust }}"
         style="
           width: {{ include.width | default: "auto" }};
-          max-height: {{ include.height | default: "unset" }};
+          {{ height_style }}: {{ include.height | default: "unset" }};
+          {% if cover == true or cover == "true" %}
+            object-fit: cover;
+            object-position: center;
+          {% endif %}
         "
-        alt="{{ include.caption | default: "figure image" | regex_strip }}"
+        alt="{{ include.alt | default: include.caption | default: "figure image" | regex_strip }}"
         loading="lazy"
+        decoding="async"
         {% include fallback.html %}
       >
     {% endif %}

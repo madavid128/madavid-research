@@ -1,3 +1,11 @@
+"""
+ORCID citation source plugin.
+
+This file is part of the Lab Website Template citation pipeline. It queries
+ORCID public APIs for works associated with an ORCID iD and returns a list of
+citation sources.
+"""
+
 import json
 from urllib.request import Request, urlopen
 from util import *

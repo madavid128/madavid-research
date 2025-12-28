@@ -10,8 +10,6 @@ page_jumps: "off"
 I’m a biomedical engineer advancing bioinformatics, machine learning, and multimodal imaging for translational orthopedics, while collaborating with and mentoring diverse colleagues and trainees.
 
 I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medical Campus. I build end‑to‑end machine learning workflows for spatial histopathology, transcriptomics/multi‑omics, and medical imaging to study post‑traumatic joint conditions (contracture and osteoarthritis).
-
-On this site, I highlight my [Publications](research), [Projects](projects), and ways to [get involved](team#joining).
 {% endcapture %}
 
 {% capture intro_right %}
@@ -28,7 +26,55 @@ On this site, I highlight my [Publications](research), [Projects](projects), and
 
 {% include section.html %}
 
+<div class="home-welcome" aria-label="Welcome">
+  <div class="home-welcome-title">Welcome — thanks for visiting.</div>
+  <div class="home-welcome-text">
+    Browse papers and project areas, or reach out if you’d like to collaborate, invite a talk, or discuss scientific art.
+  </div>
+  <div class="home-welcome-buttons">
+    {%
+      include button.html
+      link="research"
+      text="Publications"
+      icon="fa-solid fa-book-open"
+      style="solid"
+    %}
+    {%
+      include button.html
+      link="projects"
+      text="Projects"
+      icon="fa-solid fa-wrench"
+      style="solid"
+    %}
+    {%
+      include button.html
+      link="contact"
+      text="Contact"
+      icon="fa-regular fa-envelope"
+      style="solid"
+    %}
+  </div>
+  <div class="home-welcome-small">
+    New here? {% include button.html link="faq" text="FAQ / glossary" icon="fa-regular fa-circle-question" style="bare" %}
+  </div>
+</div>
+
+<div class="home-welcome-small">
+  Quick links:
+  {% include button.html type="pubmed" text="PubMed" link=site.links.pubmed style="bare" %}
+  {% capture scholar_url %}https://scholar.google.com/citations?user={{ site.links.google-scholar }}{% endcapture %}
+  {% include button.html type="google-scholar" text="Scholar" link=scholar_url style="bare" %}
+  {% include button.html type="orcid" text="ORCID" link=site.links.orcid style="bare" %}
+  {% include button.html type="email" text="Contact" link="contact" style="bare" %}
+</div>
+
 ## Highlights
+
+{% assign home_img_publications = site.data.home_feature_images.publications | default: "images/publications-wordcloud.png" %}
+{% assign home_img_projects = site.data.home_feature_images.projects | default: "images/science_20.jpeg" %}
+{% assign home_img_team = site.data.home_feature_images.team | default: "images/team_1-2025.jpeg" %}
+{% assign home_img_art = site.data.home_feature_images.art | default: "images/science_0.png" %}
+{% assign home_img_pictures = site.data.home_feature_images.pictures | default: "images/nature_anschutz-day-2025.jpeg" %}
 
 {% capture text %}
 
@@ -47,7 +93,7 @@ My research integrates digital histopathology, MRI/CT radiomics, and multi‑omi
 
 {%
   include feature.html
-  image="images/publications-wordcloud.png"
+  image=home_img_publications
   link="research"
   title="Publications"
   text=text
@@ -70,7 +116,7 @@ Four major project areas spanning imaging, spatial biology, multimodal analytics
 
 {%
   include feature.html
-  image="images/website_icon3.png"
+  image=home_img_projects
   link="projects"
   title="Projects"
   flip=true
@@ -95,7 +141,7 @@ My research allows me to work with wonderful students, colleagues, mentees, and 
 
 {%
   include feature.html
-  image="images/background.jpg"
+  image=home_img_team
   link="team"
   title="My Research Team and Collaborations"
   text=text
@@ -118,19 +164,64 @@ Scientific visualization and data‑driven art — including Art in Science prog
 
 {%
   include feature.html
-  image="images/art-in-science-01.svg"
+  image=home_img_art
   link="art"
   title="Scientific Art"
   flip=true
   text=text
 %}
 
-{% include section.html %}
+{% capture text %}
+
+Photos from lab life, conferences, outreach, and beyond the lab — with watermarked originals in the gallery lightbox.
 
 {%
   include button.html
-  link="contact"
-  text="Get in touch"
-  icon="fa-regular fa-envelope"
-  style="solid"
+  link="pictures"
+  text="Browse pictures"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image=home_img_pictures
+  link="pictures"
+  title="Pictures"
+  text=text
+%}
+
+{% include section.html %}
+
+## Featured talks
+
+{% assign media = site.data.media | sort: "date" | reverse %}
+{% assign featured_media = media | slice: 0, 2 %}
+<div class="grid media-grid">
+  {% for item in featured_media %}
+    {% assign year = item.date | date: "%Y" %}
+    {% capture subtitle_with_year %}{{ item.subtitle }} · {{ year }}{% endcapture %}
+    {%
+      include card.html
+      title=item.title
+      subtitle=subtitle_with_year
+      description=item.description
+      link="updates#media"
+      image=item.image
+      tags=item.tags
+      style="small"
+    %}
+  {% endfor %}
+</div>
+
+{%
+  include button.html
+  link="updates#media"
+  text="More talks and media"
+  icon="fa-solid fa-arrow-right"
+  style="bare"
+  flip=true
 %}

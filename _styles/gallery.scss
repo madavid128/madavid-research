@@ -2,30 +2,73 @@
 ---
 
 .gallery {
-  column-count: 3;
-  column-gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
   margin: 24px 0;
+  align-items: start;
+}
+
+.gallery-banner {
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.gallery-group {
+  margin: 14px 0;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--background);
+  box-shadow: var(--shadow);
+}
+
+.gallery-group summary {
+  cursor: pointer;
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+}
+
+.gallery-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 16px 0 24px;
+  align-items: start;
 }
 
 @media (max-width: 900px) {
   .gallery {
-    column-count: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 550px) {
   .gallery {
-    column-count: 1;
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-highlights {
+    grid-template-columns: 1fr;
   }
 }
 
 .gallery-item {
-  break-inside: avoid;
-  margin: 0 0 18px;
+  margin: 0;
   border-radius: 18px;
   overflow: hidden;
   background: var(--background);
   box-shadow: var(--shadow);
+  align-self: start;
+}
+
+.gallery-item--banner {
+  margin: 0;
 }
 
 .gallery-link {
@@ -38,6 +81,24 @@
   width: 100%;
   height: auto;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  /* Reduce layout shift by reserving space for thumbnails. */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.gallery-item--square img {
+  aspect-ratio: 1 / 1;
+}
+
+.gallery-item--portrait img {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery-item--banner img {
+  aspect-ratio: 21 / 9;
 }
 
 .gallery-caption {
@@ -85,6 +146,9 @@
   height: auto;
   display: block;
   background: var(--background-alt);
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 .gallery-lightbox-meta {
@@ -101,3 +165,22 @@
   color: var(--dark-gray);
 }
 
+.gallery-lightbox-nav {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gallery-lightbox-nav .button {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+
+.gallery-lightbox-note {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: var(--dark-gray);
+}

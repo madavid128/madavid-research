@@ -1,3 +1,11 @@
+"""
+Google Scholar citation source plugin (SerpAPI).
+
+This file is part of the Lab Website Template citation pipeline.
+It queries the SerpAPI Google Scholar Author endpoint and returns a list of
+sources to cite for a single YAML entry.
+"""
+
 import os
 from serpapi import GoogleSearch
 from util import *

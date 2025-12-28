@@ -1,0 +1,44 @@
+{% comment %}
+  Curated topic groups for Publications search.
+
+  Data source: `_data/publications_topic_groups.yaml`
+  Each group has:
+    - group: heading
+    - items: [{ query: "...", label: "..." }]
+{% endcomment %}
+
+{% assign groups = site.data.publications_topic_groups %}
+{% if groups and groups.size > 0 %}
+  <div class="publication-topics" aria-label="Curated publication topics">
+    <div class="publication-topics-label">
+      Topics (curated)
+      <a class="publication-topics-link" href="#word-cloud">See all</a>
+    </div>
+
+    {% for group in groups %}
+      {% assign name = group.group | default: "" %}
+      {% assign items = group.items | default: "" | split: "," %}
+      {% if name and items and items.size > 0 %}
+        <div class="publication-topic-group">
+          <div class="publication-topic-group-title">{{ name }}</div>
+          <div class="publication-terms">
+            {% for item in items %}
+              {% assign query = item.query | default: "" %}
+              {% assign label = item.label | default: query %}
+              {% if query and query != "" %}
+                <a
+                  class="publication-term"
+                  href="{{ page.dir | relative_url }}?search={{ query | uri_escape }}"
+                  data-tooltip="Filter publications"
+                >
+                  {{ label }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+

@@ -2,6 +2,8 @@
 cite process to convert sources and metasources into full citations
 """
 
+import subprocess
+import sys
 import traceback
 from importlib import import_module
 from pathlib import Path
@@ -182,6 +184,19 @@ try:
 except Exception as e:
     log(e, level="ERROR")
     errors.append(e)
+
+log()
+log("Exporting BibTeX (downloads/publications.bib)")
+try:
+    subprocess.run(
+        [sys.executable, "tools/export_citations_bibtex.py"],
+        check=True,
+    )
+    log("Wrote downloads/publications.bib", indent=1, level="INFO")
+except Exception as e:
+    # best-effort; don't fail the citation pipeline if BibTeX export fails
+    log(e, level="WARNING")
+    warnings.append(f"BibTeX export failed: {e}")
 
 log()
 log("Generating publication word cloud")

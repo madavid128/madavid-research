@@ -61,6 +61,10 @@
             <input type="checkbox" checked data-collab-filter="past">
             Past
           </label>
+          <label class="collab-map-toggle">
+            <input type="checkbox" checked data-collab-labels>
+            Labels
+          </label>
         </div>
 
         <div class="collab-map-control" data-collab-time>
@@ -97,6 +101,19 @@
             Cluster duplicates
           </label>
         </div>
+
+      </div>
+
+      <div class="collab-map-actions" role="group" aria-label="Map help and reset">
+        <button class="button" data-style="bare" type="button" data-collab-reset>Reset</button>
+        <button
+          class="button"
+          data-style="bare"
+          type="button"
+          data-collab-help
+          data-tooltip="Markers represent collaborators and/or institutions inferred from affiliations. Lines connect to my home base. Use filters to explore current vs past, types, tags, and time; toggle Labels for readability (labels default off on mobile)."
+          aria-label="What am I seeing?"
+        >What am I seeing?</button>
       </div>
 
       <div data-collab-tags class="collab-map-tags"></div>

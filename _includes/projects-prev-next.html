@@ -1,0 +1,71 @@
+{% assign current = page.url %}
+{% assign items = "" | split: "," %}
+{% assign items = items
+  | push: "/projects/cartilage/|Cartilage + Synovium Biology"
+  | push: "/projects/tendon/|Tendon + Peritendinous Tissue Biology"
+  | push: "/projects/imaging-ml/|Imaging + Machine Learning"
+  | push: "/projects/other/|Other Projects"
+%}
+
+{% assign urls = "" | split: "," %}
+{% assign titles = "" | split: "," %}
+{% for item in items %}
+  {% assign parts = item | split: "|" %}
+  {% assign urls = urls | push: parts[0] %}
+  {% assign titles = titles | push: parts[1] %}
+{% endfor %}
+
+{% assign idx = -1 %}
+{% for u in urls %}
+  {% if u == current %}
+    {% assign idx = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% if idx != -1 %}
+  {% assign prev_idx = idx | minus: 1 %}
+  {% assign next_idx = idx | plus: 1 %}
+  {% if prev_idx < 0 %}
+    {% assign prev_idx = nil %}
+  {% endif %}
+  {% if next_idx >= urls.size %}
+    {% assign next_idx = nil %}
+  {% endif %}
+
+  <nav class="nav-prev-next" aria-label="Project page navigation">
+    <div class="nav-prev-next-inner">
+      <div class="nav-prev">
+        {% if prev_idx != nil %}
+          <a
+            class="button"
+            data-style="bare"
+            href="{{ urls[prev_idx] | relative_url }}"
+            title="Previous: {{ titles[prev_idx] | xml_escape }}"
+          >
+            {% include icon.html icon="fa-solid fa-arrow-left" %}
+            <span class="nav-text">
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">{{ titles[prev_idx] }}</span>
+            </span>
+          </a>
+        {% endif %}
+      </div>
+      <div class="nav-next">
+        {% if next_idx != nil %}
+          <a
+            class="button"
+            data-style="bare"
+            href="{{ urls[next_idx] | relative_url }}"
+            title="Next: {{ titles[next_idx] | xml_escape }}"
+          >
+            <span class="nav-text">
+              <span class="nav-label">Next</span>
+              <span class="nav-title">{{ titles[next_idx] }}</span>
+            </span>
+            {% include icon.html icon="fa-solid fa-arrow-right" %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+{% endif %}

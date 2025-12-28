@@ -20,7 +20,9 @@ I welcome collaborations, questions, and opportunities related to research, anal
         <option value="Collaboration">Collaboration</option>
         <option value="Mentoring">Mentoring</option>
         <option value="Speaking invitation">Speaking invitation</option>
+        <option value="Consulting">Consulting</option>
         <option value="Scientific art / outreach">Scientific art / outreach</option>
+        <option value="Art inquiries (obtaining artwork)">Art inquiries (obtaining artwork)</option>
         <option value="Other">Other</option>
       </select>
     </label>
@@ -44,12 +46,6 @@ I welcome collaborations, questions, and opportunities related to research, anal
 </div>
 
 ## Collaboration & mentorship
-
-**Best topics to email about**
-- Research collaborations (especially imaging + machine learning + spatial biology)
-- Speaking invitations and seminars
-- Mentorship opportunities (students/trainees)
-- Scientific art / outreach partnerships
 
 **Collaboration** — I partner on projects involving:
 - Spatial histopathology + AI
@@ -114,24 +110,75 @@ I welcome collaborations, questions, and opportunities related to research, anal
   style="solid"
 %}
 
-{% capture col1 %}
+{% assign cv_pdf = "downloads/cv.pdf" | file_exists %}
+{% if cv_pdf %}
+  {%
+    include button.html
+    link="downloads/cv.pdf"
+    text="Download CV (PDF)"
+    icon="fa-solid fa-download"
+    style="solid"
+  %}
+{% endif %}
 
-{%
-  include figure.html
-  image="images/MichaelDavid_headshot.jpeg"
-  caption="Email is the best way to reach me."
-%}
+<div class="contact-figures" aria-label="Contact photos">
+  <div class="contact-figures-headshot">
+    {%
+      include figure.html
+      image="images/MichaelDavid_headshot.jpeg"
+      caption="Email is the best way to reach me."
+      alt="Portrait of Michael A. David."
+      width="240px"
+    %}
+  </div>
+  <div class="contact-figures-banner">
+    <div class="contact-figures-banner-stack">
+      {%
+        include figure.html
+        image="images/nature_anschutz-day-2025.jpeg"
+        caption="University of Colorado Anschutz Medical Campus (daytime)."
+        alt="Panoramic view of the University of Colorado Anschutz Medical Campus during the day."
+        width="100%"
+        height="160px"
+        cover="true"
+      %}
+      {%
+        include figure.html
+        image="images/nature_anschutz-night-2025.jpeg"
+        caption="University of Colorado Anschutz Medical Campus (nighttime)."
+        alt="Panoramic view of the University of Colorado Anschutz Medical Campus at night."
+        width="100%"
+        height="160px"
+        cover="true"
+      %}
+    </div>
+    <div class="contact-figures-banner-caption">
+      Based at the University of Colorado Anschutz Medical Campus.
+    </div>
+  </div>
+</div>
 
-{% endcapture %}
+{% include section.html %}
 
-{% capture col2 %}
+## FAQ
 
-{%
-  include figure.html
-  image="images/background.jpg"
-  caption="Based at the University of Colorado Anschutz Medical Campus."
-%}
+<details class="faq-item">
+  <summary>What’s the best way to reach you?</summary>
+  <div class="faq-body">
+    Email is best. If you’re reaching out about a collaboration, it helps to include the dataset / modality (imaging, spatial biology, etc.), a proposed scope, and your timeline.
+  </div>
+</details>
 
-{% endcapture %}
+<details class="faq-item">
+  <summary>Do you take trainees or offer mentorship?</summary>
+  <div class="faq-body">
+    I’m always happy to discuss mentoring opportunities when there’s a clear project match and defined deliverables. Use “Mentoring” in the dropdown above to prefill an email draft.
+  </div>
+</details>
 
-{% include cols.html col1=col1 col2=col2 %}
+<details class="faq-item">
+  <summary>Can I reuse your photos or scientific art?</summary>
+  <div class="faq-body">
+    Please reach out first. For scientific art or prints, select “Art inquiries (obtaining artwork)” above, or email me directly with your intended use.
+  </div>
+</details>

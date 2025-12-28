@@ -1,4 +1,5 @@
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2025 Michael A. David
 """
 Generate an Open Graph / social share image for the site.
 
@@ -39,8 +40,11 @@ class ShareSpec:
     background_bottom: Tuple[int, int, int] = (10, 22, 30)
     accent: Tuple[int, int, int] = (0, 168, 120)  # ~site primary
     ink: Tuple[int, int, int] = (240, 240, 240)
-    muted: Tuple[int, int, int] = (180, 180, 180)
+    title_accent: Tuple[int, int, int] = (0, 168, 120)
+    muted: Tuple[int, int, int] = (210, 210, 210)
     seed: int = 2025
+    network_line_alpha: int = 44
+    network_node_alpha: int = 64
 
 
 def _find_font(candidates: Sequence[Path], size: int) -> Optional[ImageFont.FreeTypeFont]:
@@ -58,17 +62,25 @@ def _load_fonts() -> Tuple[ImageFont.ImageFont, ImageFont.ImageFont]:
     Best-effort font lookup.
     Falls back to PIL’s default bitmap font if no TTF is available.
     """
-    # Common font locations (Linux + macOS). This repo runs on GH Actions/Linux.
+    # Common font locations (Linux + macOS). This repo runs on GH Actions/Linux,
+    # but this script is often run locally on macOS as well.
     title_candidates = [
         Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
         Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
         Path("/Library/Fonts/Arial Bold.ttf"),
         Path("/Library/Fonts/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial Bold.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Helvetica.ttf"),
+        Path("/System/Library/Fonts/Supplemental/HelveticaNeue.ttc"),
     ]
     subtitle_candidates = [
         Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
         Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-ExtraLight.ttf"),
         Path("/Library/Fonts/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Helvetica.ttf"),
+        Path("/System/Library/Fonts/Supplemental/HelveticaNeue.ttc"),
     ]
 
     title = _find_font(title_candidates, size=64)
@@ -187,14 +199,14 @@ def _draw_network_accent(spec: ShareSpec) -> Image.Image:
         )[:3]
         for j, _ in dists:
             x1, y1 = points[j]
-            draw.line((x0, y0, x1, y1), fill=(*spec.accent, 26), width=2)
+            draw.line((x0, y0, x1, y1), fill=(*spec.accent, spec.network_line_alpha), width=2)
 
     for (x, y) in points:
-        r = rng.randint(4, 7)
-        draw.ellipse((x - r, y - r, x + r, y + r), fill=(*spec.accent, 36))
+        r = rng.randint(4, 8)
+        draw.ellipse((x - r, y - r, x + r, y + r), fill=(*spec.accent, spec.network_node_alpha))
 
     # Soft blur so it reads as texture, not foreground.
-    return layer.filter(ImageFilter.GaussianBlur(1.4))
+    return layer.filter(ImageFilter.GaussianBlur(1.0))
 
 
 def _icon_letters_only(icon: Image.Image) -> Image.Image:
@@ -255,11 +267,191 @@ def _text_bbox(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont) 
         return (0, 0, w, h)
 
 
+def _fit_font_size_for_width(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    candidates: Sequence[Path],
+    *,
+    min_size: int,
+    max_size: int,
+    max_width: int,
+) -> ImageFont.ImageFont:
+    """
+    Choose the largest font size that fits within max_width.
+    Falls back to PIL default font if no TTF is available.
+    """
+    best = ImageFont.load_default()
+    lo = min_size
+    hi = max_size
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        font = _find_font(candidates, size=mid) or ImageFont.load_default()
+        bbox = _text_bbox(draw, text, font)
+        w = bbox[2] - bbox[0]
+        if w <= max_width:
+            best = font
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    return best
+
+
+def _wrap_piped_text(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    font: ImageFont.ImageFont,
+    max_width: int,
+    *,
+    max_lines: int = 2,
+) -> str:
+    """
+    Wrap a pipe-delimited string across up to max_lines while preserving " | ".
+
+    Example input:
+      "A | B | C | D"
+    Output (depending on width):
+      "A | B\nC | D"
+    """
+    parts = [p.strip() for p in text.split("|") if p.strip()]
+    if not parts:
+        return ""
+
+    joiner = " | "
+
+    def width_of(s: str) -> int:
+        bbox = _text_bbox(draw, s, font)
+        return bbox[2] - bbox[0]
+
+    if max_lines <= 1 or len(parts) == 1:
+        return joiner.join(parts)
+
+    # For 2 lines, choose a split that balances the line widths
+    # while ensuring each line fits within max_width.
+    if max_lines == 2 and len(parts) >= 2:
+        best_split = 1
+        best_score = float("inf")
+        for i in range(1, len(parts)):
+            l1 = joiner.join(parts[:i])
+            l2 = joiner.join(parts[i:])
+            w1 = width_of(l1)
+            w2 = width_of(l2)
+            if w1 > max_width or w2 > max_width:
+                continue
+            score = max(w1, w2) + abs(w1 - w2) * 0.15
+            if score < best_score:
+                best_score = score
+                best_split = i
+        if best_score != float("inf"):
+            return "\n".join([joiner.join(parts[:best_split]), joiner.join(parts[best_split:])])
+        # If no split fits, fall back to greedy wrapping below.
+
+    # For 3 lines, choose split points that balance widths while fitting max_width.
+    if max_lines == 3 and len(parts) >= 3:
+        best = None
+        best_score = float("inf")
+        for i in range(1, len(parts) - 1):
+            for j in range(i + 1, len(parts)):
+                l1 = joiner.join(parts[:i])
+                l2 = joiner.join(parts[i:j])
+                l3 = joiner.join(parts[j:])
+                w1 = width_of(l1)
+                w2 = width_of(l2)
+                w3 = width_of(l3)
+                if w1 > max_width or w2 > max_width or w3 > max_width:
+                    continue
+                widths = [w1, w2, w3]
+                score = max(widths) + (max(widths) - min(widths)) * 0.12
+                if score < best_score:
+                    best_score = score
+                    best = (l1, l2, l3)
+        if best:
+            return "\n".join(best)
+
+    # Fallback: greedy wrap for >2 lines.
+    lines: list[str] = []
+    current: list[str] = []
+    for part in parts:
+        candidate_parts = [*current, part]
+        candidate = joiner.join(candidate_parts)
+        if width_of(candidate) <= max_width or not current:
+            current = candidate_parts
+            continue
+        lines.append(joiner.join(current))
+        current = [part]
+        if len(lines) >= max_lines - 1:
+            break
+    if current and len(lines) < max_lines:
+        lines.append(joiner.join(current))
+    return "\n".join(lines)
+
+
+def _fit_piped_multiline_text(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    candidates: Sequence[Path],
+    *,
+    min_size: int,
+    max_size: int,
+    max_width: int,
+    max_height: int,
+    max_lines: int,
+    spacing: int,
+) -> tuple[ImageFont.ImageFont, str]:
+    """
+    Fit a pipe-delimited string into a multi-line box.
+    """
+    best_font: ImageFont.ImageFont = ImageFont.load_default()
+    best_text = text
+
+    lo = min_size
+    hi = max_size
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        font = _find_font(candidates, size=mid) or ImageFont.load_default()
+        wrapped = _wrap_piped_text(draw, text, font, max_width, max_lines=max_lines)
+        bbox = draw.multiline_textbbox((0, 0), wrapped, font=font, spacing=spacing)
+        w = bbox[2] - bbox[0]
+        h = bbox[3] - bbox[1]
+        # Require that all segments are present (no truncation) by checking delimiter count.
+        want_pipes = text.count("|")
+        have_pipes = wrapped.count("|")
+        if w <= max_width and h <= max_height and have_pipes == want_pipes:
+            best_font = font
+            best_text = wrapped
+            lo = mid + 1
+        else:
+            hi = mid - 1
+
+    return best_font, best_text
+
+
+def _subtitle_lines_from_pipes(subtitle: str) -> list[str]:
+    """
+    Split a pipe-delimited subtitle into 2 lines for readability.
+
+    Example:
+      "A | B | C | D" -> ["A | B", "C | D"]
+    """
+    parts = [p.strip() for p in subtitle.split("|") if p.strip()]
+    if not parts:
+        return []
+    if len(parts) == 1:
+        return [parts[0]]
+    if len(parts) == 2:
+        return [" | ".join(parts)]
+    if len(parts) == 3:
+        return [" | ".join(parts[:2]), parts[2]]
+    if len(parts) == 4:
+        return [" | ".join(parts[:2]), " | ".join(parts[2:])]
+    mid = (len(parts) + 1) // 2
+    return [" | ".join(parts[:mid]), " | ".join(parts[mid:])]
+
+
 def make_share_image(
     out_path: Path,
     icon_path: Optional[Path] = None,
     name: str = "Michael A. David, PhD",
-    subtitle: str = "Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art",
+    subtitle: str = "Translational Orthopedics | Machine Learning | Multimodal Imaging | Scientific Art",
     icon_mode: str = "letters",
 ) -> None:
     spec = ShareSpec()
@@ -268,29 +460,104 @@ def make_share_image(
     base.alpha_composite(_draw_network_accent(spec))
 
     # Icon mark
-    icon_size = 320
+    icon_size = 210
     if icon_path and icon_path.exists():
         mark = _load_icon(icon_path, icon_size, mode=icon_mode)
     else:
         raise FileNotFoundError(
             "Icon file not found. Provide --icon web-app-manifest-512x512.png (or another PNG)."
         )
-    x = 96
+    x = 64
     y = (spec.height - icon_size) // 2
     _paste_with_shadow(base, mark, (x, y), shadow_offset=(0, 16), shadow_blur=22)
 
     # Text
-    title_font, subtitle_font = _load_fonts()
     draw = ImageDraw.Draw(base)
 
-    text_x = x + icon_size + 70
+    title_candidates: list[Path] = [
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+        Path("/Library/Fonts/Arial Bold.ttf"),
+        Path("/Library/Fonts/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial Bold.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Helvetica.ttf"),
+        Path("/System/Library/Fonts/Supplemental/HelveticaNeue.ttc"),
+    ]
+    subtitle_candidates: list[Path] = [
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-ExtraLight.ttf"),
+        Path("/Library/Fonts/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
+        Path("/System/Library/Fonts/Supplemental/Helvetica.ttf"),
+        Path("/System/Library/Fonts/Supplemental/HelveticaNeue.ttc"),
+    ]
+
+    text_x = x + icon_size + 54
+    right_pad = 40
+    max_text_width = spec.width - text_x - right_pad
+
+    # Name: much larger; fit to width and keep it single-line.
+    title_font = _fit_font_size_for_width(
+        draw,
+        name,
+        title_candidates,
+        min_size=36,
+        max_size=140,
+        max_width=max_text_width,
+    )
+
+    # Subtitle: fit and wrap at pipes for readability.
+    subtitle_lines = _subtitle_lines_from_pipes(subtitle)
+    subtitle_wrapped = "\n".join(subtitle_lines)
+    longest_subtitle_line = max(subtitle_lines, key=len) if subtitle_lines else subtitle
+    subtitle_font = _fit_font_size_for_width(
+        draw,
+        longest_subtitle_line,
+        subtitle_candidates,
+        min_size=34,
+        max_size=84,
+        max_width=max_text_width,
+    )
+
     title_box = _text_bbox(draw, name, title_font)
-    subtitle_box = _text_bbox(draw, subtitle, subtitle_font)
-    text_h = (title_box[3] - title_box[1]) + 18 + (subtitle_box[3] - subtitle_box[1])
+    subtitle_box = draw.multiline_textbbox((0, 0), subtitle_wrapped, font=subtitle_font, spacing=12)
+    title_h = title_box[3] - title_box[1]
+    subtitle_h = subtitle_box[3] - subtitle_box[1]
+    gap = 18
+    text_h = title_h + gap + subtitle_h
     text_y = (spec.height - text_h) // 2
 
-    draw.text((text_x, text_y), name, fill=spec.ink, font=title_font)
-    draw.text((text_x, text_y + (title_box[3] - title_box[1]) + 18), subtitle, fill=spec.muted, font=subtitle_font)
+    # Add a subtle panel behind text so it stays readable when shared.
+    panel_pad_x = 22
+    panel_pad_y = 18
+    panel_w = max_text_width + panel_pad_x * 2
+    panel_h = text_h + panel_pad_y * 2
+    panel_x0 = max(0, text_x - panel_pad_x)
+    panel_y0 = max(0, text_y - panel_pad_y)
+    panel = Image.new("RGBA", (panel_w, panel_h), (0, 0, 0, 0))
+    pd = ImageDraw.Draw(panel)
+    pd.rounded_rectangle([0, 0, panel_w, panel_h], radius=18, fill=(0, 0, 0, 120))
+    base.alpha_composite(panel, (panel_x0, panel_y0))
+
+    draw.text((text_x, text_y), name, fill=spec.title_accent, font=title_font)
+    sub_x = text_x
+    sub_y = text_y + title_h + gap
+    # Soft shadow for readability on mobile previews.
+    draw.multiline_text(
+        (sub_x + 2, sub_y + 2),
+        subtitle_wrapped,
+        fill=(0, 0, 0, 120),
+        font=subtitle_font,
+        spacing=12,
+    )
+    draw.multiline_text(
+        (sub_x, sub_y),
+        subtitle_wrapped,
+        fill=spec.muted,
+        font=subtitle_font,
+        spacing=12,
+    )
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     base.convert("RGB").save(out_path, format="JPEG", quality=92, optimize=True, progressive=True)
@@ -307,7 +574,7 @@ def _parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     p.add_argument("--name", default="Michael A. David, PhD", help="Title line.")
     p.add_argument(
         "--subtitle",
-        default="Translational Orthopedics • Machine Learning • Multimodal Imaging • Scientific Art",
+        default="Translational Orthopedics | Machine Learning | Multimodal Imaging | Scientific Art",
         help="Subtitle line.",
     )
     p.add_argument(

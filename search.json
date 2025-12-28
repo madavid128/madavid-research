@@ -150,4 +150,72 @@ layout: null
       "tags": {{ g.tags | default: "" | jsonify }}
     }
   {%- endfor -%}
+
+  {%- comment -%}People: collaborators{%- endcomment -%}
+  {%- assign emptyarray = "" | split: "," -%}
+  {%- assign collab_people = site.data.collaborators_map | default: emptyarray -%}
+  {%- if collab_people == emptyarray and site.data.collaborators -%}
+    {%- assign collab_people = site.data.collaborators -%}
+  {%- endif -%}
+  {%- for p in collab_people -%}
+    {%- assign name = p.name | default: "" | strip -%}
+    {%- if name == "" -%}{%- continue -%}{%- endif -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign q = name | uri_escape -%}
+    {%- assign url_out = "collaborators" | relative_url | append: "?search=" | append: q -%}
+    {%- capture desc -%}
+      {%- if p.department and p.institution -%}{{ p.department }}, {{ p.institution }}
+      {%- elsif p.institution -%}{{ p.institution }}
+      {%- elsif p.department -%}{{ p.department }}
+      {%- endif -%}
+      {%- if p.first_year or p.last_year -%}
+        {%- assign fy = p.first_year | default: "" | strip -%}
+        {%- assign ly = p.last_year | default: "" | strip -%}
+        {%- if fy != "" or ly != "" -%}
+          {%- if fy != "" and ly != "" -%} ({{ fy }}–{{ ly }})
+          {%- elsif fy != "" -%} ({{ fy }})
+          {%- elsif ly != "" -%} ({{ ly }})
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endcapture -%}
+    {
+      "type": "team",
+      "title": {{ name | jsonify }},
+      "url": {{ url_out | jsonify }},
+      "description": {{ desc | strip_newlines | replace: "  ", " " | strip | jsonify }},
+      "tags": {{ p.tags | default: "collaborator" | jsonify }}
+    }
+  {%- endfor -%}
+
+  {%- comment -%}People: trainees{%- endcomment -%}
+  {%- for t in site.data.trainees -%}
+    {%- assign name = t.name | default: "" | strip -%}
+    {%- if name == "" -%}{%- continue -%}{%- endif -%}
+    {%- unless first -%},{%- endunless -%}
+    {%- assign first = false -%}
+    {%- assign q = name | uri_escape -%}
+    {%- assign url_out = "team" | relative_url | append: "?search=" | append: q | append: "#trainees" -%}
+    {%- capture desc -%}
+      {%- if t.role -%}{{ t.role }}{%- endif -%}
+      {%- if t.institution -%}{% if t.role %} · {% endif %}{{ t.institution }}{%- endif -%}
+      {%- if t.start or t.end -%}
+        {%- assign start = t.start | default: "" | strip -%}
+        {%- assign end = t.end | default: "" | strip -%}
+        {%- if start != "" or end != "" -%}
+          {% if t.role or t.institution %} · {% endif %}
+          {{ start }}{% if end != "" %}–{{ end }}{% endif %}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endcapture -%}
+    {%- capture tags -%}trainee{% if t.tags %}; {{ t.tags | join: "; " }}{% endif %}{%- endcapture -%}
+    {
+      "type": "team",
+      "title": {{ name | jsonify }},
+      "url": {{ url_out | jsonify }},
+      "description": {{ desc | strip_newlines | replace: "  ", " " | strip | jsonify }},
+      "tags": {{ tags | jsonify }}
+    }
+  {%- endfor -%}
 ]

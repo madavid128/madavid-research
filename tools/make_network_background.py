@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2025 Michael A. David
 """
 Generate a dark abstract "network" header background image.
 
@@ -15,9 +17,6 @@ Options:
   --width 2400 --height 1350
   --seed 128
 """
-
-# SPDX-License-Identifier: MIT
-# Copyright (c) 2025 Michael A. David
 
 from __future__ import annotations
 

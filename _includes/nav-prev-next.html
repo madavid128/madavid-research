@@ -1,0 +1,60 @@
+{% assign pages = site.pages
+  | where_exp: "p", "p.nav"
+  | sort: "nav.order"
+%}
+
+{% assign current_dir = page.dir %}
+{% assign idx = -1 %}
+{% for p in pages %}
+  {% if p.dir == current_dir %}
+    {% assign idx = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% if idx != -1 and pages.size > 1 %}
+  {% assign prev_idx = idx | minus: 1 %}
+  {% assign next_idx = idx | plus: 1 %}
+  {% if prev_idx < 0 %}
+    {% assign prev_idx = nil %}
+  {% endif %}
+  {% if next_idx >= pages.size %}
+    {% assign next_idx = nil %}
+  {% endif %}
+
+  <nav class="nav-prev-next" aria-label="Site navigation">
+    <div class="nav-prev-next-inner">
+      <div class="nav-prev">
+        {% if prev_idx != nil %}
+          <a
+            class="button"
+            data-style="bare"
+            href="{{ pages[prev_idx].dir | relative_url }}"
+            title="Previous: {{ pages[prev_idx].title | xml_escape }}"
+          >
+            {% include icon.html icon="fa-solid fa-arrow-left" %}
+            <span class="nav-text">
+              <span class="nav-label">Previous</span>
+              <span class="nav-title">{{ pages[prev_idx].title }}</span>
+            </span>
+          </a>
+        {% endif %}
+      </div>
+      <div class="nav-next">
+        {% if next_idx != nil %}
+          <a
+            class="button"
+            data-style="bare"
+            href="{{ pages[next_idx].dir | relative_url }}"
+            title="Next: {{ pages[next_idx].title | xml_escape }}"
+          >
+            <span class="nav-text">
+              <span class="nav-label">Next</span>
+              <span class="nav-title">{{ pages[next_idx].title }}</span>
+            </span>
+            {% include icon.html icon="fa-solid fa-arrow-right" %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+{% endif %}

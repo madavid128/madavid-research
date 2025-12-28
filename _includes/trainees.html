@@ -54,6 +54,9 @@ Note: Biomedical Engineering (BME); Mechanical Engineering and Materials Science
               {% endif %}
               {% if t.focus %} ({{ t.focus }}){% endif %}
               {% if t.department %}, {{ t.department }}{% endif %}
+              {% if t.tags and t.tags.size > 0 %}
+                — {% include tags.html tags=t.tags %}
+              {% endif %}
               — {{ t.start }} – {{ t.end }}
             </li>
           {% endfor %}
@@ -75,6 +78,9 @@ Note: Biomedical Engineering (BME); Mechanical Engineering and Materials Science
               {% endif %}
               {% if t.focus %} ({{ t.focus }}){% endif %}
               {% if t.department %}, {{ t.department }}{% endif %}
+              {% if t.tags and t.tags.size > 0 %}
+                — {% include tags.html tags=t.tags %}
+              {% endif %}
               — {{ t.start }} – {{ t.end }}
             </li>
           {% endfor %}

@@ -1,0 +1,32 @@
+- group: Core topics
+  items:
+    - query: "\"machine learning\""
+      label: Machine learning
+    - query: "radiomics"
+      label: Radiomics
+    - query: "\"spatial histopathology\""
+      label: Spatial histopathology
+    - query: "\"multi-omics\""
+      label: Multi-omics
+
+- group: Tissues & disease
+  items:
+    - query: "cartilage"
+      label: Cartilage
+    - query: "synovium"
+      label: Synovium
+    - query: "tendon"
+      label: Tendon
+    - query: "\"osteoarthritis\""
+      label: Osteoarthritis
+
+- group: Models & modalities
+  items:
+    - query: "MRI"
+      label: MRI
+    - query: "CT"
+      label: CT
+    - query: "mouse"
+      label: Mouse models
+    - query: "rat"
+      label: Rat models

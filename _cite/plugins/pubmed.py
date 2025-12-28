@@ -1,3 +1,11 @@
+"""
+PubMed citation source plugin.
+
+This file is part of the Lab Website Template citation pipeline. It queries
+NCBI E-utilities for PubMed IDs based on a configured search term and returns
+the resulting citation sources.
+"""
+
 import json
 from urllib.request import Request, urlopen
 from urllib.parse import quote

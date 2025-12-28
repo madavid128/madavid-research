@@ -1,5 +1,30 @@
 {{ " " }}
 <div class="card" data-style="{{ include.style }}">
+  {% assign cache_bust = site.data.watermark_build.nonce | default: site.time | date: "%s" %}
+  {% assign watermark_enabled = site.watermark.enabled | default: false %}
+  {% assign watermark_prefix = site.watermark.prefix | default: "images/wm/" %}
+  {% assign image_rel = include.image | default: "" %}
+  {% assign image_first = image_rel | slice: 0, 1 %}
+  {% if image_first == "/" %}
+    {% assign image_rel = image_rel | slice: 1, 9999 %}
+  {% endif %}
+  {% assign wm_candidate = image_rel | replace_first: "images/", watermark_prefix %}
+  {% assign wm_image = wm_candidate | file_exists %}
+  {% if wm_image == nil %}
+    {% assign ext5 = image_rel | slice: -5, 5 | downcase %}
+    {% assign ext4 = image_rel | slice: -4, 4 | downcase %}
+    {% if ext5 == ".tiff" or ext4 == ".tif" %}
+      {% assign wm_candidate = wm_candidate | replace: ".tiff", ".png" | replace: ".tif", ".png" %}
+      {% assign wm_image = wm_candidate | file_exists %}
+    {% elsif ext5 == ".heif" or ext5 == ".heic" %}
+      {% assign wm_candidate = wm_candidate | replace: ".heif", ".jpg" | replace: ".heic", ".jpg" %}
+      {% assign wm_image = wm_candidate | file_exists %}
+    {% endif %}
+  {% endif %}
+  {% assign display_image = image_rel %}
+  {% if watermark_enabled and wm_image %}
+    {% assign display_image = wm_image %}
+  {% endif %}
   {% assign href = include.link | default: "" %}
   {% assign is_external = false %}
   {% if href contains "://" %}
@@ -17,7 +42,7 @@
     class="card-image"
   >
     <img
-      src="{{ include.image | relative_url | uri_escape }}"
+      src="{{ display_image | relative_url | uri_escape }}?v={{ cache_bust }}"
       alt="{{ include.title | default: "card image" | regex_strip }}"
       loading="lazy"
       {% include fallback.html %}

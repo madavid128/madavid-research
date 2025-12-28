@@ -8,6 +8,7 @@
 {% endif %}
 
 {% assign type = site.data.types[member.role] %}
+{% assign cache_bust = site.data.watermark_build.nonce | default: site.time | date: "%s" %}
 
 <div class="portrait-wrapper">
   <a
@@ -23,7 +24,7 @@
     {% endif %}
 
     <img
-      src="{{ member.image | relative_url | uri_escape }}"
+      src="{{ member.image | relative_url | uri_escape }}?v={{ cache_bust }}"
       class="portrait-image"
       alt="{{ member.name | default: "Member portrait" | regex_strip }}"
       loading="lazy"

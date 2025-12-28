@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2025 Michael A. David
 """
 Generate .webp variants alongside existing images.
 
@@ -10,7 +12,6 @@ Notes:
   - Writes sibling files: `foo.jpg` -> `foo.webp`.
   - Skips files that already have a .webp neighbor.
 
-SPDX-License-Identifier: MIT
 """
 
 from __future__ import annotations
@@ -92,4 +93,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

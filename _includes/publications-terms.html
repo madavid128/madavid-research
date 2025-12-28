@@ -8,7 +8,7 @@
         {% capture search %}{{ term }}{% endcapture %}
         <a
           class="publication-term"
-          href="{{ page.dir | relative_url }}?search={{ search | uri_escape }}"
+          href="{{ page.dir | relative_url }}?search=%22{{ search | uri_escape }}%22"
           {% if count %}
             data-tooltip="{{ count }} occurrences (weighted)"
           {% endif %}

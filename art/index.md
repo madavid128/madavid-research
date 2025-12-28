@@ -10,7 +10,7 @@ nav:
 # {% include icon.html icon="fa-solid fa-palette" %}Scientific Art
 
 {% assign jumps = "" | split: "," %}
-{% assign jumps = jumps | push: "programs|Programs" | push: "gallery|Gallery" %}
+{% assign jumps = jumps | push: "programs|Programs" | push: "prints-permissions|Prints & permissions" | push: "gallery|Gallery" %}
 {% include page-jumps.html items=jumps %}
 
 I create and curate scientific visualization and data‑driven artwork. I also founded and run the following Art in Science programs:
@@ -18,6 +18,8 @@ I create and curate scientific visualization and data‑driven artwork. I also f
 {% include section.html %}
 
 ## Programs {#programs}
+
+These programs are part of how I share science more broadly — building community around the idea that research can be rigorous and beautiful at the same time.
 
 {%
   include alert.html
@@ -42,7 +44,7 @@ I started and ran the Art in Science program at UDel (2014–2018).
 
 {% capture col2 %}
 ### Art in Science Showcase (CU Orthopedics)
-I started and run the Art in Science showcase at CU Orthopedics.
+I started and run the Art in Science showcase at CU Orthopedics (2023–Present).
 
 {%
   include button.html
@@ -55,7 +57,7 @@ I started and run the Art in Science showcase at CU Orthopedics.
 
 {% capture col3 %}
 ### ORS Art x Science
-I started and run ORS Art x Science.
+I started and run ORS Art x Science (2024–Present).
 
 {%
   include button.html
@@ -70,10 +72,32 @@ I started and run ORS Art x Science.
 
 {% include section.html %}
 
-## Gallery {#gallery}
+## Prints & permissions {#prints-permissions}
+
+{% include prints-permissions.html %}
+
+These are scientific images I’ve collected across my career — spanning projects, datasets, and imaging modalities. I hope they convey the beauty of nature in the scientific realm and offer a small glimpse into the kinds of patterns and moments that keep me curious.
+
+{% include section.html %}
+
+## Gallery highlights {#gallery}
+
+{%
+  include alert.html
+  type="info"
+  content="Tip: click any image to view it larger."
+%}
+
+{% include gallery-highlights.html data="art" limit=4 watermark="true" %}
+
+{% include section.html %}
 
 {% include search-box.html %}
 {% include search-info.html %}
-{% include tags.html tags="art, visualization, imaging, multiomics, outreach, award" %}
+{% assign art_tags = "" | split: "," %}
+{% for item in site.data.art %}
+  {% assign art_tags = art_tags | concat: item.tags %}
+{% endfor %}
+{% include tags.html tags=art_tags %}
 
-{% include gallery.html data="art" %}
+{% include gallery.html data="art" watermark="true" %}

@@ -1,0 +1,42 @@
+{% comment %}
+  Renders pill-shaped links that pre-fill a Publications search query.
+
+  Usage:
+    {% include search-chips.html link="research" chips="cartilage; synovium; osteoarthritis" %}
+
+  Format:
+  - `chips` is a `;`-separated list of items.
+  - Each item can be:
+      query
+      query|Label
+    If no label is provided, label=query.
+{% endcomment %}
+
+{% assign emptyarray = "" | split: "," %}
+{% assign link = include.link | default: "research" %}
+{% assign chips_raw = include.chips | default: "" %}
+{% assign chips = chips_raw | split: ";" | array_filter %}
+
+{% if chips and chips.size > 0 %}
+  <div class="tags">
+    {% for item in chips %}
+      {% assign raw = item | strip %}
+      {% assign parts = raw | split: "|" %}
+      {% assign query = parts[0] | strip %}
+      {% assign label = query %}
+      {% if parts.size > 1 %}
+        {% assign label = parts[1] | strip %}
+      {% endif %}
+
+      {% capture href %}{{ link | relative_url }}?search={{ query | uri_escape }}{% endcapture %}
+      <a
+        href="{{ href }}"
+        class="tag"
+        data-tooltip="Search publications for “{{ query | xml_escape }}”"
+      >
+        {{ label }}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}
+

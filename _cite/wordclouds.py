@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: BSD-3-Clause
 # Copyright (c) 2025 Michael A. David
+"""
+Generate a publications word cloud and top-term list from PubMed metadata.
+
+This module is used by the citation pipeline (`_cite/cite.py`) to produce:
+  - `images/publications-wordcloud.png`
+  - `_data/publications_terms.yaml`
+"""
 
 from __future__ import annotations
 

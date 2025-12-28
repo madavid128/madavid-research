@@ -1,0 +1,49 @@
+---
+---
+
+.projects-prev-next {
+  /* Match the horizontal padding of <section> so the nav aligns with page content. */
+  margin: 26px 0 10px;
+  padding: 0 max(40px, calc((100% - 1000px) / 2));
+  text-align: left;
+}
+
+.projects-prev-next-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: nowrap;
+}
+
+.projects-prev-next .button {
+  margin: 0;
+  gap: 10px;
+  white-space: normal;
+}
+
+.projects-prev-next .projects-prev,
+.projects-prev-next .projects-next {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.projects-prev-next .projects-next {
+  text-align: right;
+}
+
+.projects-prev-next .projects-next .button {
+  justify-content: flex-end;
+}
+
+@media (max-width: 520px) {
+  .projects-prev-next-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .projects-prev-next .projects-next {
+    text-align: left;
+  }
+  .projects-prev-next .projects-next .button {
+    justify-content: flex-start;
+  }
+}

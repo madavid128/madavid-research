@@ -7,13 +7,21 @@
   group: featured
   date: 2025-01-01
 
+- title: Site tools (maps + galleries)
+  subtitle: Automation scripts
+  description: CSV-driven galleries with watermarking, plus map and citation helper scripts that keep the site up to date.
+  link: https://github.com/madavid128/madavid-research/tree/main/tools
+  image: images/icon.png
+  tags: [software, tools]
+  group: featured
+  date: 2025-01-01
+
 - title: Publications (Auto-updated)
   subtitle: PubMed / Google Scholar
   description: Automated publication list powered by scheduled citation updates and rich citation cards.
   link: research
   image: images/icon.png
   tags: [publication]
-  group: featured
   date: 2025-01-01
 
 - title: Collaboration and Contact

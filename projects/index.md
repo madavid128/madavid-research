@@ -25,9 +25,39 @@ This page summarizes four major project areas, plus selected software and tools.
   style="bare"
 %}
 
+Browse by methods:
+
+{% include search-chips.html link="research" chips="\"tag: spatial histopathology\"|Spatial histopathology; \"tag: radiomics\"|Radiomics; \"tag: multi-omics\"|Multi-omics; \"tag: imaging\"|Imaging; \"tag: machine learning\"|Machine learning; \"tag: reproducible\"|Reproducible pipelines" %}
+
 {% include section.html %}
 
-## Project areas
+## Featured tool
+
+{% assign emptyarray = "" | split: "," %}
+{% assign tool_cards = site.data.projects | default: emptyarray %}
+{% assign featured_tool = tool_cards | where: "title", "Software & Tools" | first %}
+
+{% if featured_tool %}
+  {%
+    include card.html
+    title=featured_tool.title
+    subtitle=featured_tool.subtitle
+    description=featured_tool.description
+    link=featured_tool.link
+    image=featured_tool.image
+    tags=featured_tool.tags
+    style="small"
+  %}
+{% endif %}
+
+{% include section.html %}
+
+## Project areas {#project-areas}
+
+{% assign project_img_cartilage = site.data.project_area_images.cartilage | default: "images/projects-area-01.svg" %}
+{% assign project_img_tendon = site.data.project_area_images.tendon | default: "images/projects-area-02.svg" %}
+{% assign project_img_imaging = site.data.project_area_images["imaging-ml"] | default: "images/projects-area-03.svg" %}
+{% assign project_img_other = site.data.project_area_images.other | default: "images/projects-area-04.svg" %}
 
 {% capture text %}
 Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post‑traumatic disease, linking tissue biology with translational outcomes.
@@ -50,7 +80,7 @@ Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis a
 {% endcapture %}
 {%
   include feature.html
-  image="images/projects-area-01.svg"
+  image=project_img_cartilage
   title="Cartilage + Synovium Biology"
   text=text
 %}
@@ -76,7 +106,7 @@ Tendon and peritendinous tissue injury, remodeling, and healing across scales, i
 {% endcapture %}
 {%
   include feature.html
-  image="images/projects-area-02.svg"
+  image=project_img_tendon
   title="Tendon + Peritendinous Tissue Biology"
   flip=true
   text=text
@@ -103,7 +133,7 @@ Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging 
 {% endcapture %}
 {%
   include feature.html
-  image="images/projects-area-03.svg"
+  image=project_img_imaging
   title="Imaging + Machine Learning"
   text=text
 %}
@@ -129,7 +159,7 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
 {% endcapture %}
 {%
   include feature.html
-  image="images/projects-area-04.svg"
+  image=project_img_other
   title="Other"
   flip=true
   text=text
@@ -137,7 +167,7 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
 
 {% include section.html %}
 
-## Software & tools
+## Software & tools {#software-tools}
 
 {% include search-box.html %}
 {% include search-info.html %}
@@ -146,4 +176,4 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
 
 ### Featured
 
-{% include list.html component="card" data="projects" filter="group == 'featured'" %}
+{% include list.html component="card" data="projects" filter="group == 'featured' and title != 'Software & Tools'" %}

@@ -1,0 +1,29 @@
+{% comment %}
+  Small inline glossary link row.
+
+  Usage:
+    {% include glossary-links.html items="glossary-radiomics|Radiomics; glossary-multi-omics|Multi-omics" %}
+
+  Output:
+    Glossary: Radiomics · Multi-omics
+{% endcomment %}
+
+{% assign items_raw = include.items | default: "" %}
+{% assign items = items_raw | split: ";" | array_filter %}
+
+{% if items and items.size > 0 %}
+  <p class="small">
+    <strong>Glossary:</strong>
+    {% for item in items %}
+      {% assign raw = item | strip %}
+      {% assign parts = raw | split: "|" %}
+      {% assign id = parts[0] | strip %}
+      {% assign label = id %}
+      {% if parts.size > 1 %}
+        {% assign label = parts[1] | strip %}
+      {% endif %}
+      <a href="{{ "faq" | relative_url }}#{{ id | uri_escape }}">{{ label }}</a>{% unless forloop.last %} &middot;{% endunless %}
+    {% endfor %}
+  </p>
+{% endif %}
+

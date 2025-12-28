@@ -48,6 +48,78 @@
     return `${window.location.origin}${prefix}${path}`;
   };
 
+  const parseTags = (raw) => {
+    if (!raw) return [];
+    if (Array.isArray(raw)) {
+      return raw
+        .map((t) => String(t).trim().toLowerCase())
+        .filter(Boolean);
+    }
+    if (typeof raw === "string") {
+      return raw
+        .split(/[,;]+/g)
+        .map((t) => String(t).trim().toLowerCase())
+        .filter(Boolean);
+    }
+    return [];
+  };
+
+  const buildTagControls = (root, trainees, state) => {
+    const host = root.querySelector("[data-trainee-tags]");
+    if (!host) return;
+
+    const tags = new Set();
+    (trainees || []).forEach((t) => {
+      parseTags(t.tags).forEach((tag) => tags.add(tag));
+    });
+
+    host.innerHTML = "";
+    if (!tags.size) return;
+
+    const title = document.createElement("div");
+    title.className = "collab-map-tags-label";
+    title.textContent = "Tags";
+    host.append(title);
+
+    const wrap = document.createElement("div");
+    wrap.className = "collab-map-tags-wrap";
+    host.append(wrap);
+
+    const syncActive = () => {
+      const active = state.activeTags || [];
+      wrap.querySelectorAll("button[data-tag]").forEach((button) => {
+        const tag = String(button.dataset.tag || "");
+        const isActive = tag === "all" ? active.length === 0 : active.includes(tag);
+        if (isActive) button.dataset.active = "";
+        else button.removeAttribute("data-active");
+      });
+    };
+
+    const addChip = (tag) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "collab-tag";
+      button.textContent = tag;
+      button.dataset.tag = tag;
+      button.addEventListener("click", () => {
+        if (tag === "all") {
+          state.activeTags = [];
+        } else {
+          const idx = state.activeTags.indexOf(tag);
+          if (idx >= 0) state.activeTags.splice(idx, 1);
+          else state.activeTags.push(tag);
+        }
+        syncActive();
+        root.dispatchEvent(new CustomEvent("traineefilterschanged"));
+      });
+      wrap.append(button);
+    };
+
+    addChip("all");
+    [...tags].sort().forEach(addChip);
+    syncActive();
+  };
+
   const placeLine = (geo) => {
     const parts = [];
     if (geo.city) parts.push(geo.city);
@@ -194,6 +266,12 @@
         }
       }
 
+      if (state.activeTags && state.activeTags.length) {
+        const tags = parseTags(t.tags);
+        const hasTag = tags.some((tag) => state.activeTags.includes(tag));
+        if (!hasTag) return;
+      }
+
       const instName = String(t.institution || "").trim();
       const inst = instIndex.get(instName);
       if (!inst) {
@@ -231,6 +309,30 @@
       if (group.current.length) currentPoints.push({ inst, lat, lon, trainees: group.current });
       if (group.past.length) pastPoints.push({ inst, lat, lon, trainees: group.past });
     }
+
+    const labelIndex = new Map();
+    const addLabel = (p) => {
+      const key = String(p && p.inst && p.inst.institution ? p.inst.institution : "").trim();
+      if (!key) return;
+      if (!labelIndex.has(key)) labelIndex.set(key, { lat: p.lat, lon: p.lon, text: key });
+    };
+    currentPoints.forEach(addLabel);
+    pastPoints.forEach(addLabel);
+    const labelPoints = [...labelIndex.values()];
+    const labelsTrace = {
+      type: "scattergeo",
+      mode: "text",
+      name: "Institutions",
+      lat: labelPoints.map((p) => p.lat),
+      lon: labelPoints.map((p) => p.lon),
+      text: labelPoints.map((p) => p.text),
+      textposition: "top center",
+      // Keep labels readable, but subtle compared to marker points.
+      textfont: { color: "#cbd5e1", size: 13 },
+      hoverinfo: "skip",
+      showlegend: false,
+      visible: state.showLabels ? true : false,
+    };
 
     const makeMarkerTrace = (items, name, color, symbol, status) => ({
       type: "scattergeo",
@@ -302,6 +404,7 @@
       makeMarkerTrace(pastPoints, "Past trainees", darkGray, "circle", "past"),
       homeTrace,
     ];
+    if (labelPoints.length) traces.push(labelsTrace);
 
     return {
       traces,
@@ -345,25 +448,41 @@
       return;
     }
 
-    const viewButtons = [...root.querySelectorAll("[data-trainee-view]")];
-    const currentToggle = root.querySelector("input[data-trainee-filter='current']");
-    const pastToggle = root.querySelector("input[data-trainee-filter='past']");
-    const timeHost = root.querySelector("[data-trainee-time]");
-    const yearAllToggle = root.querySelector("input[data-trainee-year-all]");
-    const yearSlider = root.querySelector("input[data-trainee-year]");
+	    const viewButtons = [...root.querySelectorAll("[data-trainee-view]")];
+	    const currentToggle = root.querySelector("input[data-trainee-filter='current']");
+	    const pastToggle = root.querySelector("input[data-trainee-filter='past']");
+	    const labelsToggle = root.querySelector("input[data-trainee-labels]");
+	    const resetButton = root.querySelector("[data-trainee-reset]");
+	    const timeHost = root.querySelector("[data-trainee-time]");
+	    const yearAllToggle = root.querySelector("input[data-trainee-year-all]");
+	    const yearSlider = root.querySelector("input[data-trainee-year]");
     const yearLabel = root.querySelector("[data-trainee-year-label]");
     const playButton = root.querySelector("[data-trainee-play]");
     const modeButtons = [...root.querySelectorAll("[data-trainee-mode]")];
 
-    let state = {
-      view: "world",
-      showCurrent: currentToggle ? currentToggle.checked : true,
-      showPast: pastToggle ? pastToggle.checked : true,
+	    let state = {
+	      view: "world",
+	      showCurrent: currentToggle ? currentToggle.checked : true,
+	      showPast: pastToggle ? pastToggle.checked : true,
+	      showLabels: labelsToggle ? labelsToggle.checked : true,
+      activeTags: [],
       allYears: true,
       year: null,
       yearMode: "active",
-      _timer: null,
-    };
+	      _timer: null,
+	    };
+
+	    const prefersCompactLabels = () =>
+	      Boolean(window.matchMedia && window.matchMedia("(max-width: 720px)").matches);
+
+	    // Default labels off on mobile for readability.
+	    if (labelsToggle && prefersCompactLabels()) {
+	      labelsToggle.checked = false;
+	      state.showLabels = false;
+	    }
+
+	    buildTagControls(root, payload.trainees, state);
+	    root.addEventListener("traineefilterschanged", () => render());
 
     const computeYearBounds = () => {
       let minY = null;
@@ -416,14 +535,14 @@
       playButton.title = "Disabled (reduced motion)";
     }
 
-    const chooseDefaultView = () => {
+	    const chooseDefaultView = () => {
       const inst = (payload.institutions || []).filter((i) => toNumber(i.lat) !== null && toNumber(i.lon) !== null);
       if (!inst.length) return "world";
       const usCount = inst.filter((i) => isUSA(i.country)).length;
       return usCount / inst.length >= 0.65 ? "us" : "world";
     };
-    state.view = chooseDefaultView();
-    setPressed(root, state.view);
+	    state.view = chooseDefaultView();
+	    setPressed(root, state.view);
 
     const { minY, maxY } = computeYearBounds();
     if (!minY || !maxY || !timeHost || !yearAllToggle || !yearSlider || !yearLabel || !playButton) {
@@ -495,6 +614,7 @@
       const bits = [];
       bits.push(`Trainees: ${withCoords}/${total} with coordinates`);
       bits.push(`Institutions: ${stats.institutionsCurrent || 0} current · ${stats.institutionsPast || 0} past`);
+      if (state.activeTags && state.activeTags.length) bits.push(`Tags: ${state.activeTags.join(", ")}`);
       if (missing > 0) bits.push(`${missing} missing institution coordinates`);
       summaryEl.textContent = bits.join(" · ");
     };
@@ -563,11 +683,52 @@
         render();
       });
     }
+	    if (labelsToggle) {
+	      labelsToggle.addEventListener("change", () => {
+	        state.showLabels = labelsToggle.checked;
+	        render();
+	      });
+	    }
 
-    render();
-    root.__traineeInitDone = true;
-    root.__traineeRender = render;
-  };
+	    const resetFilters = () => {
+	      stopPlay();
+
+	      state.view = chooseDefaultView();
+	      setPressed(root, state.view);
+
+	      if (currentToggle) currentToggle.checked = true;
+	      if (pastToggle) pastToggle.checked = true;
+	      state.showCurrent = true;
+	      state.showPast = true;
+
+	      const labelsOn = !prefersCompactLabels();
+	      if (labelsToggle) labelsToggle.checked = labelsOn;
+	      state.showLabels = labelsOn;
+
+	      state.activeTags = [];
+	      buildTagControls(root, payload.trainees, state);
+
+	      if (yearSlider && yearAllToggle) {
+	        state.allYears = true;
+	        yearAllToggle.checked = true;
+	        const { maxY } = computeYearBounds();
+	        if (maxY !== null) {
+	          state.year = maxY;
+	          yearSlider.value = String(maxY);
+	        }
+	        state.yearMode = "active";
+	        syncTimeControls();
+	      }
+
+	      render();
+	    };
+
+	    if (resetButton) resetButton.addEventListener("click", resetFilters);
+
+	    render();
+	    root.__traineeInitDone = true;
+	    root.__traineeRender = render;
+	  };
 
   window.renderTraineesMaps = () => {
     const roots = document.querySelectorAll(".collab-map[data-map-kind='trainees']");

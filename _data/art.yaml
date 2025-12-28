@@ -1,40 +1,229 @@
-- date: 2025-10-01
-  title: Art Placeholder 1
-  subtitle: Replace with your piece
-  image: images/art-in-science-01.svg
-  link: images/art-in-science-01.svg
-  tags: [art, visualization]
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_10xdata-2025.jpeg
+  tags: [art, scientific art, imaging]
   style: square
-
-- date: 2025-10-01
-  title: Art Placeholder 2
-  subtitle: Replace with your piece
-  image: images/art-in-science-02.svg
-  link: images/art-in-science-02.svg
-  tags: [art, imaging]
+  year: 2025
+- date: '2025-12-22'
+  title: ORS Art in Science
+  image: images/ors-2024.jpeg
+  tags: [art, scientific art, imaging]
   style: square
-
-- date: 2025-10-01
-  title: Art Placeholder 3
-  subtitle: Replace with your piece
-  image: images/art-in-science-03.svg
-  link: images/art-in-science-03.svg
-  tags: [art, multiomics]
+  year: 2024
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_OL_ctFIRE_2B_D9-2022.png
+  tags: [art, scientific art, imaging]
   style: square
-
-- date: 2025-10-01
-  title: Art Placeholder 4
-  subtitle: Replace with your piece
-  image: images/art-in-science-04.svg
-  link: images/art-in-science-04.svg
-  tags: [art, outreach]
+  year: 2022
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_cool_pic3-2021.jpg
+  tags: [art, scientific art, imaging]
   style: square
-
-- date: 2025-10-01
-  title: Art Placeholder 5
-  subtitle: Replace with your piece
-  image: images/art-in-science-05.svg
-  link: images/art-in-science-05.svg
-  tags: [art, award]
+  year: 2021
+  featured: true
+  featured_rank: 2
+  project_area: cartilage
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_Picutre 4-2020.png
+  tags: [art, scientific art, imaging]
   style: square
-
+  year: 2020
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_ATDC5_all_96_well_c1+2+3+4+6-2019.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  year: 2019
+  featured: true
+  featured_rank: 3
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_cart_coculture_livedeadlipo2-2019.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  year: 2019
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_norm_synovium_coculture_livedeadlipo2-2019.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  year: 2019
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_Photo Aug 03, 12 28 38 PM-2019.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  year: 2019
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_Splash of Pollock Color-2019.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  year: 2019
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art
+  image: images/science_synlip-2019.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  year: 2019
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art 0
+  image: images/science_0.png
+  tags: [art, scientific art, imaging]
+  style: square
+  featured: true
+  featured_rank: 1
+  project_page_section: tendon
+- date: '2025-12-22'
+  title: Scientific art 1
+  image: images/science_1.jpg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: tendon
+- date: '2025-12-22'
+  title: Scientific art 12
+  image: images/science_12.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: tendon
+- date: '2025-12-22'
+  title: Scientific art 13
+  image: images/science_13.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: other
+- date: '2025-12-22'
+  title: Scientific art 14
+  image: images/science_14.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_area: other
+  project_page_section: other
+- date: '2025-12-22'
+  title: Scientific art 16
+  image: images/science_16.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: tendon
+- date: '2025-12-22'
+  title: Scientific art 17
+  image: images/science_17.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: other
+- date: '2025-12-22'
+  title: Scientific art 18
+  image: images/science_18.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: other
+- date: '2025-12-22'
+  title: Scientific art 19
+  image: images/science_19.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 2
+  image: images/science_2.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 20
+  image: images/science_20.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_area: tendon
+  project_page_section: tendon
+- date: '2025-12-22'
+  title: Scientific art 2019
+  image: images/science_2019.png
+  tags: [art, scientific art, imaging]
+  style: square
+  featured: true
+  featured_rank: 4
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art 22
+  image: images/science_22.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 23
+  image: images/science_23.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 24
+  image: images/science_24.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: other
+- date: '2025-12-22'
+  title: Scientific art 3
+  image: images/science_3.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 30
+  image: images/science_30.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 31
+  image: images/science_31.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 32
+  image: images/science_32.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art 33
+  image: images/science_33.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 4
+  image: images/science_4.png
+  tags: [art, scientific art, imaging]
+  style: square
+  project_area: imaging-ml
+  project_page_section: imaging-ml
+- date: '2025-12-22'
+  title: Scientific art 5
+  image: images/science_5.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 6
+  image: images/science_6.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art 7
+  image: images/science_7.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+- date: '2025-12-22'
+  title: Scientific art 8
+  image: images/science_8.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: cartilage
+- date: '2025-12-22'
+  title: Scientific art 9
+  image: images/science_9.jpeg
+  tags: [art, scientific art, imaging]
+  style: square
+  project_page_section: tendon

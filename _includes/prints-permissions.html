@@ -1,0 +1,15 @@
+{% comment %}
+  Prints & permissions block used on image-heavy pages.
+
+  Keeps wording consistent between Pictures and Scientific Art and provides a
+  stable reference for the lightbox “note” text in `_scripts/gallery.js`.
+{% endcomment %}
+
+Many images open in a lightbox where you can read the full title and any notes (use left/right arrows to browse).
+
+{%
+  include alert.html
+  type="info"
+  content="© 2025 Michael A. David. Please don’t reuse images without permission. For prints/licensing, email me."
+%}
+

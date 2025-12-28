@@ -36,7 +36,7 @@ Short updates, announcements, and occasional longer-form posts — plus a runnin
 
 ## Media {#media}
 
-Talks, interviews, press, and other public-facing updates.
+Talks, interviews, press, and other public-facing updates. I add items here as they happen (typically a few times per year).
 
 {% include search-box.html %}
 {% include search-info.html %}

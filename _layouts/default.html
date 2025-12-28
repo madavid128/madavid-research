@@ -10,6 +10,12 @@
       data-page-jumps="{% if page.page_jumps == nil %}on{% else %}{{ page.page_jumps }}{% endif %}"
     >
       {% include content.html content=content %}
+      {% if page.nav and page.url != "/" %}
+        {% include nav-prev-next.html %}
+      {% endif %}
+      {% if page.url contains "/projects/" and page.url != "/projects/" %}
+        {% include projects-prev-next.html %}
+      {% endif %}
     </main>
     {% include footer.html %}
     {% include global-search.html %}

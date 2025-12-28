@@ -37,8 +37,13 @@
           data-years="{{ years | strip_newlines | xml_escape }}"
         >
           <td>
-            {% if p.link and p.link != "" %}
-              <a href="{{ p.link | relative_url | uri_escape }}">{{ p.name }}</a>
+            {% assign href = p.link | default: "" | strip %}
+            {% if href != "" %}
+              {% if href contains "://" %}
+                <a href="{{ href | xml_escape }}" target="_blank" rel="noopener noreferrer">{{ p.name }}</a>
+              {% else %}
+                <a href="{{ href | relative_url | uri_escape }}">{{ p.name }}</a>
+              {% endif %}
             {% else %}
               {{ p.name }}
             {% endif %}

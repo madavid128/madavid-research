@@ -1,0 +1,28 @@
+{% assign terms = site.data.publications_terms %}
+{% assign limit = include.limit | default: 18 %}
+{% if terms and terms.size > 0 %}
+  <div class="publication-topics" aria-label="Publication topics">
+    <div class="publication-topics-label">
+      Topics
+      <a class="publication-topics-link" href="#word-cloud">See all</a>
+    </div>
+    <div class="publication-terms">
+      {% for item in terms limit: limit %}
+        {% assign term = item.term | default: item %}
+        {% assign count = item.count | default: nil %}
+        {% if term and term != "" %}
+          <a
+            class="publication-term"
+            href="{{ page.dir | relative_url }}?search=%22{{ term | uri_escape }}%22"
+            {% if count %}
+              data-tooltip="{{ count }} occurrences (weighted)"
+            {% endif %}
+          >
+            {{ term }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+

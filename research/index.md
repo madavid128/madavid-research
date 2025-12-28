@@ -13,9 +13,19 @@ nav:
 {% assign jumps = jumps | push: "word-cloud|Word cloud" | push: "highlighted|Highlighted" | push: "all-publications|All publications" %}
 {% include page-jumps.html items=jumps %}
 
-My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning (ML) to study and diagnose post-traumatic joint conditions of contracture and osteoarthritis. I develop ML models end-to-end to identify tissue and cellular subtypes, phenotypes, and predictive relationships. My ML models are built upon preclinical and clinical datasets involving the ankle, elbow, and knee. 
+My research integrates spatial histopathology, transcriptomics/multi‑omics, and medical imaging to study post‑traumatic musculoskeletal conditions (contracture and osteoarthritis). I build end‑to‑end machine learning workflows to connect tissue and cellular phenotypes with clinically relevant outcomes.
 
-Topic areas: Machine Learning, Deep Learning, Post-Traumatic Osteoarthritis, Musculoskeletal Biology, Biomedical Engineering, Multi-omics, Medical Imaging, Spatial histopathology.
+Core methods:
+
+{% include search-chips.html link="research" chips="\"tag: spatial histopathology\"|Spatial histopathology; \"tag: radiomics\"|Radiomics; \"tag: multi-omics\"|Multi-omics; \"tag: imaging\"|Imaging; \"tag: machine learning\"|Machine learning" %}
+
+Browse by area:
+
+{% include search-chips.html link="research" chips="year:2023-2025|Recent (2023–2025); \"tag: osteoarthritis\"|Osteoarthritis; \"tag: contracture\"|Contracture; \"tag: cartilage\"|Cartilage; \"tag: synovium\"|Synovium; \"tag: tendon\"|Tendon" %}
+
+<p class="small">
+  Publication metadata is updated periodically via my PubMed/ORCID citation pipeline.
+</p>
 
 {%
   include button.html
@@ -44,6 +54,12 @@ and your Google Scholar profile (built from GSID in _config.yaml).
      link=scholar_url
      text="More on Google Scholar"
      icon="fa-brands fa-google"
+     style="solid" %}
+
+  {% include button.html
+     link="downloads/publications.bib"
+     text="Download all (BibTeX)"
+     icon="fa-solid fa-download"
      style="solid" %}
 </div>
 
