@@ -81,13 +81,33 @@
 @media (max-width: 700px) {
   .page-jumps {
     border-radius: 18px;
+    padding: 6px 10px;
+    gap: 6px 8px;
+    margin: 8px 0 18px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .page-jumps-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+    color: var(--dark-gray);
   }
   .page-jumps-links {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
-    padding-bottom: 4px;
+    padding-bottom: 0;
+    flex-wrap: nowrap;
+    gap: 6px;
+    flex: 1 1 auto;
+  }
+  .page-jump {
+    padding: 5px 10px;
+    font-size: 0.95rem;
   }
 }
 

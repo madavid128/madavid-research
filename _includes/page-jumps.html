@@ -8,7 +8,7 @@
 {% assign items = include.items %}
 {% if items and items.size > 0 %}
   <nav class="page-jumps" aria-label="What's on this page">
-    <span class="page-jumps-title">What's on this page</span>
+    <span class="page-jumps-title">On this page</span>
     <div class="page-jumps-links">
       {% for item in items %}
         {% assign raw = item | append: "" | strip %}

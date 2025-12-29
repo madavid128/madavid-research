@@ -215,7 +215,7 @@
     if (!title) {
       title = document.createElement("span");
       title.className = "page-jumps-title";
-      title.textContent = "What's on this page";
+      title.textContent = "On this page";
       nav.appendChild(title);
     }
 
