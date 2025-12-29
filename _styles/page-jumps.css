@@ -80,30 +80,27 @@
     padding: 6px 10px;
     gap: 6px 8px;
     margin: 8px 0 18px;
-    flex-wrap: nowrap;
     justify-content: flex-start;
-    overflow: hidden;
+    flex-wrap: wrap;
   }
   .page-jumps-title {
     font-size: 0.75rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    flex: 0 0 auto;
+    flex: 0 0 100%;
     color: var(--dark-gray);
   }
   .page-jumps-links {
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     justify-content: flex-start;
     padding-bottom: 0;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 6px;
     flex: 1 1 auto;
   }
   .page-jump {
-    padding: 5px 10px;
-    font-size: 0.95rem;
+    padding: 5px 9px;
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 900px) {

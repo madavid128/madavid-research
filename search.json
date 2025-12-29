@@ -29,6 +29,11 @@
       "url": "/projects/",
       "description": "Software, datasets, and research outputs from Michael A. David, PhD."
     },{
+      "type": "page",
+      "title": "Privacy",
+      "url": "/privacy/",
+      "description": "Privacy notes for analytics on michaeladavid.com."
+    },{
       "type": "team",
       "title": "Team",
       "url": "/team/",
