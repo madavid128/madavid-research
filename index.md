@@ -4,10 +4,10 @@ description: Biomedical engineer advancing bioinformatics, machine learning, and
 page_jumps: "off"
 ---
 
-# Michael A. David, PhD
+# Michael Aaron David, PhD
 
 {% capture intro_left %}
-I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz Medical Campus.
+I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz.
 
 My work focuses on:
 - End-to-end machine learning workflows across spatial histopathology, transcriptomics and multi-omics, and medical imaging
@@ -27,7 +27,9 @@ Outside the lab, I enjoy connecting with nature, music, and good people.
 </figure>
 {% endcapture %}
 
-{% include cols.html col1=intro_left col2=intro_right %}
+<div class="home-intro">
+  {% include cols.html col1=intro_left col2=intro_right %}
+</div>
 
 {% include section.html %}
 
