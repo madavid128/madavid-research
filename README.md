@@ -1,3 +1,5 @@
+Visit **[michaeladavid.com](https://michaeladavid.com)** 🚀
+
 # Michael A. David Research Portfolio
 
 This repository powers my personal research website (Jekyll + Lab Website Template).
