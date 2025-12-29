@@ -7,7 +7,14 @@ page_jumps: "off"
 # Michael A. David, PhD
 
 {% capture intro_left %}
-I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz Medical Campus. I build end-to-end machine learning workflows across spatial histopathology, transcriptomics and multi-omics, and medical imaging; I use clinical and preclinical datasets to study post-traumatic and idiopathic musculoskeletal disease (e.g., contracture and osteoarthritis) in the ankle, knee, hip, elbow, and spine; I collaborate with and mentor diverse colleagues and trainees.
+I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz Medical Campus.
+
+My work focuses on:
+- End-to-end machine learning workflows across spatial histopathology, transcriptomics and multi-omics, and medical imaging
+- Clinical and preclinical datasets to study post-traumatic and idiopathic musculoskeletal disease (e.g., contracture and osteoarthritis) in the ankle, knee, hip, elbow, and spine
+- Collaboration and mentorship with diverse colleagues and trainees
+
+Outside the lab, I enjoy connecting with nature, music, and good people.
 {% endcapture %}
 
 {% capture intro_right %}
