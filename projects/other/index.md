@@ -5,7 +5,7 @@ description: Cross-cutting translational collaborations and musculoskeletal proj
 
 # Other Projects
 
-Other musculoskeletal projects spanning joint injury and fibrosis, computational workflows, and cross‑cutting translational collaborations.
+Other musculoskeletal projects spanning joint injury and fibrosis, computational workflows, and cross-cutting translational collaborations.
 
 **Key methods:** {% include search-chips.html link="research" chips="contracture; fibrosis; reproducible; pipelines" %}
 {% include glossary-links.html items="glossary-contracture|Contracture; glossary-ptoa|PTOA; glossary-multi-omics|Multi-omics; glossary-interpretable-ml|Interpretable ML" %}
@@ -32,7 +32,7 @@ Other musculoskeletal projects spanning joint injury and fibrosis, computational
 - Where can a computational approach reduce friction and improve reproducibility?
 
 ## Methods I use
-- Cross‑disciplinary collaboration and project scoping
+- Cross-disciplinary collaboration and project scoping
 - Reproducible analysis pipelines and lightweight tooling
 - Rapid prototyping (then hardening) for shared use
 

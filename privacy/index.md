@@ -8,6 +8,12 @@ nav: false
 
 This site uses lightweight analytics to understand overall traffic (e.g., page views and referrers) so I can improve the site.
 
-I do not intentionally collect personal information. Analytics providers may receive standard web request data (such as IP address and user‑agent) as part of normal site operation.
+I do not intentionally collect personal information. Analytics providers may receive standard web request data (such as IP address and user agent) as part of normal site operation.
+
+## Analytics {#analytics}
+
+This site uses:
+- GoatCounter (privacy-friendly, no cookies by default): https://www.goatcounter.com/
+- Rybbit: https://rybbit.io/
 
 If you have questions, please contact me.

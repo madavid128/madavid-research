@@ -54,13 +54,13 @@ A quick overview of my research focus, how I like to collaborate and mentor, and
 ## Education {#education}
 
 **Doctor of Philosophy (PhD) in Biomedical Engineering**  
-*University of Delaware* — Newark, DE (August 2013 – May 2019)
+*University of Delaware*; Newark, DE (August 2013 to May 2019)
 - Dissertation: *Local, Intra-Articular Delivery of Zoledronic Acid as a Disease-Modifying Therapeutic for Post-Traumatic Osteoarthritis*
 - Advisor: Christopher Price, PhD
 - Committee: Dawn M. Elliott, PhD; Randall L. Duncan, PhD; Jason P. Gleghorn, PhD
 
 **Bachelor of Science (BS) in Biomedical Engineering**  
-*University of Rochester* — Rochester, NY (August 2009 – June 2013)
+*University of Rochester*; Rochester, NY (August 2009 to June 2013)
 - Concentration: Cell and Tissue Engineering
 - Minor: Chemical Engineering
 
@@ -81,32 +81,32 @@ A quick overview of my research focus, how I like to collaborate and mentor, and
       <tr>
         <td><strong>Instructor</strong><br>Colorado Program for Musculoskeletal Research, Department of Orthopedics</td>
         <td>University of Colorado Anschutz Medical Campus<br>Aurora, CO</td>
-        <td>May 2025 – Present</td>
+        <td>May 2025 to Present</td>
       </tr>
       <tr>
         <td><strong>Research Instructor</strong><br>Colorado Program for Musculoskeletal Research, Department of Orthopedics</td>
         <td>University of Colorado Anschutz Medical Campus<br>Aurora, CO</td>
-        <td>March 2022 – April 2025</td>
+        <td>March 2022 to April 2025</td>
       </tr>
       <tr>
         <td><strong>Postdoctoral Research Associate</strong><br>Musculoskeletal Soft Tissue Laboratory, Department of Mechanical Engineering &amp; Materials Science</td>
         <td>Washington University in St. Louis<br>St. Louis, MO</td>
-        <td>May 2019 – February 2022</td>
+        <td>May 2019 to February 2022</td>
       </tr>
       <tr>
         <td><strong>Graduate Research Assistant</strong><br>Mechanotransduction and Mechanobiology Laboratory, Department of Biomedical Engineering</td>
         <td>University of Delaware<br>Newark, DE</td>
-        <td>October 2013 – April 2019</td>
+        <td>October 2013 to April 2019</td>
       </tr>
       <tr>
         <td><strong>Research Assistant</strong><br>Cartilage Bioengineering Laboratory, Department of Mechanical Engineering</td>
         <td>University of Delaware<br>Newark, DE</td>
-        <td>July 2013 – September 2013</td>
+        <td>July 2013 to September 2013</td>
       </tr>
       <tr>
         <td><strong>Undergraduate Research Assistant</strong><br>Center for Musculoskeletal Research</td>
         <td>University of Rochester<br>Rochester, NY</td>
-        <td>May 2011 – June 2013</td>
+        <td>May 2011 to June 2013</td>
       </tr>
     </tbody>
   </table>

@@ -39,7 +39,7 @@ Biomedical engineer advancing bioinformatics, machine learning, and multimodal i
   %}
 </div>
 
-I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medical Campus. I build end‑to‑end machine learning workflows for spatial histopathology, transcriptomics/multi‑omics, and medical imaging to study post‑traumatic joint conditions (contracture and osteoarthritis).
+I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medical Campus. I build end-to-end machine learning workflows for spatial histopathology, transcriptomics and multi-omics, and medical imaging to study post-traumatic joint conditions (contracture and osteoarthritis).
 
 {% include section.html %}
 
@@ -47,7 +47,7 @@ I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medica
 
 {% capture text %}
 
-My research integrates digital histopathology, MRI/CT radiomics, and multi‑omics to study musculoskeletal health and disease, with an emphasis on reproducible, open data analytical workflows.
+My research integrates digital histopathology, MRI/CT radiomics, and multi-omics to study musculoskeletal health and disease, with an emphasis on reproducible, open data analytical workflows.
 
 {%
   include button.html
@@ -118,7 +118,7 @@ My research allows me to work with wonderful students, colleagues, mentees, and 
 
 {% capture text %}
 
-Scientific visualization and data‑driven art — including Art in Science programs I founded and run.
+Scientific visualization and data-driven art; including Art in Science programs I founded and run.
 
 {%
   include button.html
@@ -164,4 +164,3 @@ Scientific visualization and data‑driven art — including Art in Science prog
   style="bare"
 %}
 ```
-

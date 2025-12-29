@@ -25,7 +25,7 @@
     <tbody>
       {% for p in people %}
         {% capture location %}{{ p.city }}{% if p.region and p.region != "" %}, {{ p.region }}{% endif %}{% if p.country and p.country != "" %}, {{ p.country }}{% endif %}{% endcapture %}
-        {% capture years %}{% if p.first_year and p.last_year %}{{ p.first_year }}–{{ p.last_year }}{% elsif p.first_year %}{{ p.first_year }}{% endif %}{% endcapture %}
+        {% capture years %}{% if p.first_year and p.last_year %}{{ p.first_year }} to {{ p.last_year }}{% elsif p.first_year %}{{ p.first_year }}{% endif %}{% endcapture %}
         {% capture search %}{{ p.name }} {{ p.institution }} {{ location }} {{ p.department }} {{ p.tags }}{% endcapture %}
         <tr
           class="directory-row"

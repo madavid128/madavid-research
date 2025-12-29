@@ -5,7 +5,7 @@ description: Mechanisms of cartilage and synovium degeneration and repair in ost
 
 # Cartilage + Synovium Biology
 
-Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post‑traumatic disease, linking tissue biology with translational outcomes.
+Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post-traumatic disease, linking tissue biology with translational outcomes.
 
 **Key methods:** {% include search-chips.html link="research" chips="\"spatial histopathology\"|Spatial histopathology; transcriptomics; multi-omics; machine learning" %}
 {% include glossary-links.html items="glossary-spatial-histopathology|Spatial histopathology; glossary-transcriptomics|Transcriptomics; glossary-multi-omics|Multi-omics; glossary-interpretable-ml|Interpretable ML" %}
@@ -28,13 +28,13 @@ Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis a
 
 ## Key questions
 - What early cartilage and synovium changes predict later degeneration?
-- How do cartilage–synovium interactions shape inflammation and repair?
+- How do cartilage and synovium interactions shape inflammation and repair?
 - Which pathways are most actionable for translational intervention?
 
 ## Methods I use
 - Histology + spatial histopathology ([glossary](faq#glossary-spatial-histopathology)) with quantitative image analysis
 - Multimodal imaging (microscopy, MRI/CT where appropriate) and reproducible pipelines
-- Machine learning and multi‑omics ([glossary](faq#glossary-multi-omics)) integration for interpretable insights
+- Machine learning and multi-omics ([glossary](faq#glossary-multi-omics)) integration for interpretable insights
 
 {% include section.html %}
 

@@ -5,7 +5,7 @@ description: Multimodal imaging, radiomics, and interpretable ML for translation
 
 # Imaging + Machine Learning
 
-Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging signatures with tissue‑level phenotypes and clinical outcomes.
+Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging signatures with tissue-level phenotypes and clinical outcomes.
 
 **Key methods:** {% include search-chips.html link="research" chips="radiomics; imaging; \"machine learning\"|Machine learning; \"interpretable machine learning\"|Interpretable ML" %}
 {% include glossary-links.html items="glossary-radiomics|Radiomics; glossary-interpretable-ml|Interpretable ML; glossary-multi-omics|Multi-omics" %}
@@ -27,8 +27,8 @@ Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging 
 {% include section.html %}
 
 ## Key questions
-- What imaging signatures track tissue‑level phenotypes and outcomes?
-- How can models stay interpretable enough for translational decision‑making?
+- What imaging signatures track tissue-level phenotypes and outcomes?
+- How can models stay interpretable enough for translational decision-making?
 - Which workflows generalize across datasets and sites?
 
 ## Methods I use

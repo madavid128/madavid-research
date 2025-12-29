@@ -153,19 +153,19 @@ def render_section(deps: Sequence[Dep]) -> str:
         "The site build and citation pipeline use Python packages. Versions/licenses below are captured from the build environment."
     )
     lines.append("")
-    lines.append("- Python (standard library) — PSF License: https://docs.python.org/3/license.html")
+    lines.append("- Python (standard library): PSF License: https://docs.python.org/3/license.html")
     lines.append("")
 
     for dep in sorted(deps, key=lambda d: d.name.lower()):
         if dep.installed:
             lic = dep.license or "(license not reported in package metadata)"
             home = dep.homepage or ""
-            line = f"- {dep.name} {dep.version} — {lic}"
+            line = f"- {dep.name} {dep.version}: {lic}"
             if home:
                 line += f": {home}"
             lines.append(line)
         else:
-            lines.append(f"- {dep.name} — (not installed in this environment)")
+            lines.append(f"- {dep.name}: (not installed in this environment)")
 
     lines.append("")
     lines.append(END)

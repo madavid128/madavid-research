@@ -7,9 +7,7 @@ page_jumps: "off"
 # Michael A. David, PhD
 
 {% capture intro_left %}
-I’m a biomedical engineer advancing bioinformatics, machine learning, and multimodal imaging for translational orthopedics, while collaborating with and mentoring diverse colleagues and trainees.
-
-I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medical Campus. I build end‑to‑end machine learning workflows for spatial histopathology, transcriptomics/multi‑omics, and medical imaging to study post‑traumatic joint conditions (contracture and osteoarthritis).
+I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz Medical Campus. I build end-to-end machine learning workflows across spatial histopathology, transcriptomics and multi-omics, and medical imaging; I use clinical and preclinical datasets to study post-traumatic and idiopathic musculoskeletal disease (e.g., contracture and osteoarthritis) in the ankle, knee, hip, elbow, and spine; I collaborate with and mentor diverse colleagues and trainees.
 {% endcapture %}
 
 {% capture intro_right %}
@@ -27,7 +25,7 @@ I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medica
 {% include section.html %}
 
 <div class="home-welcome" aria-label="Welcome">
-  <div class="home-welcome-title">Welcome — thanks for visiting.</div>
+  <div class="home-welcome-title">Welcome; thanks for visiting.</div>
   <div class="home-welcome-text">
     Browse papers and project areas, or reach out if you’d like to collaborate, invite a talk, or discuss scientific art.
   </div>
@@ -78,7 +76,7 @@ I’m an Instructor in Orthopedics at the University of Colorado Anschutz Medica
 
 {% capture text %}
 
-My research integrates digital histopathology, MRI/CT radiomics, and multi‑omics to study musculoskeletal health and disease, with an emphasis on reproducible, open data analytical workflows.
+My research integrates digital histopathology, MRI/CT radiomics, and multi-omics to study musculoskeletal health and disease, with an emphasis on reproducible, open data analytical workflows.
 
 {%
   include button.html
@@ -149,7 +147,7 @@ My research allows me to work with wonderful students, colleagues, mentees, and 
 
 {% capture text %}
 
-Scientific visualization and data‑driven art — including Art in Science programs I founded and run.
+Scientific visualization and data-driven art; including Art in Science programs I founded and run.
 
 {%
   include button.html
@@ -173,7 +171,7 @@ Scientific visualization and data‑driven art — including Art in Science prog
 
 {% capture text %}
 
-Photos from lab life, conferences, outreach, and beyond the lab — with watermarked originals in the gallery lightbox.
+Photos from lab life, conferences, outreach, and beyond the lab; with watermarked originals in the gallery lightbox.
 
 {%
   include button.html

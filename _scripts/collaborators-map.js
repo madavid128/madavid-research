@@ -89,7 +89,7 @@
     if (person.region) cityParts.push(person.region);
     if (person.country) cityParts.push(person.country);
     if (cityParts.length) parts.push(cityParts.join(", "));
-    return parts.filter(Boolean).join(" — ");
+    return parts.filter(Boolean).join(" ; ");
   };
 
   const buildHover = (person) => {
@@ -116,7 +116,7 @@
 
     const y0 = person.first_year ? Number(person.first_year) : null;
     const y1 = person.last_year ? Number(person.last_year) : null;
-    if (y0 && y1) lines.push(`Years: ${escapeHtml(y0)}–${escapeHtml(y1)}`);
+    if (y0 && y1) lines.push(`Years: ${escapeHtml(y0)} to ${escapeHtml(y1)}`);
     else if (y0) lines.push(`Year: ${escapeHtml(y0)}`);
 
     const institutions = String(person.institutions || "")

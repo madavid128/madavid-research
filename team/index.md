@@ -18,7 +18,7 @@ I collaborate with clinicians, engineers, and scientists across imaging, computa
 {%
   include alert.html
   type="info"
-  content="Want to connect? I’m happy to chat about collaboration ideas, mentoring opportunities, or project scoping — the fastest way is via email on the Contact page."
+  content="Want to connect? I’m happy to chat about collaboration ideas, mentoring opportunities, or project scoping; the fastest way is via email on the Contact page."
 %}
 
 {% include section.html %}
@@ -36,7 +36,7 @@ I collaborate with clinicians, engineers, and scientists across imaging, computa
 I partner on projects involving:
 - spatial histopathology + AI
 - medical imaging (MRI/CT) + radiomics
-- transcriptomics/multi‑omics integration
+- transcriptomics and multi-omics integration
 - reproducible analysis pipelines
 {% endcapture %}
 

@@ -634,6 +634,104 @@ def generate(
     return 0 if failed == 0 else 1
 
 
+def check_outputs(
+    *,
+    data_files: Iterable[Path],
+    out_dir: Path,
+    make_webp: bool,
+    make_thumbs: bool,
+    strict: bool,
+) -> int:
+    """
+    Validate that expected outputs exist in the watermark directory.
+
+    This is a lightweight audit mode that does not read or rewrite any images.
+    It checks that each gallery `image:` entry has a corresponding output file
+    in `out_dir` (and optionally WebP/thumb outputs).
+
+    Return codes:
+      - 0: all required outputs exist
+      - 1: one or more required outputs are missing
+    """
+    images = sorted({p for f in data_files for p in _iter_gallery_images(f)})
+    if not images:
+        print("No gallery images found.")
+        return 0
+
+    thumb_dir = out_dir / "thumb"
+    originals_dir = REPO_ROOT / "images" / "originals"
+
+    missing_base: list[str] = []
+    missing_webp: list[str] = []
+    missing_thumbs: list[str] = []
+    missing_thumb_webp: list[str] = []
+    missing_originals: list[str] = []
+
+    for image_path in images:
+        rel = _to_repo_rel(image_path)
+        if not rel.startswith("images/"):
+            continue
+
+        rel_name = Path(rel).name
+        src = _find_original_image(preferred_name=rel_name, originals_dir=originals_dir)
+        if src is None or not src.exists():
+            missing_originals.append(rel)
+
+        dst = _resolve_destination(src, out_dir) if src is not None else (out_dir / rel_name)
+        if not dst.exists():
+            missing_base.append(str(dst.relative_to(REPO_ROOT) if dst.is_absolute() else dst))
+            continue
+
+        if make_webp and dst.suffix.lower() in (".jpg", ".jpeg", ".png"):
+            webp_dst = dst.with_suffix(".webp")
+            if not webp_dst.exists():
+                missing_webp.append(str(webp_dst.relative_to(REPO_ROOT) if webp_dst.is_absolute() else webp_dst))
+
+        if make_thumbs:
+            thumb_dst = thumb_dir / dst.name
+            if not thumb_dst.exists():
+                missing_thumbs.append(
+                    str(thumb_dst.relative_to(REPO_ROOT) if thumb_dst.is_absolute() else thumb_dst)
+                )
+            elif make_webp and thumb_dst.suffix.lower() in (".jpg", ".jpeg", ".png"):
+                thumb_webp = thumb_dst.with_suffix(".webp")
+                if not thumb_webp.exists():
+                    missing_thumb_webp.append(
+                        str(thumb_webp.relative_to(REPO_ROOT) if thumb_webp.is_absolute() else thumb_webp)
+                    )
+
+    total = len([p for p in images if _to_repo_rel(p).startswith("images/")])
+    print(f"Check complete: {total} gallery images")
+    if missing_originals:
+        print(f"Note: {len(missing_originals)} originals are missing (OK if outputs already exist).")
+
+    if missing_base:
+        print(f"Missing required outputs: {len(missing_base)}")
+        for p in missing_base[:50]:
+            print(f"- {p}")
+        if len(missing_base) > 50:
+            print(f"...and {len(missing_base) - 50} more")
+        return 1
+
+    warn_count = 0
+    if missing_webp:
+        warn_count += len(missing_webp)
+        print(f"Missing WebP outputs: {len(missing_webp)}")
+    if missing_thumbs:
+        warn_count += len(missing_thumbs)
+        print(f"Missing thumbnail outputs: {len(missing_thumbs)}")
+    if missing_thumb_webp:
+        warn_count += len(missing_thumb_webp)
+        print(f"Missing thumbnail WebP outputs: {len(missing_thumb_webp)}")
+
+    if strict and warn_count:
+        print("Strict mode enabled; treating warnings as errors.")
+        return 1
+
+    print("OK")
+    return 0
+
+
 def _write_build_marker(
     *,
     out_dir: Path,
@@ -706,6 +804,16 @@ def main(argv: list[str] | None = None) -> int:
         help="Delete orphan files in the output directory that are no longer referenced by the gallery YAML.",
     )
     parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Check that expected outputs exist in the output directory (does not write files).",
+    )
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="With --check, treat missing WebP/thumb outputs as errors.",
+    )
+    parser.add_argument(
         "--no-webp",
         action="store_true",
         help="Do not generate WebP copies in images/wm/.",
@@ -763,6 +871,15 @@ def main(argv: list[str] | None = None) -> int:
     data_files = [REPO_ROOT / p for p in args.data]
 
     watermark_prefixes = [p.strip() for p in args.watermark_prefixes.split(",")]
+
+    if args.check:
+        return check_outputs(
+            data_files=data_files,
+            out_dir=out_dir,
+            make_webp=(not args.no_webp),
+            make_thumbs=(not args.no_thumbs),
+            strict=args.strict,
+        )
 
     return generate(
         data_files=data_files,

@@ -37,7 +37,7 @@ How to browse: use the tag chips to filter, click any image to open it, and expa
 
 ## Lab & mentors
 
-Lab life is where curiosity becomes a shared pursuit — and where mentors, collaborators, and trainees make the work feel supported and worthwhile.
+Lab life is where curiosity becomes a shared pursuit; mentors, collaborators, and trainees make the work feel supported and worthwhile.
 
 {% include gallery.html data="pictures" filter="tags && (tags.include?('team') or tags.include?('group') or tags.include?('mentors'))" watermark="true" %}
 
@@ -61,7 +61,7 @@ Snapshots from posters, presentations, and community events where ideas get test
 
 ## Beyond the lab
 
-Art and nature across the globe — from sea to mountains and our sun — captured in moments that help me reset and stay inspired.
+Art and nature across the globe; from sea to mountains and our sun; captured in moments that help me reset and stay inspired.
 
 {% assign emptyarray = "" | split: "," %}
 {% assign pictures_data = site.data.pictures | default: emptyarray %}

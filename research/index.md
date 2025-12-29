@@ -13,7 +13,7 @@ nav:
 {% assign jumps = jumps | push: "word-cloud|Word cloud" | push: "highlighted|Highlighted" | push: "all-publications|All publications" %}
 {% include page-jumps.html items=jumps %}
 
-My research integrates spatial histopathology, transcriptomics/multi‑omics, and medical imaging to study post‑traumatic musculoskeletal conditions (contracture and osteoarthritis). I build end‑to‑end machine learning workflows to connect tissue and cellular phenotypes with clinically relevant outcomes.
+My research integrates spatial histopathology, transcriptomics and multi-omics, and medical imaging to study post-traumatic musculoskeletal conditions (contracture and osteoarthritis). I build end-to-end machine learning workflows to connect tissue and cellular phenotypes with clinically relevant outcomes.
 
 Core methods:
 
@@ -21,7 +21,7 @@ Core methods:
 
 Browse by area:
 
-{% include search-chips.html link="research" chips="year:2023-2025|Recent (2023–2025); \"tag: osteoarthritis\"|Osteoarthritis; \"tag: contracture\"|Contracture; \"tag: cartilage\"|Cartilage; \"tag: synovium\"|Synovium; \"tag: tendon\"|Tendon" %}
+{% include search-chips.html link="research" chips="year:2023-2025|Recent (2023 to 2025); \"tag: osteoarthritis\"|Osteoarthritis; \"tag: contracture\"|Contracture; \"tag: cartilage\"|Cartilage; \"tag: synovium\"|Synovium; \"tag: tendon\"|Tendon" %}
 
 <p class="small">
   Publication metadata is updated periodically via my PubMed/ORCID citation pipeline.

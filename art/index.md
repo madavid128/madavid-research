@@ -13,13 +13,13 @@ nav:
 {% assign jumps = jumps | push: "programs|Programs" | push: "prints-permissions|Prints & permissions" | push: "gallery|Gallery" %}
 {% include page-jumps.html items=jumps %}
 
-I create and curate scientific visualization and data‑driven artwork. I also founded and run the following Art in Science programs:
+I create and curate scientific visualization and data-driven artwork. I also founded and run the following Art in Science programs:
 
 {% include section.html %}
 
 ## Programs {#programs}
 
-These programs are part of how I share science more broadly — building community around the idea that research can be rigorous and beautiful at the same time.
+These programs are part of how I share science more broadly; building community around the idea that research can be rigorous and beautiful at the same time.
 
 {%
   include alert.html
@@ -31,7 +31,7 @@ These programs are part of how I share science more broadly — building communi
 
 {% capture col1 %}
 ### Art in Science (University of Delaware)
-I started and ran the Art in Science program at UDel (2014–2018).
+I started and ran the Art in Science program at UDel (2014 to 2018).
 
 {%
   include button.html
@@ -44,7 +44,7 @@ I started and ran the Art in Science program at UDel (2014–2018).
 
 {% capture col2 %}
 ### Art in Science Showcase (CU Orthopedics)
-I started and run the Art in Science showcase at CU Orthopedics (2023–Present).
+I started and run the Art in Science showcase at CU Orthopedics (2023 to present).
 
 {%
   include button.html
@@ -57,7 +57,7 @@ I started and run the Art in Science showcase at CU Orthopedics (2023–Present)
 
 {% capture col3 %}
 ### ORS Art x Science
-I started and run ORS Art x Science (2024–Present).
+I started and run ORS Art x Science (2024 to present).
 
 {%
   include button.html
@@ -76,7 +76,7 @@ I started and run ORS Art x Science (2024–Present).
 
 {% include prints-permissions.html %}
 
-These are scientific images I’ve collected across my career — spanning projects, datasets, and imaging modalities. I hope they convey the beauty of nature in the scientific realm and offer a small glimpse into the kinds of patterns and moments that keep me curious.
+These are scientific images I’ve collected across my career; spanning projects, datasets, and imaging modalities. I hope they convey the beauty of nature in the scientific realm and offer a small glimpse into the kinds of patterns and moments that keep me curious.
 
 {% include section.html %}
 

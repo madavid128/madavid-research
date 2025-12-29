@@ -160,10 +160,10 @@
         if (t.focus) meta.push(t.focus);
         if (t.department) meta.push(t.department);
         if (t._startYear || t._endYear) {
-          if (t._startYear && t._endYear && t._startYear !== t._endYear) meta.push(`${t._startYear}–${t._endYear}`);
+          if (t._startYear && t._endYear && t._startYear !== t._endYear) meta.push(`${t._startYear} to ${t._endYear}`);
           else if (t._startYear) meta.push(String(t._startYear));
         } else if (t.start || t.end) {
-          meta.push(`${t.start || ""} – ${t.end || ""}`.trim());
+          meta.push(`${t.start || ""} to ${t.end || ""}`.trim());
         }
         if (meta.length) bits.push(`<span style="color:#b0b0b0">${escapeHtml(meta.join(" · "))}</span>`);
         return bits.join("<br>");

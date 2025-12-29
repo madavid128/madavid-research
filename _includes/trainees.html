@@ -50,14 +50,14 @@ Note: Biomedical Engineering (BME); Mechanical Engineering and Materials Science
             <li>
               <strong>{{ t.name }}</strong>
               {% if t.people and t.people.size > 0 %}
-                — {{ t.people | join: ", " }}
+                ; {{ t.people | join: ", " }}
               {% endif %}
               {% if t.focus %} ({{ t.focus }}){% endif %}
               {% if t.department %}, {{ t.department }}{% endif %}
               {% if t.tags and t.tags.size > 0 %}
-                — {% include tags.html tags=t.tags %}
+                ; {% include tags.html tags=t.tags %}
               {% endif %}
-              — {{ t.start }} – {{ t.end }}
+              ; {{ t.start }} to {{ t.end }}
             </li>
           {% endfor %}
         </ul>
@@ -74,14 +74,14 @@ Note: Biomedical Engineering (BME); Mechanical Engineering and Materials Science
             <li>
               <strong>{{ t.name }}</strong>
               {% if t.people and t.people.size > 0 %}
-                — {{ t.people | join: ", " }}
+                ; {{ t.people | join: ", " }}
               {% endif %}
               {% if t.focus %} ({{ t.focus }}){% endif %}
               {% if t.department %}, {{ t.department }}{% endif %}
               {% if t.tags and t.tags.size > 0 %}
-                — {% include tags.html tags=t.tags %}
+                ; {% include tags.html tags=t.tags %}
               {% endif %}
-              — {{ t.start }} – {{ t.end }}
+              ; {{ t.start }} to {{ t.end }}
             </li>
           {% endfor %}
         </ul>

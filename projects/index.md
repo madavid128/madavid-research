@@ -39,7 +39,7 @@ Browse by methods:
 {% assign project_img_other = site.data.project_area_images.other | default: "images/projects-area-04.svg" %}
 
 {% capture text %}
-Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post‑traumatic disease, linking tissue biology with translational outcomes.
+Mechanisms of cartilage and synovium degeneration and repair in osteoarthritis and post-traumatic disease, linking tissue biology with translational outcomes.
 {%
   include button.html
   link="research"
@@ -92,7 +92,7 @@ Tendon and peritendinous tissue injury, remodeling, and healing across scales, i
 %}
 
 {% capture text %}
-Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging signatures with tissue‑level phenotypes and clinical outcomes.
+Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging signatures with tissue-level phenotypes and clinical outcomes.
 {%
   include button.html
   link="research"
@@ -118,7 +118,7 @@ Multimodal imaging (MRI/CT), radiomics, and machine learning to connect imaging 
 %}
 
 {% capture text %}
-Other musculoskeletal projects spanning joint injury and fibrosis, computational workflows, and cross‑cutting translational collaborations.
+Other musculoskeletal projects spanning joint injury and fibrosis, computational workflows, and cross-cutting translational collaborations.
 {%
   include button.html
   link="research"

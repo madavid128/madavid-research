@@ -2,14 +2,14 @@
 ![on-pull-request](../../actions/workflows/on-pull-request.yaml/badge.svg)
 ![on-schedule](../../actions/workflows/on-schedule.yaml/badge.svg)
 
-# Michael A. David — Research Portfolio
+# Michael A. David Research Portfolio
 
 This repository powers my personal research website (Jekyll + Lab Website Template).
 
 - Live site: https://michaeladavid.com
 - Repo: `madavid128/madavid-research`
 
-My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning to study post‑traumatic musculoskeletal conditions (contracture and osteoarthritis).
+My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning to study post-traumatic musculoskeletal conditions (contracture and osteoarthritis).
 
 ## Local preview (Docker)
 
@@ -17,7 +17,7 @@ My research integrates spatial histopathology, transcriptomics, and medical imag
 - `bash .docker/run.sh`
 
 Tip:
-- If you type `run.sh` and get `command not found`, that’s expected — the script is at `.docker/run.sh`.
+- If you type `run.sh` and get `command not found`, that’s expected; the script is at `.docker/run.sh`.
 
 2) View it:
 - Open `http://localhost:4000`
@@ -231,7 +231,7 @@ Recommended columns:
 - `department`, `institution`, `city`, `region`, `country`
 - `first_year`, `last_year` (enables the time slider)
 - `lat`, `lon`
-- `link` (absolute URL or site‑relative path like `contact`)
+- `link` (absolute URL or site-relative path like `contact`)
 - `tags` (separate with `;`, e.g. `collaborator;institution`)
 - optional: `papers`, `affiliation`, `institutions` (semicolon list)
 
@@ -336,6 +336,9 @@ Notes:
   - `--thumb-edge 640` (default) controls gallery thumbnails
 - If you removed/renamed images, you can delete unreferenced outputs in `images/wm/`:
   - `python tools/watermark_galleries.py --force --clean`
+- If you want a quick audit without rewriting any files:
+  - `python tools/watermark_galleries.py --check`
+  - Add `--strict` to also require WebP and thumbnails.
 - The script writes `_data/watermark_build.yaml` to force Jekyll to rebuild and refresh browser caches for updated images (helpful on Docker-mounted volumes).
 - If you want to override the output folder, pass `--out-dir ...`.
 - Change which files get watermarks with `--watermark-prefixes nature,science,music`.
@@ -443,7 +446,7 @@ Notes:
 
 ### Verify originals vs gallery lists
 
-If you add/remove originals, use this quick check to ensure every file in `images/originals/` is referenced by `_data/pictures.yaml` or `_data/art.yaml`, and vice‑versa:
+If you add/remove originals, use this quick check to ensure every file in `images/originals/` is referenced by `_data/pictures.yaml` or `_data/art.yaml`, and vice-versa:
 
 ```bash
 python - <<'PY'
@@ -474,7 +477,7 @@ Interpretation:
 - `Extra`: remove those originals **or** add them to the appropriate YAML file.
 
 Licensing note:
-- This repository uses the BSD 3‑Clause license (`LICENSE.md`). Helper scripts in `tools/` follow the same license unless explicitly stated otherwise.
+- This repository uses the BSD 3-Clause license (`LICENSE.md`). Helper scripts in `tools/` follow the same license unless explicitly stated otherwise.
 
 ### Optional: generate WebP variants
 
@@ -489,7 +492,7 @@ If an item is not on PubMed, add it to `_data/sources.yaml`. The cite pipeline w
 
 ## Icons
 
-The site uses Font Awesome classes for most icons (see `_data/types.yaml` and per‑page `nav.icon` front matter).
+The site uses Font Awesome classes for most icons (see `_data/types.yaml` and per-page `nav.icon` front matter).
 
 ### Generate a full icon set (static PNG/ICO/SVG + animated GIFs)
 
@@ -497,7 +500,7 @@ The site uses Font Awesome classes for most icons (see `_data/types.yaml` and pe
 - PNGs: `apple-touch-icon.png`, `favicon-96x96.png`, `web-app-manifest-192x192.png`, `web-app-manifest-512x512.png`
 - `favicon.ico` (16/32/48/64)
 - `favicon.svg` (wrapper pointing at `web-app-manifest-512x512.png`)
-- Animated GIFs (electric‑sign effect) at multiple sizes
+- Animated GIFs (electric-sign effect) at multiple sizes
 - A zip bundle `MAD_icons.zip` (generated; ignored by git)
 
 1) Create a venv (if you don’t already have one):
@@ -538,6 +541,6 @@ Useful options:
 
 ## Licensing notes
 
-The repository’s default license is `LICENSE.md` (BSD 3‑Clause).
+The repository’s default license is `LICENSE.md` (BSD 3-Clause).
 
 _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)._

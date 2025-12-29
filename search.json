@@ -173,7 +173,7 @@ layout: null
         {%- assign fy = p.first_year | default: "" | strip -%}
         {%- assign ly = p.last_year | default: "" | strip -%}
         {%- if fy != "" or ly != "" -%}
-          {%- if fy != "" and ly != "" -%} ({{ fy }}–{{ ly }})
+          {%- if fy != "" and ly != "" -%} ({{ fy }} to {{ ly }})
           {%- elsif fy != "" -%} ({{ fy }})
           {%- elsif ly != "" -%} ({{ ly }})
           {%- endif -%}
@@ -205,7 +205,7 @@ layout: null
         {%- assign end = t.end | default: "" | strip -%}
         {%- if start != "" or end != "" -%}
           {% if t.role or t.institution %} · {% endif %}
-          {{ start }}{% if end != "" %}–{{ end }}{% endif %}
+          {{ start }}{% if end != "" %} to {{ end }}{% endif %}
         {%- endif -%}
       {%- endif -%}
     {%- endcapture -%}

@@ -9,7 +9,7 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-newspaper" %}News/Blog
 
-Short updates, announcements, and occasional longer-form posts — plus a running list of talks, interviews, and press.
+Short updates, announcements, and occasional longer-form posts; plus a running list of talks, interviews, and press.
 
 {% include section.html %}
 

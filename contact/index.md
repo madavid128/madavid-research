@@ -9,7 +9,7 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-I welcome collaborations, questions, and opportunities related to research, analytics, or data‑driven art.
+I welcome collaborations, questions, and opportunities related to research, analytics, or data-driven art.
 
 <div class="contact-mailto" data-contact-mailto data-email="michael.david@cuanschutz.edu">
   <div class="contact-mailto-title">Contact me about…</div>
@@ -47,15 +47,15 @@ I welcome collaborations, questions, and opportunities related to research, anal
 
 ## Collaboration & mentorship
 
-**Collaboration** — I partner on projects involving:
+**Collaboration:** I partner on projects involving:
 - Spatial histopathology + AI
 - Medical imaging (MRI/CT) + radiomics
-- Transcriptomics/multi‑omics integration
+- Transcriptomics and multi-omics integration
 - Reproducible analysis pipelines
 
-**Mentorship** — If you’re interested in collaborating or mentoring opportunities, I’m happy to chat and help define a project with clear scope and measurable deliverables.
+**Mentorship:** If you’re interested in collaborating or mentoring opportunities, I’m happy to chat and help define a project with clear scope and measurable deliverables.
 
-**Response** — I do my best to reply within a few business days.
+**Response:** I do my best to reply within a few business days.
 
 {%
   include button.html

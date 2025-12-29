@@ -62,7 +62,7 @@ Start with [Publications](research) (highlighted + full list), then [Projects](p
 Use the search icon in the header (or press `/` or `Ctrl/⌘+K`) and type a keyword, author, or year.
 
 **Can I collaborate or propose a project?**  
-Yes — I’m happy to talk through ideas and help scope a project with clear deliverables. The fastest way is email.
+Yes; I’m happy to talk through ideas and help scope a project with clear deliverables. The fastest way is email.
 
 {% include section.html %}
 
