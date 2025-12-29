@@ -11,10 +11,22 @@
   border-radius: 18px;
   box-shadow: var(--shadow);
   object-fit: cover;
+  object-position: 50% 15%;
 }
 
 .home-intro .cols {
   align-items: stretch;
+}
+
+/* cols.html runs markdownify, which can wrap raw HTML in <p>. Make sure the
+   right-hand column can still stretch to match the left column height. */
+.home-intro .cols > div {
+  height: 100%;
+}
+
+.home-intro .cols > div > p {
+  height: 100%;
+  margin: 0;
 }
 
 @media (max-width: 500px) {
@@ -24,6 +36,7 @@
   .home-intro-portrait img {
     height: auto;
     aspect-ratio: 3/2;
+    object-position: center;
   }
 }
 .home-welcome {
