@@ -5,30 +5,29 @@ page_jumps: "off"
 ---
 
 # Michael Aaron David, PhD
+<div class="home-intro-grid">
+  <div class="home-intro-text">
+    <p>
+      I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz.
+    </p>
 
-{% capture intro_left %}
-I’m a biomedical engineer with a PhD and an Instructor in the Department of Orthopedics at the University of Colorado Anschutz.
+    <p>My work focuses on:</p>
+    <ul>
+      <li>End-to-end machine learning workflows across spatial histopathology, transcriptomics and multi-omics, and medical imaging</li>
+      <li>Clinical and preclinical datasets to study post-traumatic and idiopathic musculoskeletal disease (e.g., contracture and osteoarthritis) in the ankle, knee, hip, elbow, and spine</li>
+      <li>Collaboration and mentorship with diverse colleagues and trainees</li>
+    </ul>
 
-My work focuses on:
-- End-to-end machine learning workflows across spatial histopathology, transcriptomics and multi-omics, and medical imaging
-- Clinical and preclinical datasets to study post-traumatic and idiopathic musculoskeletal disease (e.g., contracture and osteoarthritis) in the ankle, knee, hip, elbow, and spine
-- Collaboration and mentorship with diverse colleagues and trainees
+    <p>Outside the lab, I enjoy connecting with nature, music, and good people.</p>
+  </div>
 
-Outside the lab, I enjoy connecting with nature, music, and good people.
-{% endcapture %}
-
-{% capture intro_right %}
-<figure class="home-intro-portrait">
-  <img
-    src="{{ 'images/MichaelDavid_headshot.jpeg' | relative_url }}"
-    alt="Michael A. David headshot"
-    loading="eager"
-  >
-</figure>
-{% endcapture %}
-
-<div class="home-intro">
-  {% include cols.html col1=intro_left col2=intro_right %}
+  <figure class="home-intro-portrait">
+    <img
+      src="{{ 'images/MichaelDavid_headshot.jpeg' | relative_url }}"
+      alt="Michael Aaron David headshot"
+      loading="eager"
+    >
+  </figure>
 </div>
 
 {% include section.html %}

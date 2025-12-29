@@ -16,5 +16,3 @@ I do not intentionally collect personal information. Analytics providers may rec
 This site uses:
 - GoatCounter (privacy-friendly, no cookies by default): https://www.goatcounter.com/
 - Rybbit: https://rybbit.io/
-
-If you have questions, please contact me.
