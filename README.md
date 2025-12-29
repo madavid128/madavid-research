@@ -1,4 +1,4 @@
-Visit **[michaeladavid.com](https://michaeladavid.com)** 🚀
+Visit **[michaeladavid.com](https://michaeladavid.com)**
 
 # Michael A. David — Research Portfolio
 
