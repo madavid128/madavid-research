@@ -81,7 +81,7 @@ def _make_suggested_subtitle(title: str, year: str, tags_str: str) -> str:
     if tags_str:
         first_tag = tags_str.split(";")[0].strip()
         if first_tag and first_tag.lower() not in base.lower():
-            return f"{base} — {first_tag}."
+            return f"{base}; {first_tag}."
     return f"{base}."
 
 
