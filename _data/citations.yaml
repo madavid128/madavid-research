@@ -1,5 +1,68 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.1021/acsnano.5c16167
+  title: 3D-Printing-Assisted, Microfabricated Devices Reveal Hierarchical and Temporal
+    Mechanosensing in High-Density Fibroblast Culture
+  authors:
+  - Ghiska Ramahdita
+  - Xiangjun Peng
+  - Mohammad Jafari
+  - Charlene Pobee
+  - Riya Bhakta
+  - Zhuangyu Zhang
+  - Austin C. Kellogg
+  - Hsin-Yi Cindy Chou
+  - Missy Pear
+  - Fei Wang
+  - David Schuftan
+  - Yuan Hong
+  - Michael A. David
+  - Spencer P. Lake
+  - Elliot L. Elson
+  - Chao Zhou
+  - Guy M. Genin
+  - Farid Alisafaei
+  - Nathaniel Huebsch
+  publisher: ACS Nano
+  date: '2026-05-08'
+  link: https://doi.org/hb4nrw
+  orcid: 0009-0006-5637-2403
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1177/10711007251413557
+  title: 'The Synovial Fingerprint of Ankle Fractures: A Central Role for WNT Pathway
+    Activation in Posttraumatic Ankle Osteoarthritis'
+  authors:
+  - Julia Matthias
+  - Michael A. David
+  - Sara E. Buckley
+  - Samuel D. Stark
+  - Nicholas A. Austin
+  - Nathaniel E. Zona
+  - Michael J. Zuscik
+  - Kenneth J. Hunt
+  publisher: Foot &amp; Ankle International
+  date: '2026-03-23'
+  link: https://doi.org/hbt842
+  orcid: 0009-0006-5637-2403
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/j.bonr.2026.101911
+  title: Demystifying machine learning approaches in digital bone imaging using microCT
+    and HRpQCT
+  authors:
+  - Michael A. David
+  - Kyle G. Williams
+  - Evangelia P. Constantine
+  - Julia Matthias
+  - Virginia L. Ferguson
+  - Douglas J. Adams
+  publisher: Bone Reports
+  date: '2026-06-01'
+  link: https://doi.org/hb4nrz
+  orcid: 0009-0006-5637-2403
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1002/jor.70016
   title: 'Synovial Dysregulation in Ankle Osteoarthritis: Molecular Insights and Pathogenetic
     Pathways'

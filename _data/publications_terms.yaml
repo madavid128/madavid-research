@@ -1,17 +1,23 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
 - term: animals
+  count: 15
+- term: ankle
+  count: 13
+- term: mice
   count: 12
 - term: cartilage
   count: 10
+- term: osteoarthritis
+  count: 10
 - term: and
+  count: 9
+- term: humans
   count: 9
 - term: male
   count: 9
-- term: mice
-  count: 9
-- term: osteoarthritis
-  count: 7
+- term: joint
+  count: 8
 - term: aged
   count: 6
 - term: articular
@@ -22,29 +28,23 @@
   count: 6
 - term: chondrocytes
   count: 6
-- term: humans
-  count: 6
 - term: inbred
   count: 6
 - term: injuries
   count: 6
+- term: membrane
+  count: 6
+- term: signaling
+  count: 6
 - term: studies
+  count: 6
+- term: synovial
   count: 6
 - term: age
   count: 5
-- term: ankle
+- term: bone
   count: 5
 - term: calcium
   count: 5
-- term: joint
+- term: imaging
   count: 5
-- term: meniscus
-  count: 5
-- term: chondrocyte
-  count: 4
-- term: elbow
-  count: 4
-- term: post-traumatic
-  count: 4
-- term: '2'
-  count: 3
