@@ -1,26 +1,13 @@
-Visit **[michaeladavid.com](https://michaeladavid.com)** 🚀
+# Archived website source
 
-# Michael A. David Research Portfolio
+This repository contains a retired version of [michaeladavid.com](https://michaeladavid.com) and is preserved for historical reference.
 
-This repository powers my personal research website (Jekyll + Lab Website Template).
+The website has moved to a new platform. This repository no longer publishes the live website and will not receive content updates.
 
-Live site: https://michaeladavid.com  
-Repo: madavid128/madavid-research
+For current research, publications, projects, software, scientific art, photography, and other information, visit [michaeladavid.com](https://michaeladavid.com).
 
-My research integrates spatial histopathology, transcriptomics, and medical imaging using machine learning to study post-traumatic musculoskeletal conditions (contracture and osteoarthritis).
+## Licensing
 
-## Site maintenance
+The repository’s default license is `LICENSE.md` under the BSD 3-Clause License.
 
-For step-by-step instructions (local preview, updating publications/maps, watermarking gallery images, and adding gallery subtitles/alt text), see `README_SITE.md`.
-
-For the longer “home page style” overview text, see `README_HOME.md`.
-
-## Licensing notes
-
-The repository’s default license is `LICENSE.md` (BSD 3-Clause).
-
-Unless otherwise stated in-file, all original code and content in this repository (including helper scripts under `tools/` and `_cite/`) is © 2025 Michael A. David and licensed under BSD 3-Clause.
-
-This repository is based on the Greene Lab Lab Website Template; see `LICENSES.md` for a clear breakdown of upstream template vs custom additions and `THIRD_PARTY_NOTICES.md` for third-party dependencies.
-
-_Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)._
+Unless otherwise stated, original code and content in this repository are © 2025 Michael A. David. See `LICENSES.md` and `THIRD_PARTY_NOTICES.md` for additional licensing information.
